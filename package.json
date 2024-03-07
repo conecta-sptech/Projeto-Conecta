@@ -1,0 +1,9 @@
+{
+  "name": "projeto",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./projeto/app.js",
+    "postinstall": "cd projeto && npm install"
+  }
+}
