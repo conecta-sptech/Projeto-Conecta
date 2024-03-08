@@ -6,4 +6,58 @@
 
 html, body {
     height: 100%;
+    color: white;
+}
+
+.cadastro {
+    background-image: url(../assets/img/fundoCadastrologin.png);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro .form-cadastro{
+    background-color: rgba(40,40,40,0.7);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    height: 90%;
+}
+
+.cadastro .form-cadastro h1{
+    font-size: 40px;
+    }
+
+.cadastro .form-cadastro .box-input{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90%;
+    height: 70%;
+}
+
+.cadastro .form-cadastro .box-input span{
+    font-size: 19px;
+}
+
+.cadastro .form-cadastro .box-input input{
+    width: 72%;
+    height: 8%;
+    border-radius: 10px;
+    border-left: 7px solid #93E4C4;
+}
+
+.cadastro .form-cadastro .button-cadastrar{
+    border: 1px solid #93E4C4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 63%;
+    height: 5%;
 }

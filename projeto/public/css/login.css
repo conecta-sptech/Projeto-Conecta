@@ -6,4 +6,104 @@
 
 html, body {
     height: 100%;
+    color: white;
+}
+
+
+
+.login {
+    background-image: url(../assets/img/fundoCadastrologin.png);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login .logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    height: 90%
+}
+
+.login .logo .img-logo{
+    width: 70%;
+    height: 66%;
+}
+
+.login .logo .div-slogan{
+    width: 90%;
+    display: flex;
+}
+
+.login .logo .div-slogan .slogan{
+    font-size: 55px;
+    text-align: center
+}
+
+.login .logo .div-slogan .slogan-bold{
+    color: #93E4C4;
+    font-weight: bold
+}
+
+
+
+.login .form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 90%
+}
+
+.login .form .form-box{
+    background-color: rgba(40,40,40,0.7);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 84%;
+    height: 53%
+}
+
+.login .form .form-box h1{
+    font-size: 50px;
+}
+
+.login .form .form-box p{
+    font-size: 18px;
+}
+
+.login .form .form-box .box-input{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 50%;
+}
+
+
+
+.login .form .form-box .box-input span{
+    font-size: 19px;
+}
+
+.login .form .form-box .box-input input{
+    width: 60%;
+    height: 21%;
+    border-radius: 10px;
+    border-left: 7px solid #93E4C4;
+}
+
+.login .form .form-box .button-entrar{
+    border: 1px solid #93E4C4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 54%;
+    height: 10%;
 }
