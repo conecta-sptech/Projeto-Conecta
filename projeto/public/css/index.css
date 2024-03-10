@@ -7,3 +7,361 @@
 html {
     scroll-behavior: smooth;
 }
+
+header {
+    height: 90vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    width: 100%;
+    padding: 0 80px;
+    background-color: black;
+}
+
+.nome a {
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    margin-left: 15px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    list-style: none;
+    text-decoration: none;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.navbar ul li {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+li {
+    list-style: none;
+}
+
+.acesso {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.acesso li {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.acesso a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+img {
+    width: 50px;
+}
+
+/* Fim da Navbar */
+
+.tituloHome {
+    display: flex;
+    display: inline-block;
+    justify-content: center;
+}
+
+a {
+    font-size: 40px;
+}
+
+.descricao {
+    margin-top: 20px;
+    font-size: 35px;
+}
+
+
+.imgServidores img {
+    display: flex;
+    margin-left: -50;
+    width: 500px;
+}
+
+.imgServidores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgServidores button {
+    border-radius: 20px;
+    padding: 12px 32px 12px 32px;
+    border: none;
+    background-color: white;
+    font-weight: 600;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+
+.inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(90deg, #92e4c4, #ffffff);
+}
+
+
+
+/* projeto */
+
+
+.projetoHome{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 50%;
+}
+
+.projetoHome a {
+    font-size: 40px;
+}
+
+.descricaoProjeto {
+    margin-top: 20px;
+    font-size: 35px;
+    
+}
+
+
+.imgProjeto img {
+    display: flex;
+    width: 450px;
+    padding-left: 20px;
+    
+}
+
+.imgProjeto {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.homeProjeto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(90deg, #92e4c4, #ffffff);
+}
+
+/* Sobre nós*/
+
+.tituloSobre{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.tituloSobre a {
+    font-size: 40px;
+    color: white;
+}
+
+.descricaoSobre {
+    margin-top: 20px;
+    font-size: 35px;
+    color: white;
+}
+
+
+.imgConecta img {
+    display: flex;
+    margin-left: 100px;
+    width: 450px;
+    padding-left: 20px;
+}
+
+.sobreNosHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(90deg, #000000, #737373);
+}
+
+/* Solução */
+
+.tituloSolucao{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.tituloSolucao a {
+    font-size: 40px;
+    width: 50%;
+}
+
+.descricaoSolucao {
+    margin-top: 20px;
+    font-size: 35px;
+}
+
+
+.imgSolucao {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.imgSolucao img {
+    display: flex;
+    margin-left: 100px;
+    width: 450px;
+    padding-left: 20px;
+}
+
+.solucaoHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(90deg, #92e4c4, #ffffff);
+}
+
+
+/* Equipe*/
+
+.geral {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+
+  .tituloEquipe {
+    display: flex;
+    display: inline-block;
+    font-size: 50px;;
+  }
+
+  .foto {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  .line_1 {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  
+  .box .line_1 img {
+    margin: 20px;
+  }
+
+  .line_2 {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .line_2 .equipeFotos:nth-child(1){
+    margin-left: 8%;
+  }
+
+  .line_2 .equipeFotos:nth-child(2){
+    margin-right: 8%;
+  }
+  
+  .box .line_2 img {
+    margin: 20px;
+  }
+
+  #equipe {
+    padding: 20px 0;
+    background: linear-gradient(90deg, #92e4c4, #ffffff);
+    padding: 24px 0;
+  }
+  
+  .equipeFotos {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 24px 0;
+  }
+  
+  span {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+  }
+
+  .tituloEquipe {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+  }
+
+  /* Contato*/
+
+  footer {
+    background: linear-gradient(90deg, #000000, #737373);
+    padding: 24px 0;
+  }
+
+  footer a, footer span{
+    color: white;
+  }
+
+  footer span {
+    font-size: 35px;
+  }
+
+  .footerContato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .footerContato img {
+    width: 300px;
+  }
+
+  .footerHome {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .coluna1, .coluna2, .coluna3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  
+
