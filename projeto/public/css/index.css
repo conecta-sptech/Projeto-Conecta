@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,37 +8,75 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 60px;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #93E4C4;
+    border-radius: 30px;
 }
 
 header {
     height: 90vh;
+    margin-top: 60px;
 }
 
 nav {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     height: 60px;
     width: 100%;
     padding: 0 80px;
     background-color: black;
+    position: fixed;
+    top: 0;
+    color: white;
+    user-select: none;
 }
 
-.nome a {
-    text-decoration: none;
-    color: white;
-    font-size: 17px;
-    margin-left: 15px;
+img {
+    pointer-events: none;
+}
+
+img,
+a {
+    user-select: none;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
 }
 
 .logo {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.nome {
+    font-weight: 600;
+    color: white;
+    font-size: 17px;
+    margin-left: 12px;
 }
 
 .navbar {
     width: 50%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,6 +91,7 @@ nav {
     color: white;
     text-decoration: none;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .navbar ul li {
@@ -73,6 +114,7 @@ li {
     display: flex;
     justify-content: space-between;
     list-style: none;
+    cursor: pointer;
 }
 
 .acesso a {
@@ -89,19 +131,23 @@ img {
 
 .tituloHome {
     display: flex;
-    display: inline-block;
+    flex-direction: column;
     justify-content: center;
-}
-
-a {
+    align-items: center;
+    width: 45%;
     font-size: 40px;
+    text-align: left;
 }
 
 .descricao {
     margin-top: 20px;
     font-size: 35px;
+    width: 550px;
 }
 
+.descricao p {
+    font-size: 24px;
+}
 
 .imgServidores img {
     display: flex;
@@ -113,16 +159,22 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 45%;
 }
 
-.imgServidores button {
+.imgServidores a {
     border-radius: 20px;
     padding: 12px 32px 12px 32px;
-    border: none;
     background-color: white;
     font-weight: 600;
     margin-top: 24px;
     cursor: pointer;
+    box-shadow: 0 0 1px #000000;
+    transition: padding .3s ease-in-out;
+}
+
+.imgServidores a:hover {
+    padding: 12px 40px 12px 40px;
 }
 
 
@@ -134,44 +186,43 @@ a {
     background: linear-gradient(90deg, #92e4c4, #ffffff);
 }
 
-
-
 /* projeto */
 
 
-.projetoHome{
+.projetoHome {
+    display: flex;
+    justify-content: center;
     margin-top: 100px;
     margin-bottom: 100px;
-    width: 50%;
+    width: 45%;
 }
 
-.projetoHome a {
+.projetoHome h1 {
     font-size: 40px;
 }
 
 .descricaoProjeto {
     margin-top: 20px;
-    font-size: 35px;
-    
+    font-size: 24px;
 }
 
 
 .imgProjeto img {
     display: flex;
-    width: 450px;
-    padding-left: 20px;
-    
+    width: 550px;
+    border-top-left-radius: 24%;
+
 }
 
 .imgProjeto {
-    width: 50%;
+    width: 45%;
     display: flex;
     justify-content: center;
 }
 
 .homeProjeto {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     height: 100%;
     background: linear-gradient(90deg, #92e4c4, #ffffff);
@@ -179,27 +230,37 @@ a {
 
 /* Sobre nós*/
 
-.tituloSobre{
+.tituloSobre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
     margin-top: 100px;
     margin-bottom: 100px;
 }
 
-.tituloSobre a {
+.tituloSobre h1 {
     font-size: 40px;
     color: white;
 }
 
 .descricaoSobre {
     margin-top: 20px;
-    font-size: 35px;
+    font-size: 20px;
     color: white;
 }
 
 
+.imgConecta {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+}
+
 .imgConecta img {
     display: flex;
     margin-left: 100px;
-    width: 450px;
+    width: 400px;
     padding-left: 20px;
 }
 
@@ -213,38 +274,41 @@ a {
 
 /* Solução */
 
-.tituloSolucao{
+.tituloSolucao {
     margin-top: 100px;
     margin-bottom: 100px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.tituloSolucao a {
+.tituloSolucao h1 {
     font-size: 40px;
-    width: 50%;
 }
 
 .descricaoSolucao {
     margin-top: 20px;
-    font-size: 35px;
+    font-size: 24px;
 }
 
 
 .imgSolucao {
-    width: 50%;
+    width: 45%;
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
 .imgSolucao img {
     display: flex;
     margin-left: 100px;
-    width: 450px;
-    padding-left: 20px;
+    width: 550px;
+    border-top-left-radius: 24%;
 }
 
 .solucaoHome {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     height: 100%;
     background: linear-gradient(90deg, #92e4c4, #ffffff);
@@ -257,111 +321,122 @@ a {
     width: 100%;
     height: 100%;
     align-items: center;
-  }
+}
 
-  .tituloEquipe {
-    display: flex;
-    display: inline-block;
-    font-size: 50px;;
-  }
+.tituloEquipe h1 {
+    font-size: 40px;
+}
 
-  .foto {
+.tituloEquipe p {
+    font-size: 24px;
+}
+
+.foto {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-  }
-  
-  .line_1 {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line_1 {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-  }
-  
-  .box .line_1 img {
-    margin: 20px;
-  }
+}
 
-  .line_2 {
+.line_2 {
     display: flex;
     justify-content: space-evenly;
-  }
+}
 
-  .line_2 .equipeFotos:nth-child(1){
+.line_2 .equipeFotos:nth-child(1) {
     margin-left: 8%;
-  }
+}
 
-  .line_2 .equipeFotos:nth-child(2){
+.line_2 .equipeFotos:nth-child(2) {
     margin-right: 8%;
-  }
-  
-  .box .line_2 img {
-    margin: 20px;
-  }
+}
 
-  #equipe {
+.box .line_2 img {
+    margin: 20px;
+}
+
+#equipe {
     padding: 20px 0;
     background: linear-gradient(90deg, #92e4c4, #ffffff);
     padding: 24px 0;
-  }
-  
-  .equipeFotos {
+}
+
+.equipeFotos {
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 24px 0;
-  }
-  
-  span {
+}
+
+#equipe span {
     font-size: 18px;
     font-weight: bold;
     font-style: italic;
     color: #333;
-  }
+}
 
-  .tituloEquipe {
+.tituloEquipe {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     padding: 24px 0;
-  }
+}
 
-  /* Contato*/
+/* Contato*/
 
-  footer {
+footer {
     background: linear-gradient(90deg, #000000, #737373);
     padding: 24px 0;
-  }
+}
 
-  footer a, footer span{
-    color: white;
-  }
+footer {
+    color: #ffffff;
+}
 
-  footer span {
-    font-size: 35px;
-  }
+footer span {
+    font-size: 16px;
+    margin: 4px 0;
+}
 
-  .footerContato {
+.footerContato {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
+}
 
-  .footerContato img {
-    width: 300px;
-  }
+.footerContato h1 {
+    color: #ffffff;
+}
 
-  .footerHome {
+.footerContato img {
+    width: 180px;
+}
+
+.footerHome {
     display: flex;
     justify-content: space-evenly;
-  }
+}
 
-  .coluna1, .coluna2, .coluna3 {
+.coluna1,
+.coluna2,
+.coluna3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    width: 33%;
+}
 
-  
-
+.coluna3 a {
+    margin: 2px 0;
+}
