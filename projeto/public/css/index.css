@@ -8,7 +8,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 60px;
+    scroll-padding-top: 70px;
 }
 
 body {
@@ -30,35 +30,35 @@ body::-webkit-scrollbar-thumb {
 
 header {
     height: 90vh;
-    margin-top: 60px;
+    margin-top: 70px;
+    position: relative;
 }
 
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 60px;
+    height: 70px;
     width: 100%;
     padding: 0 80px;
+    padding-top: 4px;
     background-color: black;
     position: fixed;
     top: 0;
     color: white;
     user-select: none;
+    z-index: 4;
 }
 
 img {
     pointer-events: none;
-}
-
-img,
-a {
     user-select: none;
 }
 
 a {
     all: unset;
     cursor: pointer;
+    user-select: none;
 }
 
 .logo {
@@ -66,6 +66,7 @@ a {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    margin-top: -3px;
 }
 
 .nome {
@@ -104,6 +105,23 @@ li {
     list-style: none;
 }
 
+.bottom-animation::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transform: skew(-50deg);
+    transition: width .3s;
+    border-radius: 25px;
+    margin-top: 2px;
+}
+
+.bottom-animation:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
 .acesso {
     display: flex;
     align-items: center;
@@ -115,6 +133,10 @@ li {
     justify-content: space-between;
     list-style: none;
     cursor: pointer;
+}
+
+.acesso .barra {
+    margin-top: -4px;
 }
 
 .acesso a {
@@ -151,8 +173,7 @@ img {
 
 .imgServidores img {
     display: flex;
-    margin-left: -50;
-    width: 500px;
+    width: 550px;
 }
 
 .imgServidores {
@@ -164,9 +185,9 @@ img {
 
 .imgServidores a {
     border-radius: 20px;
-    padding: 12px 32px 12px 32px;
+    padding: 12px 40px 12px 40px;
     background-color: white;
-    font-weight: 600;
+    font-weight: 800;
     margin-top: 24px;
     cursor: pointer;
     box-shadow: 0 0 1px #000000;
@@ -174,7 +195,7 @@ img {
 }
 
 .imgServidores a:hover {
-    padding: 12px 40px 12px 40px;
+    padding: 12px 50px 12px 50px;
 }
 
 
@@ -186,8 +207,36 @@ img {
     background: linear-gradient(90deg, #92e4c4, #ffffff);
 }
 
+.down-arrow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    margin: 0 auto;
+    width: 50px;
+    animation: arrowTransition 2s ease-in-out infinite;
+}
+
+@keyframes arrowTransition {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-16px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
 /* projeto */
 
+#projeto {
+    padding: 40px 0;
+    background: linear-gradient(90deg, #92e4c4, #ffffff);
+}
 
 .projetoHome {
     display: flex;
@@ -203,13 +252,13 @@ img {
 
 .descricaoProjeto {
     margin-top: 20px;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 
 .imgProjeto img {
     display: flex;
-    width: 550px;
+    width: 600px;
     border-top-left-radius: 24%;
 
 }
@@ -225,16 +274,20 @@ img {
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
-    background: linear-gradient(90deg, #92e4c4, #ffffff);
 }
 
 /* Sobre nós*/
+
+#sobreNos {
+    padding: 10px 60px;
+    background: linear-gradient(90deg, #000000, #737373);
+}
 
 .tituloSobre {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45%;
+    width: 50%;
     margin-top: 100px;
     margin-bottom: 100px;
 }
@@ -248,6 +301,7 @@ img {
     margin-top: 20px;
     font-size: 20px;
     color: white;
+    text-align: left;
 }
 
 
@@ -266,13 +320,17 @@ img {
 
 .sobreNosHome {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     height: 100%;
-    background: linear-gradient(90deg, #000000, #737373);
 }
 
 /* Solução */
+
+#solucao {
+    padding: 40px 0;
+    background: linear-gradient(90deg, #92e4c4, #ffffff);
+}
 
 .tituloSolucao {
     margin-top: 100px;
@@ -289,7 +347,7 @@ img {
 
 .descricaoSolucao {
     margin-top: 20px;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 
@@ -302,7 +360,7 @@ img {
 .imgSolucao img {
     display: flex;
     margin-left: 100px;
-    width: 550px;
+    width: 600px;
     border-top-left-radius: 24%;
 }
 
@@ -311,9 +369,66 @@ img {
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
-    background: linear-gradient(90deg, #92e4c4, #ffffff);
 }
 
+/* Monitoramento */
+
+#monitoramento {
+    background: linear-gradient(90deg, #92e4c4, #ffffff);
+    padding: 32px 0;
+}
+
+#monitoramento h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+#monitoramento .line {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box-monitoramento {
+    margin: 50px 0;
+    padding: 24px;
+    background-color: #ffffff;
+    width: 280px;
+    height: 420px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0 0 1px #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-monitoramento .img {
+    height: 50%;
+}
+
+.box-monitoramento .texto {
+    height: 40%;
+}
+
+.box-monitoramento img {
+    width: 232px;
+    height: 170px;
+    border-top-right-radius: 24%;
+}
+
+#monitoramento .texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#monitoramento .texto p {
+    margin-top: 8px;
+    font-size: 16px;
+    text-align: center;
+}
 
 /* Equipe*/
 
@@ -329,6 +444,7 @@ img {
 
 .tituloEquipe p {
     font-size: 24px;
+    margin-top: 8px;
 }
 
 .foto {
@@ -339,6 +455,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ffffff;
 }
 
 .line_1 {
@@ -365,9 +482,8 @@ img {
 }
 
 #equipe {
-    padding: 20px 0;
     background: linear-gradient(90deg, #92e4c4, #ffffff);
-    padding: 24px 0;
+    padding: 40px 0;
 }
 
 .equipeFotos {
@@ -396,7 +512,7 @@ img {
 
 footer {
     background: linear-gradient(90deg, #000000, #737373);
-    padding: 24px 0;
+    padding: 40px 0;
 }
 
 footer {
@@ -421,6 +537,10 @@ footer span {
 
 .footerContato img {
     width: 180px;
+}
+
+.footerContato a {
+    font-size: 18px;
 }
 
 .footerHome {
