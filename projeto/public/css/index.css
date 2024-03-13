@@ -191,11 +191,12 @@ img {
     margin-top: 24px;
     cursor: pointer;
     box-shadow: 0 0 1px #000000;
-    transition: padding .3s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 .imgServidores a:hover {
-    padding: 12px 50px 12px 50px;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 
@@ -557,6 +558,26 @@ footer span {
     width: 33%;
 }
 
-.coluna3 a {
-    margin: 2px 0;
+.icones-social, .descricao-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.descricao-footer img {
+    width: 18px;
+    margin-right: 4px;
+}
+
+.icones-social a {
+    margin: 0 8px;
+    transition: all .3s ease-in-out;
+}
+
+.icones-social img {
+    width: 36px;
+}
+
+.icones-social a:hover {
+    transform: scale(1.1);
 }
