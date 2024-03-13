@@ -448,6 +448,44 @@ img {
     margin-top: 8px;
 }
 
+.sombra-foto {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #0000006c;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all .5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sombra-foto.active {
+    opacity: 1;
+}
+
+.sombra-foto a {
+    transition: all .3s ease-in-out;
+}
+
+.sombra-foto a:hover {
+    transform: scale(1.1);
+}
+
+.sombra-foto a img {
+    margin: 0 8px;
+}
+
+.sombra-foto img {
+    width: 40px;
+}
+
 .foto {
     width: 200px;
     height: 200px;
@@ -457,6 +495,7 @@ img {
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
+    position: relative;
 }
 
 .line_1 {
@@ -558,7 +597,8 @@ footer span {
     width: 33%;
 }
 
-.icones-social, .descricao-footer {
+.icones-social,
+.descricao-footer {
     display: flex;
     align-items: center;
     justify-content: center;
