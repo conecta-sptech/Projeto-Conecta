@@ -1,38 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     color: white;
+    font-family: "Montserrat", sans-serif;
+    user-select: none;
+    background-image: url(../assets/img/fundoCadastrologin.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
 }
 
+a {
+    text-decoration: none;
+    color: #93E4C4;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
 .cadastro {
-    background-image: url(../assets/img/fundoCadastrologin.png);
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: slideLeft 1.4s ease;
 }
 
-.cadastro .form-cadastro{
-    background-color: rgba(40,40,40,0.7);
+.cadastro .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+
+.cadastro .logo .img-logo {
+    width: 320px;
+    pointer-events: none;
+}
+
+.cadastro .logo .div-slogan {
+    text-align: center;
+}
+
+.cadastro .logo .div-slogan .slogan {
+    font-size: 28px;
+    text-align: center
+}
+
+.cadastro .logo .div-slogan .slogan-bold {
+    color: #93E4C4;
+    font-weight: bold
+}
+
+.texto-conta {
+    margin-top: 50px;
+}
+
+
+.cadastro .form-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42%;
+    height: 96%
+}
+
+.cadastro .form {
+    background-color: rgba(40, 40, 40, 0.7);
     border-radius: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 30%;
-    height: 90%;
+    width: 520px;
+    height: 96%;
 }
 
-.cadastro .form-cadastro h1{
+.cadastro .form-cadastro h1 {
     font-size: 40px;
-    }
+}
 
-.cadastro .form-cadastro .box-input{
+.cadastro .form-cadastro .box-input {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -41,23 +100,106 @@ html, body {
     height: 70%;
 }
 
-.cadastro .form-cadastro .box-input span{
+.container-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.cadastro .form-cadastro .box-input label {
     font-size: 19px;
+    align-self: flex-start;
+    margin: 8px 12px;
 }
 
-.cadastro .form-cadastro .box-input input{
-    width: 72%;
-    height: 8%;
+.cadastro .form-cadastro .box-input input {
     border-radius: 10px;
+    border: none;
     border-left: 7px solid #93E4C4;
+    padding: 12px 10px 12px 10px;
+    width: 320px;
+    transition: all .3s ease-in-out;
 }
 
-.cadastro .form-cadastro .button-cadastrar{
+.cadastro .form-cadastro .box-input input.error {
+    border-left: 7px solid #c97f7f;
+}
+
+.cadastro .form-cadastro .box-input input.error:focus {
+    border-left: 10px solid #c97f7f !important;
+}
+
+#inputSenha,
+#inputConfirmarSenha {
+    padding: 12px 46px 12px 10px;
+}
+
+input:focus {
+    outline: none;
+    border-left: 10px solid #93E4C4 !important;
+}
+
+.eye-icon {
+    width: 24px;
+    position: absolute;
+    top: 47px;
+    right: 14px;
+    cursor: pointer;
+}
+
+.cadastro .form-cadastro .button-cadastrar {
     border: 1px solid #93E4C4;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    width: 63%;
-    height: 5%;
+    width: 320px;
+    padding: 12px 32px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    background-color: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.cadastro .form-cadastro .button-cadastrar:hover {
+    background-color: #93E4C4;
+}
+
+.home-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 100%;
+    padding: 8px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+}
+
+.home-button img {
+    width: 100%;
+}
+
+.home-button:hover {
+    background-color: #93E4C4;
+}
+
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

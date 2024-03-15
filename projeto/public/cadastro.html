@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="shortcut icon" href="assets/img/png/4-removebg-preview.png" type="image/x-icon">
     <title>Cadastro | Conecta</title>
 </head>
 
@@ -12,31 +13,67 @@
 
     <div class="cadastro">
         <div class="form-cadastro">
-            <h1>CADASTRO</h1>
+            <div class="form">
+                <h1>CADASTRO</h1>
 
-            <div class="box-input">
-                <span>Nome da Empresa:</span>
-                <input type="text" class="inputEmpresa" placeholder="">
-                <span>CNPJ:</span>
-                <input type="number" class="inputCNPJ" placeholder="   Ex: 12.345.678/0001-00">
-                <span>CEP:</span>
-                <input type="number" class="inputCNPJ" placeholder="   Ex: 01001-000">
-                <span>Número:</span>
-                <input type="number" class="inputCNPJ" placeholder="">
-                <span>E-mail:</span>
-                <input type="text" class="inputEmail" placeholder="   exemplo@exemplo.com">
-                <span>Senha:</span>
-                <input type="password" class="inputSenha" placeholder="   ******">
-                <span>Confirmar senha:</span>
-                <input type="password" class="inputConfirmaSenha" placeholder="   ******">
-            </div>
+                <div class="box-input">
+                    <div class="container-input">
+                        <label for="inputNomeEmpresa">Nome da Empresa</label>
+                        <input oninput="removerErroCampos()" autofocus type="text" id="inputNomeEmpresa"
+                            placeholder="Nome fantasia">
+                    </div>
 
-            <div class="button-cadastrar" onclick="">
-               <h4>Cadastrar</h4>
+                    <div class="container-input">
+                        <label for="inputCnpj">CNPJ</label>
+                        <input oninput="removerErroCampos()" onkeypress="mascararCnpj()" type="text" id="inputCnpj"
+                            placeholder="Ex: 12.345.678/0001-00" maxlength="18">
+                    </div>
+
+                    <div class="container-input">
+                        <label for="inputCep">CEP</label>
+                        <input oninput="removerErroCampos()" onkeypress="mascararCep()" type="text" id="inputCep"
+                            placeholder="Ex: 01001-000" maxlength="9">
+                    </div>
+
+                    <div class="container-input">
+                        <label for="inputEmail">E-mail</label>
+                        <input oninput="removerErroCampos()" type="text" id="inputEmail"
+                            placeholder="email@exemplo.com">
+                    </div>
+
+                    <div class="container-input">
+                        <label for="inputSenha">Senha</label>
+                        <input oninput="removerErroCampos()" type="password" id="inputSenha" placeholder="********">
+                        <img onclick="alternarVisibilidadeSenha()" class="eye-icon"
+                            src="assets/svg/invisible-password-icon.svg">
+                    </div>
+
+                    <div class="container-input">
+                        <label for="inputConfirmarSenha">Confirmar senha</label>
+                        <input oninput="removerErroCampos()" type="password" id="inputConfirmarSenha"
+                            placeholder="********">
+                        <img onclick="alternarVisibilidadeSenha()" class="eye-icon"
+                            src="assets/svg/invisible-password-icon.svg">
+                    </div>
+                </div>
+
+                <button id="submitBtn" class="button-cadastrar" onclick="validarCampos()">Cadastrar</button>
             </div>
         </div>
 
+        <div class="logo">
+            <img class="img-logo" src="assets/img/logoConecta.png">
+            <div class="div-slogan">
+                <span class="slogan">Transformando ideias em <span class="slogan-bold"> <br> Redes de
+                        Sucesso!</span></span>
+            </div>
+            <span class="texto-conta">Já possui uma conta? <a href="login.html">Faça login</a>.</span>
+        </div>
+
     </div>
+
+    <a class="home-button" href="index.html"><img src="assets/svg/house-icon.svg"></a>
+
     <script src="js/cadastro.js"></script>
 </body>
 

@@ -1,109 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
+    background-image: url(../assets/img/fundoCadastrologin.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
     color: white;
+    font-family: "Montserrat", sans-serif;
+    user-select: none;
 }
 
+a {
+    text-decoration: none;
+    color: #93E4C4;
+}
 
+a:hover {
+    text-decoration: underline;
+}
 
 .login {
-    background-image: url(../assets/img/fundoCadastrologin.png);
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    animation: slideRight 1.4s ease;
 }
 
-.login .logo{
+.login .logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45%;
-    height: 90%
+    justify-content: center;
+    width: 40%;
 }
 
-.login .logo .img-logo{
-    width: 70%;
-    height: 66%;
+.login .logo .img-logo {
+    width: 320px;
+    pointer-events: none;
 }
 
-.login .logo .div-slogan{
-    width: 90%;
-    display: flex;
+.login .logo .div-slogan {
+    text-align: center;
 }
 
-.login .logo .div-slogan .slogan{
-    font-size: 55px;
+.login .logo .div-slogan .slogan {
+    font-size: 28px;
     text-align: center
 }
 
-.login .logo .div-slogan .slogan-bold{
+.login .logo .div-slogan .slogan-bold {
     color: #93E4C4;
     font-weight: bold
 }
 
+.texto-conta {
+    margin-top: 50px;
+}
 
 
-.login .form{
+.login .form {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45%;
+    width: 42%;
     height: 90%
 }
 
-.login .form .form-box{
-    background-color: rgba(40,40,40,0.7);
+.login .form .form-box {
+    background-color: rgba(40, 40, 40, 0.7);
     border-radius: 25px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 84%;
-    height: 53%
+    width: 520px;
+    height: 76%
 }
 
-.login .form .form-box h1{
+.login .form .form-box h1 {
     font-size: 50px;
 }
 
-.login .form .form-box p{
+.login .form .form-box p {
     font-size: 18px;
 }
 
-.login .form .form-box .box-input{
+.login .form .form-box .box-input {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     height: 50%;
 }
 
+.container-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
 
-
-.login .form .form-box .box-input span{
+.login .form .form-box .box-input div label {
     font-size: 19px;
+    align-self: flex-start;
+    margin: 8px 12px;
 }
 
-.login .form .form-box .box-input input{
-    width: 60%;
-    height: 21%;
+.login .form .form-box .box-input div input {
     border-radius: 10px;
+    border: none;
     border-left: 7px solid #93E4C4;
+    padding: 16px 10px 16px 10px;
+    width: 320px;
+    transition: all .3s ease-in-out;
 }
 
-.login .form .form-box .button-entrar{
+.login .form .form-box .box-input input.error {
+    border-left: 7px solid #c97f7f;
+}
+
+.login .form .form-box .box-input input.error:focus {
+    border-left: 10px solid #c97f7f !important;
+}
+
+#inputSenha {
+    padding: 16px 46px 16px 10px;
+}
+
+input:focus {
+    outline: none;
+    border-left: 10px solid #93E4C4 !important;
+}
+
+.eye-icon {
+    width: 24px;
+    position: absolute;
+    top: 51px;
+    right: 14px;
+    cursor: pointer;
+}
+
+.login .form .form-box .button-entrar {
     border: 1px solid #93E4C4;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    width: 54%;
-    height: 10%;
+    width: 320px;
+    padding: 16px 32px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    background-color: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.login .form .form-box .button-entrar:hover {
+    background-color: #93E4C4;
+}
+
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 100%;
+    padding: 8px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+}
+
+.home-button img {
+    width: 100%;
+}
+
+.home-button:hover {
+    background-color: #93E4C4;
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

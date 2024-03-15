@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="shortcut icon" href="assets/img/png/4-removebg-preview.png" type="image/x-icon">
     <title>Login | Conecta</title>
 </head>
 
@@ -13,30 +14,39 @@
         <div class="logo">
             <img class="img-logo" src="assets/img/logoConecta.png">
             <div class="div-slogan">
-                <span class="slogan">Transformando ideias em <span class="slogan-bold">Redes de sucesso !</span></span>
+                <span class="slogan">Transformando ideias em <span class="slogan-bold"> <br> Redes de
+                        Sucesso!</span></span>
             </div>
+            <span class="texto-conta">Ainda não possui uma conta? <a href="cadastro.html">Cadastre-se</a>.</span>
         </div>
 
         <div class="form">
             <div class="form-box">
 
                 <h1>LOGIN</h1>
-                <p>Seja Bem-vindo Novamente!</p>
 
                 <div class="box-input">
-                        <span>E-mail:</span>
-                        <input type="text" class="inputEmail" placeholder="   exemplo@exemplo.com">
-                        <span>Senha:</span>
-                        <input type="password" class="inputSenha" placeholder="   ******">
+                    <div class="container-input">
+                        <label for="inputEmail">E-mail</label>
+                        <input oninput="removerErroCampos()" autofocus type="text" id="inputEmail"
+                            placeholder="email@exemplo.com">
+                    </div>
+
+                    <div class="container-input">
+                        <label for="inputSenha">Senha</label>
+                        <input oninput="removerErroCampos()" type="password" id="inputSenha" placeholder="********">
+                        <img onclick="alternarVisibilidadeSenha(this)" class="eye-icon"
+                            src="assets/svg/invisible-password-icon.svg">
+                    </div>
                 </div>
 
-                <div class="button-entrar" onclick="">
-                    <h4>Entrar</h4>
-                </div>
+                <button id="submitBtn" class="button-entrar" onclick="validarCampos()">Entrar</button>
 
             </div>
         </div>
     </div>
+
+    <a class="home-button" href="index.html"><img src="assets/svg/house-icon.svg"></a>
 
     <script src="js/login.js"></script>
 </body>
