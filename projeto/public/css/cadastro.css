@@ -27,6 +27,9 @@ a:hover {
     text-decoration: underline;
 }
 
+input::-webkit-inner-spin-button {
+    appearance: none;
+}
 
 .cadastro {
     height: 100%;
@@ -73,7 +76,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     width: 42%;
-    height: 96%
+    height: 100%;
 }
 
 .cadastro .form {
@@ -84,11 +87,12 @@ a:hover {
     align-items: center;
     justify-content: space-around;
     width: 520px;
-    height: 96%;
+    height: 98%;
 }
 
 .cadastro .form-cadastro h1 {
     font-size: 40px;
+    margin-top: 8px;
 }
 
 .cadastro .form-cadastro .box-input {
@@ -96,8 +100,6 @@ a:hover {
     align-items: center;
     flex-direction: column;
     justify-content: space-around;
-    width: 90%;
-    height: 70%;
 }
 
 .container-input {
@@ -105,6 +107,18 @@ a:hover {
     flex-direction: column;
     align-items: center;
     position: relative;
+}
+
+.container-input-cep {
+    display: flex;
+}
+
+.container-input-cep input {
+    width: 150px !important;
+}
+
+.container-input-cep .container-input:nth-child(1) {
+    margin-right: 16px;
 }
 
 .cadastro .form-cadastro .box-input label {
@@ -156,6 +170,7 @@ input:focus {
     border-radius: 10px;
     width: 320px;
     padding: 12px 32px;
+    margin: 16px 0;
     text-transform: uppercase;
     font-weight: 600;
     font-family: "Montserrat", sans-serif;

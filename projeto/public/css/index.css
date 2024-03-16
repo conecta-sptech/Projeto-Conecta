@@ -51,7 +51,7 @@ nav {
 }
 
 img {
-    pointer-events: none;
+    pointer-events: none !important;
     user-select: none;
 }
 
@@ -145,7 +145,8 @@ li {
     font-size: 15px;
 }
 
-img {
+.logo img,
+.down-arrow img {
     width: 50px;
 }
 

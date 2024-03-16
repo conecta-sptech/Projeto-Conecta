@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cadastro.css">
-    <link rel="shortcut icon" href="assets/img/png/4-removebg-preview.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
     <title>Cadastro | Conecta</title>
 </head>
 
@@ -26,19 +26,31 @@
                     <div class="container-input">
                         <label for="inputCnpj">CNPJ</label>
                         <input oninput="removerErroCampos()" onkeypress="mascararCnpj()" type="text" id="inputCnpj"
-                            placeholder="Ex: 12.345.678/0001-00" maxlength="18">
+                            placeholder="12.345.678/0001-00" maxlength="18">
                     </div>
 
-                    <div class="container-input">
-                        <label for="inputCep">CEP</label>
-                        <input oninput="removerErroCampos()" onkeypress="mascararCep()" type="text" id="inputCep"
-                            placeholder="Ex: 01001-000" maxlength="9">
+                    <div class="container-input-cep">
+                        <div class="container-input">
+                            <label for="inputCep">CEP</label>
+                            <input oninput="removerErroCampos()" onkeypress="mascararCep()" type="text" id="inputCep"
+                                placeholder="01001-000" maxlength="9">
+                        </div>
+                        <div class="container-input">
+                            <label for="inputNumero">Número</label>
+                            <input oninput="removerErroCampos()" type="number" id="inputNumero" placeholder="12345">
+                        </div>
                     </div>
 
                     <div class="container-input">
                         <label for="inputEmail">E-mail</label>
                         <input oninput="removerErroCampos()" type="text" id="inputEmail"
                             placeholder="email@exemplo.com">
+                    </div>
+
+                    <div class="container-input">
+                        <label for="inputTelefone">Telefone</label>
+                        <input oninput="removerErroCampos()" onkeypress="mascararTelefone()" type="text"
+                            id="inputTelefone" placeholder="(99) 9999-9999" maxlength="14">
                     </div>
 
                     <div class="container-input">
