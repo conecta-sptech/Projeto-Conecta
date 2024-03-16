@@ -10,14 +10,18 @@ public class MenuCadastroLogin {
 
         Integer operacao = 0;
 
-        do {
-            System.out.println("""
+        System.out.println("""
                 ----------------------------------------------
-                          SEJA BEM VINDO !!! 
+                            SEJA BEM VINDO !!! 
                           
                                 CONECTA 💻
                  "TRANSFORMANDO IDEIAS EM REDES DE SUCESSO"
 
+                ---------------------------------------------- 
+                """);
+
+        do {
+            System.out.println("""
                 ---------------------------------------------- 
                 Digite:
                 1 - Para cadastrar-se
@@ -31,7 +35,6 @@ public class MenuCadastroLogin {
             switch (operacao){
                 case 1:
                     usuario = metodosCadastroLogin.cadastrar(usuario);
-                    System.out.println(usuario);
                     break;
 
                 case 2:

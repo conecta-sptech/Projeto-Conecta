@@ -8,6 +8,13 @@ public class MetodosCadastroLogin {
         String entradaCep = "";
         String entradaLogradouro = "";
 
+        System.out.println("""
+                        ---------------------------------------------- 
+                        Bem-vindo ao Cadastro.
+                        Preencha seus dados!
+                        ---------------------------------------------- 
+                        
+                        """);
         System.out.print("CNPJ: ");
         String entradaCnpj = leitor.nextLine();
         Integer empresaExiste = usuario.indexOf(entradaCnpj);
@@ -61,7 +68,11 @@ public class MetodosCadastroLogin {
                 break;
         }
 
-        System.out.println("Usuário cadastrado com sucesso!");
+        System.out.println("""
+                        ---------------------------------------------- 
+                        Usuário cadastrado com sucesso!
+                        ----------------------------------------------
+                        """);
         return usuario;
     }
 
@@ -69,6 +80,13 @@ public class MetodosCadastroLogin {
     Integer login(List<String> usuario){
         Scanner leitor = new Scanner(System.in);
 
+        System.out.println("""
+                        ---------------------------------------------- 
+                        Bem-vindo ao Login.
+                        Preencha seus dados!
+                        ---------------------------------------------- 
+                        
+                        """);
         System.out.print("Email: ");
         String entradaEmail = leitor.nextLine();
         Integer posicaoEmail = usuario.indexOf(entradaEmail);
@@ -77,7 +95,11 @@ public class MetodosCadastroLogin {
         String entradaSenha = leitor.nextLine();
 
         if (posicaoEmail >= 0 && entradaSenha.equals(usuario.get(posicaoEmail + 1))){
-            System.out.println("Usuário logado com sucesso!");
+            System.out.println("""
+                        ---------------------------------------------- 
+                        Usuário logado com sucesso!
+                        ----------------------------------------------
+                        """);
             return 3;
         }
 
