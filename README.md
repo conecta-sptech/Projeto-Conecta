@@ -81,23 +81,23 @@ npm start
 
 <table>
   
-<td  align="center"><a  href= "https://github.com/CamyAlves"><img src="projeto/public/assets/img/camilly.png" border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Camilly Alves </b></sub></a><br /><a  href="https://github.com/CamyAlves" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
+<td  align="center"><a  href= "https://github.com/CamyAlves"><img src="projeto/public/assets/img/camilly.jpg" border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Camilly Alves </b></sub></a><br /><a  href="https://github.com/CamyAlves" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
 </td>
 
 
-<td  align="center"><a  href= "https://github.com/ezpmartins" ><img src="projeto/public/assets/img/enzo.png"  border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Enzo Martins </b></sub></a><br /><a  href="https://github.com/ezpmartins" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
+<td  align="center"><a  href= "https://github.com/ezpmartins" ><img src="projeto/public/assets/img/enzo.jpg"  border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Enzo Martins </b></sub></a><br /><a  href="https://github.com/ezpmartins" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
 </td>
 
 
-<td  align="center"><a  href="https://github.com/gabrielhgbarreto" ><img src="projeto/public/assets/img/gabriel.png" border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Gabriel Barreto </b></sub></a><br /><a  href="https://github.com/gabrielhgbarreto" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
+<td  align="center"><a  href="https://github.com/gabrielhgbarreto" ><img src="projeto/public/assets/img/gabriel.jpg" border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Gabriel Barreto </b></sub></a><br /><a  href="https://github.com/gabrielhgbarreto" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
 </td>
 
 
-<td  align="center"><a  href="https://github.com/leOhsantos" ><img src="projeto/public/assets/img/leonardo.png" border-radius="50%";  height="120px"; width="100px;"/><br/><sub><b> Leonardo Santos </b></sub></a><br /><a  href="https://github.com/leOhsantos" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
+<td  align="center"><a  href="https://github.com/leOhsantos" ><img src="projeto/public/assets/img/leonardo.jpg" border-radius="50%";  height="120px"; width="100px;"/><br/><sub><b> Leonardo Santos </b></sub></a><br /><a  href="https://github.com/leOhsantos" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
 </td>
 
 
-<td  align="center"><a  href="https://github.com/PatrickRodrigues19" ><img  src="projeto/public/assets/img/patrick.png" border-radius="50%";  height="120px"; width="100px;"/><br/><sub><b> Patrick de Lima </b></sub></a><br /><a  href="https://github.com/PatrickRodrigues19" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
+<td  align="center"><a  href="https://github.com/PatrickRodrigues19" ><img  src="projeto/public/assets/img/patrick.jpeg" border-radius="50%";  height="120px"; width="100px;"/><br/><sub><b> Patrick de Lima </b></sub></a><br /><a  href="https://github.com/PatrickRodrigues19" ><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"  width="20"/></a>
 </td>
 
 
