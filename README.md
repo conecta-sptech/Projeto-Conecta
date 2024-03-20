@@ -5,7 +5,7 @@
 <br>
 <p align-text="justify">
  
-Nosso projeto de Monitoramento de Sistemas Hospitalares, baseado nos princípios do ITIL,garantindo a estabilidade dos serviços de saúde. Com um aplicativo cliente e uma plataforma web integrada,oferecemos monitoramento contínuo, identificando e resolvendo incidentes em tempo real. Priorizamos a gestão de incidentes e problemas para garantir a confiabilidade dos sistemas, proporcionando um ambiente seguro para pacientes e profissionais de saúde.
+Nosso projeto de Monitoramento de Servidores Hospitalares, baseado nos princípios do ITIL,garantindo a estabilidade dos serviços de saúde. Com um aplicativo cliente e uma plataforma web integrada,oferecemos monitoramento contínuo, identificando e resolvendo incidentes em tempo real. Priorizamos a gestão de incidentes e problemas para garantir a confiabilidade dos sistemas, proporcionando um ambiente seguro para pacientes e profissionais de saúde.
 
 </p>
 <br>
