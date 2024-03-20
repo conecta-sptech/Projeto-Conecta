@@ -18,14 +18,14 @@ Nosso projeto de Monitoramento de Sistemas Hospitalares, baseado nos princípios
 
  <p align="start"><br>
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,css,js,nodejs" />
+    <img src="https://skillicons.dev/icons?i=html,css,js" />
   </a>
 
  ### Back-end:
  
 <p align="start"><br>
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=java" />
+    <img src="https://skillicons.dev/icons?i=java,nodejs" />
   </a>
  
 </div>
