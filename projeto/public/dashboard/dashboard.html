@@ -16,19 +16,19 @@
         </div>
 
         <div class="icons-col-2">
-            <button>
+            <button onclick="abrirModal(this)" data-id="modalUsuario">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
                         <path id="path0"
-                            d="M181.326 1.259 C 99.404 14.988,65.693 117.723,123.260 178.215 C 189.026 247.324,305.462 200.836,305.462 105.469 C 305.462 39.345,246.986 -9.744,181.326 1.259 M154.297 235.591 C 87.099 246.233,34.781 299.326,25.431 366.364 C 22.732 385.713,23.864 394.862,29.407 398.517 C 32.908 400.825,367.092 400.825,370.593 398.517 C 376.120 394.873,377.311 385.285,374.569 366.507 C 364.990 300.917,317.603 250.729,251.893 236.578 C 241.739 234.391,166.666 233.632,154.297 235.591 "
+                            d="M156.758 14.024 C 88.807 28.766,63.829 113.070,112.879 162.121 C 161.918 211.159,247.105 185.848,260.903 118.138 C 273.571 55.973,218.262 0.680,156.758 14.024 M318.157 126.558 C 312.689 129.892,312.506 130.783,312.503 154.102 L 312.500 175.000 291.602 175.003 C 265.437 175.007,262.506 176.266,262.506 187.500 C 262.506 198.734,265.437 199.993,291.602 199.997 L 312.500 200.000 312.503 220.898 C 312.507 247.063,313.766 249.994,325.000 249.994 C 336.234 249.994,337.493 247.063,337.497 220.898 L 337.500 200.000 358.398 199.997 C 384.563 199.993,387.494 198.734,387.494 187.500 C 387.494 176.266,384.563 175.007,358.398 175.003 L 337.500 175.000 337.497 154.102 C 337.494 130.783,337.311 129.892,331.843 126.558 C 328.384 124.449,321.616 124.449,318.157 126.558 M154.688 213.349 C 80.725 222.829,22.516 281.339,13.321 355.448 C 11.060 373.675,12.454 382.464,18.157 385.942 C 22.169 388.388,327.831 388.388,331.843 385.942 C 337.546 382.464,338.940 373.675,336.679 355.448 C 325.598 266.137,243.424 201.976,154.688 213.349 "
                             stroke="none" fill="#ffffff" fill-rule="evenodd"></path>
                     </g>
                 </svg>
-                <span class="icon-description">Cadastrar Usuário</span>
+                <span class="icon-description">Gerenciar Usuários</span>
             </button>
 
-            <button>
+            <button onclick="abrirModal(this)" data-id="modalMaquina">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
@@ -37,10 +37,10 @@
                             stroke="none" fill="#ffffff" fill-rule="evenodd"></path>
                     </g>
                 </svg>
-                <span class="icon-description">Cadastrar Máquina</span>
+                <span class="icon-description">Gerenciar Máquinas</span>
             </button>
 
-            <button>
+            <button onclick="abrirModal(this)" data-id="modalRelatorio">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
@@ -49,10 +49,10 @@
                             stroke="none" fill="#ffffff" fill-rule="evenodd"></path>
                     </g>
                 </svg>
-                <span class="icon-description">Emitir Relatório</span>
+                <span class="icon-description">Emitir Relatórios</span>
             </button>
 
-            <button>
+            <button onclick="abrirModal(this)" data-id="modalAlerta">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
@@ -64,7 +64,7 @@
                 <span class="icon-description">Exibir Alertas</span>
             </button>
 
-            <button>
+            <button onclick="abrirModal(this)" data-id="modalFilial">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
@@ -76,7 +76,7 @@
                 <span class="icon-description">Exibir Filiais</span>
             </button>
 
-            <button>
+            <button onclick="abrirModal(this)" data-id="modalConfiguracao">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="icons-col-3">
-            <button>
+            <button onclick="abrirModal(this)" data-id="modalSuporte">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
@@ -102,7 +102,7 @@
                 <span class="icon-description">Suporte</span>
             </button>
 
-            <button>
+            <button onclick="abrirModal(this)" data-id="modalLogout">
                 <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
@@ -124,7 +124,7 @@
             <div class="line-2">
                 <div class="input-ct" style="position: relative;">
                     <img class="search-icon" src="../assets/svg/search.svg">
-                    <input type="text" placeholder="Pesquisar máquinas">
+                    <input id="inputPesquisa" type="text" placeholder="Pesquisar máquinas">
                 </div>
             </div>
             <div class="line-3">
@@ -164,6 +164,83 @@
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Modais -->
+
+    <div class="modal-background">
+
+        <div class="modal" id="modalUsuario">
+            <div class="line-1">
+                <h4>Gerenciar usuários</h4>
+                <button onclick="fecharModal(this)" data-id="modalUsuario"><svg id="svg"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0, 0, 400,400">
+                        <g id="svgg">
+                            <path id="path0"
+                                d="M175.000 1.183 C 10.270 21.534,-58.998 223.923,58.539 341.461 C 176.367 459.289,378.987 389.487,398.870 224.219 C 414.431 94.879,304.345 -14.797,175.000 1.183 M135.156 110.213 C 137.785 111.398,146.410 119.522,169.331 142.404 L 199.991 173.011 231.050 142.078 C 265.761 107.507,265.088 108.023,274.546 108.782 C 283.874 109.531,290.469 116.126,291.218 125.454 C 291.977 134.912,292.492 134.239,257.927 168.945 L 226.998 200.000 257.927 231.055 C 292.492 265.761,291.977 265.088,291.218 274.546 C 290.469 283.874,283.874 290.469,274.546 291.218 C 265.088 291.977,265.761 292.492,231.055 257.927 L 200.000 226.998 168.945 257.927 C 134.239 292.492,134.912 291.977,125.454 291.218 C 116.126 290.469,109.531 283.874,108.782 274.546 C 108.023 265.088,107.508 265.761,142.073 231.055 L 173.002 200.000 142.073 168.945 C 107.508 134.239,108.023 134.912,108.782 125.454 C 109.257 119.538,111.911 114.955,116.805 111.599 C 121.823 108.158,129.338 107.590,135.156 110.213 "
+                                stroke="none" fill="#ff6b6b" fill-rule="evenodd"></path>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="line-2">
+
+            </div>
+
+            <div class="line-3">
+                <div class="btn-ct">
+                    <button id="btnSalvar">Salvar</button>
+                    <button id="btnCancelar" onclick="fecharModal(this)" data-id="modalUsuario">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modalMaquina">
+            <div class="line-1">
+                <h4>Gerenciar máquinas</h4>
+                <button onclick="fecharModal(this)" data-id="modalMaquina">
+                    <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0, 0, 400,400">
+                        <g id="svgg">
+                            <path id="path0"
+                                d="M175.000 1.183 C 10.270 21.534,-58.998 223.923,58.539 341.461 C 176.367 459.289,378.987 389.487,398.870 224.219 C 414.431 94.879,304.345 -14.797,175.000 1.183 M135.156 110.213 C 137.785 111.398,146.410 119.522,169.331 142.404 L 199.991 173.011 231.050 142.078 C 265.761 107.507,265.088 108.023,274.546 108.782 C 283.874 109.531,290.469 116.126,291.218 125.454 C 291.977 134.912,292.492 134.239,257.927 168.945 L 226.998 200.000 257.927 231.055 C 292.492 265.761,291.977 265.088,291.218 274.546 C 290.469 283.874,283.874 290.469,274.546 291.218 C 265.088 291.977,265.761 292.492,231.055 257.927 L 200.000 226.998 168.945 257.927 C 134.239 292.492,134.912 291.977,125.454 291.218 C 116.126 290.469,109.531 283.874,108.782 274.546 C 108.023 265.088,107.508 265.761,142.073 231.055 L 173.002 200.000 142.073 168.945 C 107.508 134.239,108.023 134.912,108.782 125.454 C 109.257 119.538,111.911 114.955,116.805 111.599 C 121.823 108.158,129.338 107.590,135.156 110.213 "
+                                stroke="none" fill="#ff6b6b" fill-rule="evenodd"></path>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="line-2">
+
+            </div>
+
+            <div class="line-3">
+                <div class="btn-ct">
+                    <button id="btnSalvar">Salvar</button>
+                    <button id="btnCancelar" onclick="fecharModal(this)" data-id="modalMaquina">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-logout" id="modalLogout">
+            <div class="line-1">
+                <h4>Encerrar sessão</h4>
+            </div>
+
+            <div class="line-2">
+                <p>Tem certeza de que deseja sair de sua conta?</p>
+            </div>
+
+            <div class="line-3">
+                <div class="btn-ct">
+                    <button id="btnSalvar" onclick="fecharModal(this)" data-id="modalLogout">Cancelar</button>
+                    <button id="btnCancelar" onclick="encerrarSessao()">Sair</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="../js/dashboard.js"></script>
