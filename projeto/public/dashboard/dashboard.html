@@ -33,7 +33,7 @@
                     viewBox="0, 0, 400,400">
                     <g id="svgg">
                         <path id="path0"
-                            d="M40.103 56.995 C 33.570 58.563,27.160 64.430,24.845 70.960 C 22.913 76.410,23.397 292.779,25.345 294.204 C 27.628 295.873,372.372 295.873,374.655 294.204 C 376.144 293.115,376.172 291.081,376.172 183.071 L 376.172 73.047 373.984 68.591 C 371.652 63.842,368.946 61.134,363.763 58.361 L 360.547 56.641 201.563 56.521 C 114.121 56.455,41.464 56.668,40.103 56.995 M346.094 175.391 L 346.094 264.844 200.000 264.844 L 53.906 264.844 53.906 175.391 L 53.906 85.938 200.000 85.938 L 346.094 85.938 346.094 175.391 M193.704 116.174 C 189.307 119.874,189.063 121.326,189.063 143.725 L 189.063 164.063 168.725 164.063 C 142.659 164.063,139.063 165.436,139.063 175.391 C 139.063 185.345,142.659 186.719,168.725 186.719 L 189.063 186.719 189.063 207.056 C 189.063 233.123,190.436 236.719,200.391 236.719 C 210.345 236.719,211.719 233.123,211.719 207.056 L 211.719 186.719 232.056 186.719 C 258.123 186.719,261.719 185.345,261.719 175.391 C 261.719 165.436,258.123 164.063,232.056 164.063 L 211.719 164.063 211.719 143.725 C 211.719 121.326,211.474 119.874,207.078 116.174 C 203.488 113.154,197.293 113.154,193.704 116.174 M11.719 303.070 C 2.246 304.998,-2.894 315.594,0.822 325.535 C 1.996 328.675,13.868 340.522,17.578 342.255 C 22.439 344.527,377.509 344.542,382.422 342.271 C 386.031 340.602,397.994 328.613,399.191 325.464 C 402.050 317.943,399.095 308.254,392.850 304.679 L 389.453 302.734 201.953 302.624 C 98.828 302.564,13.223 302.764,11.719 303.070 M306.678 321.432 C 308.386 324.038,307.080 326.336,303.511 327.005 C 296.932 328.240,292.140 324.378,295.759 320.759 C 297.876 318.642,305.143 319.090,306.678 321.432 M329.334 321.432 C 331.042 324.038,329.736 326.336,326.168 327.005 C 321.181 327.941,317.188 326.155,317.188 322.990 C 317.188 319.116,326.993 317.858,329.334 321.432 M351.822 321.144 C 354.276 324.647,350.355 327.986,344.839 327.091 C 340.251 326.346,338.219 323.031,340.781 320.469 C 342.462 318.788,350.517 319.281,351.822 321.144 M374.785 321.644 C 377.549 325.822,368.004 329.377,363.672 325.782 C 362.250 324.601,362.143 321.764,363.470 320.436 C 365.188 318.718,373.431 319.598,374.785 321.644 "
+                            d="M45.114 57.875 C 34.787 60.326,26.230 68.299,22.709 78.751 C 21.108 83.504,21.094 84.456,21.094 190.600 L 21.094 297.656 200.011 297.656 L 378.928 297.656 378.722 189.258 L 378.516 80.859 376.043 75.641 C 372.602 68.378,368.173 63.854,361.063 60.340 L 355.159 57.422 201.603 57.300 C 113.989 57.231,46.787 57.477,45.114 57.875 M353.294 80.078 C 358.082 83.602,357.813 77.547,357.813 181.563 L 357.813 276.563 200.000 276.563 L 42.188 276.563 42.192 181.445 C 42.198 73.841,41.632 82.133,49.192 78.763 C 52.703 77.198,351.135 78.489,353.294 80.078 M0.143 318.295 L 0.391 331.122 2.763 334.495 C 5.487 338.366,9.125 341.046,13.189 342.175 C 17.093 343.259,382.907 343.259,386.811 342.175 C 390.875 341.046,394.513 338.366,397.237 334.495 L 399.609 331.122 399.857 318.295 L 400.105 305.469 200.000 305.469 L -0.105 305.469 0.143 318.295 M228.906 326.953 L 228.906 334.375 200.000 334.375 L 171.094 334.375 171.094 326.953 L 171.094 319.531 200.000 319.531 L 228.906 319.531 228.906 326.953 "
                             stroke="none" fill="#ffffff" fill-rule="evenodd"></path>
                     </g>
                 </svg>
@@ -115,6 +115,7 @@
             </button>
         </div>
     </div>
+
     <div class="content">
         <nav>
             <div class="line-1">
@@ -129,8 +130,7 @@
             </div>
             <div class="line-3">
                 <div class="user-ct">
-                    <img src="../assets/svg/user.svg">
-                    <span class="user-text">Olá, <span id="nomeEmpresa">Usuário</span></span>
+                    <span class="user-text">Olá, <span id="nomeEmpresa">Usuário</span>!</span>
                 </div>
             </div>
         </nav>
@@ -168,79 +168,487 @@
 
     <!-- Modais -->
 
-    <div class="modal-background">
+    <div class="modal-background"></div>
 
-        <div class="modal" id="modalUsuario">
-            <div class="line-1">
-                <h4>Gerenciar usuários</h4>
-                <button onclick="fecharModal(this)" data-id="modalUsuario"><svg id="svg"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        viewBox="0, 0, 400,400">
-                        <g id="svgg">
-                            <path id="path0"
-                                d="M175.000 1.183 C 10.270 21.534,-58.998 223.923,58.539 341.461 C 176.367 459.289,378.987 389.487,398.870 224.219 C 414.431 94.879,304.345 -14.797,175.000 1.183 M135.156 110.213 C 137.785 111.398,146.410 119.522,169.331 142.404 L 199.991 173.011 231.050 142.078 C 265.761 107.507,265.088 108.023,274.546 108.782 C 283.874 109.531,290.469 116.126,291.218 125.454 C 291.977 134.912,292.492 134.239,257.927 168.945 L 226.998 200.000 257.927 231.055 C 292.492 265.761,291.977 265.088,291.218 274.546 C 290.469 283.874,283.874 290.469,274.546 291.218 C 265.088 291.977,265.761 292.492,231.055 257.927 L 200.000 226.998 168.945 257.927 C 134.239 292.492,134.912 291.977,125.454 291.218 C 116.126 290.469,109.531 283.874,108.782 274.546 C 108.023 265.088,107.508 265.761,142.073 231.055 L 173.002 200.000 142.073 168.945 C 107.508 134.239,108.023 134.912,108.782 125.454 C 109.257 119.538,111.911 114.955,116.805 111.599 C 121.823 108.158,129.338 107.590,135.156 110.213 "
-                                stroke="none" fill="#ff6b6b" fill-rule="evenodd"></path>
-                        </g>
-                    </svg>
+    <div class="modal" id="modalUsuario">
+        <div class="line-1">
+            <h4>Gerenciar usuários</h4>
+            <button onclick="fecharModal(this)" data-id="modalUsuario">
+                <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0, 0, 400,400">
+                    <g id="svgg">
+                        <path id="path0"
+                            d="M15.389 1.128 C 5.647 4.603,0.096 12.814,0.042 23.828 C -0.010 34.503,-5.093 28.812,84.991 118.944 L 166.002 199.996 84.683 281.444 C -7.033 373.303,-0.485 365.846,0.166 377.697 C 0.897 391.003,8.997 399.103,22.303 399.834 C 34.154 400.485,26.697 407.032,118.555 315.319 L 200.000 234.002 281.445 315.319 C 373.303 407.032,365.846 400.485,377.697 399.834 C 391.003 399.103,399.103 391.003,399.834 377.697 C 400.485 365.846,407.032 373.303,315.319 281.445 L 234.002 200.000 315.319 118.555 C 407.032 26.697,400.485 34.154,399.834 22.303 C 399.103 8.997,391.003 0.897,377.697 0.166 C 365.846 -0.485,373.303 -7.033,281.444 84.683 L 199.996 166.002 118.944 84.991 C 28.812 -5.093,34.503 -0.010,23.828 0.042 C 20.820 0.057,17.023 0.545,15.389 1.128 "
+                            stroke="none" fill="#e53c3c" fill-rule="evenodd"></path>
+                    </g>
+                </svg>
+            </button>
+        </div>
+
+        <div class="line-2">
+            <div class="menu">
+                <button class="active" id="btnNovoUsuario" onclick="alterarFuncaoUsuario(this)">
+                    <img src="../assets/svg/new-user.svg">
+                    <span>Criar novo usuário</span>
+                </button>
+
+                <button id="btnVisualizarUsuario" onclick="alterarFuncaoUsuario(this)">
+                    <img src="../assets/svg/user.svg">
+                    <span>Gerenciar usuários</span>
                 </button>
             </div>
 
-            <div class="line-2">
+            <div class="novo-usuario-ct">
+                <label for="inputNomeUsuario">Nome</label>
+                <input type="text" id="inputNomeUsuario" placeholder="Ex.: Ednaldo Pereira">
 
+                <label for="selectTipoUsuario">Função do usuário</label>
+                <select id="selectTipousuario">
+                    <option value="0">Selecionar</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Funcionário</option>
+                </select>
+
+                <label for="inputEmailUsuario">E-mail</label>
+                <input type="text" id="inputEmailUsuario" placeholder="email@exemplo.com">
+
+                <label for="inputSenhaUsuario">Senha</label>
+                <input type="text" id="inputSenhaUsuario" placeholder="********">
+
+                <label for="inputConfirmarSenhaUsuario">Confirmar senha</label>
+                <input type="text" id="inputConfirmarSenhaUsuario" placeholder="********">
             </div>
 
-            <div class="line-3">
-                <div class="btn-ct">
-                    <button id="btnSalvar">Salvar</button>
-                    <button id="btnCancelar" onclick="fecharModal(this)" data-id="modalUsuario">Cancelar</button>
+            <div class="visualizar-usuario-ct">
+                <div class="input-ct">
+                    <div style="position: relative;">
+                        <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0, 0, 400,400">
+                            <g id="svgg">
+                                <path id="path0"
+                                    d="M144.531 3.203 C 25.582 16.533,-38.742 148.561,24.239 250.109 C 71.443 326.217,174.168 349.241,249.268 300.544 L 253.516 297.790 300.391 344.448 C 339.720 383.596,348.032 391.505,352.029 393.582 C 373.569 404.778,398.726 390.792,399.865 366.987 C 400.604 351.519,402.151 353.528,346.675 297.933 L 299.007 250.162 301.890 245.417 C 318.646 217.833,326.582 178.631,322.319 144.502 C 311.378 56.909,231.535 -6.547,144.531 3.203 M173.828 56.311 C 263.456 66.992,302.345 176.089,239.326 240.054 C 180.905 299.353,81.585 274.905,57.568 195.313 C 35.234 121.298,97.224 47.182,173.828 56.311 "
+                                    stroke="none" fill="#000000" fill-rule="evenodd"></path>
+                            </g>
+                        </svg>
+                        <input type="text" placeholder="Buscar usuários">
+                    </div>
+                </div>
+
+                <div class="tabela-ct">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="nome-td">Nome</th>
+                                <th class="email-td">E-mail</th>
+                                <th class="icons-ct"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="email-td">teste@teste.com</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 
-        <div class="modal" id="modalMaquina">
-            <div class="line-1">
-                <h4>Gerenciar máquinas</h4>
-                <button onclick="fecharModal(this)" data-id="modalMaquina">
-                    <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        viewBox="0, 0, 400,400">
-                        <g id="svgg">
-                            <path id="path0"
-                                d="M175.000 1.183 C 10.270 21.534,-58.998 223.923,58.539 341.461 C 176.367 459.289,378.987 389.487,398.870 224.219 C 414.431 94.879,304.345 -14.797,175.000 1.183 M135.156 110.213 C 137.785 111.398,146.410 119.522,169.331 142.404 L 199.991 173.011 231.050 142.078 C 265.761 107.507,265.088 108.023,274.546 108.782 C 283.874 109.531,290.469 116.126,291.218 125.454 C 291.977 134.912,292.492 134.239,257.927 168.945 L 226.998 200.000 257.927 231.055 C 292.492 265.761,291.977 265.088,291.218 274.546 C 290.469 283.874,283.874 290.469,274.546 291.218 C 265.088 291.977,265.761 292.492,231.055 257.927 L 200.000 226.998 168.945 257.927 C 134.239 292.492,134.912 291.977,125.454 291.218 C 116.126 290.469,109.531 283.874,108.782 274.546 C 108.023 265.088,107.508 265.761,142.073 231.055 L 173.002 200.000 142.073 168.945 C 107.508 134.239,108.023 134.912,108.782 125.454 C 109.257 119.538,111.911 114.955,116.805 111.599 C 121.823 108.158,129.338 107.590,135.156 110.213 "
-                                stroke="none" fill="#ff6b6b" fill-rule="evenodd"></path>
-                        </g>
-                    </svg>
+        <div class="line-3" id="line3ModalUsuario">
+            <div class="btn-ct">
+                <button id="btnCancelar" onclick="fecharModal(this)" data-id="modalUsuario">Cancelar</button>
+                <button id="btnSalvar">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalMaquina">
+        <div class="line-1">
+            <h4>Gerenciar máquinas</h4>
+            <button onclick="fecharModal(this)" data-id="modalMaquina">
+                <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0, 0, 400,400">
+                    <g id="svgg">
+                        <path id="path0"
+                            d="M15.389 1.128 C 5.647 4.603,0.096 12.814,0.042 23.828 C -0.010 34.503,-5.093 28.812,84.991 118.944 L 166.002 199.996 84.683 281.444 C -7.033 373.303,-0.485 365.846,0.166 377.697 C 0.897 391.003,8.997 399.103,22.303 399.834 C 34.154 400.485,26.697 407.032,118.555 315.319 L 200.000 234.002 281.445 315.319 C 373.303 407.032,365.846 400.485,377.697 399.834 C 391.003 399.103,399.103 391.003,399.834 377.697 C 400.485 365.846,407.032 373.303,315.319 281.445 L 234.002 200.000 315.319 118.555 C 407.032 26.697,400.485 34.154,399.834 22.303 C 399.103 8.997,391.003 0.897,377.697 0.166 C 365.846 -0.485,373.303 -7.033,281.444 84.683 L 199.996 166.002 118.944 84.991 C 28.812 -5.093,34.503 -0.010,23.828 0.042 C 20.820 0.057,17.023 0.545,15.389 1.128 "
+                            stroke="none" fill="#e53c3c" fill-rule="evenodd"></path>
+                    </g>
+                </svg>
+            </button>
+        </div>
+
+        <div class="line-2">
+            <div class="menu">
+                <button class="active" id="btnNovaMaquina" onclick="alterarFuncaoMaquina(this)">
+                    <img src="../assets/svg/computer.svg">
+                    <span>Criar nova máquina</span>
+                </button>
+
+                <button id="btnVisualizarMaquina" onclick="alterarFuncaoMaquina(this)">
+                    <img src="../assets/svg/computer.svg">
+                    <span>Gerenciar máquinas</span>
                 </button>
             </div>
 
-            <div class="line-2">
+            <div class="nova-maquina-ct">
+                <label for="inputNomeMaquina">Nome</label>
+                <input type="text" id="inputNomeMaquina" placeholder="Nome da máquina">
 
+                <label for="inputIpMaquina">IP</label>
+                <input type="text" id="inputIpMaquina" placeholder="IP da máquina">
+
+                <label for="inputRamMaquina">RAM</label>
+                <input type="text" id="inputRamMaquina" placeholder="Quantidade de memória RAM">
+
+                <label for="inputCpuMaquina">CPU</label>
+                <input type="text" id="inputCpuMaquina" placeholder="Configuração da CPU">
+
+                <label for="inputDiscoMaquina">Disco</label>
+                <input type="text" id="inputDiscoMaquina" placeholder="Configuração do disco">
             </div>
 
-            <div class="line-3">
-                <div class="btn-ct">
-                    <button id="btnSalvar">Salvar</button>
-                    <button id="btnCancelar" onclick="fecharModal(this)" data-id="modalMaquina">Cancelar</button>
+            <div class="visualizar-maquina-ct">
+                <div class="input-ct">
+                    <div style="position: relative;">
+                        <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0, 0, 400,400">
+                            <g id="svgg">
+                                <path id="path0"
+                                    d="M144.531 3.203 C 25.582 16.533,-38.742 148.561,24.239 250.109 C 71.443 326.217,174.168 349.241,249.268 300.544 L 253.516 297.790 300.391 344.448 C 339.720 383.596,348.032 391.505,352.029 393.582 C 373.569 404.778,398.726 390.792,399.865 366.987 C 400.604 351.519,402.151 353.528,346.675 297.933 L 299.007 250.162 301.890 245.417 C 318.646 217.833,326.582 178.631,322.319 144.502 C 311.378 56.909,231.535 -6.547,144.531 3.203 M173.828 56.311 C 263.456 66.992,302.345 176.089,239.326 240.054 C 180.905 299.353,81.585 274.905,57.568 195.313 C 35.234 121.298,97.224 47.182,173.828 56.311 "
+                                    stroke="none" fill="#000000" fill-rule="evenodd"></path>
+                            </g>
+                        </svg>
+                        <input type="text" placeholder="Buscar máquinas">
+                    </div>
+                </div>
+
+                <div class="tabela-ct">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="nome-td">Nome</th>
+                                <th class="ip-td">IP</th>
+                                <th class="icons-ct"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.100</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.101</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.102</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.103</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.104</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.105</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.106</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.107</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.108</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.109</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="nome-td">Teste</td>
+                                <td class="ip-td">192.168.0.110</td>
+                                <td class="icons-ct">
+                                    <button id="btnEditar">
+                                        <img src="../assets/svg/pencil.svg">
+                                    </button>
+
+                                    <button id="btnExcluir">
+                                        <img src="../assets/svg/trash.svg">
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 
-        <div class="modal-logout" id="modalLogout">
-            <div class="line-1">
-                <h4>Encerrar sessão</h4>
-            </div>
-
-            <div class="line-2">
-                <p>Tem certeza de que deseja sair de sua conta?</p>
-            </div>
-
-            <div class="line-3">
-                <div class="btn-ct">
-                    <button id="btnSalvar" onclick="fecharModal(this)" data-id="modalLogout">Cancelar</button>
-                    <button id="btnCancelar" onclick="encerrarSessao()">Sair</button>
-                </div>
+        <div class="line-3" id="line3ModalMaquina">
+            <div class="btn-ct">
+                <button id="btnCancelar" onclick="fecharModal(this)" data-id="modalMaquina">Cancelar</button>
+                <button id="btnSalvar">Salvar</button>
             </div>
         </div>
+    </div>
 
+    <div class="modal-logout" id="modalLogout">
+        <div class="line-1">
+            <h4>Encerrar sessão</h4>
+        </div>
+
+        <div class="line-2">
+            <p>Tem certeza de que deseja sair de sua conta?</p>
+        </div>
+
+        <div class="line-3">
+            <div class="btn-ct">
+                <button id="btnSalvar" onclick="fecharModal(this)" data-id="modalLogout">Cancelar</button>
+                <button id="btnCancelar" onclick="encerrarSessao()">Sair</button>
+            </div>
+        </div>
     </div>
 
     <script src="../js/dashboard.js"></script>
