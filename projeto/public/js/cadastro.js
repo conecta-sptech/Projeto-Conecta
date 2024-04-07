@@ -26,17 +26,55 @@ function alternarVisibilidadeSenha() {
 }
 
 function validarCampos() {
-    const isCnpjValido = cnpjRegex.test(inputCnpj.value);
-    const isEmailValido = emailRegex.test(inputEmail.value);
+    const nomeEmpresa = inputNomeEmpresa.value;
+    const cnpjEmpresa = inputCnpj.value;
+    const emailEmpresa = inputEmail.value;
+    const senhaEmpresa = inputSenha.value;
+    const confirmacaoSenhaEmpresa = inputConfirmarSenha.value;
 
-    if (inputNomeEmpresa.value == "") inputNomeEmpresa.classList.add("error");
+    const isCnpjValido = cnpjRegex.test(cnpjEmpresa);
+    const isEmailValido = emailRegex.test(emailEmpresa);
+
+    if (nomeEmpresa == "") inputNomeEmpresa.classList.add("error");
     if (!isCnpjValido) inputCnpj.classList.add("error");
     if (!isEmailValido) inputEmail.classList.add("error");
-    if (inputSenha.value == "" || inputSenha.value.length < 8) inputSenha.classList.add("error");
-    if (inputConfirmarSenha.value == "" || inputConfirmarSenha.value != inputSenha.value) inputConfirmarSenha.classList.add("error");
+    if (senhaEmpresa == "" || senhaEmpresa.length < 8) inputSenha.classList.add("error");
+    if (confirmacaoSenhaEmpresa == "" || confirmacaoSenhaEmpresa != senhaEmpresa) inputConfirmarSenha.classList.add("error");
 
-    if (inputNomeEmpresa.value != "" && isCnpjValido && isEmailValido && inputConfirmarSenha.value == inputSenha.value && inputSenha.value.length > 0) {
-        //Enviar formulário
+    if (nomeEmpresa != "" && isCnpjValido && isEmailValido && senhaEmpresa == confirmacaoSenhaEmpresa && senhaEmpresa.length > 0) {
+
+        fetch("/usuario/cadastrarEmpresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeEmpresa,
+                cnpjServer: cnpjEmpresa,
+                emailServer: emailEmpresa,
+                senhaServer: senhaEmpresa
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    mensagem_erro.innerHTML =
+                        "Cadastro da empresa realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro da empresa!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
     }
 }
 

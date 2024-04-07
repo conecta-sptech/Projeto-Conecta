@@ -7,7 +7,7 @@ const mySqlConfig = {
     password: ""
 };
 
-function execute(instruction) {
+function executar(instruction) {
     return new Promise(function (resolve, reject) {
         const connection = mysql.createConnection(mySqlConfig);
         connection.connect();
@@ -24,4 +24,4 @@ function execute(instruction) {
     });
 }
 
-module.exports = { execute }
+module.exports = { executar }
