@@ -461,6 +461,20 @@ select:focus,
     outline: none;
 }
 
+#inputSenhaUsuario,
+#inputConfirmarSenhaUsuario {
+    padding: 6px 40px 6px 12px;
+}
+
+.novo-usuario-ct .eye-icon {
+    width: 22px;
+    position: absolute;
+    top: 40px;
+    right: 18px;
+    cursor: pointer;
+    pointer-events: all;
+}
+
 .novo-usuario-ct.active,
 .nova-maquina-ct.active,
 .visualizar-usuario-ct.active,

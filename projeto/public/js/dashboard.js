@@ -10,6 +10,7 @@ const selectTipoUsuario = document.getElementById("selectTipoUsuario");
 const inputEmailUsuario = document.getElementById("inputEmailUsuario");
 const inputSenhaUsuario = document.getElementById("inputSenhaUsuario");
 const inputConfirmarSenhaUsuario = document.getElementById("inputConfirmarSenhaUsuario");
+const eyeIcon = document.querySelectorAll(".eye-icon");
 const line3ModalUsuario = document.getElementById("line3ModalUsuario");
 const line3ModalMaquina = document.getElementById("line3ModalMaquina");
 
@@ -91,5 +92,21 @@ function alterarFuncaoMaquina(e) {
         telaVisualizarMaquina.classList.add("active");
         telaNovaMaquina.classList.remove("active");
         line3ModalMaquina.style.display = "none";
+    }
+}
+
+function alternarVisibilidadeSenha() {
+    if (inputSenhaUsuario.type == "text" || inputConfirmarSenhaUsuario.type == "text") {
+        inputSenhaUsuario.setAttribute("type", "password");
+        inputConfirmarSenhaUsuario.setAttribute("type", "password");
+        eyeIcon.forEach(e => {
+            e.src = "../assets/svg/invisible-password-icon-v2.svg";
+        });
+    } else {
+        inputSenhaUsuario.setAttribute("type", "text");
+        inputConfirmarSenhaUsuario.setAttribute("type", "text");
+        eyeIcon.forEach(e => {
+            e.src = "../assets/svg/visible-password-icon-v2.svg";
+        });
     }
 }

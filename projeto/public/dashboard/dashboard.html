@@ -212,11 +212,19 @@
                 <label for="inputEmailUsuario">E-mail</label>
                 <input type="text" id="inputEmailUsuario" placeholder="email@exemplo.com">
 
-                <label for="inputSenhaUsuario">Senha</label>
-                <input type="text" id="inputSenhaUsuario" placeholder="********">
+                <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                    <label for="inputSenhaUsuario">Senha</label>
+                    <input type="password" id="inputSenhaUsuario" placeholder="********">
+                    <img src="../assets/svg/invisible-password-icon-v2.svg" class="eye-icon"
+                        onclick="alternarVisibilidadeSenha()">
+                </div>
 
-                <label for="inputConfirmarSenhaUsuario">Confirmar senha</label>
-                <input type="text" id="inputConfirmarSenhaUsuario" placeholder="********">
+                <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                    <label for="inputConfirmarSenhaUsuario">Confirmar senha</label>
+                    <input type="password" id="inputConfirmarSenhaUsuario" placeholder="********">
+                    <img src="../assets/svg/invisible-password-icon-v2.svg" class="eye-icon"
+                        onclick="alternarVisibilidadeSenha()">
+                </div>
             </div>
 
             <div class="visualizar-usuario-ct">
