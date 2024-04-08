@@ -8,7 +8,16 @@ function cadastrarEmpresa(nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa) 
     return database.executar(instrucao);
 }
 
+function autenticar(email, senha) {
+    var instrucao = `
+        SELECT (JOIN)
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    cadastrarEmpresa
+    cadastrarEmpresa,
+    autenticar
 }
 

@@ -27,6 +27,52 @@ function cadastrarEmpresa(req, res) {
     }
 }
 
+function autenticar(req, res) {
+    const email = req.body.emailServer;
+    const senha = req.body.senhaServer;
+
+    if (email == undefined) {
+        res.status(400).send("Email do usuário está undefined!");
+
+    } else if (senha == undefined) {
+        res.status(400).send("Senha do usuário está indefinida!");
+
+    } else {
+
+        usuarioModel.autenticar(email, senha).then(
+            function (resultadoAutenticar) {
+                console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+
+                if (resultadoAutenticar.length == 1) {
+                    console.log(resultadoAutenticar);
+                    res.json({
+                        id: resultadoAutenticar[0].id,
+                        nome: resultadoAutenticar[0].nome,
+                        funcao: resultadoAutenticar[0].funcao,
+                        nomeEmpresa: resultadoAutenticar[0].nomeEmpresa
+                    });
+
+                } else if (resultadoAutenticar.length == 0) {
+                    res.status(403).send("Email e/ou senha inválido(s)");
+                
+                } else {
+                    res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                
+                }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+
+}
+
 module.exports = {
-    cadastrarEmpresa
+    cadastrarEmpresa,
+    autenticar
 }
