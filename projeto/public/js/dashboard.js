@@ -59,6 +59,7 @@ function fecharModal(e) {
 }
 
 function encerrarSessao() {
+    sessionStorage.clear();
     window.location.href = "../login.html";
 }
 
@@ -108,4 +109,8 @@ function alternarVisibilidadeSenha() {
             e.src = "../assets/svg/visible-password-icon-v2.svg";
         });
     }
+}
+
+if (sessionStorage.length == 0){
+    window.location.href = "../login.html";
 }
