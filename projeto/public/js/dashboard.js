@@ -110,7 +110,3 @@ function alternarVisibilidadeSenha() {
         });
     }
 }
-
-if (sessionStorage.length == 0){
-    window.location.href = "../login.html";
-}
