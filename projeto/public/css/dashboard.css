@@ -427,6 +427,10 @@ main .chart h3 {
     font-size: 12px;
 }
 
+.novo-usuario-ct {
+    margin-top: 30px;
+}
+
 .novo-usuario-ct,
 .nova-maquina-ct,
 .visualizar-usuario-ct,

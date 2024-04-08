@@ -6,7 +6,6 @@ const telaVisualizarUsuario = document.querySelector(".visualizar-usuario-ct");
 const btnNovoUsuario = document.getElementById("btnNovoUsuario");
 const btnVisualizarUsuario = document.getElementById("btnVisualizarUsuario");
 const inputNomeUsuario = document.getElementById("inputNomeUsuario");
-const selectTipoUsuario = document.getElementById("selectTipoUsuario");
 const inputEmailUsuario = document.getElementById("inputEmailUsuario");
 const inputSenhaUsuario = document.getElementById("inputSenhaUsuario");
 const inputConfirmarSenhaUsuario = document.getElementById("inputConfirmarSenhaUsuario");
