@@ -2,7 +2,7 @@ const mysql = require("mysql2");
 
 const mySqlConfig = {
     host: "localhost",
-    database: "",
+    database: "Conecta",
     user: "root",
     password: ""
 };

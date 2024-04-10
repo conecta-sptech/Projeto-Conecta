@@ -43,14 +43,12 @@ function validarCampos() {
 
     if (nomeEmpresa != "" && isCnpjValido && isEmailValido && senhaEmpresa == confirmacaoSenhaEmpresa && senhaEmpresa.length > 0) {
 
-        fetch("/usuario/cadastrarEmpresa", {
+        fetch("/usuario/cadastrar-empresa", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeEmpresa,
                 cnpjServer: cnpjEmpresa,
                 emailServer: emailEmpresa,
@@ -61,12 +59,12 @@ function validarCampos() {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    mensagem_erro.innerHTML =
-                        "Cadastro da empresa realizado com sucesso! Redirecionando para tela de Login...";
+                    console.log(resposta);
+                    console.log("Cadastro da empresa realizado com sucesso! Redirecionando para tela de Login...");
 
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
+                    // setTimeout(() => {
+                    //     window.location = "login.html";
+                    // }, "2000");
 
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro da empresa!";
