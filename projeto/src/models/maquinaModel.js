@@ -10,9 +10,24 @@ function cadastrarMaquina(hostname, ram, disco, clockProcessador, qtdNucleoProce
     return database.executar(instrucao);
 }
 
+function editarMaquina(idMaquina, hostname, ram, disco, clockProcessador, qtdNucleoProcessador, idEmpresa) {
+    const instrucao = `
+        UPDATE Maquina SET
+            hostnameMaquina = ${hostname},
+            ramMaquina =  ${ram},
+            discoMaquina = ${disco},
+            clockProcessadorMaquina = ${clockProcessador},
+            nucleosProcessadorMaquina = ${qtdNucleoProcessador}
+        WHERE idMaquina = ${idMaquina} AND idEmpresa = ${idEmpresa};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function buscarMaquina(idEmpresa) {
     const instrucao = `
-        SELECT hostnameMaquina, ramMaquina, discoMaquina, clockProcessadorMaquina, nucleosProcessadorMaquina, fkEmpresaMaquina FROM Maquina
+        SELECT idMaquina, hostnameMaquina, ramMaquina, discoMaquina, clockProcessadorMaquina, nucleosProcessadorMaquina, fkEmpresaMaquina FROM Maquina
             WHERE fkEmpresaMaquina = ${idEmpresa}
                 ORDER BY idMaquina;
     `;
@@ -22,8 +37,8 @@ function buscarMaquina(idEmpresa) {
 }
 
 
-
 module.exports = {
     cadastrarMaquina,
+    editarMaquina,
     buscarMaquina
 }

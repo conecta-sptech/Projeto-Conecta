@@ -11,13 +11,65 @@ function cadastrarMaquina(req, res) {
     if (hostname == undefined) {
         res.status(400).send("Hostname da máquina está undefined!");
 
+    } else if (ram == undefined) {
+        res.status(400).send("Ram da máquina está undefined!");
+
+    } else if (disco == undefined) {
+        res.status(400).send("Disco da máquina está undefined!");
+
+    } else if (clockProcessador == undefined) {
+        res.status(400).send("Clock do processador está undefined!");
+
+    } else if (qtdNucleoProcessador == undefined) {
+        res.status(400).send("Nucleos do processador está undefined!");
+
     } else if (idEmpresa == undefined) {
         res.status(400).send("Id da máquina está undefined!");
 
     } else {
         maquinaModel.cadastrarMaquina(hostname, ram, disco, clockProcessador, qtdNucleoProcessador, idEmpresa).then(function (resposta) {
             console.log(resposta);
-            res.status(200).send("Empresa cadastrada com sucesso");
+            res.status(200).send("Máquina cadastrada com sucesso");
+        }).catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        })
+    }
+}
+
+function editarMaquina(req, res) {
+    const idMaquina = req.body.idMaquinaServer;
+    const hostname = req.body.hostnameServer;
+    const ram = req.body.ramServer;
+    const disco = req.body.discoServer;
+    const clockProcessador = req.body.clockProcessadorServer;
+    const qtdNucleoProcessador = req.body.qtdNucleoProcessadorServer;
+    const idEmpresa = req.body.idEmpresaServer;
+
+    if (idMaquina == undefined) {
+        res.status(400).send("Id da máquina está undefined!");
+
+    } else if (hostname == undefined) {
+        res.status(400).send("Hostname da máquina está undefined!");
+
+    } else if (ram == undefined) {
+        res.status(400).send("Ram da máquina está undefined!");
+
+    } else if (disco == undefined) {
+        res.status(400).send("Disco da máquina está undefined!");
+
+    } else if (clockProcessador == undefined) {
+        res.status(400).send("Clock do processador está undefined!");
+
+    } else if (qtdNucleoProcessador == undefined) {
+        res.status(400).send("Nucleos do processador está undefined!");
+
+    } else if (idEmpresa == undefined) {
+        res.status(400).send("Id da máquina está undefined!");
+
+    } else {
+        maquinaModel.editarMaquina(idMaquina, hostname, ram, disco, clockProcessador, qtdNucleoProcessador, idEmpresa).then(function (resposta) {
+            console.log(resposta);
+            res.status(200).send("Máquina editada com sucesso");
         }).catch(function (erro) {
             res.status(500).json(erro.sqlMessage);
         })
@@ -46,5 +98,6 @@ function buscarMaquina(req, res) {
 
 module.exports = {
     cadastrarMaquina,
+    editarMaquina,
     buscarMaquina
 }

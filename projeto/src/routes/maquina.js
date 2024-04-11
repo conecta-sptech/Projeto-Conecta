@@ -7,6 +7,10 @@ router.post("/cadastrar-maquina", function (req, res) {
     maquinaController.cadastrarMaquina(req, res);
 });
 
+router.post("/editar-maquina", function (req, res) {
+    maquinaController.editarMaquina(req, res);
+});
+
 router.get("/buscar-maquina/:idEmpresa", function (req, res) {
 //Na rota do tipo get, enviamos valores para o controller pelo endpoint.
     maquinaController.buscarMaquina(req, res);
