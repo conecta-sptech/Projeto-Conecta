@@ -4,7 +4,7 @@ const mySqlConfig = {
     host: "localhost",
     database: "Conecta",
     user: "root",
-    password: ""
+    password: "#Gf47139948801"
 };
 
 function executar(instruction) {

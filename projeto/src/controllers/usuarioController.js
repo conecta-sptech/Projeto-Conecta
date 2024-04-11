@@ -61,6 +61,7 @@ function autenticar(req, res) {
                         id: resultadoAutenticar[0].idUsuario,
                         nome: resultadoAutenticar[0].nomeUsuario,
                         funcao: resultadoAutenticar[0].funcaoUsuario,
+                        idEmpresa: resultadoAutenticar[0].idEmpresa,
                         nomeEmpresa: resultadoAutenticar[0].nomeEmpresa
                     });
                     

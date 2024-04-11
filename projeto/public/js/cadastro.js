@@ -62,9 +62,9 @@ function validarCampos() {
                     console.log(resposta);
                     console.log("Cadastro da empresa realizado com sucesso! Redirecionando para tela de Login...");
 
-                    // setTimeout(() => {
-                    //     window.location = "login.html";
-                    // }, "2000");
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
 
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro da empresa!";

@@ -22,7 +22,7 @@ function cadastrarUsuarioEmpresa(emailEmpresa, senhaEmpresa, idEmpresa) {
 
 function autenticar(email, senha) {
     const instrucao = `
-        SELECT idUsuario, nomeUsuario, funcaoUsuario, nomeEmpresa 
+        SELECT idUsuario, nomeUsuario, funcaoUsuario, idEmpresa, nomeEmpresa 
 	    FROM Usuario u
 		    JOIN Empresa e
 			    ON u.fkEmpresa = e.idEmpresa
