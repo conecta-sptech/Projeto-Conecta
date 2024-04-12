@@ -33,9 +33,31 @@ function autenticar(email, senha) {
     return database.executar(instrucao);
 }
 
+function cadastrarGerente(nomeGerente, emailGerente, senhaGerente, idEmpresa) {
+    const instrucao = `
+        INSERT INTO Usuario (nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresa) VALUES
+            ("${nomeGerente}", "${emailGerente}", "${senhaGerente}", "Gerente", ${idEmpresa});
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function cadastrarFuncionario(nomeGerente, emailGerente, senhaGerente, idEmpresa) {
+    const instrucao = `
+        INSERT INTO Usuario (nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresa) VALUES
+            ("${nomeGerente}", "${emailGerente}", "${senhaGerente}", "Funcionario", ${idEmpresa});
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrarEmpresa,
     cadastrarUsuarioEmpresa,
-    autenticar
+    autenticar,
+    cadastrarGerente,
+    cadastrarFuncionario
 }
 

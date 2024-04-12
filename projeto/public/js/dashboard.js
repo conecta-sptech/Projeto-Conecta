@@ -23,6 +23,8 @@ const inputRamMaquina = document.getElementById("inputRamMaquina");
 const inputCpuMaquina = document.getElementById("inputCpuMaquina");
 const inputDiscoMaquina = document.getElementById("inputDiscoMaquina");
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function alterarMenu() {
     sidebar.classList.toggle("active");
 }
@@ -108,5 +110,52 @@ function alternarVisibilidadeSenha() {
         eyeIcon.forEach(e => {
             e.src = "../assets/svg/visible-password-icon-v2.svg";
         });
+    }
+}
+
+function validarCamposUsuario() {
+    const nomeUsuario = inputNomeUsuario.value;
+    const emailUsuario = inputEmailUsuario.value;
+    const senhaUsuario = inputSenhaUsuario.value;
+    const confirmacaoSenhaUsuario = inputConfirmarSenhaUsuario.value;
+    const idEmpresa = sessionStorage.ID_EMPRESA;
+    const funcaoUsuario = sessionStorage.FUNCAO_USUARIO;
+
+    const isEmailValido = emailRegex.test(emailUsuario);
+
+    if (nomeUsuario == "") inputNomeEmpresa.classList.add("error");
+    if (!isEmailValido) inputEmail.classList.add("error");
+    if (senhaUsuario == "" || senhaUsuario.length < 8) inputSenha.classList.add("error");
+    if (confirmacaoSenhaUsuario == "" || confirmacaoSenhaUsuario != senhaUsuario) inputConfirmarSenhaUsuario.classList.add("error");
+
+    if (nomeUsuario != "" && isEmailValido && senhaUsuario == confirmacaoSenhaUsuario && senhaUsuario.length > 0) {
+
+        fetch("/usuario/cadastrar-funcionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeUsuario,
+                emailServer: emailUsuario,
+                senhaServer: senhaUsuario,
+                idEmpresaServer: idEmpresa,
+                funcaoServer: funcaoUsuario
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    console.log(resposta);
+                    console.log("Cadastro do usuario realizado com sucesso!");
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro do funcionario!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
     }
 }

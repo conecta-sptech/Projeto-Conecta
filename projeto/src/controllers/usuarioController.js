@@ -84,7 +84,40 @@ function autenticar(req, res) {
 
 }
 
+function cadastrarUsuario(req, res) {
+    const nomeUsuario = req.body.nomeServer;
+    const emailUsuario = req.body.emailServer;
+    const senhaUsuario = req.body.senhaServer;
+    const idEmpresa = req.body.idEmpresaServer;
+    const funcaoUsuario = req.body.funcaoServer;
+
+    if (nomeUsuario == undefined) {
+        res.status(400).send("Nome do usuario está undefined!");
+
+    } else if (emailUsuario == undefined) {
+        res.status(400).send("E-mail do usuario está undefined!");
+
+    } else if (senhaUsuario == undefined) {
+        res.status(400).send("Senha do usuario está undefined!");
+
+    } else {
+        if (funcaoUsuario === "Administrador") {
+            cadastro = usuarioModel.cadastrarGerente(nomeUsuario, emailUsuario, senhaUsuario, idEmpresa)
+        } else if (funcaoUsuario === "Gerente") {
+            cadastro = usuarioModel.cadastrarFuncionario(nomeUsuario, emailUsuario, senhaUsuario, idEmpresa)
+        }
+        cadastro.then(function (resposta) {
+            console.log(resposta);
+            res.status(200).send("Usuário funcionário da empresa cadastrado com sucesso");
+        })
+            .catch(function (erro) {
+                res.status(500).json(erro.sqlMessage);
+            });
+        }
+    }
+
 module.exports = {
     cadastrarEmpresa,
-    autenticar
+    autenticar,
+    cadastrarUsuario
 }

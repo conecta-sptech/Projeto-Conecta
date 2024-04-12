@@ -12,4 +12,10 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/cadastrar-funcionario", function (req, res) {
+    // função a ser chamada quando acessar /usuario/cadastrarGerente
+    usuarioController.cadastrarUsuario(req, res);
+});
+
+
 module.exports = router;
