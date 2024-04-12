@@ -2,26 +2,25 @@ CREATE DATABASE Conecta;
 
 USE Conecta;
 
-CREATE TABLE 
-Empresa ( 
+CREATE TABLE Empresa ( 
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-NomeEmpresa VARCHAR(45),
-CNPJ VARCHAR(14), 
-CEP VARCHAR(8),
-Numero INT,
-Telefone VARCHAR(12)
+nomeEmpresa VARCHAR(45),
+cnpjEmpresa VARCHAR(18), 
+cepEmpresa VARCHAR(8),
+numeroEmpresa INT,
+telefoneEmpresa VARCHAR(12)
 );
 
 CREATE TABLE Usuario ( 
-ifFuncionario INT PRIMARY KEY AUTO_INCREMENT,
-NomeFuncionario VARCHAR(45),
-Email VARCHAR(45),
-Senha VARCHAR(20),
-Funcao VARCHAR(45),
-fkRegistro INT,
-FOREIGN KEY (fkRegistro) 
+idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+nomeUsuario VARCHAR(45),
+emailUsuario VARCHAR(45),
+senhaUsuario VARCHAR(20),
+funcaoUsuario VARCHAR(45),
+fkEmpresa INT,
+FOREIGN KEY (fkEmpresa) 
 REFERENCES Empresa(idEmpresa)
-); 
+);
 
 CREATE TABLE Maquinas ( 
 idMaquina INT PRIMARY KEY AUTO_INCREMENT,
