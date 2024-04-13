@@ -1,49 +1,89 @@
 const sidebar = document.querySelector(".sidebar");
+const sidebarIconsCol3 = document.querySelector(".sidebar .icons-col-3");
+
+const nomeUsuario = document.getElementById("nomeUsuario");
+const nomeEmpresa = document.getElementById("nomeEmpresa");
+
+const navLine2 = document.querySelector("nav .line-2");
+const navLine4 = document.querySelector("nav .line-4");
+
+const btnPesquisarMaquina = document.getElementById("btnPesquisarMaquina");
+const btnSuporte = document.getElementById("btnSuporte");
+const btnLogoutSidebar = document.querySelector(".sidebar .icons-col-3 .btn-logout");
+const btnGerenciarUsuarioSidebar = document.getElementById("btnGerenciarUsuarioSidebar");
+const btnGerenciarMaquinaSidebar = document.getElementById("btnGerenciarMaquinaSidebar");
+const btnGerenciarMaquinaText = document.querySelector("#btnGerenciarMaquina .icon-description");
+
+const chartsGerenteFuncionario = document.getElementById("chartsGerenteFuncionario");
+const chartsAdmin = document.getElementById("chartsAdmin");
+
+const dropDownMenu = document.querySelector(".drop-down-menu");
+const downArrowIcon = document.querySelector(".down-arrow-icon");
+
 const modalBackground = document.querySelector(".modal-background");
 
-const telaNovoUsuario = document.querySelector(".novo-usuario-ct");
-const telaVisualizarUsuario = document.querySelector(".visualizar-usuario-ct");
-const btnNovoUsuario = document.getElementById("btnNovoUsuario");
-const btnVisualizarUsuario = document.getElementById("btnVisualizarUsuario");
-const inputNomeUsuario = document.getElementById("inputNomeUsuario");
-const inputEmailUsuario = document.getElementById("inputEmailUsuario");
-const inputSenhaUsuario = document.getElementById("inputSenhaUsuario");
-const inputConfirmarSenhaUsuario = document.getElementById("inputConfirmarSenhaUsuario");
-const eyeIcon = document.querySelectorAll(".eye-icon");
-const line3ModalUsuario = document.getElementById("line3ModalUsuario");
-const line3ModalMaquina = document.getElementById("line3ModalMaquina");
+function definirDashboard() {
+    nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
 
-const telaNovaMaquina = document.querySelector(".nova-maquina-ct");
-const telaVisualizarMaquina = document.querySelector(".visualizar-maquina-ct");
-const btnNovaMaquina = document.getElementById("btnNovaMaquina");
-const btnVisualizarMaquina = document.getElementById("btnVisualizarMaquina");
-const inputNomeMaquina = document.getElementById("inputNomeMaquina");
-const inputIpMaquina = document.getElementById("inputIpMaquina");
-const inputRamMaquina = document.getElementById("inputRamMaquina");
-const inputCpuMaquina = document.getElementById("inputCpuMaquina");
-const inputDiscoMaquina = document.getElementById("inputDiscoMaquina");
+    if (sessionStorage.getItem("FUNCAO_USUARIO") == "Administrador") {
+        btnPesquisarMaquina.classList.add("admin");
+        sidebarIconsCol3.classList.add("admin");
+        btnSuporte.classList.add("admin");
+        btnLogoutSidebar.classList.add("admin");
+        chartsAdmin.classList.add("active");
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        navLine4.classList.add("admin");
+        navLine4.innerHTML = `
+        <button class="btn-support" onclick="abrirModal(this)" data-id="modalSuporte" title="Suporte">
+                <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0, 0, 400,400">
+                    <g id="svgg">
+                        <path id="path0"
+                            d="M173.878 1.269 C 22.854 20.611,-51.930 197.911,39.472 319.922 C 137.520 450.804,344.432 414.773,391.657 258.594 C 433.821 119.149,318.393 -17.239,173.878 1.269 M228.202 30.799 C 349.888 51.472,411.276 190.994,343.727 293.359 C 270.101 404.933,105.056 394.968,46.106 275.391 C -5.287 171.143,60.950 46.243,176.172 30.131 C 193.992 27.638,210.877 27.855,228.202 30.799 M183.362 100.405 C 162.007 104.457,146.749 117.715,145.498 133.308 C 144.192 149.580,163.464 156.505,172.603 143.047 C 186.167 123.074,219.916 126.496,219.734 147.826 C 219.662 156.247,216.035 161.301,201.865 172.728 C 184.503 186.728,179.440 196.546,179.344 216.406 C 179.272 231.250,181.430 234.375,192.178 234.992 C 205.818 235.774,208.781 233.102,209.904 219.007 C 211.073 204.343,212.901 201.169,226.869 189.540 C 252.208 168.445,260.189 144.919,249.077 124.071 C 239.461 106.029,209.876 95.375,183.362 100.405 M190.099 253.172 C 174.782 256.143,168.549 275.193,178.998 287.095 C 189.318 298.848,209.345 294.295,213.734 279.199 C 218.082 264.241,205.344 250.214,190.099 253.172 "
+                            stroke="none" fill="#ffffff" fill-rule="evenodd"></path>
+                    </g>
+                </svg>
+            </button>
+        `;
 
-function alterarMenu() {
-    sidebar.classList.toggle("active");
+        btnGerenciarMaquinaSidebar.setAttribute("data-id", "modalInfoEmpresa");
+        btnGerenciarMaquinaSidebar.innerHTML = `
+        <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0, 0, 400,400">
+                    <g id="svgg">
+                        <path id="path0"
+                            d="M166.406 21.875 L 166.406 34.375 141.016 34.375 L 115.625 34.375 115.625 82.230 L 115.625 130.086 123.242 133.734 C 163.647 153.084,188.517 197.929,181.681 239.106 C 177.626 263.531,158.482 306.215,130.011 354.308 C 126.446 360.330,123.296 365.867,123.009 366.613 C 122.518 367.893,125.965 367.969,184.682 367.969 L 246.875 367.969 246.875 329.688 L 246.875 291.406 258.984 291.406 L 271.094 291.406 271.094 329.688 L 271.094 367.969 335.547 367.969 L 400.000 367.969 400.000 201.172 L 400.000 34.375 375.000 34.375 L 350.000 34.375 350.000 21.875 L 350.000 9.375 258.203 9.375 L 166.406 9.375 166.406 21.875 M243.750 103.516 L 243.750 115.625 220.313 115.625 L 196.875 115.625 196.875 103.516 L 196.875 91.406 220.313 91.406 L 243.750 91.406 243.750 103.516 M321.094 103.516 L 321.094 115.625 297.656 115.625 L 274.219 115.625 274.219 103.516 L 274.219 91.406 297.656 91.406 L 321.094 91.406 321.094 103.516 M243.750 153.516 L 243.750 165.625 220.313 165.625 L 196.875 165.625 196.875 153.516 L 196.875 141.406 220.313 141.406 L 243.750 141.406 243.750 153.516 M321.094 153.516 L 321.094 165.625 297.656 165.625 L 274.219 165.625 274.219 153.516 L 274.219 141.406 297.656 141.406 L 321.094 141.406 321.094 153.516 M69.577 148.494 C 30.029 153.341,-0.000 186.831,-0.000 226.090 C 0.000 245.186,10.613 272.777,35.251 317.736 C 49.360 343.482,77.796 390.625,79.216 390.625 C 80.300 390.625,107.253 346.247,119.311 324.609 C 145.920 276.863,158.594 244.983,158.594 225.799 C 158.594 179.904,115.889 142.818,69.577 148.494 M90.625 179.341 C 128.270 188.187,141.175 234.510,113.709 262.196 C 83.701 292.443,32.453 272.793,29.945 230.078 C 28.023 197.345,58.565 171.808,90.625 179.341 M243.750 202.734 L 243.750 214.844 220.313 214.844 L 196.875 214.844 196.875 202.734 L 196.875 190.625 220.313 190.625 L 243.750 190.625 243.750 202.734 M321.094 202.734 L 321.094 214.844 297.656 214.844 L 274.219 214.844 274.219 202.734 L 274.219 190.625 297.656 190.625 L 321.094 190.625 321.094 202.734 M69.558 204.064 C 57.175 208.818,50.775 223.605,55.563 236.401 C 63.274 257.010,91.967 258.281,101.731 238.447 C 111.950 217.690,91.366 195.693,69.558 204.064 M243.750 252.734 L 243.750 264.844 220.313 264.844 L 196.875 264.844 196.875 252.734 L 196.875 240.625 220.313 240.625 L 243.750 240.625 243.750 252.734 M321.094 252.734 L 321.094 264.844 297.656 264.844 L 274.219 264.844 274.219 252.734 L 274.219 240.625 297.656 240.625 L 321.094 240.625 321.094 252.734 "
+                            stroke="none" fill="#ffffff" fill-rule="evenodd"></path>
+                    </g>
+                </svg>
+                <span class="icon-description">Gerenciar Empresa</span>
+        `;
+
+        //carregarDashboardAdmin()
+
+    } else if (sessionStorage.getItem("FUNCAO_USUARIO") == "Gerente") {
+        nomeUsuario.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0];
+        chartsGerenteFuncionario.classList.add("active");
+
+        //carregarDashboard()
+
+    } else {
+        nomeUsuario.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0];
+        chartsGerenteFuncionario.classList.add("active");
+        btnGerenciarUsuarioSidebar.style.display = "none";
+        btnGerenciarMaquinaSidebar.style.display = "none";
+
+        //carregarDashboard()
+    }
 }
 
-function resetarModalUsuario() {
-    btnNovoUsuario.classList.add("active");
-    btnVisualizarUsuario.classList.remove("active");
-    telaNovoUsuario.classList.add("active");
-    telaVisualizarUsuario.classList.remove("active");
-    line3ModalUsuario.style.display = "flex";
-}
-
-function resetarModalMaquina() {
-    btnNovaMaquina.classList.add("active");
-    btnVisualizarMaquina.classList.remove("active");
-    telaNovaMaquina.classList.add("active");
-    telaVisualizarMaquina.classList.remove("active");
-    line3ModalMaquina.style.display = "flex";
-}
+window.addEventListener("load", () => {
+    if (sessionStorage.length == 0) {
+        window.location.href = "../login.html";
+    } else {
+        definirDashboard();
+    }
+});
 
 function abrirModal(e) {
     const id = e.getAttribute("data-id");
@@ -60,102 +100,17 @@ function fecharModal(e) {
     modalBackground.classList.remove("active");
 }
 
+function alterarMenuSidebar() {
+    sidebar.classList.toggle("active");
+    navLine2.classList.toggle("active");
+}
+
+function alternarMenuNavbar() {
+    dropDownMenu.classList.toggle("active");
+    downArrowIcon.classList.toggle("active");
+}
+
 function encerrarSessao() {
     sessionStorage.clear();
     window.location.href = "../login.html";
-}
-
-function alterarFuncaoUsuario(e) {
-    if (e.classList.active != "active" && e.id == "btnNovoUsuario") {
-        btnNovoUsuario.classList.add("active");
-        btnVisualizarUsuario.classList.remove("active");
-        telaNovoUsuario.classList.add("active");
-        telaVisualizarUsuario.classList.remove("active");
-        line3ModalUsuario.style.display = "flex";
-    } else if (e.classList.active != "active" && e.id == "btnVisualizarUsuario") {
-        btnVisualizarUsuario.classList.add("active");
-        btnNovoUsuario.classList.remove("active");
-        telaVisualizarUsuario.classList.add("active");
-        telaNovoUsuario.classList.remove("active");
-        line3ModalUsuario.style.display = "none";
-    }
-}
-
-function alterarFuncaoMaquina(e) {
-    if (e.classList.active != "active" && e.id == "btnNovaMaquina") {
-        btnNovaMaquina.classList.add("active");
-        btnVisualizarMaquina.classList.remove("active");
-        telaNovaMaquina.classList.add("active");
-        telaVisualizarMaquina.classList.remove("active");
-        line3ModalMaquina.style.display = "flex";
-    } else if (e.classList.active != "active" && e.id == "btnVisualizarMaquina") {
-        btnVisualizarMaquina.classList.add("active");
-        btnNovaMaquina.classList.remove("active");
-        telaVisualizarMaquina.classList.add("active");
-        telaNovaMaquina.classList.remove("active");
-        line3ModalMaquina.style.display = "none";
-    }
-}
-
-function alternarVisibilidadeSenha() {
-    if (inputSenhaUsuario.type == "text" || inputConfirmarSenhaUsuario.type == "text") {
-        inputSenhaUsuario.setAttribute("type", "password");
-        inputConfirmarSenhaUsuario.setAttribute("type", "password");
-        eyeIcon.forEach(e => {
-            e.src = "../assets/svg/invisible-password-icon-v2.svg";
-        });
-    } else {
-        inputSenhaUsuario.setAttribute("type", "text");
-        inputConfirmarSenhaUsuario.setAttribute("type", "text");
-        eyeIcon.forEach(e => {
-            e.src = "../assets/svg/visible-password-icon-v2.svg";
-        });
-    }
-}
-
-function validarCamposUsuario() {
-    const nomeUsuario = inputNomeUsuario.value;
-    const emailUsuario = inputEmailUsuario.value;
-    const senhaUsuario = inputSenhaUsuario.value;
-    const confirmacaoSenhaUsuario = inputConfirmarSenhaUsuario.value;
-    const idEmpresa = sessionStorage.ID_EMPRESA;
-    const funcaoUsuario = sessionStorage.FUNCAO_USUARIO;
-
-    const isEmailValido = emailRegex.test(emailUsuario);
-
-    if (nomeUsuario == "") inputNomeEmpresa.classList.add("error");
-    if (!isEmailValido) inputEmail.classList.add("error");
-    if (senhaUsuario == "" || senhaUsuario.length < 8) inputSenha.classList.add("error");
-    if (confirmacaoSenhaUsuario == "" || confirmacaoSenhaUsuario != senhaUsuario) inputConfirmarSenhaUsuario.classList.add("error");
-
-    if (nomeUsuario != "" && isEmailValido && senhaUsuario == confirmacaoSenhaUsuario && senhaUsuario.length > 0) {
-
-        fetch("/usuario/cadastrar-funcionario", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nomeServer: nomeUsuario,
-                emailServer: emailUsuario,
-                senhaServer: senhaUsuario,
-                idEmpresaServer: idEmpresa,
-                funcaoServer: funcaoUsuario
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    console.log(resposta);
-                    console.log("Cadastro do usuario realizado com sucesso!");
-
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro do funcionario!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-    }
 }
