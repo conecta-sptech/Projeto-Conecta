@@ -1,10 +1,10 @@
 const sidebar = document.querySelector(".sidebar");
 const sidebarIconsCol3 = document.querySelector(".sidebar .icons-col-3");
 
-const nomeUsuario = document.getElementById("nomeUsuario");
+const nomeUsuario = document.querySelectorAll(".nome-usuario");
 const nomeEmpresa = document.getElementById("nomeEmpresa");
 
-const navLine2 = document.querySelector("nav .line-2");
+const navLine1 = document.querySelector("nav .line-1");
 const navLine4 = document.querySelector("nav .line-4");
 
 const btnPesquisarMaquina = document.getElementById("btnPesquisarMaquina");
@@ -21,16 +21,36 @@ const dropDownMenu = document.querySelector(".drop-down-menu");
 const downArrowIcon = document.querySelector(".down-arrow-icon");
 
 const modalBackground = document.querySelector(".modal-background");
+const modalLogoutBackground = document.querySelector(".modal-logout-background");
+const modalInicial = document.querySelector(".modal-inicio");
+const mensagemModalInicial = document.getElementById("mensagemModalInicial");
+const modalInicialLine3 = document.querySelector(".modal-inicio .line-3");
+const inputBuscarMaquinasModalInicial = document.getElementById("inputBuscarMaquinasModalInicial");
 
-function definirDashboard() {
+function resetarModalInicial() {
+    inputBuscarMaquinasModalInicial.value = "";
+}
+
+function abrirModalInicial() {
+    modalBackground.classList.add("active");
+    modalInicial.classList.add("active");
+
+    modalInicialLine3.innerHTML = `
+    <button class="btn-logout" onclick="fecharModal(this)" data-id="modalInicio">Cancelar</button>
+    `;
+
+    resetarModalInicial();
+}
+
+function carregarInformacoesTela() {
     nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
 
     if (sessionStorage.getItem("FUNCAO_USUARIO") == "Administrador") {
-        btnPesquisarMaquina.classList.add("admin");
+        btnPesquisarMaquina.remove();
         sidebarIconsCol3.classList.add("admin");
-        btnSuporte.classList.add("admin");
+        btnSuporte.remove();
         btnLogoutSidebar.classList.add("admin");
-        chartsAdmin.classList.add("active");
+        mensagemModalInicial.innerHTML = "Olá, seja bem-vindo(a)!";
 
         navLine4.classList.add("admin");
         navLine4.innerHTML = `
@@ -59,36 +79,61 @@ function definirDashboard() {
                 <span class="icon-description">Gerenciar Empresa</span>
         `;
 
-        //carregarDashboardAdmin()
-
     } else if (sessionStorage.getItem("FUNCAO_USUARIO") == "Gerente") {
-        nomeUsuario.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0];
-        chartsGerenteFuncionario.classList.add("active");
-
-        //carregarDashboard()
+        nomeUsuario.forEach(e => e.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0]);
 
     } else {
-        nomeUsuario.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0];
-        chartsGerenteFuncionario.classList.add("active");
-        btnGerenciarUsuarioSidebar.style.display = "none";
-        btnGerenciarMaquinaSidebar.style.display = "none";
-
-        //carregarDashboard()
+        nomeUsuario.forEach(e => e.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0]);
+        btnGerenciarUsuarioSidebar.remove();
+        btnGerenciarMaquinaSidebar.remove();
     }
+}
+
+function carregarModalInicial() {
+    if (sessionStorage.getItem("FUNCAO_USUARIO") != "Administrador") {
+        modalBackground.classList.add("active");
+        modalInicial.classList.add("active");
+    } else {
+        chartsAdmin.classList.add("active");
+        modalInicial.remove();
+    }
+    carregarInformacoesTela();
+}
+
+function definirDashboard(e) {
+    const idMaquina = e.getAttribute("data-id");
+
+    if (sessionStorage.getItem("FUNCAO_USUARIO") == "Administrador") {
+        chartsAdmin.classList.add("active");
+
+        //Fetch + função de montagem dos gráficos aqui
+    } else {
+        chartsGerenteFuncionario.classList.add("active");
+
+        //Fetch + função de montagem dos gráficos aqui
+    }
+
+    modalBackground.classList.remove("active");
+    modalInicial.classList.remove("active");
 }
 
 window.addEventListener("load", () => {
     if (sessionStorage.length == 0) {
         window.location.href = "../login.html";
     } else {
-        definirDashboard();
+        carregarModalInicial();
     }
 });
 
 function abrirModal(e) {
     const id = e.getAttribute("data-id");
     document.getElementById(id).classList.add("active");
-    modalBackground.classList.add("active");
+
+    if (id == "modalLogout") {
+        modalLogoutBackground.classList.add("active");
+    } else {
+        modalBackground.classList.add("active");
+    }
 
     resetarModalUsuario();
     resetarModalMaquina();
@@ -97,12 +142,17 @@ function abrirModal(e) {
 function fecharModal(e) {
     const id = e.getAttribute("data-id");
     document.getElementById(id).classList.remove("active");
-    modalBackground.classList.remove("active");
+
+    if (id == "modalLogout") {
+        modalLogoutBackground.classList.remove("active");
+    } else {
+        modalBackground.classList.remove("active");
+    }
 }
 
 function alterarMenuSidebar() {
     sidebar.classList.toggle("active");
-    navLine2.classList.toggle("active");
+    navLine1.classList.toggle("active");
 }
 
 function alternarMenuNavbar() {

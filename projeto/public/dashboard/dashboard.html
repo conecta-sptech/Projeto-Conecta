@@ -19,19 +19,15 @@
             <span>CONECTA</span>
         </div>
         <div class="line-3">
-            <button id="btnPesquisarMaquina">
+            <button onclick="abrirModalInicial()" id="btnPesquisarMaquina">
                 <img class="search-icon" src="../assets/svg/search.svg">
                 Pesquisar Máquina
             </button>
-            <!-- <div class="input-ct" style="position: relative;">
-                <img class="search-icon" src="../assets/svg/search.svg">
-                <input id="inputPesquisa" type="text" placeholder="Pesquisar máquinas">
-            </div> -->
         </div>
         <div class="line-4">
             <button onclick="alternarMenuNavbar()" class="user-ct">
                 <img class="user-icon" src="../assets/svg/user.svg">
-                <span id="nomeUsuario"></span>
+                <span class="nome-usuario"></span>
                 <img class="down-arrow-icon" src="../assets/svg/arrow-down-icon.svg">
             </button>
 
@@ -192,6 +188,192 @@
     <!-- Modais -->
 
     <div class="modal-background"></div>
+    <div class="modal-logout-background"></div>
+
+    <div class="modal-inicio" id="modalInicio">
+        <div class="line-1">
+            <h3 id="mensagemModalInicial">Olá, seja bem-vindo(a), <span class="nome-usuario"></span>!</h3>
+            <p>Selecione a máquina que deseja visualizar as informações.</p>
+        </div>
+
+        <div class="line-2">
+            <div class="input-ct">
+                <div style="position: relative;">
+                    <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0, 0, 400,400">
+                        <g id="svgg">
+                            <path id="path0"
+                                d="M144.531 3.203 C 25.582 16.533,-38.742 148.561,24.239 250.109 C 71.443 326.217,174.168 349.241,249.268 300.544 L 253.516 297.790 300.391 344.448 C 339.720 383.596,348.032 391.505,352.029 393.582 C 373.569 404.778,398.726 390.792,399.865 366.987 C 400.604 351.519,402.151 353.528,346.675 297.933 L 299.007 250.162 301.890 245.417 C 318.646 217.833,326.582 178.631,322.319 144.502 C 311.378 56.909,231.535 -6.547,144.531 3.203 M173.828 56.311 C 263.456 66.992,302.345 176.089,239.326 240.054 C 180.905 299.353,81.585 274.905,57.568 195.313 C 35.234 121.298,97.224 47.182,173.828 56.311 "
+                                stroke="none" fill="#000000" fill-rule="evenodd"></path>
+                        </g>
+                    </svg>
+                    <input id="inputBuscarMaquinasModalInicial" type="text" placeholder="Buscar máquinas">
+                </div>
+            </div>
+
+            <div class="tabela-ct">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="icons-ct"></th>
+                            <th class="ip-td">IP</th>
+                            <th class="hostname-td">Hostname</th>
+                            <th class="ram-td">RAM</th>
+                            <th class="disco-td">Disco</th>
+                            <th class="cpu-td">CPU</th>
+                            <th class="rede-td">Rede</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                        <tr>
+                            <td class="icons-ct">
+                                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio"
+                                    data-id="">
+                                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                                </button>
+                            </td>
+                            <td class="ip-td">192.168.0.100</td>
+                            <td class="hostname-td">JAVA</td>
+                            <td class="ram-td">8GB</td>
+                            <td class="disco-td">512GB</td>
+                            <td class="cpu-td">I7 13º Gen</td>
+                            <td class="rede-td">Ativa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="line-3">
+            <button class="btn-logout" onclick="abrirModal(this)" data-id="modalLogout">Sair</button>
+        </div>
+    </div>
 
     <div class="modal" id="modalUsuario">
         <div class="line-1">
@@ -412,7 +594,7 @@
         <div class="line-3">
             <div class="btn-ct">
                 <button class="btn-cancelar" onclick="fecharModal(this)" data-id="modalLogout">Cancelar</button>
-                <button class="btn-sair" onclick="encerrarSessao()">Sair</button>
+                <button class="btn-logout" onclick="encerrarSessao()">Sair</button>
             </div>
         </div>
     </div>
