@@ -12,7 +12,7 @@ function cadastrarEmpresa(nomeEmpresa, cnpjEmpresa) {
 
 function cadastrarUsuarioEmpresa(emailEmpresa, senhaEmpresa, idEmpresa) {
     const instrucao = `
-            INSERT INTO Usuario (idUsuario, nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresa) VALUES
+            INSERT INTO Usuario (idUsuario, nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresaUsuario) VALUES
                 (1, "Administrador", "${emailEmpresa}", "${senhaEmpresa}", "Administrador", ${idEmpresa});
     `;
 

@@ -1,46 +1,45 @@
 -- Criação de Usuário no Banco de Dados
-
 CREATE USER "UserConecta"@"localhost" IDENTIFIED BY "Conecta2024";
 
 GRANT ALL PRIVILEGES ON Conecta.* to "UserConecta"@"localhost";
 
 -- Criação do Banco de Dados
-
 CREATE DATABASE Conecta;
-
 USE Conecta;
 
 CREATE TABLE Empresa ( 
-idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-nomeEmpresa VARCHAR(45),
-cnpjEmpresa VARCHAR(18), 
-cepEmpresa VARCHAR(8),
-numeroEmpresa INT,
-telefoneEmpresa VARCHAR(12)
+	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+	nomeEmpresa VARCHAR(45),
+	cnpjEmpresa CHAR(18) UNIQUE, 
+	cepEmpresa CHAR(8),
+	numeroEmpresa int,
+	telefoneEmpresa CHAR(11)
 );
 
 CREATE TABLE Usuario ( 
-idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-nomeUsuario VARCHAR(45),
-emailUsuario VARCHAR(45),
-senhaUsuario VARCHAR(20),
-funcaoUsuario VARCHAR(45),
-fkEmpresa INT,
-FOREIGN KEY (fkEmpresa) 
-REFERENCES Empresa(idEmpresa)
+	idUsuario INT AUTO_INCREMENT,
+	nomeUsuario VARCHAR(45),
+	emailUsuario VARCHAR(45),
+	senhaUsuario VARCHAR(20),
+	funcaoUsuario VARCHAR(45),
+	fkEmpresaUsuario INT,
+		CONSTRAINT fkEU FOREIGN KEY (fkEmpresaUsuario) REFERENCES Empresa(idEmpresa),
+	PRIMARY KEY(idUsuario, fkEmpresaUsuario)
+); 
+
+CREATE TABLE Maquina (
+	idMaquina INT,
+    hostnameMaquina VARCHAR (25),
+    ramMaquina INT,
+    discoMaquina INT,
+    clockProcessadorMaquina decimal(4,2),
+    nucleosProcessadorMaquina INT,
+    fkEmpresaMaquina INT,
+		CONSTRAINT fkEM FOREIGN KEY (fkEmpresaMaquina) REFERENCES Empresa(idEmpresa),
+	PRIMARY KEY (idMaquina, fkEmpresaMaquina)	
 );
 
-CREATE TABLE Maquinas ( 
-idMaquina INT PRIMARY KEY AUTO_INCREMENT,
-Hostname VARCHAR(45),
-RAM VARCHAR(45),
-Disco VARCHAR(45),
-CPU VARCHAR(45),
-fkEmpresa INT, 
-FOREIGN KEY (fkEmpresa) 
-REFERENCES Empresa(idEmpresa)
-);
-
+-- Daqui em diante, precisa de validação.
 CREATE TABLE Leitura ( 
 idLeitura INT PRIMARY KEY AUTO_INCREMENT,
 RAM VARCHAR(45),
