@@ -25,7 +25,7 @@ function autenticar(email, senha) {
         SELECT idUsuario, nomeUsuario, funcaoUsuario, idEmpresa, nomeEmpresa 
 	    FROM Usuario u
 		    JOIN Empresa e
-			    ON u.fkEmpresa = e.idEmpresa
+			    ON u.fkEmpresaUsuario = e.idEmpresa
         WHERE u.emailUsuario = "${email}" AND u.senhaUsuario = "${senha}";
     `;
 
