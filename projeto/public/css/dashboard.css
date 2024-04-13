@@ -29,6 +29,25 @@ body {
     overflow: hidden;
 }
 
+#mainContentLoading {
+    background-color: #1E1E20;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+}
+
+#mainContentNoLoading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    user-select: none;
+    overflow: hidden;
+}
+
 img {
     pointer-events: none;
 }
@@ -454,12 +473,15 @@ main .chart h3 {
 #chartsGerenteFuncionario,
 #chartsAdmin {
     height: 100%;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s ease-in-out;
 }
 
 #chartsGerenteFuncionario.active,
 #chartsAdmin.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal-background {
@@ -1137,4 +1159,75 @@ main .chart h3 {
     border-radius: 25px;
     transition: all .3s ease-in-out;
     margin-right: 40px;
+}
+
+.loading-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1E1E20;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s ease-in-out;
+    z-index: 6;
+}
+
+.loading-background.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-background img {
+    height: 140px;
+    margin-top: -1px;
+}
+
+.spinner,
+.loading-background img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fade 1s ease-in-out;
+}
+
+.circle-border {
+    width: 190px;
+    height: 190px;
+    padding: 6px;
+    border-radius: 50%;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 33%, #ffffff 100%);
+    animation: spin .8s linear infinite;
+}
+
+.circle-core {
+    width: 100%;
+    height: 100%;
+    background-color: #1E1E20;
+    border-radius: 50%;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

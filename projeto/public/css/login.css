@@ -19,7 +19,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #93E4C4;
+    color: #5ac69c;
 }
 
 a:hover {
@@ -57,7 +57,7 @@ a:hover {
 }
 
 .login .logo .div-slogan .slogan-bold {
-    color: #93E4C4;
+    color: #5ac69c;
     font-weight: bold
 }
 
@@ -116,20 +116,21 @@ a:hover {
 }
 
 .login .form .form-box .box-input div input {
+    font-size: 15px;
     border-radius: 10px;
     border: none;
-    border-left: 7px solid #93E4C4;
+    border-left: 7px solid #5ac69c;
     padding: 16px 10px 16px 10px;
     width: 320px;
     transition: all .3s ease-in-out;
 }
 
 .login .form .form-box .box-input input.error {
-    border-left: 7px solid #c97f7f;
+    border-left: 7px solid #e53c3c;
 }
 
 .login .form .form-box .box-input input.error:focus {
-    border-left: 10px solid #c97f7f !important;
+    border-left: 10px solid #e53c3c !important;
 }
 
 #inputSenha {
@@ -138,7 +139,7 @@ a:hover {
 
 input:focus {
     outline: none;
-    border-left: 10px solid #93E4C4 !important;
+    border-left: 10px solid #5ac69c !important;
 }
 
 .eye-icon {
@@ -150,7 +151,7 @@ input:focus {
 }
 
 .login .form .form-box .button-entrar {
-    border: 1px solid #93E4C4;
+    border: 1px solid #5ac69c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -167,7 +168,7 @@ input:focus {
 }
 
 .login .form .form-box .button-entrar:hover {
-    background-color: #93E4C4;
+    background-color: #5ac69c;
 }
 
 .home-button {
@@ -190,7 +191,8 @@ input:focus {
 }
 
 .home-button:hover {
-    background-color: #93E4C4;
+    background-color: #5ac69c;
+    border: 2px solid transparent;
 }
 
 @keyframes slideRight {

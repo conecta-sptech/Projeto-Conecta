@@ -20,7 +20,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #93E4C4;
+    color: #5ac69c;
 }
 
 a:hover {
@@ -62,7 +62,7 @@ input::-webkit-inner-spin-button {
 }
 
 .cadastro .logo .div-slogan .slogan-bold {
-    color: #93E4C4;
+    color: #5ac69c;
     font-weight: bold
 }
 
@@ -87,7 +87,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
     justify-content: space-around;
     width: 520px;
-    height: 98%;
+    height: 640px;
 }
 
 .cadastro .form-cadastro h1 {
@@ -128,20 +128,21 @@ input::-webkit-inner-spin-button {
 }
 
 .cadastro .form-cadastro .box-input input {
+    font-size: 15px;
     border-radius: 10px;
     border: none;
-    border-left: 7px solid #93E4C4;
+    border-left: 7px solid #5ac69c;
     padding: 12px 10px 12px 10px;
     width: 320px;
     transition: all .3s ease-in-out;
 }
 
 .cadastro .form-cadastro .box-input input.error {
-    border-left: 7px solid #c97f7f;
+    border-left: 7px solid #e53c3c;
 }
 
 .cadastro .form-cadastro .box-input input.error:focus {
-    border-left: 10px solid #c97f7f !important;
+    border-left: 10px solid #e53c3c !important;
 }
 
 #inputSenha,
@@ -151,7 +152,7 @@ input::-webkit-inner-spin-button {
 
 input:focus {
     outline: none;
-    border-left: 10px solid #93E4C4 !important;
+    border-left: 10px solid #5ac69c !important;
 }
 
 .eye-icon {
@@ -163,7 +164,7 @@ input:focus {
 }
 
 .cadastro .form-cadastro .button-cadastrar {
-    border: 1px solid #93E4C4;
+    border: 1px solid #5ac69c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,7 +182,7 @@ input:focus {
 }
 
 .cadastro .form-cadastro .button-cadastrar:hover {
-    background-color: #93E4C4;
+    background-color: #5ac69c;
 }
 
 .home-button {
@@ -204,7 +205,8 @@ input:focus {
 }
 
 .home-button:hover {
-    background-color: #93E4C4;
+    background-color: #5ac69c;
+    border: 2px solid transparent;
 }
 
 @keyframes slideLeft {

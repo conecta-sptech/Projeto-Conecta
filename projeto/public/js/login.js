@@ -44,14 +44,11 @@ function validarCampos() {
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.FUNCAO_USUARIO = json.funcao;
-                    
+
                     sessionStorage.ID_EMPRESA = json.idEmpresa;
                     sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
 
-                    setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
+                    window.location = "./dashboard/dashboard.html";
                 });
 
             } else {

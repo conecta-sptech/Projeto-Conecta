@@ -27,6 +27,16 @@ const mensagemModalInicial = document.getElementById("mensagemModalInicial");
 const modalInicialLine3 = document.querySelector(".modal-inicio .line-3");
 const inputBuscarMaquinasModalInicial = document.getElementById("inputBuscarMaquinasModalInicial");
 
+const loadingBackground = document.querySelector(".loading-background");
+const mainContentLoading = document.getElementById("mainContentLoading");
+
+function removerTelaLoading() {
+    setTimeout(() => {
+        mainContentLoading.setAttribute("id", "mainContentNoLoading");
+        loadingBackground.classList.remove("active");
+    }, 1500);
+}
+
 function resetarModalInicial() {
     inputBuscarMaquinasModalInicial.value = "";
 }
@@ -43,9 +53,8 @@ function abrirModalInicial() {
 }
 
 function carregarInformacoesTela() {
-    nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
-
     if (sessionStorage.getItem("FUNCAO_USUARIO") == "Administrador") {
+        nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
         btnPesquisarMaquina.remove();
         sidebarIconsCol3.classList.add("admin");
         btnSuporte.remove();
@@ -91,17 +100,23 @@ function carregarInformacoesTela() {
 
 function carregarModalInicial() {
     if (sessionStorage.getItem("FUNCAO_USUARIO") != "Administrador") {
-        modalBackground.classList.add("active");
-        modalInicial.classList.add("active");
+        setTimeout(() => {
+            modalBackground.classList.add("active");
+            modalInicial.classList.add("active");
+        }, 1600);
     } else {
+        chartsGerenteFuncionario.remove();
         chartsAdmin.classList.add("active");
         modalInicial.remove();
     }
+
     carregarInformacoesTela();
 }
 
 function definirDashboard(e) {
     const idMaquina = e.getAttribute("data-id");
+
+    nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
 
     if (sessionStorage.getItem("FUNCAO_USUARIO") == "Administrador") {
         chartsAdmin.classList.add("active");
@@ -121,6 +136,7 @@ window.addEventListener("load", () => {
     if (sessionStorage.length == 0) {
         window.location.href = "../login.html";
     } else {
+        removerTelaLoading();
         carregarModalInicial();
     }
 });
