@@ -6,8 +6,42 @@ const inputConfirmarSenha = document.getElementById("inputConfirmarSenha");
 const submitBtn = document.getElementById("submitBtn");
 const eyeIcon = document.querySelectorAll(".eye-icon");
 
+const modalBackground = document.querySelector(".modal-background");
+const modalSucesso = document.querySelector(".modal-sucesso");
+const modalErro = document.querySelector(".modal-erro");
+const contagemRegressiva = document.getElementById("contagemRegressiva");
+
 const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function fazerContagemRedirecionamento() {
+    let numeroAtual = 3;
+
+    setInterval(() => {
+        if (numeroAtual > 0) {
+            numeroAtual--;
+            contagemRegressiva.textContent = numeroAtual;
+        } else {
+            window.location = "login.html";
+        }
+    }, 1000);
+}
+
+function abrirModalSucesso() {
+    modalBackground.classList.add("active");
+    modalSucesso.classList.add("active");
+    fazerContagemRedirecionamento();
+}
+
+function abrirModalErro() {
+    modalBackground.classList.add("active");
+    modalErro.classList.add("active");
+}
+
+function fecharModalErro() {
+    modalBackground.classList.remove("active");
+    modalErro.classList.remove("active");
+}
 
 function alternarVisibilidadeSenha() {
     if (inputSenha.type == "text" || inputConfirmarSenha.type == "text") {
@@ -59,15 +93,9 @@ function validarCampos() {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    console.log(resposta);
-                    console.log("Cadastro da empresa realizado com sucesso! Redirecionando para tela de Login...");
-
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
-
+                    abrirModalSucesso();
                 } else {
-                    throw "Houve um erro ao tentar realizar o cadastro da empresa!";
+                    abrirModalErro();
                 }
             })
             .catch(function (resposta) {
@@ -83,7 +111,7 @@ function removerErroCampos() {
     if (inputNomeEmpresa.value != "") inputNomeEmpresa.classList.remove("error");
     if (isCnpjValido) inputCnpj.classList.remove("error");
     if (isEmailValido) inputEmail.classList.remove("error");
-    if (inputSenha.value != "" && inputSenha.value.length > 8) inputSenha.classList.remove("error");
+    if (inputSenha.value != "" && inputSenha.value.length >= 8) inputSenha.classList.remove("error");
     if (inputConfirmarSenha.value == inputSenha.value && inputSenha.value.length > 0) inputConfirmarSenha.classList.remove("error");
 }
 
@@ -106,5 +134,4 @@ function enviarClicandoEnter(e) {
         }
     }
 }
-
 document.addEventListener("keypress", enviarClicandoEnter);

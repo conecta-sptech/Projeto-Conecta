@@ -29,14 +29,14 @@
                             placeholder="12.345.678/0001-00" maxlength="18">
                     </div>
 
-                    
+
                     <div class="container-input">
                         <label for="inputEmail">E-mail</label>
                         <input oninput="removerErroCampos()" type="text" id="inputEmail"
                             placeholder="email@exemplo.com">
                     </div>
 
-                    
+
                     <div class="container-input">
                         <label for="inputSenha">Senha</label>
                         <input oninput="removerErroCampos()" type="password" id="inputSenha" placeholder="********">
@@ -68,7 +68,35 @@
 
     </div>
 
+    <!-- Modal -->
+
     <a class="home-button" href="index.html"><img src="assets/svg/house-icon.svg"></a>
+
+    <div class="modal-background"></div>
+
+    <div class="modal-sucesso">
+        <div class="line-1">
+            <img src="assets/svg/right-icon.svg">
+        </div>
+        <div class="line-2">
+            <h3>SUCESSO!</h3>
+            <p id="message1">Empresa cadastrada com sucesso!</p>
+            <p id="message2">Redirecionando para o login... <span id="contagemRegressiva">3</span></p>
+        </div>
+    </div>
+
+    <div class="modal-erro">
+        <div class="line-1">
+            <img id="modalImg" src="assets/svg/wrong-icon.svg">
+        </div>
+        <div class="line-2">
+            <h3>ERRO!</h3>
+            <p>Houve um problema ao tentar cadastrar a empresa!</p>
+        </div>
+        <div class="line-3">
+            <button onclick="fecharModalErro()" class="btn-tentar-novamente">Tentar novamente</button>
+        </div>
+    </div>
 
     <script src="js/cadastro.js"></script>
 </body>

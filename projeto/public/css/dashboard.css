@@ -113,6 +113,7 @@ nav .line-3 {
 
 nav .line-3 #btnPesquisarMaquina {
     font-size: 14px;
+    font-family: "Montserrat", sans-serif;
     color: #ffffff;
     border: 1px solid #ffffff;
     padding: 10px 32px 10px 32px;
@@ -612,6 +613,7 @@ main .chart h3 {
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 600;
+    font-family: "Montserrat", sans-serif;
     border-radius: 25px;
     transition: all .3s ease-in-out;
     display: flex;
@@ -895,6 +897,7 @@ main .chart h3 {
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 600;
+    font-family: "Montserrat", sans-serif;
     border-radius: 25px;
     transition: all .3s ease-in-out;
 }
@@ -905,6 +908,7 @@ main .chart h3 {
     color: #000000;
     text-transform: uppercase;
     font-weight: 600;
+    font-family: "Montserrat", sans-serif;
     border-radius: 24px;
     transition: all .3s ease-in-out;
     border: 1px solid #000000;
@@ -923,6 +927,7 @@ main .chart h3 {
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 600;
+    font-family: "Montserrat", sans-serif;
     border-radius: 24px;
     transition: all .3s ease-in-out;
     border: 1px solid transparent;
@@ -935,6 +940,7 @@ main .chart h3 {
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 600;
+    font-family: "Montserrat", sans-serif;
     border-radius: 25px;
     transition: all .3s ease-in-out;
 }
@@ -1156,6 +1162,7 @@ main .chart h3 {
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 600;
+    font-family: "Montserrat", sans-serif;
     border-radius: 25px;
     transition: all .3s ease-in-out;
     margin-right: 40px;
