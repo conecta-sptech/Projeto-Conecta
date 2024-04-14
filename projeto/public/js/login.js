@@ -2,6 +2,19 @@ const inputEmail = document.getElementById("inputEmail");
 const inputSenha = document.getElementById("inputSenha");
 const submitBtn = document.getElementById("submitBtn");
 
+const modalBackground = document.querySelector(".modal-background");
+const modalErro = document.querySelector(".modal-erro");
+
+function abrirModalErro() {
+    modalBackground.classList.add("active");
+    modalErro.classList.add("active");
+}
+
+function fecharModalErro() {
+    modalBackground.classList.remove("active");
+    modalErro.classList.remove("active");
+}
+
 function alternarVisibilidadeSenha(e) {
     if (inputSenha.type == "text") {
         inputSenha.setAttribute("type", "password");
@@ -33,8 +46,6 @@ function validarCampos() {
                 senhaServer: senha
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO valirdarCampos()!")
-
             if (resposta.ok) {
                 console.log(resposta);
 
@@ -52,10 +63,11 @@ function validarCampos() {
                 });
 
             } else {
-                console.log("Houve um erro ao tentar realizar o login!");
                 resposta.text().then(texto => {
                     console.error(texto);
                 });
+
+                abrirModalErro();
             }
 
         }).catch(function (erro) {
@@ -79,5 +91,4 @@ function enviarClicandoEnter(e) {
         }
     }
 }
-
 document.addEventListener("keypress", enviarClicandoEnter);

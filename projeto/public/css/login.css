@@ -195,6 +195,104 @@ input:focus {
     border: 2px solid transparent;
 }
 
+.modal-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0000005a;
+    transition: all .4s ease-in-out;
+    opacity: 0;
+    z-index: -1;
+}
+
+.modal-background.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.modal-erro {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 360px;
+    border-radius: 25px;
+    background-color: rgba(40, 40, 40, 0.84);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    z-index: -1;
+    transition: all .4s ease-in-out;
+}
+
+.modal-erro.active {
+    opacity: 1;
+    z-index: 3;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-erro .line-1 {
+    width: 100%;
+    height: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-erro .line-1 img {
+    width: 110px;
+    pointer-events: none;
+}
+
+.modal-erro .line-2 {
+    width: 100%;
+    height: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-erro .line-2 h3 {
+    color: #e53c3c;
+    margin-top: -8px;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+}
+
+.modal-erro .line-2 p {
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.modal-erro .line-3 {
+    height: 24%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-erro .btn-tentar-novamente {
+    padding: 12px 16px;
+    background-color: transparent;
+    color: #e53c3c;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 24px;
+    transition: all .3s ease-in-out;
+    border: 1px solid #e53c3c;
+    cursor: pointer;
+}
+
+.modal-erro .btn-tentar-novamente:hover {
+    border: 1px solid transparent;
+    background-color: #e53c3c;
+    color: #ffffff;
+}
+
 @keyframes slideRight {
     0% {
         opacity: 0;

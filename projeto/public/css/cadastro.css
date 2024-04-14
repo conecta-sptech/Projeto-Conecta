@@ -268,8 +268,10 @@ input:focus {
     align-items: center;
 }
 
-.modal-sucesso .line-1 img {
+.modal-sucesso .line-1 img,
+.modal-erro .line-1 img {
     width: 110px;
+    pointer-events: none;
 }
 
 .modal-sucesso .line-2 {
@@ -311,10 +313,6 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.modal-erro .line-1 img {
-    width: 110px;
 }
 
 .modal-erro .line-2 {
