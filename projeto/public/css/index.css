@@ -76,6 +76,10 @@ a {
     margin-left: 12px;
 }
 
+i#burguer {
+    display: none;
+}
+
 .navbar {
     width: 50%;
     display: flex;
@@ -621,4 +625,310 @@ footer span {
 
 .icones-social a:hover {
     transform: scale(1.1);
+}
+
+
+/* mobile (celulares) Samsumg Galaxy A51/71 */
+
+@media screen and (min-width: 412px) and (max-width:914px) {
+   
+    body{
+        overflow-x: hidden;
+
+        background: linear-gradient(90deg, #92e4c4, #ffffff);
+    }
+
+
+    /* NAVBAR */
+
+    /* i#burguer {
+        color: fff;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        cursor: pointer;
+    } */
+
+    .navbar,
+    .acesso {
+        display: none;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 7%;
+        width: 50%;
+    }
+
+    .logo img {
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* ________________________________________________ */
+
+    /* INICIO  */
+
+    .imgServidores img {
+        width: 440px;
+    }
+
+    .inicio {
+        display: flex;
+        flex-direction: column;
+        height: 80%;
+    }
+
+    .tituloHome p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .tituloHome .descricao p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .down-arrow {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 150px;
+        margin: 0 auto;
+        width: 50px;
+        animation: arrowTransition 2s ease-in-out infinite;
+    }
+
+    /* ________________________________________________ */
+
+    /* PROJETO */
+
+    #projeto {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .homeProjeto {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        flex-direction: column-reverse;
+    }
+
+    .projetoHome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80%;
+    }
+
+    .imgProjeto img {
+        width: 350px;
+        margin-bottom: 60px;
+    }
+
+    .projetoHome h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    .descricaoProjeto p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        text-align: center;
+        width: 500px;
+    }
+
+    /* ________________________________________________ */
+
+    /* SOBRE NÓS */
+
+    #sobreNos {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5%;
+    }
+
+    .tituloSobre h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    .descricaoSobre p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        text-align: center;
+        width: 400px;
+    }
+
+    .imgConecta {
+        display: none;
+    }
+
+    /* ________________________________________________ */
+
+    /* SOLUÇÃO */
+
+    #solucao {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .solucaoHome {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80%;
+        flex-direction: column-reverse;
+    }
+
+    .tituloSolucao {
+        margin-bottom: 2%;
+    }
+
+    .tituloSolucao h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    .descricaoSolucao p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        text-align: center;
+        width: 500px;
+    }
+
+    .imgSolucao img {
+        width: 350px;
+        margin-bottom: 60px;
+        margin-right: 50%;
+    }
+
+    /* ________________________________________________ */
+
+    /* MONITORAMENTO */
+
+    #monitoramento .line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .box-monitoramento {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 50%;
+    }
+
+    /* ________________________________________________ */
+
+    /* EQUIPE */
+
+    #equipe .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tituloEquipe p {
+        font-size: 16px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        text-align: center;
+    }
+
+    .line_1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .line_2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: 7%;
+    }
+
+    #equipeFotos {
+        margin-left: 13%;
+    }
+
+    /* ________________________________________________ */
+
+    /* FOOTER */
+
+    footer span {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .footerContato img {
+        width: 150px;
+    }
+
+    .descricao-footer img {
+        width: 30px;
+    }
+
+    .footerHome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footerHome h3 {
+        font-size: 24px;
+    }
+
+    .coluna1,
+    .coluna2,
+    .coluna3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 5vw;
+    }
+
+    .icones-social img {
+        width: 30px;
+        margin-bottom: 5vh;
+    }
+
+    /* ________________________________________________ */
 }

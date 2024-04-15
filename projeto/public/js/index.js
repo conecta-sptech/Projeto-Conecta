@@ -7,3 +7,11 @@ function mostrarRedesSociais(e) {
 function esconderRedesSociais(e) {
     e.classList.remove("active");
 }
+
+// function clickMenu() {
+//     if (itens.style.display == "block") {
+//         itens.style.display = "none";
+//     } else {
+//         itens.style.display = "block";
+//     }
+// }

@@ -304,3 +304,58 @@ input:focus {
         transform: translateX(0);
     }
 }
+
+/* mobile (celulares) Samsumg Galaxy A51/71 */
+
+@media screen and (min-width: 412px) and (max-width:914px) {
+
+    body {
+        background-image: url(../assets/img/fundoCadastrologin.png);
+    }
+
+    .login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .login .logo .img-logo {
+        width: 200px;
+    }
+
+    .img-logo {
+        width: 40px;
+    }
+
+    .slogan .slogan-bold {
+        font-size: 20px;
+    }
+
+    .texto-conta {
+        display: none;
+    }
+
+    .box-input {
+        display: none;
+    }
+
+    #inputEmail {
+        width: 190px;
+    }
+
+    #inputSenha {
+        width: 190px;
+    }
+
+    /* #submitBtn {
+        margin-top: 15%;
+        width: 100px;
+        background-color: red;
+    } */
+
+     /* .login .form .form-box .button-entrar{
+        margin-top:15px;
+        width: 100px;
+    }  */
+}

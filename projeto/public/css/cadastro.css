@@ -365,3 +365,58 @@ input:focus {
 #contagemRegressiva {
     color: #5ac69c;
 }
+
+@media screen and (min-width: 412px) and (max-width:914px) {
+
+    body {
+        background-image: url(../assets/img/fundoCadastrologin.png);
+    }
+
+    .cadastro {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+    }
+
+    .cadastro .logo .img-logo {
+        width: 200px;
+    }
+
+    .img-logo {
+        width: 40px;
+    }
+
+    .slogan .slogan-bold {
+        font-size: 20px;
+        margin-top: 5px;
+    }
+    
+
+    .texto-conta {
+        display: none;
+    }
+
+    .box-input {
+        display: none;
+    }
+
+    #inputNomeEmpresa,
+    #inputCnpj,
+    #inputEmail,
+    #inputSenha,
+    #inputConfirmarSenha {
+        width: 190px;
+    }
+
+    /* #submitBtn {
+        margin-top: 15%;
+        width: 100px;
+        background-color: red;
+    } */
+
+    /* .login .form .form-box .button-entrar{
+        margin-top:15px;
+        width: 100px;
+    }  */
+}
