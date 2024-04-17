@@ -8,10 +8,24 @@ function esconderRedesSociais(e) {
     e.classList.remove("active");
 }
 
-// function clickMenu() {
-//     if (itens.style.display == "block") {
-//         itens.style.display = "none";
-//     } else {
-//         itens.style.display = "block";
-//     }
-// }
+const mobileMenu = document.querySelector(".mobile-menu"),
+    navBar = document.querySelector(".navbar"),
+    navItems = document.querySelectorAll(".nav-item");
+
+function midiaBotao() {
+    const midiaBotao = document.querySelector(".mobile-menu");
+    mobileMenu.classList.toggle("active");
+    navBar.classList.toggle("active");
+    navItems.forEach((link, index) => {
+        link.style.animation
+            ? (link.style.animation = "")
+            : (link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`);
+    })
+}
+
+function handleMenuButton() {
+    navBar.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+
+    
+}

@@ -7,30 +7,36 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
-  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+  <!-- <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'> -->
   <title>Conecta</title>
 </head>
 
-<body>  
+<body>
   <header id="home">
-  
-    <nav>
-      <i  id="burguer" class="fi fi-br-menu-burger" onclick="clickMenu()"></i>
+
+    <nav class="nav">
       <a href="#home" class="logo">
         <img src="assets/img/logo.png">
         <span class="nome">CONECTA</span>
       </a>
-      <ul class="navbar">
-        <li><a href="#home" class="bottom-animation">Inicio</a></li>
-        <li><a href="#projeto" class="bottom-animation">Projeto</a></li>
-        <li><a href="#sobreNos" class="bottom-animation">Sobre Nós</a></li>
-        <li><a href="#solucao" class="bottom-animation">Solução</a></li>
-        <li><a href="#monitoramento" class="bottom-animation">Monitoramento</a></li>
-        <li><a href="#equipe" class="bottom-animation">Equipe</a></li>
+
+      <div id="div_menu" onclick="midiaBotao()" class="mobile-menu">
+        <div class="line-1 line"></div>
+        <div class="line-2 line"></div>
+        <div class="line-3 line"></div>
+      </div>
+
+      <ul class="navbar select-disable">
+        <li class="nav-item"><a href="#home" class="bottom-animation">Inicio</a></li>
+        <li class="nav-item"><a href="#projeto" class="bottom-animation">Projeto</a></li>
+        <li class="nav-item"><a href="#sobreNos" class="bottom-animation">Sobre Nós</a></li>
+        <li class="nav-item"><a href="#solucao" class="bottom-animation">Solução</a></li>
+        <li class="nav-item"><a href="#monitoramento" class="bottom-animation">Monitoramento</a></li>
+        <li class="nav-item"><a href="#equipe" class="bottom-animation">Equipe</a></li>
       </ul>
-      <ul id="itens" class="acesso">
-        <li><a href="login.html" class="bottom-animation">Login</a></li>
-        <li><a href="cadastro.html" class="bottom-animation">Cadastro</a></li>
+      <ul  class="acesso">
+        <li class="nav-item"><a href="login.html" class="bottom-animation">Login</a></li>
+        <li class="nav-item"><a href="cadastro.html" class="bottom-animation">Cadastro</a></li>
       </ul>
 
     </nav>
@@ -41,7 +47,7 @@
           <p> Transformando ideias em <br><strong>Redes de Sucesso!</strong> </p>
 
           <div class="descricao">
-            <p>Na jornada de transformação de ideias em<br>
+            <p>Na jornada de transformação de ideias em <br>
               redes de sucesso, encontramos o poder da<br>
               colaboração, inovação e determinação.<br> Vamos construir juntos o futuro<br> que sonhamos.</p>
           </div>
