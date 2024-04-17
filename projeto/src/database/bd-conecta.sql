@@ -23,7 +23,7 @@ CREATE TABLE Usuario (
 	senhaUsuario VARCHAR(20),
 	funcaoUsuario VARCHAR(45),
 	fkEmpresaUsuario INT,
-		CONSTRAINT fkEU FOREIGN KEY (fkEmpresaUsuario) REFERENCES Empresa(idEmpresa),
+	CONSTRAINT fkEU FOREIGN KEY (fkEmpresaUsuario) REFERENCES Empresa(idEmpresa),
 	PRIMARY KEY(idUsuario, fkEmpresaUsuario)
 ); 
 

@@ -35,7 +35,7 @@ function autenticar(email, senha) {
 
 function cadastrarGerente(nomeGerente, emailGerente, senhaGerente, idEmpresa) {
     const instrucao = `
-        INSERT INTO Usuario (nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresa) VALUES
+        INSERT INTO Usuario (nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresaUsuario) VALUES
             ("${nomeGerente}", "${emailGerente}", "${senhaGerente}", "Gerente", ${idEmpresa});
     `;
 
@@ -45,7 +45,7 @@ function cadastrarGerente(nomeGerente, emailGerente, senhaGerente, idEmpresa) {
 
 function cadastrarFuncionario(nomeGerente, emailGerente, senhaGerente, idEmpresa) {
     const instrucao = `
-        INSERT INTO Usuario (nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresa) VALUES
+        INSERT INTO Usuario (nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresaUsuario) VALUES
             ("${nomeGerente}", "${emailGerente}", "${senhaGerente}", "Funcionario", ${idEmpresa});
     `;
 
