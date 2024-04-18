@@ -667,7 +667,7 @@ footer span {
         z-index: 1;
     }
 
-    .line {
+    .lines {
         width: 32px;
         height: 2px;
         background-color: #fff;
@@ -703,7 +703,7 @@ footer span {
         border-bottom-right-radius: 10px;
     }
 
-    .navbar.active {
+    .navbar .active {
         transform: translateX(0);
         -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
         -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
@@ -913,41 +913,18 @@ footer span {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: 250%;
-        margin-left: 50%;
     }
 
-    .line{
+    #monitoramento .box-monitoramento {
         display: flex;
         align-items: center;
-        /* height: 90%; */
-    }
-
-    .box-monitoramento {
-        display: flex;
         justify-content: center;
-        align-items: center;
         flex-direction: column;
-    }
-    .box-monitoramento img{
-width: 100%;
-    }
-
-    .box-monitoramento h3{
-        /* padding-top: 30px; */
-        /* font-size: 14px; */
-    }
-    .box-monitoramento p{
-        margin-top: 5%;
     }
 
     /* ________________________________________________ */
 
     /* EQUIPE */
-
-    #equipe {
-        margin-top: 200%;
-    }
 
     #equipe .box {
         display: flex;
