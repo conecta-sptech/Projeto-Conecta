@@ -195,6 +195,10 @@ input:focus {
     border: 2px solid transparent;
 }
 
+.texto-conta-mobile {
+    display: none;
+}
+
 .modal-background {
     position: fixed;
     width: 100%;
@@ -309,8 +313,13 @@ input:focus {
 
 @media screen and (min-width: 412px) and (max-width:914px) {
 
-    body {
+    html {
         background-image: url(../assets/img/fundoCadastrologin.png);
+        overflow-x: hidden;
+    }
+
+    body {
+        overflow-x: hidden;
     }
 
     .login {
@@ -318,44 +327,42 @@ input:focus {
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        height: 90%;
     }
 
-    .login .logo .img-logo {
-        width: 200px;
+    .login .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 40%;
     }
 
-    .img-logo {
-        width: 40px;
+    .login .form-box {
+        padding: 0 50px;
     }
 
-    .slogan .slogan-bold {
-        font-size: 20px;
-    }
-
+    .login .div-slogan,
     .texto-conta {
         display: none;
+        width: 250px;
     }
 
-    .box-input {
-        display: none;
+    #inputEmail,
+    #inputSenha,
+    #submitBtn {
+        width: 250px;
     }
 
-    #inputEmail {
-        width: 190px;
+    .texto-conta-mobile {
+        display: flex;
+        font-size: 12px;
+        padding-top: 30px;
+        white-space: nowrap;
     }
 
-    #inputSenha {
-        width: 190px;
+    .texto-conta-mobile a {
+        margin-left: 4px;
     }
 
-    /* #submitBtn {
-        margin-top: 15%;
-        width: 100px;
-        background-color: red;
-    } */
-
-     /* .login .form .form-box .button-entrar{
-        margin-top:15px;
-        width: 100px;
-    }  */
 }
