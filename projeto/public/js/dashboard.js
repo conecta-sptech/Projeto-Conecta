@@ -30,6 +30,9 @@ const inputBuscarMaquinasModalInicial = document.getElementById("inputBuscarMaqu
 const loadingBackground = document.querySelector(".loading-background");
 const mainContentLoading = document.getElementById("mainContentLoading");
 
+const tbodyModalInicial = document.getElementById("tbodyModalInicial");
+let listaMaquinas = null;
+
 function removerTelaLoading() {
     setTimeout(() => {
         mainContentLoading.setAttribute("id", "mainContentNoLoading");
@@ -98,11 +101,31 @@ function carregarInformacoesTela() {
     }
 }
 
+function listarMaquinasModalInicial() {
+    for (let i = 0; i < listaMaquinas.length; i++) {
+        tbodyModalInicial.innerHTML += `
+        <tr>
+            <td class="icons-ct">
+                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio" data-id="${listaMaquinas[i].idMaquina}">
+                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                </button>
+            </td>
+            <td class="hostname-td">${listaMaquinas[i].hostnameMaquina}</td>
+            <td class="ram-td">${listaMaquinas[i].ramMaquina} GB</td>
+            <td class="disco-td">${listaMaquinas[i].discoMaquina} GB</td>
+            <td class="clock-td">${listaMaquinas[i].clockProcessadorMaquina} GHz</td>
+            <td class="nucleos-td">${listaMaquinas[i].nucleosProcessadorMaquina}</td>
+        </tr>
+        `;
+    }
+}
+
 function carregarModalInicial() {
     if (sessionStorage.getItem("FUNCAO_USUARIO") != "Administrador") {
         setTimeout(() => {
             modalBackground.classList.add("active");
             modalInicial.classList.add("active");
+            listarMaquinasModalInicial();
         }, 1600);
     } else {
         chartsGerenteFuncionario.remove();
@@ -132,12 +155,20 @@ function definirDashboard(e) {
     modalInicial.classList.remove("active");
 }
 
+function listarMaquinas() {
+    fetch(`/maquina/buscar-maquina/${sessionStorage.getItem("ID_EMPRESA")}`)
+        .then(res => res.json().then(res => {
+            listaMaquinas = res;
+        }));
+}
+
 window.addEventListener("load", () => {
     if (sessionStorage.length == 0) {
         window.location.href = "../login.html";
     } else {
         removerTelaLoading();
         carregarModalInicial();
+        listarMaquinas();
     }
 });
 

@@ -19,6 +19,10 @@ tbody::-webkit-scrollbar-thumb {
     border-radius: 20px;
 }
 
+input::-webkit-inner-spin-button {
+    appearance: none;
+}
+
 html,
 body {
     width: 100%;
@@ -128,8 +132,8 @@ nav .line-3 #btnPesquisarMaquina:hover {
     background-color: #5ac69c;
 }
 
-nav .line-3 #btnPesquisarMaquina .search-icon {
-    height: 16px;
+nav .line-3 #btnPesquisarMaquina .eye-icon {
+    height: 20px;
     margin-right: 10px;
 }
 
@@ -878,20 +882,15 @@ main .chart h3 {
     margin-right: 16px;
 }
 
-.modal #btnCancelar {
+.modal .btn-cancelar {
     margin-right: 4px;
 }
 
-.modal-logout #btnCancelar {
+.modal-logout .btn-cancelar {
     margin-left: 4px;
 }
 
-.modal #btnCancelar,
-.modal #btnSalvar {
-    font-size: 14px;
-}
-
-#btnCancelar {
+.btn-cancelar {
     padding: 12px 16px;
     background-color: #e53c3c;
     color: #ffffff;
@@ -934,7 +933,7 @@ main .chart h3 {
     margin-left: 8px;
 }
 
-#btnSalvar {
+.btn-salvar {
     padding: 12px 16px;
     background-color: #5ac69c;
     color: #ffffff;
@@ -945,11 +944,11 @@ main .chart h3 {
     transition: all .3s ease-in-out;
 }
 
-#btnSalvar:hover {
+.btn-salvar:hover {
     background-color: #31b180;
 }
 
-#btnCancelar:hover,
+.btn-cancelar:hover,
 .modal-logout .btn-logout:hover,
 .modal-inicio .btn-logout:hover {
     background-color: #c72727;
@@ -959,7 +958,7 @@ main .chart h3 {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 846px;
+    width: 730px;
     height: 600px;
     border-radius: 25px;
     background-color: #ffffff;
@@ -1112,8 +1111,8 @@ main .chart h3 {
 .modal-inicio .line-2 .tabela-ct table .hostname-td,
 .modal-inicio .line-2 .tabela-ct table .ram-td,
 .modal-inicio .line-2 .tabela-ct table .disco-td,
-.modal-inicio .line-2 .tabela-ct table .cpu-td,
-.modal-inicio .line-2 .tabela-ct table .rede-td {
+.modal-inicio .line-2 .tabela-ct table .clock-td,
+.modal-inicio .line-2 .tabela-ct table .nucleos-td {
     text-align: center;
     overflow: hidden;
 }
@@ -1134,11 +1133,11 @@ main .chart h3 {
     width: 114px;
 }
 
-.modal-inicio .line-2 .tabela-ct table .cpu-td {
+.modal-inicio .line-2 .tabela-ct table .clock-td {
     width: 114px;
 }
 
-.modal-inicio .line-2 .tabela-ct table .rede-td {
+.modal-inicio .line-2 .tabela-ct table .nucleos-td {
     width: 114px;
 }
 
@@ -1237,4 +1236,101 @@ main .chart h3 {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.modal-gerenciar-empresa {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 580px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    z-index: -1;
+    transition: all .4s ease-in-out;
+}
+
+.modal-gerenciar-empresa.active {
+    z-index: 3;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-gerenciar-empresa .line-1 {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-gerenciar-empresa .line-1 h4 {
+    margin-left: 24px;
+    margin-top: 18px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.modal-gerenciar-empresa .line-1 button {
+    width: 24px;
+    margin-right: 22px;
+    margin-top: 16px;
+}
+
+.modal-gerenciar-empresa .line-1 button svg g path {
+    transition: all .3s ease-in-out;
+}
+
+.modal-gerenciar-empresa .line-1 button:hover svg g path {
+    fill: #c72727;
+}
+
+.modal-gerenciar-empresa .line-2 {
+    width: 100%;
+    height: 79%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.modal-gerenciar-empresa label {
+    width: 400px;
+    margin-top: 16px;
+    margin-left: 16px;
+    font-weight: 600;
+}
+
+.modal-gerenciar-empresa input {
+    margin-top: 6px;
+    width: 400px;
+    padding: 6px 6px 6px 12px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    transition: all .4s ease-in-out;
+}
+
+.modal-gerenciar-empresa input.error {
+    border-bottom: 1px solid #c72727;
+}
+
+.modal-gerenciar-empresa input:focus {
+    outline: none;
+}
+
+.modal-gerenciar-empresa .line-3 {
+    width: 100%;
+    height: 12%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-gerenciar-empresa .line-3 .btn-ct {
+    margin-right: 16px;
+}
+
+.modal-gerenciar-empresa .btn-cancelar {
+    margin-right: 4px;
 }
