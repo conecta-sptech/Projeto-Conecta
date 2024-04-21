@@ -146,17 +146,36 @@
                         <div class="line-1">
                             <div class="chart">
                                 <h3>MEMÓRIA</h3>
+                                <div id="chartMemoriaRamUso"></div>
+                                <div id="chartMemoriaRamSo"></div>
                             </div>
                             <div class="chart">
                                 <h3>CPU</h3>
+                                <div id="chartCpuUso"></div>
+                                <div id="chartCpuProcessos"></div>
+                                <div id="chartCpuNucleos"></div>
+                                <div id="chartCpuTemperatura"></div>
                             </div>
                         </div>
                         <div class="line-2">
                             <div class="chart">
                                 <h3>DISCO</h3>
+                                <div id="chartDiscoArmazenamento"></div>
+                                <canvas id="chartDiscoSwap"></canvas>
                             </div>
                             <div class="chart">
                                 <h3>REDE</h3>
+                                <div style="display: flex;">
+                                    <div style="position: relative;">
+                                        <div id="chartRede1"></div>
+                                        <h3 class="text">Download</h3>
+                                    </div>
+
+                                    <div style="position: relative;">
+                                        <div id="chartRede2"></div>
+                                        <h3 class="text">Upload</h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -523,6 +542,9 @@
     <script src="../js/usuario.js"></script>
     <script src="../js/maquina.js"></script>
     <script src="../js/empresa.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/charts.js"></script>
     <script src="../js/dashboard.js"></script>
 </body>
 

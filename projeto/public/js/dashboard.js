@@ -143,12 +143,33 @@ function definirDashboard(e) {
 
     if (sessionStorage.getItem("FUNCAO_USUARIO") == "Administrador") {
         chartsAdmin.classList.add("active");
+        chartsGerenteFuncionario.remove();
 
         //Fetch + função de montagem dos gráficos aqui
     } else {
         chartsGerenteFuncionario.classList.add("active");
+        chartsAdmin.remove();
 
-        //Fetch + função de montagem dos gráficos aqui
+        chartMemoriaRamUso.innerHTML = "";
+        chartMemoriaRamSo.innerHTML = "";
+        chartCpuUso.innerHTML = "";
+        chartCpuProcessos.innerHTML = "";
+        chartCpuNucleos.innerHTML = "";
+        chartCpuTemperatura.innerHTML = "";
+        chartDiscoArmazenamento.innerHTML = "";
+        // chartDiscoSwap.innerHTML = "";
+        chartRede1.innerHTML = "";
+        chartRede2.innerHTML = "";
+
+        gerarGraficoMemoriaRamUso();
+        gerarGraficoMemoriaRamSo();
+        gerarGraficoProcessadorUso();
+        gerarGraficoProcessadorProcessos();
+        gerarGraficoProcessadorNucleos();
+        gerarGraficoProcessadorTemperatura();
+        gerarGraficoDiscoArmazenamento();
+        // gerarGraficoDiscoMemoriaSwap();
+        gerarGraficoRede();
     }
 
     modalBackground.classList.remove("active");
