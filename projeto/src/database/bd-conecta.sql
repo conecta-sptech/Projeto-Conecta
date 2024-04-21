@@ -27,25 +27,44 @@ CREATE TABLE Usuario (
 ); 
 
 CREATE TABLE Maquina (
-	idMaquina INT,
+	idMaquina INT AUTO_INCREMENT,
     hostnameMaquina VARCHAR (25),
     ramMaquina INT,
     discoMaquina INT,
     clockProcessadorMaquina decimal(4,2),
     nucleosProcessadorMaquina INT,
+    soMaquina VARCHAR(20),
+    ociosidadeMaquina DATETIME,
     fkEmpresaMaquina INT,
 		CONSTRAINT fkEM FOREIGN KEY (fkEmpresaMaquina) REFERENCES Empresa(idEmpresa),
 	PRIMARY KEY (idMaquina, fkEmpresaMaquina)	
 );
 
--- Daqui em diante, precisa de validação.
 CREATE TABLE Componente(
-	idComponente INT PRIMARY KEY,
-    nomeComponente VARCHAR(25)
+	idComponente INT AUTO_INCREMENT,
+    nomeComponente VARCHAR(25),
+    intervaloLeitura INT,
+    fkMaquinaComponente INT,
+		CONSTRAINT fkMComp FOREIGN KEY (fkMaquinaComponente) REFERENCES Maquina(idMaquina),
+    PRIMARY KEY (idComponente, fkMaquinaComponente)
+);
+
+CREATE TABLE Metrica (
+	idMetrica INT AUTO_INCREMENT,
+    nomeLeitura VARCHAR(45),
+    minMetrica1 INT,
+    maxMetrica1 INT,
+    maxMetrica2 INT,
+    maxMetrica3 INT,
+    fkComponenteMetrica INT,
+		CONSTRAINT fkCMet FOREIGN KEY (fkComponenteMetrica) REFERENCES Componente(idComponente),
+	fkMaquinaMetrica INT,
+		CONSTRAINT fkMMet FOREIGN KEY (fkMaquinaMetrica) REFERENCES Maquina(idMaquina),
+	PRIMARY KEY (idMetrica, fkComponenteMetrica, fkMaquinaMetrica)
 );
 
 CREATE TABLE LeituraMemoria ( 
-	idLeituraMemoria INT PRIMARY KEY AUTO_INCREMENT,
+	idLeituraMemoria INT AUTO_INCREMENT,
 	memoriaDisponivel INT,
 	memoriaDedicadaSo INT,
 	memoriaTaxaTransferencia INT,
@@ -57,7 +76,7 @@ CREATE TABLE LeituraMemoria (
 );
 
 CREATE TABLE LeituraCpu ( 
-	idLeituraCpu INT PRIMARY KEY AUTO_INCREMENT,
+	idLeituraCpu INT AUTO_INCREMENT,
 	cpuDisponivel INT,
 	cpuTemperatura INT,
 	fkProcessosLeitura INT,
@@ -69,7 +88,7 @@ CREATE TABLE LeituraCpu (
 );
 
 CREATE TABLE Processo (
-	idProcesso INT,
+	idProcesso INT AUTO_INCREMENT,
     fkLeituraCpu INT,
 		CONSTRAINT fkLP FOREIGN KEY (fkLeituraCpu) REFERENCES LeituraCpu(idLeituraCpu),
     fkMaquinaProcesso INT,
@@ -78,7 +97,7 @@ CREATE TABLE Processo (
 );
 
 CREATE TABLE LeituraDisco ( 
-	idLeituraDisco INT PRIMARY KEY AUTO_INCREMENT,
+	idLeituraDisco INT AUTO_INCREMENT,
 	discoDisponivel INT,
 	discoMemoriaSwap INT,
     discoTemperatura INT,
@@ -90,7 +109,7 @@ CREATE TABLE LeituraDisco (
 );
 
 CREATE TABLE LeituraRede ( 
-	idLeituraRede INT PRIMARY KEY AUTO_INCREMENT,
+	idLeituraRede INT AUTO_INCREMENT,
 	redeDownload DECIMAL(5,2),
 	redeUpload DECIMAL(5,2),
 	redePing INT,
@@ -101,15 +120,13 @@ CREATE TABLE LeituraRede (
 	PRIMARY KEY (idLeituraRede, fkComponenteRede, fkMaquinaRede)
 );
 
-CREATE TABLE LogAlerta ( 
-	idAlerta INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Alerta ( 
+	idAlerta INT AUTO_INCREMENT,
 	corAlerta VARCHAR(45),
 	dataHoraAlerta VARCHAR(45),
 	fkComponenteAlerta INT,
 		CONSTRAINT fkCA FOREIGN KEY (fkComponenteAlerta) REFERENCES Componente(idComponente),
 	fkMaquinaAlerta INT,
 		CONSTRAINT fkMA FOREIGN KEY (fkMaquinaAlerta) REFERENCES Maquina(idMaquina),
-	fkMaquinaAlerta INT,
-		CONSTRAINT fkMA FOREIGN KEY (fkMaquinaAlerta) REFERENCES Maquina(idMaquina),
-	PRIMARY KEY (idAlerta, fkComponenteAlerta, fkMaquinaAlerta, fkMaquinaAlerta)
+	PRIMARY KEY (idAlerta, fkComponenteAlerta, fkMaquinaAlerta)
 );
