@@ -1,7 +1,7 @@
 -- Criação de Usuário no Banco de Dados
 CREATE USER "UserConecta"@"localhost" IDENTIFIED BY "Conecta2024";
 GRANT ALL PRIVILEGES ON Conecta.* to "UserConecta"@"localhost";
-
+SHOW TABLES;
 -- Criação do Banco de Dados
 CREATE DATABASE Conecta;
 USE Conecta;
