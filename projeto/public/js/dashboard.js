@@ -145,30 +145,24 @@ function definirDashboard(e) {
         chartsAdmin.classList.add("active");
         chartsGerenteFuncionario.remove();
 
-        //Fetch + função de montagem dos gráficos aqui
     } else {
         chartsGerenteFuncionario.classList.add("active");
         chartsAdmin.remove();
 
-        chartMemoriaRamUso.innerHTML = "";
-        chartMemoriaRamSo.innerHTML = "";
-        chartCpuUso.innerHTML = "";
-        chartCpuProcessos.innerHTML = "";
-        chartCpuNucleos.innerHTML = "";
-        chartCpuTemperatura.innerHTML = "";
-        chartDiscoArmazenamento.innerHTML = "";
-        // chartDiscoSwap.innerHTML = "";
+        chartMemoriaTaxaCt.style.display = "none";
+        chartMemoriaRam.style.display = "block";
+        chartDiscoSwap.style.display = "none";
+        chartDisco.style.display = "block";
+
+        chartMemoriaRam.innerHTML = "";
+        chartCpu.innerHTML = "";
+        chartDisco.innerHTML = "";
         chartRede1.innerHTML = "";
         chartRede2.innerHTML = "";
 
         gerarGraficoMemoriaRamUso();
-        gerarGraficoMemoriaRamSo();
         gerarGraficoProcessadorUso();
-        gerarGraficoProcessadorProcessos();
-        gerarGraficoProcessadorNucleos();
-        gerarGraficoProcessadorTemperatura();
         gerarGraficoDiscoArmazenamento();
-        // gerarGraficoDiscoMemoriaSwap();
         gerarGraficoRede();
     }
 

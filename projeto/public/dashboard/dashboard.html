@@ -145,23 +145,58 @@
                     <div class="chart-ct">
                         <div class="line-1">
                             <div class="chart">
-                                <h3>MEMÓRIA</h3>
-                                <div id="chartMemoriaRamUso"></div>
-                                <div id="chartMemoriaRamSo"></div>
+                                <h3>MEMÓRIA RAM</h3>
+                                <div id="chartMemoriaRam"></div>
+
+                                <div id="chartMemoriaTaxaCt" style="display: none;">
+                                    <div style="position: relative;">
+                                        <div id="chartMemoriaTaxa1"></div>
+                                        <h3 class="text">Download</h3>
+                                    </div>
+
+                                    <div style="position: relative;">
+                                        <div id="chartMemoriaTaxa2"></div>
+                                        <h3 class="text">Upload</h3>
+                                    </div>
+                                </div>
+
+                                <button class="arrow-down-btn" id="btnExibirListaRam" onclick="exibirChartsRam()"><img
+                                        src="../assets/svg/arrow-down-icon.svg"></button>
+                                <div class="chart-list-ct" id="chartListRam">
+                                    <button onclick="exibirChartEscolhido(this)" data-id="1">Mémoria RAM em uso</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="2">RAM dedicada ao SO</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="3">Taxa de
+                                        Transferência</button>
+                                </div>
                             </div>
                             <div class="chart">
                                 <h3>CPU</h3>
-                                <div id="chartCpuUso"></div>
-                                <div id="chartCpuProcessos"></div>
-                                <div id="chartCpuNucleos"></div>
-                                <div id="chartCpuTemperatura"></div>
+                                <div id="chartCpu"></div>
+
+                                <button class="arrow-down-btn" id="btnExibirListaCpu" onclick="exibirChartsCpu()"><img
+                                        src="../assets/svg/arrow-down-icon.svg"></button>
+                                <div class="chart-list-ct" id="chartListCpu">
+                                    <button onclick="exibirChartEscolhido(this)" data-id="4">CPU em uso</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="5">Uso por Núcleo</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="6">Consumos na CPU</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="7">Temperatura da CPU</button>
+                                </div>
                             </div>
                         </div>
                         <div class="line-2">
                             <div class="chart">
                                 <h3>DISCO</h3>
-                                <div id="chartDiscoArmazenamento"></div>
+                                <div id="chartDisco"></div>
                                 <canvas id="chartDiscoSwap"></canvas>
+
+                                <button class="arrow-down-btn" id="btnExibirListaDisco"
+                                    onclick="exibirChartsDisco()"><img src="../assets/svg/arrow-down-icon.svg"></button>
+                                <div class="chart-list-ct" id="chartListDisco">
+                                    <button onclick="exibirChartEscolhido(this)" data-id="8">Disco em uso</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="9">Uso de Memória
+                                        Virtual</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="10">Uso do Cache</button>
+                                </div>
                             </div>
                             <div class="chart">
                                 <h3>REDE</h3>
@@ -432,14 +467,14 @@
                             <thead>
                                 <tr>
                                     <th class="nome-td">Nome</th>
-                                    <th class="ip-td">IP</th>
+                                    <th class="ip-td">Hostname</th>
                                     <th class="icons-ct"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="nome-td">Teste</td>
-                                    <td class="ip-td">192.168.0.100</td>
+                                    <td class="ip-td">Host01</td>
                                     <td class="icons-ct">
                                         <button id="btnEditar">
                                             <img src="../assets/svg/pencil.svg">

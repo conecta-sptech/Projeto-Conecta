@@ -181,7 +181,8 @@ nav .line-4 .user-ct .down-arrow-icon {
     transition: all .2s ease-in-out;
 }
 
-nav .line-4 .user-ct .down-arrow-icon.active {
+nav .line-4 .user-ct .down-arrow-icon.active,
+.chart .arrow-down-btn.active img {
     transform: rotate(180deg);
 }
 
@@ -454,6 +455,7 @@ main .line-2 .chart {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 main .column-1 .chart {
@@ -497,6 +499,48 @@ main .chart h3 {
 #chartsAdmin.active {
     opacity: 1;
     visibility: visible;
+}
+
+.chart .arrow-down-btn {
+    position: absolute;
+    bottom: 6px;
+    right: 24px;
+}
+
+.chart .arrow-down-btn img {
+    width: 20px;
+    transition: all .2s ease;
+}
+
+.chart-list-ct {
+    position: absolute;
+    right: -76px;
+    bottom: 36px;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 24px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px;
+    z-index: 3;
+}
+
+.chart-list-ct.active {
+    display: flex;
+}
+
+.chart-list-ct button {
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    padding: 4px;
+    margin: 2px 0;
+    transition: all .4s ease-in-out;
+    border-radius: 8px;
+}
+
+.chart-list-ct button:hover {
+    background-color: #5ac69c;
 }
 
 .modal-background {
@@ -1345,24 +1389,21 @@ main .chart h3 {
     margin-right: 4px;
 }
 
-#chartMemoriaRamSo,
-#chartCpuProcessos,
-#chartCpuNucleos,
-#chartCpuTemperatura,
-#chartDiscoSwap {
-    display: none !important;
-}
-
-#chartMemoriaRamUso,
-#chartDiscoArmazenamento {
+#chartMemoriaRam,
+#chartDisco {
     transform: scale(0.8);
     margin-top: -12px;
 }
 
-#chartCpuUso {
+#chartCpu {
     width: 900px;
     transform: scale(0.5);
     margin-top: -90px;
+}
+
+#chartDiscoSwap {
+    width: 370px !important;
+    height: 188px !important;
 }
 
 #chartRede1,
@@ -1371,6 +1412,15 @@ main .chart h3 {
     height: 200px;
     margin-top: -26px;
     transform: scale(0.9);
+}
+
+.line-1 .chart .text {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #ffffff;
 }
 
 .line-2 .chart .text {
