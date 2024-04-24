@@ -132,7 +132,7 @@ nav .line-3 #btnPesquisarMaquina:hover {
     background-color: #5ac69c;
 }
 
-nav .line-3 #btnPesquisarMaquina .eye-icon {
+nav .line-3 #btnPesquisarMaquina .eye-icon-maquina {
     height: 20px;
     margin-right: 10px;
 }
@@ -391,13 +391,30 @@ main .kpi-ct {
 
 main .kpi-ct .kpi {
     padding: 0 100px;
-    height: 60px;
+    height: 72px;
     color: #ffffff;
     background-color: #000000;
     border-radius: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+main .kpi-ct .kpi div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .kpi-ct .kpi h4 {
+    margin-bottom: 8px;
+}
+
+
+main .kpi-ct .kpi svg {
+    height: 20px;
+    margin-right: 8px;
 }
 
 main .kpi-ct .kpi span {
