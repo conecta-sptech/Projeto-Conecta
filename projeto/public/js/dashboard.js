@@ -226,3 +226,14 @@ function encerrarSessao() {
     sessionStorage.clear();
     window.location.href = "../login.html";
 }
+
+function mostrarDescricaoKpi(e) {
+    const id = e.getAttribute("data-id");
+    document.getElementById(id).classList.add("active");
+
+}
+
+function esconderDescricaoKpi(e) {
+    const id = e.getAttribute("data-id");
+    document.getElementById(id).classList.remove("active");
+}

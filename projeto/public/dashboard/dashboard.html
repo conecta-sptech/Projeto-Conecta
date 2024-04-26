@@ -137,7 +137,8 @@
 
                 <div id="chartsGerenteFuncionario">
                     <div class="kpi-ct">
-                        <div class="kpi">
+                        <div class="kpi" data-id="kpiRam" onmouseover="mostrarDescricaoKpi(this)"
+                            onmouseout="esconderDescricaoKpi(this)">
                             <h4>RAM's</h4>
                             <div>
                                 <svg id="imgKpiRam" xmlns="http://www.w3.org/2000/svg"
@@ -150,9 +151,14 @@
                                 </svg>
                                 <span id="kpi1">15</span>
                             </div>
+
+                            <div id="kpiRam" class="descricao-kpi">
+                                <span>Máquinas com RAM em estado de alerta</span>
+                            </div>
                         </div>
 
-                        <div class="kpi">
+                        <div class="kpi" data-id="kpiDisco" onmouseover="mostrarDescricaoKpi(this)"
+                            onmouseout="esconderDescricaoKpi(this)">
                             <h4>DISCOS</h4>
                             <div>
                                 <svg id="imgKpiDisco" xmlns="http://www.w3.org/2000/svg"
@@ -165,9 +171,14 @@
                                 </svg>
                                 <span id="kpi2">26</span>
                             </div>
+
+                            <div id="kpiDisco" class="descricao-kpi">
+                                <span>Máquinas com disco em estado de alerta</span>
+                            </div>
                         </div>
 
-                        <div class="kpi">
+                        <div class="kpi" data-id="kpiCpu" onmouseover="mostrarDescricaoKpi(this)"
+                            onmouseout="esconderDescricaoKpi(this)">
                             <h4>CPU's</h4>
                             <div>
                                 <svg id="imgKpiCpu" xmlns="http://www.w3.org/2000/svg"
@@ -180,9 +191,14 @@
                                 </svg>
                                 <span id="kpi3">06</span>
                             </div>
+
+                            <div id="kpiCpu" class="descricao-kpi">
+                                <span>Máquinas com CPU em estado de alerta</span>
+                            </div>
                         </div>
 
-                        <div class="kpi">
+                        <div class="kpi" data-id="kpiRede" onmouseover="mostrarDescricaoKpi(this)"
+                            onmouseout="esconderDescricaoKpi(this)">
                             <h4>REDES</h4>
                             <div>
                                 <svg id="imgKpiRede" xmlns="http://www.w3.org/2000/svg"
@@ -194,6 +210,10 @@
                                     </g>
                                 </svg>
                                 <span id="kpi4">44</span>
+                            </div>
+
+                            <div id="kpiRede" class="descricao-kpi">
+                                <span>Máquinas com a rede em estado de alerta</span>
                             </div>
                         </div>
                     </div>
