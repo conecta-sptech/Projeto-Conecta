@@ -512,6 +512,11 @@ main .chart h3 {
     transition: all .4s ease-in-out;
 }
 
+#chartsAdmin {
+    display: flex;
+    align-items: center;
+}
+
 #chartsGerenteFuncionario.active,
 #chartsAdmin.active {
     opacity: 1;
