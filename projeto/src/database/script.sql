@@ -63,35 +63,12 @@ CREATE TABLE Metrica (
 	PRIMARY KEY (idMetrica, fkComponenteMetrica, fkMaquinaMetrica)
 );
 
-CREATE TABLE LeituraMemoria ( 
-	idLeituraMemoria INT AUTO_INCREMENT,
-	memoriaDisponivel INT,
-	memoriaVirtual INT,
-	tempoLigado INT,
-    fkComponenteMemoria INT,
-		CONSTRAINT fkCM FOREIGN KEY (fkComponenteMemoria) REFERENCES Componente(idComponente),
-	fkMaquinaMemoria INT,
-		CONSTRAINT fkMM FOREIGN KEY (fkMaquinaMemoria) REFERENCES Maquina(idMaquina),
-	PRIMARY KEY (idLeituraMemoria, fkComponenteMemoria, fkMaquinaMemoria)
-);
-
-CREATE TABLE LeituraCpu ( 
-	idLeituraCpu INT AUTO_INCREMENT,
-	cpuVelocidade DECIMAL(3,2),
-    cpuCarga DECIMAL(5,2),
-	cpuTemperatura DECIMAL(5,2),
-	fkComponenteCpu INT,
-		CONSTRAINT fkCC FOREIGN KEY (fkComponenteCpu) REFERENCES Componente(idComponente),
-	fkMaquinaCpu INT,
-		CONSTRAINT fkMC FOREIGN KEY (fkMaquinaCpu) REFERENCES Maquina(idMaquina),
-	PRIMARY KEY (idLeituraCpu, fkComponenteCpu, fkMaquinaCpu)
-);
-
 CREATE TABLE LeituraDisco ( 
 	idLeituraDisco INT AUTO_INCREMENT,
-	discoDisponivel INT,
+	discoDisponivel DECIMAL(5,2),
 	discoTaxaLeitura INT,
     discoTaxaEscrita INT,
+    dataHoraLeitura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fkComponenteDisco INT,
 		CONSTRAINT fkCD FOREIGN KEY (fkComponenteDisco) REFERENCES Componente(idComponente),
 	fkMaquinaDisco INT,
@@ -99,10 +76,24 @@ CREATE TABLE LeituraDisco (
 	PRIMARY KEY (idLeituraDisco, fkComponenteDisco, fkMaquinaDisco)
 );
 
+CREATE TABLE LeituraMemoria ( 
+	idLeituraMemoria INT AUTO_INCREMENT,
+	memoriaDisponivel DECIMAL(5,2),
+	memoriaVirtual DECIMAL(5,2),
+	tempoLigado INT,
+	dataHoraLeitura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fkComponenteMemoria INT,
+		CONSTRAINT fkCM FOREIGN KEY (fkComponenteMemoria) REFERENCES Componente(idComponente),
+	fkMaquinaMemoria INT,
+		CONSTRAINT fkMM FOREIGN KEY (fkMaquinaMemoria) REFERENCES Maquina(idMaquina),
+	PRIMARY KEY (idLeituraMemoria, fkComponenteMemoria, fkMaquinaMemoria)
+);
+
 CREATE TABLE LeituraRede ( 
 	idLeituraRede INT AUTO_INCREMENT,
-	redeDownload DECIMAL(5,2),
-	redeUpload DECIMAL(5,2),
+	redeDownload INT,
+	redeUpload INT,
+	dataHoraLeitura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fkComponenteRede INT,
 		CONSTRAINT fkCR FOREIGN KEY (fkComponenteRede) REFERENCES Componente(idComponente),
 	fkMaquinaRede INT,
@@ -110,10 +101,23 @@ CREATE TABLE LeituraRede (
 	PRIMARY KEY (idLeituraRede, fkComponenteRede, fkMaquinaRede)
 );
 
+CREATE TABLE LeituraCpu ( 
+	idLeituraCpu INT AUTO_INCREMENT,
+	cpuUso DECIMAL(5,2),
+    cpuCarga DECIMAL(5,2),
+	cpuTemperatura DECIMAL(5,2),
+	dataHoraLeitura TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	fkComponenteCpu INT,
+		CONSTRAINT fkCC FOREIGN KEY (fkComponenteCpu) REFERENCES Componente(idComponente),
+	fkMaquinaCpu INT,
+		CONSTRAINT fkMC FOREIGN KEY (fkMaquinaCpu) REFERENCES Maquina(idMaquina),
+	PRIMARY KEY (idLeituraCpu, fkComponenteCpu, fkMaquinaCpu)
+);
+
 CREATE TABLE Alerta ( 
 	idAlerta INT AUTO_INCREMENT,
 	corAlerta VARCHAR(45),
-	dataHoraAlerta VARCHAR(45),
+	dataHoraAlerta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	fkComponenteAlerta INT,
 		CONSTRAINT fkCA FOREIGN KEY (fkComponenteAlerta) REFERENCES Componente(idComponente),
 	fkMaquinaAlerta INT,
