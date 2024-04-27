@@ -765,6 +765,33 @@ function gerarGraficoRede() {
     new ApexCharts(chartRede2, uploadOptions).render();
 }
 
+// Gráfico de Inatividade Dashboard Gerentes
+
+let options = {
+    series: [33, 77],
+    chart: {
+        type: 'donut',
+        width: 400
+    },
+    dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+            return val + "%"
+        },
+        style: {
+            colors: ['#ffffff']
+        },
+        offsetX: -10
+    },
+    labels: [' Máquinas Inativas', ' Máquinas Ativas'],
+    colors: ['#808080', '#5ac69c']
+};
+
+let chart = new ApexCharts(document.querySelector("#chartInatividade"), options);
+chart.render();
+
+//   -----------------------------------------------------
+
 function exibirChartsRam() {
     btnExibirListaRam.classList.toggle("active");
     chartListRam.classList.toggle("active");
@@ -874,3 +901,11 @@ function exibirChartEscolhido(e) {
         gerarGraficoDiscoCache();
     }
 }
+
+// const iconeMaquina = document.getElementById("svgLaptop");
+// const copias = 10;
+
+// for (let i = 0; i < copias; i++) {
+//     const iconeClonado = iconeMaquina.cloneNode(true);
+//     // document.body.appendChild(iconeClonado);
+// }

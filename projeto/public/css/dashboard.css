@@ -1478,3 +1478,85 @@ main .chart h3 {
     font-size: 13px;
     color: #ffffff;
 }
+
+.tabela-inatividade {
+    width: 100%;
+    height: 86%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabela-inatividade table {
+    border-collapse: separate;
+    border-spacing: 6px;
+}
+
+.tabela-inatividade .ip-td,
+.tabela-inatividade .hostname-td,
+.tabela-inatividade .tempo-td {
+    background-color: #5ac69c;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.tabela-inatividade th,
+.tabela-inatividade td {
+    padding: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: normal;
+    color: #333;
+}
+
+.tabela-inatividade th {
+    background-color: #f0f0f0;
+    font-weight: normal;
+}
+
+.tabela-inatividade thead {
+    background-color: #333;
+    color: #fff;
+}
+
+.tabela-inatividade thead th {
+    padding: 5px 15px;
+}
+
+.maquina-nome {
+    font-weight: bold;
+}
+
+#chartInatividade {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#chartInatividade .apexcharts-legend-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff !important;
+    text-transform: uppercase;
+}
+
+.column-2 .chart #chartInatividade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.inventario {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.inventario .maquina-01 svg g path,
+.inventario .maquina-02 svg g path,
+.inventario .maquina-03 svg g path,
+.inventario .maquina-04 svg g path{
+    fill: #5ac69c;
+}
