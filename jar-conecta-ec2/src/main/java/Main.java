@@ -20,7 +20,6 @@ public class Main {
             while (true) {
                 Looca looca01 = new Looca();
                 System.out.println(looca01.getRede().getGrupoDeInterfaces().getInterfaces());
-                System.out.println(looca01.getRede().getGrupoDeInterfaces().getInterfaces().get(0));
 
                 LeituraDisco discoAnterior = new LeituraDisco();
                 LeituraRede redeAnterior = new LeituraRede();
@@ -29,7 +28,6 @@ public class Main {
 
                 Looca looca02 = new Looca();
                 System.out.println(looca02.getRede().getGrupoDeInterfaces().getInterfaces());
-                System.out.println(looca02.getRede().getGrupoDeInterfaces().getInterfaces().get(0));
 
                 LeituraDisco discoAtual = new LeituraDisco();
                 LeituraRede redeAtual = new LeituraRede();
@@ -70,7 +68,7 @@ public class Main {
                         discoAtual.discoDisponivel, taxa_escrita_disco, taxa_leitura_disco,
                         memoria.memoriaDisponivel, memoria.memoriaVirtual, memoria.tempoLigado,
                         taxa_dowload_rede, taxa_upload_rede,
-                        cpu.cpuUso, cpu.cpuCarga, cpu.cpuCarga
+                        cpu.cpuUso, cpu.cpuCarga, cpu.cpuTemperatura
                 ));
             }
         } else {
