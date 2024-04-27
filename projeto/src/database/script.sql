@@ -66,8 +66,8 @@ CREATE TABLE Metrica (
 CREATE TABLE LeituraMemoria ( 
 	idLeituraMemoria INT AUTO_INCREMENT,
 	memoriaDisponivel INT,
-	memoriaDedicadaSo INT,
-	memoriaTaxaTransferencia INT,
+	memoriaVirtual INT,
+	tempoLigado INT,
     fkComponenteMemoria INT,
 		CONSTRAINT fkCM FOREIGN KEY (fkComponenteMemoria) REFERENCES Componente(idComponente),
 	fkMaquinaMemoria INT,
@@ -77,9 +77,9 @@ CREATE TABLE LeituraMemoria (
 
 CREATE TABLE LeituraCpu ( 
 	idLeituraCpu INT AUTO_INCREMENT,
-	cpuDisponivel INT,
-	cpuTemperatura INT,
-	fkProcessosLeitura INT,
+	cpuVelocidade DECIMAL(3,2),
+    cpuCarga DECIMAL(5,2),
+	cpuTemperatura DECIMAL(5,2),
 	fkComponenteCpu INT,
 		CONSTRAINT fkCC FOREIGN KEY (fkComponenteCpu) REFERENCES Componente(idComponente),
 	fkMaquinaCpu INT,
@@ -87,20 +87,11 @@ CREATE TABLE LeituraCpu (
 	PRIMARY KEY (idLeituraCpu, fkComponenteCpu, fkMaquinaCpu)
 );
 
-CREATE TABLE Processo (
-	idProcesso INT AUTO_INCREMENT,
-    fkLeituraCpu INT,
-		CONSTRAINT fkLP FOREIGN KEY (fkLeituraCpu) REFERENCES LeituraCpu(idLeituraCpu),
-    fkMaquinaProcesso INT,
-		CONSTRAINT fkMP FOREIGN KEY (fkMaquinaProcesso) REFERENCES Maquina(idMaquina),
-	PRIMARY KEY (idProcesso, fkLeituraCpu, fkMaquinaProcesso)
-);
-
 CREATE TABLE LeituraDisco ( 
 	idLeituraDisco INT AUTO_INCREMENT,
 	discoDisponivel INT,
-	discoMemoriaSwap INT,
-    discoTemperatura INT,
+	discoTaxaLeitura INT,
+    discoTaxaEscrita INT,
     fkComponenteDisco INT,
 		CONSTRAINT fkCD FOREIGN KEY (fkComponenteDisco) REFERENCES Componente(idComponente),
 	fkMaquinaDisco INT,
@@ -112,7 +103,6 @@ CREATE TABLE LeituraRede (
 	idLeituraRede INT AUTO_INCREMENT,
 	redeDownload DECIMAL(5,2),
 	redeUpload DECIMAL(5,2),
-	redePing INT,
     fkComponenteRede INT,
 		CONSTRAINT fkCR FOREIGN KEY (fkComponenteRede) REFERENCES Componente(idComponente),
 	fkMaquinaRede INT,

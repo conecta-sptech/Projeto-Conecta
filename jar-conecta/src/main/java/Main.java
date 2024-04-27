@@ -3,11 +3,13 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 
+import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         Conexao conexao = new Conexao();
         JdbcTemplate interfaceConexao = conexao.getConexaoDoBanco();
 
@@ -26,13 +28,36 @@ public class Main {
 
             default:
 //                maquina encontrada, liberado enviar leituras
-                Double memoriaDisponivel = (looca.getMemoria().getDisponivel()) / (1024.0 * 1024 * 1024);
-                Double memoriaSwap = (oshi.getHardware().getMemory().getVirtualMemory().getSwapUsed()  / (1024.0 * 1024 * 1024));
 
-                System.out.println(memoriaSwap);
+//                leitura de disco
+                Long taxa_escrita_memoria = looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas();
+                Long taxa_leitura_memoria = looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura();
+                Thread.sleep(15000);
+                taxa_escrita_memoria = (looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeEscritas() - taxa_escrita_memoria)/15;
+                taxa_leitura_memoria = (looca.getGrupoDeDiscos().getDiscos().get(0).getBytesDeLeitura() - taxa_leitura_memoria)/15;
+                File f = new File("/");
+                Double disco_disponivel = f.getFreeSpace()/(1024.0 * 1024 * 1024);
+
+
+//                leitura de memoria
+                Double memoria_disponivel = (looca.getMemoria().getDisponivel()) / (1024.0 * 1024 * 1024);
+                Double memoria_virtual = (oshi.getHardware().getMemory().getVirtualMemory().getSwapUsed()  / (1024.0 * 1024 * 1024));
+                Long tempo_ligado = (looca.getSistema().getTempoDeAtividade()/3600);
+
+
+//                leitura de rede
+                Long taxa_upload_rede = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getBytesEnviados();
+                Long taxa_dowload_rede = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getBytesRecebidos();
+                Thread.sleep(15000);
+                taxa_upload_rede = (looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getBytesEnviados() - taxa_upload_rede)/15;
+                taxa_dowload_rede = (looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getBytesRecebidos() - taxa_dowload_rede)/15;
+
+
+//                leitura de cpu
+                Double velocidade_cpu = looca.getProcessador().getFrequencia() - looca.getProcessador().getUso();
+                Double carga_cpu = oshi.getHardware().getProcessor().getSystemCpuLoad(1000);
+                Double temperatura_cpu = (oshi.getHardware().getSensors().getCpuTemperature());
 
         }
-
-
     }
 }
