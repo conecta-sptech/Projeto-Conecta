@@ -690,6 +690,7 @@ main .chart h3 {
     z-index: 2;
 }
 
+.modal-usuario-background,
 .modal-maquina-background {
     position: fixed;
     width: 100%;
@@ -700,6 +701,7 @@ main .chart h3 {
     z-index: -1;
 }
 
+.modal-usuario-background.active,
 .modal-maquina-background.active {
     opacity: 1;
     z-index: 4;
@@ -992,8 +994,7 @@ main .chart h3 {
 
 .visualizar-usuario-ct .tabela-ct table .nome-td,
 .visualizar-usuario-ct .tabela-ct table .email-td,
-.visualizar-maquina-ct .tabela-ct table .nome-td,
-.visualizar-maquina-ct .tabela-ct table .ip-td {
+.visualizar-maquina-ct .tabela-ct table .nome-td {
     text-align: left;
 }
 
@@ -1006,11 +1007,7 @@ main .chart h3 {
 }
 
 .visualizar-maquina-ct .tabela-ct table .nome-td {
-    width: 150px;
-}
-
-.visualizar-maquina-ct .tabela-ct table .ip-td {
-    width: 270px;
+    width: 420px;
 }
 
 .visualizar-usuario-ct .icons-ct,
@@ -1713,4 +1710,99 @@ main .chart h3 {
 .inventario .maquina-03 svg g path,
 .inventario .maquina-04 svg g path {
     fill: #5ac69c;
+}
+
+.modal-sucesso-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #0000005a;
+    transition: all .4s ease-in-out;
+    opacity: 0;
+    z-index: -1;
+}
+
+.modal-sucesso-background.active {
+    opacity: 1;
+    z-index: 13;
+}
+
+.modal-sucesso {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 360px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+    z-index: -1;
+    transition: all .4s ease-in-out;
+}
+
+.modal-sucesso.active {
+    opacity: 1;
+    z-index: 14;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-sucesso .line-1 {
+    width: 100%;
+    height: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-sucesso .line-1 svg {
+    width: 110px;
+    pointer-events: none;
+}
+
+.modal-sucesso .line-2 {
+    width: 100%;
+    height: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-sucesso .line-2 h3 {
+    color: #000000;
+    margin-top: -8px;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+}
+
+.modal-sucesso .line-2 p {
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.modal-sucesso .line-3 {
+    height: 24%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-sucesso .btn-continuar {
+    padding: 12px 16px;
+    background-color: transparent;
+    color: #5ac69c;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 24px;
+    transition: all .3s ease-in-out;
+    border: 1px solid #5ac69c;
+    cursor: pointer;
+}
+
+.modal-sucesso .btn-continuar:hover {
+    border: 1px solid transparent;
+    background-color: #5ac69c;
+    color: #ffffff;
 }

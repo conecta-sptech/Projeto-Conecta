@@ -3,6 +3,7 @@ const sidebarIconsCol3 = document.querySelector(".sidebar .icons-col-3");
 
 const nomeUsuario = document.querySelectorAll(".nome-usuario");
 const nomeEmpresa = document.getElementById("nomeEmpresa");
+const hostnameTempoCt = document.getElementById("hostnameTempoCt");
 const hostnameMaquina = document.getElementById("hostnameMaquina");
 const companyNameCt = document.querySelector(".company-name-ct");
 const tempoAtualizacaoBtn = document.querySelector(".tempo-atualizacao-ct");
@@ -25,8 +26,12 @@ const dropDownMenu = document.querySelector(".drop-down-menu");
 const downArrowIcon = document.querySelector(".down-arrow-icon");
 
 const modalBackground = document.querySelector(".modal-background");
+const modalUsuarioBackground = document.querySelector(".modal-usuario-background");
 const modalMaquinaBackground = document.querySelector(".modal-maquina-background");
 const modalLogoutBackground = document.querySelector(".modal-logout-background");
+const modalSucessoBackground = document.querySelector(".modal-sucesso-background");
+const modalSucesso = document.querySelector(".modal-sucesso");
+const mensagemModalSucesso = document.getElementById("mensagemModalSucesso");
 const modalInicial = document.querySelector(".modal-inicio");
 const mensagemModalInicial = document.getElementById("mensagemModalInicial");
 const modalInicialLine3 = document.querySelector(".modal-inicio .line-3");
@@ -62,7 +67,9 @@ function abrirModalInicial() {
 
 function carregarInformacoesTela() {
     if (sessionStorage.getItem("FUNCAO_USUARIO") == "Administrador") {
+        companyNameCt.classList.add("active");
         nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
+        hostnameTempoCt.remove();
         btnPesquisarMaquina.remove();
         sidebarIconsCol3.classList.add("admin");
         btnSuporte.remove();
@@ -195,12 +202,21 @@ window.addEventListener("load", () => {
     }
 });
 
+function abrirModalSucesso(message) {
+    modalSucessoBackground.classList.add("active");
+    modalSucesso.classList.add("active");
+
+    mensagemModalSucesso.textContent = message;
+}
+
 function abrirModal(e) {
     const id = e.getAttribute("data-id");
     document.getElementById(id).classList.add("active");
 
     if (id == "modalLogout") {
         modalLogoutBackground.classList.add("active");
+    } else if (id == "modalUsuario") {
+        modalUsuarioBackground.classList.add("active");
     } else if (id == "modalMaquina") {
         modalMaquinaBackground.classList.add("active");
     } else {
@@ -217,8 +233,12 @@ function fecharModal(e) {
 
     if (id == "modalLogout") {
         modalLogoutBackground.classList.remove("active");
+    } else if (id == "modalUsuario") {
+        modalUsuarioBackground.classList.remove("active");
     } else if (id == "modalMaquina") {
         modalMaquinaBackground.classList.remove("active");
+    } else if (id == "modalSucesso") {
+        modalSucessoBackground.classList.remove("active");
     } else {
         modalBackground.classList.remove("active");
     }

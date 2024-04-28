@@ -78,12 +78,12 @@ function validarCamposUsuario() {
             }),
         })
             .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
                 if (resposta.ok) {
-                    console.log(resposta);
-                    console.log("Cadastro do usuario realizado com sucesso!");
-
+                    inputNomeUsuario.value = "";
+                    inputEmailUsuario.value = "";
+                    inputSenhaUsuario.value = "";
+                    inputConfirmarSenhaUsuario.value = "";
+                    abrirModalSucesso("Usuário cadastrado com sucesso!");
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro do funcionario!";
                 }
