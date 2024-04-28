@@ -1,10 +1,8 @@
 const chartMemoriaRam = document.getElementById("chartMemoriaRam");
-const chartMemoriaTaxaCt = document.getElementById("chartMemoriaTaxaCt");
 const chartMemoriaTaxa1 = document.getElementById("chartMemoriaTaxa1");
 const chartMemoriaTaxa2 = document.getElementById("chartMemoriaTaxa2");
 const chartCpu = document.getElementById("chartCpu");
 const chartDisco = document.getElementById("chartDisco");
-const chartDiscoSwap = document.getElementById("chartDiscoSwap");
 const chartRede1 = document.getElementById("chartRede1");
 const chartRede2 = document.getElementById("chartRede2");
 
@@ -70,7 +68,7 @@ function gerarGraficoMemoriaRamUso() {
     new ApexCharts(chartMemoriaRam, options).render();
 }
 
-function gerarGraficoMemoriaRamSo() {
+function gerarGraficoMemoriaRamVirtual() {
     let totalMemory = 16; // Total de memória RAM disponível (em GB)
     let usedMemory = 8; // Memória RAM usada (em GB)
     let systemMemory = 2; // Memória RAM dedicada ao sistema operacional (em GB)
@@ -132,101 +130,17 @@ function gerarGraficoMemoriaRamSo() {
     new ApexCharts(chartMemoriaRam, options).render();
 }
 
-function gerarGraficoMemoriaRamTaxa() {
-    // Velocidade de download
-    let downloadOptions = {
-        chart: {
-            height: 220,
-            width: 180,
-            type: "radialBar",
-        },
-        series: [54],
-        colors: ["#93E4C4"],
-        plotOptions: {
-            radialBar: {
-                startAngle: -135,
-                endAngle: 135,
-                track: {
-                    background: '#333',
-                    startAngle: -135,
-                    endAngle: 135,
-                },
-                dataLabels: {
-                    name: {
-                        show: false,
-                    },
-                    value: {
-                        fontSize: "22px",
-                        color: '#ffffff',
-                        show: true,
-                        formatter: function (val) {
-                            return val + " MB/s";
-                        },
-                        offsetY: 4
-                    }
-                }
-            }
-        },
-        fill: {
-            gradient: {
-                shade: "dark",
-                type: "horizontal",
-                stops: [0, 100]
-            }
-        },
-        stroke: {
-            lineCap: "butt"
-        }
-    };
-
-    // Velocidade de upload
-    let uploadOptions = {
-        chart: {
-            height: 220,
-            width: 180,
-            type: "radialBar",
-        },
-        series: [39],
-        colors: ["#93E4C4"],
-        plotOptions: {
-            radialBar: {
-                startAngle: -135,
-                endAngle: 135,
-                track: {
-                    background: '#333',
-                    startAngle: -135,
-                    endAngle: 135,
-                },
-                dataLabels: {
-                    name: {
-                        show: false,
-                    },
-                    value: {
-                        fontSize: "22px",
-                        color: '#ffffff',
-                        show: true,
-                        formatter: function (val) {
-                            return val + " MB/s";
-                        },
-                        offsetY: 4
-                    }
-                }
-            }
-        },
-        fill: {
-            gradient: {
-                shade: "dark",
-                type: "horizontal",
-                stops: [0, 100]
-            }
-        },
-        stroke: {
-            lineCap: "butt"
-        }
-    };
-
-    new ApexCharts(chartMemoriaTaxa1, downloadOptions).render();
-    new ApexCharts(chartMemoriaTaxa2, uploadOptions).render();
+function gerarGraficoMemoriaRamTempoLigado() {
+    chartMemoriaRam.innerHTML = `
+    <h4>Tempo de Atividade</h4>
+    <div class="tempo-atividade-ct">
+        <img src="../assets/svg/clock.svg">
+        <div>
+            <p>7:00 hora(s)</p>
+            <p>28/04/2024</p>
+        </div>
+    </div>
+    `;
 }
 
 function gerarGraficoProcessadorUso() {
@@ -291,145 +205,63 @@ function gerarGraficoProcessadorUso() {
     new ApexCharts(chartCpu, options).render();
 }
 
-function gerarGraficoProcessadorProcessos() {
-    let processos = ['Processo 1', 'Processo 2', 'Processo 3', 'Processo 4', 'Processo 5'];
-    let consumos = [80, 45, 35, 30, 25];
-
+function gerarGraficoProcessadorCarga() {
     let options = {
-        chart: {
-            type: 'bar',
-            height: 360,
-            width: '100%'
-        },
         series: [{
-            name: 'Uso de CPU',
-            data: consumos
+            name: "Carga da CPU",
+            data: [37, 58, 26, 91, 43, 77, 68, 12, 94, 21, 56, 33, 72, 45, 89]
         }],
-        xaxis: {
-            categories: processos,
-            labels: {
-                style: {
-                    fontSize: "18px",
-                    colors: '#FFFFFF'
-                }
-            },
-            axisBorder: {
-                color: '#FFFFFF'
-            },
-            axisTicks: {
-                color: '#FFFFFF'
-            }
-        },
-        yaxis: {
-            labels: {
-                style: {
-                    fontSize: "18px",
-                    colors: '#FFFFFF',
-                },
-                formatter: function (value) {
-                    return value + "%";
-                }
-            },
-            axisBorder: {
-                color: '#FFFFFF'
-            },
-            axisTicks: {
-                color: '#FFFFFF'
-            }
-        },
-        colors: ['#93E4C4'],
-        plotOptions: {
-            bar: {
-                horizontal: false,
-                columnWidth: '55%',
-                endingShape: 'rounded'
-            }
-        },
-        title: {
-            text: 'Processos que mais consomem a CPU',
-            align: 'left',
-            style: {
-                fontSize: "20px",
-                color: '#FFFFFF'
-            }
-        },
-        dataLabels: {
-            enabled: true,
-            formatter: function (val) {
-                return val + '%';
-            },
-            offsetY: -20,
-            style: {
-                fontSize: '18px',
-                colors: ["#FFFFFF"]
-            }
-        }
-    };
-
-    new ApexCharts(chartCpu, options).render();
-}
-
-function gerarGraficoProcessadorNucleos() {
-    let nucleos = ['N1', 'N2', 'N3', 'N4'];
-    let uso = [80, 85, 75, 90];
-
-    let options = {
         chart: {
-            type: 'bar',
-            height: 360,
-            width: '100%',
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            },
             toolbar: {
                 show: false
             }
         },
-        plotOptions: {
-            bar: {
-                horizontal: true
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'straight'
+        },
+        title: {
+            text: 'Carga da CPU',
+            align: 'left',
+            style: {
+                fontSize: '20px',
+                color: '#ffffff'
             }
         },
-        colors: ['#93E4C4'],
-        series: [{
-            data: uso.map((valor, index) => ({ y: valor, x: nucleos[index] }))
-        }],
+        grid: {
+            row: {
+                colors: ['#f3f3f3', 'transparent'],
+                opacity: 0.1
+            },
+        },
         xaxis: {
-            categories: nucleos,
+            categories: ['0s', '10s', '20s', '30s', '40s', '50s', '60s', '70s', '80s', '90s', '100s', '110s', '120s', '130s', '140s'],
             labels: {
-                formatter: function (val) {
-                    return val;
-                },
                 style: {
                     fontSize: '18px',
-                    colors: '#FFFFFF'
-                },
-                axisBorder: {
-                    color: '#FFFFFF'
-                },
-                axisTicks: {
-                    color: '#FFFFFF'
+                    colors: Array(15).fill('#ffffff')
                 }
             }
         },
         yaxis: {
             labels: {
+                formatter: function (value) {
+                    return value + "%";
+                },
                 style: {
                     fontSize: '18px',
-                    colors: '#FFFFFF'
+                    colors: ['#ffffff']
                 }
-            },
-            axisBorder: {
-                color: '#FFFFFF'
-            },
-            axisTicks: {
-                color: '#FFFFFF'
             }
         },
-        title: {
-            text: 'Uso dos Núcleos da CPU',
-            style: {
-                fontSize: '20px',
-                color: '#FFFFFF'
-            }
-        }
+        colors: ['#93E4C4']
     };
 
     new ApexCharts(chartCpu, options).render();
@@ -552,61 +384,67 @@ function gerarGraficoDiscoArmazenamento() {
     new ApexCharts(chartDisco, options).render();
 }
 
-let chartSwap = null;
 function gerarGraficoDiscoMemoriaSwap() {
-    let tempo = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
-    let memoriaSwap = [100, 150, 120, 180, 200, 220, 250, 280, 300, 320];
-
-    let ctx = chartDiscoSwap.getContext('2d');
-    chartSwap = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: tempo,
-            datasets: [{
-                label: 'Memória Swap (MB)',
-                data: memoriaSwap,
-                borderColor: '#5ac69c',
-                tension: 0.1,
-                stepped: true
-            }]
-        },
-        options: {
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Tempo (s)',
-                        color: '#FFFFFF'
-                    },
-                    ticks: {
-                        color: '#FFFFFF'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Memória Swap (MB)',
-                        color: '#FFFFFF'
-                    },
-                    ticks: {
-                        color: '#FFFFFF'
-                    }
-                }
+    let options = {
+        series: [{
+            name: "Memória SWAP",
+            data: [93, 67, 48, 81, 36, 71, 95, 42, 62, 89, 54, 77]
+        }],
+        chart: {
+            height: 224,
+            width: 570,
+            type: 'line',
+            zoom: {
+                enabled: false
             },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Memória Swap ao longo do tempo',
-                    color: '#FFFFFF'
-                },
-                legend: {
-                    labels: {
-                        color: '#FFFFFF'
-                    }
+            toolbar: {
+                show: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'straight'
+        },
+        title: {
+            text: 'Memória SWAP',
+            align: 'left',
+            style: {
+                fontSize: "14px",
+                color: '#FFFFFF'
+            }
+        },
+        grid: {
+            row: {
+                colors: ['#f3f3f3', 'transparent'],
+                opacity: 0.1
+            },
+        },
+        xaxis: {
+            categories: ['0s', '10s', '20s', '30s', '40s', '50s', '60s', '70s', '80s', '90s', '100s', '110s'],
+            labels: {
+                style: {
+                    fontSize: "12px",
+                    colors: '#FFFFFF'
                 }
             }
-        }
-    });
+        },
+        yaxis: {
+            labels: {
+                formatter: function (value) {
+                    return value + "%";
+                },
+                style: {
+                    fontSize: "12px",
+                    colors: '#FFFFFF'
+                }
+            }
+        },
+        colors: ['#93E4C4']
+    };
+
+    new ApexCharts(chartDisco, options).render();
 }
 
 function gerarGraficoDiscoCache() {
@@ -814,8 +652,6 @@ function exibirChartEscolhido(e) {
         btnExibirListaRam.classList.remove("active");
         chartListRam.classList.remove("active");
 
-        chartMemoriaTaxaCt.style.display = "none";
-        chartMemoriaRam.style.display = "block";
         chartMemoriaRam.innerHTML = "";
         gerarGraficoMemoriaRamUso();
     }
@@ -824,19 +660,16 @@ function exibirChartEscolhido(e) {
         btnExibirListaRam.classList.remove("active");
         chartListRam.classList.remove("active");
 
-        chartMemoriaTaxaCt.style.display = "none";
-        chartMemoriaRam.style.display = "block";
         chartMemoriaRam.innerHTML = "";
-        gerarGraficoMemoriaRamSo();
+        gerarGraficoMemoriaRamVirtual();
     }
 
     if (id == "3") {
         btnExibirListaRam.classList.remove("active");
         chartListRam.classList.remove("active");
 
-        chartMemoriaRam.style.display = "none";
-        chartMemoriaTaxaCt.style.display = "flex";
-        gerarGraficoMemoriaRamTaxa();
+        chartMemoriaRam.innerHTML = "";
+        gerarGraficoMemoriaRamTempoLigado();
     }
 
     if (id == "4") {
@@ -852,7 +685,7 @@ function exibirChartEscolhido(e) {
         chartListCpu.classList.remove("active");
 
         chartCpu.innerHTML = "";
-        gerarGraficoProcessadorNucleos();
+        gerarGraficoProcessadorCarga();
     }
 
     if (id == "6") {
@@ -860,43 +693,29 @@ function exibirChartEscolhido(e) {
         chartListCpu.classList.remove("active");
 
         chartCpu.innerHTML = "";
-        gerarGraficoProcessadorProcessos();
+        gerarGraficoProcessadorTemperatura();
     }
 
     if (id == "7") {
-        btnExibirListaCpu.classList.remove("active");
-        chartListCpu.classList.remove("active");
+        btnExibirListaDisco.classList.remove("active");
+        chartListDisco.classList.remove("active");
 
-        chartCpu.innerHTML = "";
-        gerarGraficoProcessadorTemperatura();
+        chartDisco.innerHTML = "";
+        gerarGraficoDiscoArmazenamento();
     }
 
     if (id == "8") {
         btnExibirListaDisco.classList.remove("active");
         chartListDisco.classList.remove("active");
 
-        chartDiscoSwap.style.display = "none";
-        chartDisco.style.display = "block";
         chartDisco.innerHTML = "";
-        gerarGraficoDiscoArmazenamento();
+        gerarGraficoDiscoMemoriaSwap();
     }
 
     if (id == "9") {
         btnExibirListaDisco.classList.remove("active");
         chartListDisco.classList.remove("active");
 
-        if (chartSwap != null) chartSwap.destroy();
-        chartDisco.style.display = "none";
-        chartDiscoSwap.style.display = "block";
-        gerarGraficoDiscoMemoriaSwap();
-    }
-
-    if (id == "10") {
-        btnExibirListaDisco.classList.remove("active");
-        chartListDisco.classList.remove("active");
-
-        chartDiscoSwap.style.display = "none";
-        chartDisco.style.display = "block";
         chartDisco.innerHTML = "";
         gerarGraficoDiscoCache();
     }

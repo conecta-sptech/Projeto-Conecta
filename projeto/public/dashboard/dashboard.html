@@ -133,6 +133,39 @@
             <main>
                 <div class="company-name-ct">
                     <h2 id="nomeEmpresa"></h2>
+                    <div style="display: flex; margin-top: 2px;">
+                        <div class="hostname-maquina-ct">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0, 0, 400,400">
+                                <g id="svgg">
+                                    <path id="path0"
+                                        d="M41.853 38.728 C 40.748 39.832,40.625 51.136,40.625 151.489 L 40.625 263.023 199.361 263.530 C 286.666 263.809,358.272 263.863,358.486 263.650 C 358.699 263.436,359.033 213.215,359.228 152.048 L 359.583 40.833 357.917 39.167 L 356.250 37.500 199.665 37.500 C 58.357 37.500,42.961 37.620,41.853 38.728 M337.047 59.316 L 339.063 61.210 339.063 150.379 C 339.063 238.875,339.051 239.562,337.478 241.249 C 335.024 243.884,339.872 243.803,198.174 243.575 L 63.927 243.359 62.042 241.167 L 60.156 238.975 60.156 150.521 C 60.156 54.197,59.912 59.601,64.341 57.801 C 65.274 57.422,125.564 57.188,200.523 57.271 L 335.031 57.422 337.047 59.316 M72.656 150.391 L 72.656 231.250 200.000 231.250 L 327.344 231.250 327.344 150.391 L 327.344 69.531 200.000 69.531 L 72.656 69.531 72.656 150.391 M34.919 279.883 C 33.473 282.139,25.904 293.917,18.098 306.057 C 10.293 318.197,3.906 328.480,3.906 328.908 C 3.906 329.424,70.054 329.688,199.693 329.688 C 370.876 329.688,395.425 329.544,395.043 328.549 C 394.802 327.922,387.162 315.793,378.064 301.596 L 361.522 275.781 199.535 275.781 L 37.548 275.781 34.919 279.883 M202.734 306.295 L 235.547 306.358 241.523 313.530 L 247.500 320.703 223.303 320.910 C 209.995 321.023,188.431 321.023,175.384 320.910 L 151.662 320.703 158.058 313.033 C 164.290 305.557,164.523 305.373,167.188 305.798 C 168.691 306.037,184.687 306.261,202.734 306.295 M0.000 342.827 C 0.000 346.926,4.281 357.495,7.256 360.742 L 8.866 362.500 202.460 362.500 L 396.054 362.500 397.151 360.352 C 398.650 357.416,400.000 350.702,400.000 346.185 L 400.000 342.446 271.680 341.927 C 44.328 341.006,-0.000 341.153,0.000 342.827 "
+                                        stroke="none" fill="#000000" fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            <span id="hostnameMaquina"></span>
+                        </div>
+                        <div style="position: relative; margin-top: 2px;">
+                            <div onclick="mostrarListaTempoAtualizacao()" class="tempo-atualizacao-ct">
+                                <img src="../assets/svg/filled-clock.svg" class="clock-icon">
+                                <svg class="down-arrow-icon" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 400,400">
+                                    <g id="svgg">
+                                        <path id="path0"
+                                            d="M19.141 86.988 C 7.050 90.931,0.391 100.547,0.391 114.063 C 0.391 127.398,-7.033 118.985,93.606 219.711 C 194.757 320.949,186.517 313.672,200.000 313.672 C 213.499 313.672,205.205 321.005,306.712 219.317 C 407.174 118.676,399.609 127.247,399.609 114.063 C 399.609 96.925,389.161 86.328,372.266 86.328 C 358.574 86.328,366.426 79.540,277.930 167.883 L 200.000 245.677 122.070 167.883 C 34.570 80.534,41.462 86.579,28.906 86.180 C 24.976 86.055,20.990 86.385,19.141 86.988 "
+                                            stroke="none" fill="#000000" fill-rule="evenodd"></path>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div id="listaTempoAtualizacao">
+                                <h4>Tempo de Atualização</h4>
+                                <button onclick="definirTempoAtualizacao()">01 min</button>
+                                <button onclick="definirTempoAtualizacao()">05 min</button>
+                                <button onclick="definirTempoAtualizacao()">15 min</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="chartsGerenteFuncionario">
@@ -223,25 +256,13 @@
                                 <h3>MEMÓRIA RAM</h3>
                                 <div id="chartMemoriaRam"></div>
 
-                                <div id="chartMemoriaTaxaCt" style="display: none;">
-                                    <div style="position: relative;">
-                                        <div id="chartMemoriaTaxa1"></div>
-                                        <h3 class="text">Download</h3>
-                                    </div>
-
-                                    <div style="position: relative;">
-                                        <div id="chartMemoriaTaxa2"></div>
-                                        <h3 class="text">Upload</h3>
-                                    </div>
-                                </div>
-
                                 <button class="arrow-down-btn" id="btnExibirListaRam" onclick="exibirChartsRam()"><img
                                         src="../assets/svg/arrow-down-icon.svg"></button>
                                 <div class="chart-list-ct" id="chartListRam">
                                     <button onclick="exibirChartEscolhido(this)" data-id="1">Mémoria RAM em uso</button>
-                                    <button onclick="exibirChartEscolhido(this)" data-id="2">RAM dedicada ao SO</button>
-                                    <button onclick="exibirChartEscolhido(this)" data-id="3">Taxa de
-                                        Transferência</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="2">Memória Virtual em
+                                        uso</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="3">Tempo de Atividade</button>
                                 </div>
                             </div>
                             <div class="chart">
@@ -252,9 +273,8 @@
                                         src="../assets/svg/arrow-down-icon.svg"></button>
                                 <div class="chart-list-ct" id="chartListCpu">
                                     <button onclick="exibirChartEscolhido(this)" data-id="4">CPU em uso</button>
-                                    <button onclick="exibirChartEscolhido(this)" data-id="5">Uso por Núcleo</button>
-                                    <button onclick="exibirChartEscolhido(this)" data-id="6">Consumos na CPU</button>
-                                    <button onclick="exibirChartEscolhido(this)" data-id="7">Temperatura da CPU</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="5">Carga da CPU</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="6">Temperatura da CPU</button>
                                 </div>
                             </div>
                         </div>
@@ -262,15 +282,14 @@
                             <div class="chart">
                                 <h3>DISCO</h3>
                                 <div id="chartDisco"></div>
-                                <canvas id="chartDiscoSwap"></canvas>
 
                                 <button class="arrow-down-btn" id="btnExibirListaDisco"
                                     onclick="exibirChartsDisco()"><img src="../assets/svg/arrow-down-icon.svg"></button>
                                 <div class="chart-list-ct" id="chartListDisco">
-                                    <button onclick="exibirChartEscolhido(this)" data-id="8">Disco em uso</button>
-                                    <button onclick="exibirChartEscolhido(this)" data-id="9">Uso de Memória
-                                        Virtual</button>
-                                    <button onclick="exibirChartEscolhido(this)" data-id="10">Uso do Cache</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="7">Disco em uso</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="8">Memória
+                                        SWAP em uso</button>
+                                    <button onclick="exibirChartEscolhido(this)" data-id="9">Cache em uso</button>
                                 </div>
                             </div>
                             <div class="chart">

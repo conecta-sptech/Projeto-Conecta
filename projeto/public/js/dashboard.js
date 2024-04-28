@@ -3,6 +3,10 @@ const sidebarIconsCol3 = document.querySelector(".sidebar .icons-col-3");
 
 const nomeUsuario = document.querySelectorAll(".nome-usuario");
 const nomeEmpresa = document.getElementById("nomeEmpresa");
+const hostnameMaquina = document.getElementById("hostnameMaquina");
+const companyNameCt = document.querySelector(".company-name-ct");
+const tempoAtualizacaoBtn = document.querySelector(".tempo-atualizacao-ct");
+const listaTempoAtualizacao = document.getElementById("listaTempoAtualizacao");
 
 const navLine1 = document.querySelector("nav .line-1");
 const navLine4 = document.querySelector("nav .line-4");
@@ -106,7 +110,7 @@ function listarMaquinasModalInicial() {
         tbodyModalInicial.innerHTML += `
         <tr>
             <td class="icons-ct">
-                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio" data-id="${listaMaquinas[i].idMaquina}">
+                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio" data-id="${listaMaquinas[i].idMaquina}" data-hostname="${listaMaquinas[i].hostnameMaquina}">
                     <img src="../assets/svg/visible-password-icon-v3.svg">
                 </button>
             </td>
@@ -139,7 +143,10 @@ function carregarModalInicial() {
 function definirDashboard(e) {
     const idMaquina = e.getAttribute("data-id");
 
+    companyNameCt.classList.add("active");
     nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
+    hostnameMaquina.textContent = e.getAttribute("data-hostname");
+    tempoAtualizacaoBtn.classList.add("active");
 
     if (sessionStorage.getItem("FUNCAO_USUARIO") == "Administrador") {
         chartsAdmin.classList.add("active");
@@ -148,11 +155,6 @@ function definirDashboard(e) {
     } else {
         chartsGerenteFuncionario.classList.add("active");
         chartsAdmin.remove();
-
-        chartMemoriaTaxaCt.style.display = "none";
-        chartMemoriaRam.style.display = "block";
-        chartDiscoSwap.style.display = "none";
-        chartDisco.style.display = "block";
 
         chartMemoriaRam.innerHTML = "";
         chartCpu.innerHTML = "";
@@ -236,4 +238,12 @@ function mostrarDescricaoKpi(e) {
 function esconderDescricaoKpi(e) {
     const id = e.getAttribute("data-id");
     document.getElementById(id).classList.remove("active");
+}
+
+function mostrarListaTempoAtualizacao() {
+    listaTempoAtualizacao.classList.toggle("active");
+}
+
+function definirTempoAtualizacao() {
+    listaTempoAtualizacao.classList.remove("active");
 }

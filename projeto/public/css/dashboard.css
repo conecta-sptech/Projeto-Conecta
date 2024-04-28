@@ -378,7 +378,92 @@ main h2 {
 
 main .company-name-ct {
     width: 100%;
-    height: 4%;
+    height: 5%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main .hostname-maquina-ct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+}
+
+main .company-name-ct.active {
+    display: flex;
+}
+
+main .hostname-maquina-ct svg {
+    height: 20px;
+}
+
+main .hostname-maquina-ct span {
+    font-size: 14px;
+    margin-left: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+main .tempo-atualizacao-ct {
+    margin-top: 4px;
+    margin-left: 24px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+main .tempo-atualizacao-ct.active {
+    display: flex;
+}
+
+main .tempo-atualizacao-ct .clock-icon {
+    height: 16px;
+}
+
+main .tempo-atualizacao-ct .down-arrow-icon {
+    height: 12px;
+    margin-left: 3px;
+    margin-top: 2px;
+}
+
+#listaTempoAtualizacao {
+    position: absolute;
+    top: 26px;
+    left: -74px;
+    width: 214px;
+    padding: 8px;
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .4s ease-in-out;
+}
+
+#listaTempoAtualizacao.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+#listaTempoAtualizacao button {
+    border-radius: 8px;
+    margin: 4px 0;
+    padding: 4px;
+    transition: all .4s ease-in-out;
+}
+
+#listaTempoAtualizacao button:hover {
+    background-color: #5ac69c;
 }
 
 main .kpi-ct {
@@ -992,7 +1077,7 @@ main .chart h3 {
 }
 
 .btn-cancelar {
-    padding: 12px 16px;
+    padding: 8px 12px;
     background-color: #e53c3c;
     color: #ffffff;
     text-transform: uppercase;
@@ -1035,7 +1120,7 @@ main .chart h3 {
 }
 
 .btn-salvar {
-    padding: 12px 16px;
+    padding: 8px 12px;
     background-color: #5ac69c;
     color: #ffffff;
     text-transform: uppercase;
@@ -1436,6 +1521,44 @@ main .chart h3 {
     margin-right: 4px;
 }
 
+#chartMemoriaRam {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #ffffff;
+}
+
+#chartMemoriaRam h4 {
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 32px;
+}
+
+#chartMemoriaRam .tempo-atividade-ct {
+    display: flex;
+}
+
+#chartMemoriaRam .tempo-atividade-ct img {
+    height: 120px;
+}
+
+#chartMemoriaRam .tempo-atividade-ct div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 28px;
+}
+
+#chartMemoriaRam .tempo-atividade-ct p {
+    font-size: 26px;
+}
+
+#chartMemoriaRam .tempo-atividade-ct p:nth-child(1) {
+    margin-bottom: 16px;
+}
+
 #chartMemoriaRam,
 #chartDisco {
     transform: scale(0.8);
@@ -1557,6 +1680,6 @@ main .chart h3 {
 .inventario .maquina-01 svg g path,
 .inventario .maquina-02 svg g path,
 .inventario .maquina-03 svg g path,
-.inventario .maquina-04 svg g path{
+.inventario .maquina-04 svg g path {
     fill: #5ac69c;
 }
