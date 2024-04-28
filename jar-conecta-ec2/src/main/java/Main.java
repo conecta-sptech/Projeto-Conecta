@@ -18,16 +18,10 @@ public class Main {
         if (login.equals(login_digitado) && senha.equals(senha_digitada)) {
             System.out.println("Login realizado, aguarde as leituras... \n\n\n\n\n\n");
             while (true) {
-                Looca looca01 = new Looca();
-                System.out.println(looca01.getRede().getGrupoDeInterfaces().getInterfaces());
-
                 LeituraDisco discoAnterior = new LeituraDisco();
                 LeituraRede redeAnterior = new LeituraRede();
 
-                Thread.sleep(15000);
-
-                Looca looca02 = new Looca();
-                System.out.println(looca02.getRede().getGrupoDeInterfaces().getInterfaces());
+                Thread.sleep(5000);
 
                 LeituraDisco discoAtual = new LeituraDisco();
                 LeituraRede redeAtual = new LeituraRede();
@@ -35,11 +29,11 @@ public class Main {
                 LeituraMemoria memoria = new LeituraMemoria();
                 LeituraCpu cpu = new LeituraCpu();
 
-                Long taxa_escrita_disco = ((discoAtual.discoTaxaEscrita - discoAnterior.discoTaxaEscrita) / 15) / 1024;  //kb/s
-                Long taxa_leitura_disco = ((discoAtual.discoTaxaLeitura - discoAnterior.discoTaxaLeitura) / 15) / 1024;  //kb/s
+                Long taxa_escrita_disco = ((discoAtual.discoTaxaEscrita - discoAnterior.discoTaxaEscrita) / 5) / 1024;  //kb/s
+                Long taxa_leitura_disco = ((discoAtual.discoTaxaLeitura - discoAnterior.discoTaxaLeitura) / 5) / 1024;  //kb/s
 
-                Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 15) / 1024; //mb
-                Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 15) / 1024;    //mb
+                Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 5) / 1024; //mb
+                Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 5) / 1024;    //mb
 
 
                 System.out.println("""
