@@ -690,6 +690,21 @@ main .chart h3 {
     z-index: 2;
 }
 
+.modal-maquina-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #0000005a;
+    transition: all .4s ease-in-out;
+    opacity: 0;
+    z-index: -1;
+}
+
+.modal-maquina-background.active {
+    opacity: 1;
+    z-index: 4;
+}
+
 .modal-logout-background {
     position: fixed;
     width: 100%;
@@ -1339,6 +1354,22 @@ main .chart h3 {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.modal-inicio .btn-cadastrar-maquina {
+    padding: 8px 24px;
+    background-color: #5ac69c;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 25px;
+    transition: all .3s ease-in-out;
+    margin-right: 8px;
+}
+
+.modal-inicio .btn-cadastrar-maquina:hover {
+    background-color: #31b180;
 }
 
 .modal-inicio .btn-logout {

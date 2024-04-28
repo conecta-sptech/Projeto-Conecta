@@ -25,6 +25,7 @@ const dropDownMenu = document.querySelector(".drop-down-menu");
 const downArrowIcon = document.querySelector(".down-arrow-icon");
 
 const modalBackground = document.querySelector(".modal-background");
+const modalMaquinaBackground = document.querySelector(".modal-maquina-background");
 const modalLogoutBackground = document.querySelector(".modal-logout-background");
 const modalInicial = document.querySelector(".modal-inicio");
 const mensagemModalInicial = document.getElementById("mensagemModalInicial");
@@ -97,6 +98,11 @@ function carregarInformacoesTela() {
 
     } else if (sessionStorage.getItem("FUNCAO_USUARIO") == "Gerente") {
         nomeUsuario.forEach(e => e.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0]);
+
+        modalInicialLine3.innerHTML = `
+        <button class="btn-cadastrar-maquina" onclick="abrirModal(this)" data-id="modalMaquina">Cadastrar máquina</button>
+        <button class="btn-logout" onclick="abrirModal(this)" data-id="modalLogout">Sair</button>
+        `;
 
     } else {
         nomeUsuario.forEach(e => e.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0]);
@@ -195,6 +201,8 @@ function abrirModal(e) {
 
     if (id == "modalLogout") {
         modalLogoutBackground.classList.add("active");
+    } else if (id == "modalMaquina") {
+        modalMaquinaBackground.classList.add("active");
     } else {
         modalBackground.classList.add("active");
     }
@@ -209,6 +217,8 @@ function fecharModal(e) {
 
     if (id == "modalLogout") {
         modalLogoutBackground.classList.remove("active");
+    } else if (id == "modalMaquina") {
+        modalMaquinaBackground.classList.remove("active");
     } else {
         modalBackground.classList.remove("active");
     }
