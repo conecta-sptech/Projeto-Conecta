@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -290,7 +290,8 @@ nav .line-4 .drop-down-menu .btn-logout img {
 }
 
 .sidebar .icons-col-2 button,
-.sidebar .icons-col-3 button {
+.sidebar .icons-col-3 button,
+.sidebar .inovacao {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -301,13 +302,15 @@ nav .line-4 .drop-down-menu .btn-logout img {
 
 .sidebar .icons-col-2 button svg g path,
 .sidebar .icons-col-3 button svg g path,
-nav .line-4 .btn-support svg g path {
+nav .line-4 .btn-support svg g path,
+.inovacao svg g path {
     transition: all .3s ease-in-out;
 }
 
 .sidebar .icons-col-2 button:hover svg g path,
 .sidebar .icons-col-3 button:hover svg g path,
-nav .line-4 .btn-support:hover svg g path {
+nav .line-4 .btn-support:hover svg g path,
+.inovacao:hover svg g path {
     fill: #92e4c4;
 }
 
@@ -346,7 +349,8 @@ nav .line-4 .btn-support:hover svg g path {
     transition: all .3s ease-in-out;
 }
 
-.sidebar button:hover .icon-description {
+.sidebar button:hover .icon-description,
+.inovacao:hover span {
     color: #92e4c4;
 }
 
@@ -1811,6 +1815,6 @@ main .chart h3 {
     color: #ffffff;
 }
 
-.inovacao a .icon-description {
+.inovacao {
     color: #ffffff;
 }
