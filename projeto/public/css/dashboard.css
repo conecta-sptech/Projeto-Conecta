@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+}
+
 tbody::-webkit-scrollbar {
     width: 5px;
 }
@@ -1804,5 +1808,9 @@ main .chart h3 {
 .modal-sucesso .btn-continuar:hover {
     border: 1px solid transparent;
     background-color: #5ac69c;
+    color: #ffffff;
+}
+
+.inovacao a .icon-description {
     color: #ffffff;
 }
