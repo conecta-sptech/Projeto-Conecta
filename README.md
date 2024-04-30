@@ -1,5 +1,9 @@
 <div align="center">
+<<<<<<< HEAD
+<img src="projeto/public/assets/img/logoConecta.png" width="350em">
+=======
  <img src="projeto/public/assets/img/logoConecta.png" width="350em">
+>>>>>>> a5bdb7eb9f04098bf656d7d9ecd61ffcbd81b135
 </div>
 
 <br>
@@ -38,34 +42,25 @@ Nosso projeto de Monitoramento de Servidores Hospitalares, baseado nos princípi
 
 <br>
 
-<img src="projeto/public/assets/img/screenshot-02.png" width="100%">
+<img src="projeto/public/assets/img/Dashboard 01.png" width="100%">
 
 <br>
 
-<img src="projeto/public/assets/img/screenshot-03.png" width="100%">
+<img src="projeto/public/assets/img/Dashboard 02.png" width="100%">
 
 <br>
 
-<img src="projeto/public/assets/img/screenshot-04.png" width="100%">
+<img src="projeto/public/assets/img/Dashboard 03.png" width="100%">
 
 <br>
 
-<img src="projeto/public/assets/img/screenshot-05.png" width="100%">
+<img src="projeto/public/assets/img/Dashboard 04.png" width="100%">
 
 <br>
 
-<img src="projeto/public/assets/img/screenshot-06.png" width="100%">
+<img src="projeto/public/assets/img/Cadastro.png" width="100%">
 
 <br>
-
-
-<br>
-
-<img src="projeto/public/assets/img/screenshot-cad.png" width="100%">
-
-<br>
-
-<img src="projeto/public/assets/img/screenshot-log.png" width="100%">
 
 ## ⚙ Instalação local
 
