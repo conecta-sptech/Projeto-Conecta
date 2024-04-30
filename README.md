@@ -1,9 +1,5 @@
 <div align="center">
-<<<<<<< HEAD
-<img src="projeto/public/assets/img/logoConecta.png" width="350em">
-=======
  <img src="projeto/public/assets/img/logoConecta.png" width="350em">
->>>>>>> a5bdb7eb9f04098bf656d7d9ecd61ffcbd81b135
 </div>
 
 <br>
