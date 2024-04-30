@@ -277,3 +277,29 @@ function mostrarListaTempoAtualizacao() {
 function definirTempoAtualizacao() {
     listaTempoAtualizacao.classList.remove("active");
 }
+
+function filtrarMaquinasModalInicial(e) {
+    tbodyModalInicial.innerHTML = ``;
+    for (let i = 0; i < listaMaquinas.length; i++) {
+        if (e.value == ""){
+            tbodyModalInicial.innerHTML = ``;
+            listarMaquinasModalInicial();
+        }
+         else if ((listaMaquinas[i].hostnameMaquina.toUpperCase().startsWith(e.value.toUpperCase()))) {
+            tbodyModalInicial.innerHTML += `
+             <tr>
+            <td class="icons-ct">
+                <button onclick="definirDashboard(this)" class="btn-visualizar-maquina-inicio" data-id="${listaMaquinas[i].idMaquina}" data-hostname="${listaMaquinas[i].hostnameMaquina}">
+                    <img src="../assets/svg/visible-password-icon-v3.svg">
+                </button>
+            </td>
+            <td class="hostname-td">${listaMaquinas[i].hostnameMaquina}</td>
+            <td class="ram-td">${listaMaquinas[i].ramMaquina} GB</td>
+            <td class="disco-td">${listaMaquinas[i].discoMaquina} GB</td>
+            <td class="clock-td">${listaMaquinas[i].clockProcessadorMaquina} GHz</td>
+            <td class="nucleos-td">${listaMaquinas[i].nucleosProcessadorMaquina}</td>
+            </tr>
+            `;
+        }
+    }
+}
