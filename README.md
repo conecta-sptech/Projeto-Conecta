@@ -1,4 +1,5 @@
-<img src="projeto/public/assets/img/logoConecta.png" width="350em">
+<div align="center">
+ <img src="projeto/public/assets/img/logoConecta.png" width="350em">
 </div>
 
 <br>
