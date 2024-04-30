@@ -58,7 +58,6 @@ Nosso projeto de Monitoramento de Servidores Hospitalares, baseado nos princípi
 
 <br>
 
-<img src="projeto/public/assets/img/screenshot-07.png" width="100%">
 
 <br>
 
