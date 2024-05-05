@@ -6,6 +6,7 @@ import oshi.SystemInfo;
 import java.io.File;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Main {
@@ -19,7 +20,6 @@ public class Main {
 
         FormatString leitura = new FormatString();
 
-//        verifica usuario
         System.out.println("Digite seu login");
         String login_digitado = leitor.nextLine();
 
@@ -110,7 +110,7 @@ public class Main {
                                     discoAtual.discoDisponivel, taxa_escrita_disco, taxa_leitura_disco,
                                     memoria.memoriaDisponivel, memoria.memoriaVirtual, memoria.tempoLigado,
                                     taxa_dowload_rede, taxa_upload_rede,
-                                    cpu.cpuUso, cpu.cpuCarga, cpu.cpuTemperatura
+                                    cpu.cpuUso, cpu.cpuCarga, ThreadLocalRandom.current().nextDouble(40.0,42.0)
                             ));
                         }
                 }
