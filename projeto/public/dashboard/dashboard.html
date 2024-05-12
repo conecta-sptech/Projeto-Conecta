@@ -35,7 +35,7 @@
                 </button>
 
                 <div class="drop-down-menu">
-                    <button class="btn-settings" onclick="abrirModal(this)" data-id="modalSettings">
+                    <button class="btn-settings" onclick="abrirModal(this)" data-id="modalUsuarioLogado">
                         <img src="../assets/svg/settings.svg">
                         <span class="icon-description">Gerenciar</span>
                     </button>
@@ -88,18 +88,6 @@
                     </svg>
                     <span class="icon-description">Conexões USB</span>
                 </a>
-
-                <button onclick="abrirModal(this)" data-id="modalAlerta">
-                    <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        viewBox="0, 0, 400,400">
-                        <g id="svgg">
-                            <path id="path0"
-                                d="M192.188 1.527 C 184.807 5.462,182.813 10.302,182.813 24.282 L 182.813 34.304 179.883 34.799 C 136.042 42.196,99.409 75.443,87.073 119.028 C 83.756 130.748,83.457 134.619,82.842 173.828 C 82.256 211.121,82.189 212.321,80.253 220.313 C 74.394 244.489,62.839 264.068,45.014 280.021 C 27.113 296.042,29.565 321.002,50.000 330.775 L 55.078 333.203 200.000 333.203 L 344.922 333.203 350.000 330.775 C 364.990 323.606,371.129 306.476,364.063 291.536 C 362.305 287.818,359.584 284.555,351.760 276.780 C 334.485 259.614,325.378 243.550,319.747 220.313 C 317.811 212.321,317.744 211.121,317.158 173.828 C 316.543 134.619,316.244 130.748,312.927 119.028 C 300.581 75.409,264.219 42.412,220.117 34.809 L 217.188 34.304 217.188 24.469 C 217.188 10.513,215.021 5.240,207.768 1.540 C 203.771 -0.500,196.000 -0.506,192.188 1.527 M138.281 350.308 C 138.281 351.651,141.975 362.103,143.556 365.234 C 169.085 415.794,243.444 409.883,260.067 355.972 C 260.976 353.027,261.719 350.478,261.719 350.308 C 261.719 350.139,233.945 350.000,200.000 350.000 C 166.055 350.000,138.281 350.139,138.281 350.308 "
-                                stroke="none" fill="#ffffff" fill-rule="evenodd"></path>
-                        </g>
-                    </svg>
-                    <span class="icon-description">Exibir Alertas</span>
-                </button>
             </div>
 
             <div class="icons-col-3">
@@ -146,7 +134,7 @@
                             <span id="hostnameMaquina"></span>
                         </div>
                         <div style="position: relative; margin-top: 2px;">
-                            <div onclick="mostrarListaTempoAtualizacao()" class="tempo-atualizacao-ct">
+                            <button onclick="mostrarListaTempoAtualizacao()" class="tempo-atualizacao-ct">
                                 <img src="../assets/svg/filled-clock.svg" class="clock-icon">
                                 <svg class="down-arrow-icon" xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 400,400">
@@ -156,7 +144,7 @@
                                             stroke="none" fill="#000000" fill-rule="evenodd"></path>
                                     </g>
                                 </svg>
-                            </div>
+                            </button>
 
                             <div id="listaTempoAtualizacao">
                                 <h4>Tempo de Atualização</h4>
@@ -165,6 +153,10 @@
                                 <button onclick="definirTempoAtualizacao()">15 min</button>
                             </div>
                         </div>
+
+                        <button class="btn-log">
+                            <img src="../assets/svg/log-icon.svg">
+                        </button>
                     </div>
                 </div>
 
@@ -577,7 +569,7 @@
 
                     <label for="inputEmailUsuario">E-mail</label>
                     <input oninput="removerErroCamposUsuario()" type="text" id="inputEmailUsuario"
-                        placeholder="email@exemplo.com">
+                        placeholder="exemplo@email.com">
 
                     <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
                         <label for="inputSenhaUsuario">Senha</label>
@@ -649,7 +641,7 @@
         </div>
 
         <div class="modal-maquina-background"></div>
-        <div class="modal" id="modalMaquina">
+        <div class="modal maquina" id="modalMaquina">
             <div class="line-1">
                 <h4>Gerenciar máquinas</h4>
                 <button onclick="fecharModal(this)" data-id="modalMaquina">
@@ -678,25 +670,29 @@
                 </div>
 
                 <div class="nova-maquina-ct">
-                    <label for="inputNomeMaquina">Nome</label>
-                    <input oninput="removerErroCamposMaquina()" type="text" id="inputNomeMaquina"
-                        placeholder="Nome da máquina">
+                    <label for="inputHostnameMaquina">Hostname</label>
+                    <input oninput="removerErroCamposMaquina()" type="text" id="inputHostnameMaquina"
+                        placeholder="Hostname da máquina">
 
-                    <label for="inputIpMaquina">IP</label>
-                    <input oninput="removerErroCamposMaquina()" type="text" id="inputIpMaquina"
-                        placeholder="IP da máquina">
+                    <label for="inputSistemaOperacionalMaquina">Sistema Operacional</label>
+                    <input oninput="removerErroCamposMaquina()" type="text" id="inputSistemaOperacionalMaquina"
+                        placeholder="Sistema Operacional da máquina">
 
                     <label for="inputRamMaquina">RAM</label>
-                    <input oninput="removerErroCamposMaquina()" type="text" id="inputRamMaquina"
+                    <input oninput="removerErroCamposMaquina()" type="number" id="inputRamMaquina"
                         placeholder="Quantidade de memória RAM">
 
-                    <label for="inputCpuMaquina">CPU</label>
-                    <input oninput="removerErroCamposMaquina()" type="text" id="inputCpuMaquina"
-                        placeholder="Configuração da CPU">
-
                     <label for="inputDiscoMaquina">Disco</label>
-                    <input oninput="removerErroCamposMaquina()" type="text" id="inputDiscoMaquina"
-                        placeholder="Configuração do disco">
+                    <input oninput="removerErroCamposMaquina()" type="number" id="inputDiscoMaquina"
+                        placeholder="Quantidade de memória do disco">
+
+                    <label for="inputClockMaquina">Frequência de Clock</label>
+                    <input oninput="removerErroCamposMaquina()" type="number" id="inputClockMaquina"
+                        placeholder="Frequência de clock do processador">
+
+                    <label for="inputNucleoMaquina">Núcleos do Processador</label>
+                    <input oninput="removerErroCamposMaquina()" type="number" id="inputNucleoMaquina"
+                        placeholder="Quantidade de núcleos">
                 </div>
 
                 <div class="visualizar-maquina-ct">
@@ -725,42 +721,6 @@
                             <tbody>
                                 <tr>
                                     <td class="nome-td">MAQUINA01</td>
-                                    <td class="icons-ct">
-                                        <button id="btnEditar">
-                                            <img src="../assets/svg/pencil.svg">
-                                        </button>
-
-                                        <button id="btnExcluir">
-                                            <img src="../assets/svg/trash.svg">
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="nome-td">MAQUINA02</td>
-                                    <td class="icons-ct">
-                                        <button id="btnEditar">
-                                            <img src="../assets/svg/pencil.svg">
-                                        </button>
-
-                                        <button id="btnExcluir">
-                                            <img src="../assets/svg/trash.svg">
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="nome-td">MAQUINA03</td>
-                                    <td class="icons-ct">
-                                        <button id="btnEditar">
-                                            <img src="../assets/svg/pencil.svg">
-                                        </button>
-
-                                        <button id="btnExcluir">
-                                            <img src="../assets/svg/trash.svg">
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="nome-td">MAQUINA04</td>
                                     <td class="icons-ct">
                                         <button id="btnEditar">
                                             <img src="../assets/svg/pencil.svg">
@@ -868,6 +828,57 @@
             </div>
             <div class="line-3">
                 <button onclick="fecharModal(this)" class="btn-continuar" data-id="modalSucesso">Continuar</button>
+            </div>
+        </div>
+
+        <div class="modal-usuario-logado-background"></div>
+        <div class="modal-usuario-logado" id="modalUsuarioLogado">
+            <div class="line-1">
+                <h4>Gerenciar usuário</h4>
+                <button onclick="fecharModal(this)" data-id="modalUsuarioLogado">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0, 0, 400,400">
+                        <g id="svgg">
+                            <path id="path0"
+                                d="M15.389 1.128 C 5.647 4.603,0.096 12.814,0.042 23.828 C -0.010 34.503,-5.093 28.812,84.991 118.944 L 166.002 199.996 84.683 281.444 C -7.033 373.303,-0.485 365.846,0.166 377.697 C 0.897 391.003,8.997 399.103,22.303 399.834 C 34.154 400.485,26.697 407.032,118.555 315.319 L 200.000 234.002 281.445 315.319 C 373.303 407.032,365.846 400.485,377.697 399.834 C 391.003 399.103,399.103 391.003,399.834 377.697 C 400.485 365.846,407.032 373.303,315.319 281.445 L 234.002 200.000 315.319 118.555 C 407.032 26.697,400.485 34.154,399.834 22.303 C 399.103 8.997,391.003 0.897,377.697 0.166 C 365.846 -0.485,373.303 -7.033,281.444 84.683 L 199.996 166.002 118.944 84.991 C 28.812 -5.093,34.503 -0.010,23.828 0.042 C 20.820 0.057,17.023 0.545,15.389 1.128 "
+                                stroke="none" fill="#000000" fill-rule="evenodd"></path>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="line-2">
+                <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                    <label for="inputSenhaAtual">Senha atual</label>
+                    <input oninput="removerErroCamposUsuarioLogado()" type="password" id="inputSenhaAtual"
+                        placeholder="********">
+                    <img src="../assets/svg/invisible-password-icon-v2.svg" id="eyeIconSenhaAtual"
+                        onclick="alternarVisibilidadeSenhaAtual()">
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                    <label for="inputNovaSenha">Nova senha</label>
+                    <input oninput="removerErroCamposUsuarioLogado()" type="password" id="inputNovaSenha"
+                        placeholder="********">
+                    <img src="../assets/svg/invisible-password-icon-v2.svg" class="eye-icon"
+                        onclick="alternarVisibilidadeNovaSenha()">
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                    <label for="inputConfirmarNovaSenha">Confirmar nova senha</label>
+                    <input oninput="removerErroCamposUsuarioLogado()" type="password" id="inputConfirmarNovaSenha"
+                        placeholder="********">
+                    <img src="../assets/svg/invisible-password-icon-v2.svg" class="eye-icon"
+                        onclick="alternarVisibilidadeNovaSenha()">
+                </div>
+            </div>
+
+            <div class="line-3">
+                <div class="btn-ct">
+                    <button class="btn-cancelar" onclick="fecharModal(this)"
+                        data-id="modalUsuarioLogado">Cancelar</button>
+                    <button class="btn-salvar" onclick="validarCamposUsuarioLogado()">Salvar</button>
+                </div>
             </div>
         </div>
 

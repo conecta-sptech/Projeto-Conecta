@@ -416,7 +416,7 @@ main .hostname-maquina-ct span {
 }
 
 main .tempo-atualizacao-ct {
-    margin-top: 4px;
+    margin-top: 7px;
     margin-left: 24px;
     display: none;
     justify-content: center;
@@ -472,6 +472,12 @@ main .tempo-atualizacao-ct .down-arrow-icon {
 
 #listaTempoAtualizacao button:hover {
     background-color: #5ac69c;
+}
+
+main .btn-log img {
+    height: 20px;
+    margin-top: 7px;
+    margin-left: 24px;
 }
 
 main .kpi-ct {
@@ -735,13 +741,17 @@ main .chart h3 {
     top: 50%;
     left: 50%;
     width: 600px;
-    height: 550px;
+    height: 520px;
     border-radius: 25px;
     background-color: #ffffff;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.6);
     z-index: -1;
     transition: all .4s ease-in-out;
+}
+
+.modal.maquina {
+    height: 650px !important;
 }
 
 .modal-logout {
@@ -795,22 +805,29 @@ main .chart h3 {
     text-transform: uppercase;
 }
 
-.modal .line-1 button {
+.modal .line-1 button,
+.modal-usuario-logado .line-1 button {
     width: 24px;
     margin-right: 22px;
     margin-top: 16px;
 }
 
-.modal .line-1 button svg g path {
+.modal .line-1 button svg g path,
+.modal-usuario-logado .line-1 button svg g path {
     transition: all .3s ease-in-out;
 }
 
-.modal .line-1 button:hover svg g path {
+.modal .line-1 button:hover svg g path,
+.modal-usuario-logado .line-1 button:hover svg g path {
     fill: #c72727;
 }
 
 .modal .line-2 {
     width: 100%;
+    height: 71%;
+}
+
+.modal.maquina .line-2 {
     height: 78%;
 }
 
@@ -868,7 +885,8 @@ main .chart h3 {
 }
 
 .novo-usuario-ct label,
-.nova-maquina-ct label {
+.nova-maquina-ct label,
+.modal-usuario-logado label {
     width: 400px;
     margin-top: 16px;
     margin-left: 16px;
@@ -886,12 +904,14 @@ main .chart h3 {
 }
 
 .novo-usuario-ct input.error,
-.nova-maquina-ct input.error {
+.nova-maquina-ct input.error,
+.modal-usuario-logado input.error {
     border-bottom: 1px solid #c72727;
 }
 
 .novo-usuario-ct input:focus,
-.nova-maquina-ct input:focus {
+.nova-maquina-ct input:focus,
+.modal-usuario-logado input:focus {
     outline: none;
 }
 
@@ -900,7 +920,8 @@ main .chart h3 {
     padding: 6px 40px 6px 12px;
 }
 
-.novo-usuario-ct .eye-icon {
+.novo-usuario-ct .eye-icon,
+.modal-usuario-logado .line-2 img {
     width: 22px;
     position: absolute;
     top: 40px;
@@ -967,10 +988,14 @@ main .chart h3 {
     padding-left: 12px;
 }
 
-.visualizar-usuario-ct .tabela-ct table,
-.visualizar-maquina-ct .tabela-ct table {
+.visualizar-usuario-ct .tabela-ct table {
     width: 89%;
     height: 324px;
+}
+
+.visualizar-maquina-ct .tabela-ct table {
+    width: 89%;
+    height: 400px;
 }
 
 .visualizar-usuario-ct .tabela-ct table thead,
@@ -1072,9 +1097,14 @@ main .chart h3 {
 
 .modal .line-3 {
     width: 100%;
-    height: 12%;
+    height: 21%;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
+}
+
+.modal.maquina .line-3 {
+    height: 10% !important;
 }
 
 .modal-logout .line-3 {
@@ -1817,4 +1847,88 @@ main .chart h3 {
 
 .inovacao {
     color: #ffffff;
+}
+
+.modal-usuario-logado-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #0000005a;
+    transition: all .4s ease-in-out;
+    opacity: 0;
+    z-index: -1;
+}
+
+.modal-usuario-logado-background.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+.modal-usuario-logado {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 380px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+    z-index: -1;
+    transition: all .4s ease-in-out;
+}
+
+.modal-usuario-logado.active {
+    opacity: 1;
+    z-index: 11;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-usuario-logado input {
+    margin-top: 6px;
+    width: 400px;
+    padding: 6px 38px 6px 12px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    transition: all .4s ease-in-out;
+}
+
+.modal-usuario-logado .line-1 {
+    width: 100%;
+    height: 14%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-usuario-logado .line-1 h4 {
+    margin-top: 20px;
+    margin-left: 24px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.modal-usuario-logado .line-2 {
+    width: 100%;
+    height: 68%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-usuario-logado .line-3 {
+    width: 100%;
+    height: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.modal-usuario-logado .line-3 .btn-ct {
+    margin-right: 16px;
+}
+
+.modal-usuario-logado .btn-cancelar {
+    margin-right: 4px;
 }

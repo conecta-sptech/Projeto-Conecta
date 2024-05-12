@@ -28,6 +28,7 @@ const downArrowIcon = document.querySelector(".down-arrow-icon");
 const modalBackground = document.querySelector(".modal-background");
 const modalUsuarioBackground = document.querySelector(".modal-usuario-background");
 const modalMaquinaBackground = document.querySelector(".modal-maquina-background");
+const modalUsuarioLogadoBackground = document.querySelector(".modal-usuario-logado-background");
 const modalLogoutBackground = document.querySelector(".modal-logout-background");
 const modalSucessoBackground = document.querySelector(".modal-sucesso-background");
 const modalSucesso = document.querySelector(".modal-sucesso");
@@ -52,6 +53,9 @@ function removerTelaLoading() {
 
 function resetarModalInicial() {
     inputBuscarMaquinasModalInicial.value = "";
+
+    tbodyModalInicial.innerHTML = ``;
+    listarMaquinasModalInicial();
 }
 
 function abrirModalInicial() {
@@ -219,12 +223,15 @@ function abrirModal(e) {
         modalUsuarioBackground.classList.add("active");
     } else if (id == "modalMaquina") {
         modalMaquinaBackground.classList.add("active");
+    } else if (id == "modalUsuarioLogado") {
+        modalUsuarioLogadoBackground.classList.add("active");
     } else {
         modalBackground.classList.add("active");
     }
 
     resetarModalUsuario();
     resetarModalMaquina();
+    resetarModalUsuarioLogado();
 }
 
 function fecharModal(e) {
@@ -237,6 +244,8 @@ function fecharModal(e) {
         modalUsuarioBackground.classList.remove("active");
     } else if (id == "modalMaquina") {
         modalMaquinaBackground.classList.remove("active");
+    } else if (id == "modalUsuarioLogado") {
+        modalUsuarioLogadoBackground.classList.remove("active");
     } else if (id == "modalSucesso") {
         modalSucessoBackground.classList.remove("active");
     } else {
@@ -281,11 +290,11 @@ function definirTempoAtualizacao() {
 function filtrarMaquinasModalInicial(e) {
     tbodyModalInicial.innerHTML = ``;
     for (let i = 0; i < listaMaquinas.length; i++) {
-        if (e.value == ""){
+        if (e.value == "") {
             tbodyModalInicial.innerHTML = ``;
             listarMaquinasModalInicial();
         }
-         else if ((listaMaquinas[i].hostnameMaquina.toUpperCase().startsWith(e.value.toUpperCase()))) {
+        else if ((listaMaquinas[i].hostnameMaquina.toUpperCase().startsWith(e.value.toUpperCase()))) {
             tbodyModalInicial.innerHTML += `
              <tr>
             <td class="icons-ct">

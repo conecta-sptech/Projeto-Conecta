@@ -2,11 +2,12 @@ const telaNovaMaquina = document.querySelector(".nova-maquina-ct");
 const telaVisualizarMaquina = document.querySelector(".visualizar-maquina-ct");
 const btnNovaMaquina = document.getElementById("btnNovaMaquina");
 const btnVisualizarMaquina = document.getElementById("btnVisualizarMaquina");
-const inputNomeMaquina = document.getElementById("inputNomeMaquina");
-const inputIpMaquina = document.getElementById("inputIpMaquina");
+const inputHostnameMaquina = document.getElementById("inputHostnameMaquina");
+const inputSistemaOperacionalMaquina = document.getElementById("inputSistemaOperacionalMaquina");
 const inputRamMaquina = document.getElementById("inputRamMaquina");
-const inputCpuMaquina = document.getElementById("inputCpuMaquina");
 const inputDiscoMaquina = document.getElementById("inputDiscoMaquina");
+const inputClockMaquina = document.getElementById("inputClockMaquina");
+const inputNucleoMaquina = document.getElementById("inputNucleoMaquina");
 const inputBuscarMaquinasModal = document.getElementById("inputBuscarMaquinasModal");
 const line3ModalMaquina = document.getElementById("line3ModalMaquina");
 
@@ -17,18 +18,20 @@ function resetarModalMaquina() {
     telaVisualizarMaquina.classList.remove("active");
     line3ModalMaquina.style.display = "flex";
 
-    inputNomeMaquina.value = "";
-    inputIpMaquina.value = "";
+    inputHostnameMaquina.value = "";
+    inputSistemaOperacionalMaquina.value = "";
     inputRamMaquina.value = "";
-    inputCpuMaquina.value = "";
     inputDiscoMaquina.value = "";
+    inputClockMaquina.value = "";
+    inputNucleoMaquina.value = "";
     inputBuscarMaquinasModal.value = "";
 
-    inputNomeMaquina.classList.remove("error");
-    inputIpMaquina.classList.remove("error");
+    inputHostnameMaquina.classList.remove("error");
+    inputSistemaOperacionalMaquina.classList.remove("error");
     inputRamMaquina.classList.remove("error");
-    inputCpuMaquina.classList.remove("error");
     inputDiscoMaquina.classList.remove("error");
+    inputClockMaquina.classList.remove("error");
+    inputNucleoMaquina.classList.remove("error");
 }
 
 function alterarFuncaoMaquina(e) {
@@ -48,34 +51,38 @@ function alterarFuncaoMaquina(e) {
 }
 
 function validarCamposMaquina() {
-    const nomeMaquina = inputNomeMaquina.value;
-    const ipMaquina = inputIpMaquina.value;
+    const nomeMaquina = inputHostnameMaquina.value;
+    const sistemaOperacionalMaquina = inputSistemaOperacionalMaquina.value;
     const ramMaquina = inputRamMaquina.value;
-    const cpuMaquina = inputCpuMaquina.value;
     const discoMaquina = inputDiscoMaquina.value;
+    const clockMaquina = inputClockMaquina.value;
+    const nucleoMaquina = inputNucleoMaquina.value;
     const idEmpresa = sessionStorage.ID_EMPRESA;
 
-    if (nomeMaquina == "") inputNomeMaquina.classList.add("error");
-    if (ipMaquina == "") inputIpMaquina.classList.add("error");
+    if (nomeMaquina == "") inputHostnameMaquina.classList.add("error");
+    if (sistemaOperacionalMaquina == "") inputSistemaOperacionalMaquina.classList.add("error");
     if (ramMaquina == "") inputRamMaquina.classList.add("error");
-    if (cpuMaquina == "") inputCpuMaquina.classList.add("error");
     if (discoMaquina == "") inputDiscoMaquina.classList.add("error");
+    if (clockMaquina == "") inputClockMaquina.classList.add("error");
+    if (nucleoMaquina == "") inputNucleoMaquina.classList.add("error");
 
-    if (nomeMaquina != "" && ipMaquina != "" && ramMaquina != "" && cpuMaquina != "" && discoMaquina != "") {
+    if (nomeMaquina != "" && sistemaOperacionalMaquina != "" && ramMaquina != "" && discoMaquina != "" && clockMaquina != "" && nucleoMaquina != "") {
         //fetch
     }
 }
 
 function removerErroCamposMaquina() {
-    const nomeMaquina = inputNomeMaquina.value;
-    const ipMaquina = inputIpMaquina.value;
+    const nomeMaquina = inputHostnameMaquina.value;
+    const sistemaOperacionalMaquina = inputSistemaOperacionalMaquina.value;
     const ramMaquina = inputRamMaquina.value;
-    const cpuMaquina = inputCpuMaquina.value;
+    const clockMaquina = inputClockMaquina.value;
     const discoMaquina = inputDiscoMaquina.value;
+    const nucleoMaquina = inputNucleoMaquina.value;
 
-    if (nomeMaquina != "") inputNomeMaquina.classList.remove("error");
-    if (ipMaquina != "") inputIpMaquina.classList.remove("error");
+    if (nomeMaquina != "") inputHostnameMaquina.classList.remove("error");
+    if (sistemaOperacionalMaquina != "") inputSistemaOperacionalMaquina.classList.remove("error");
     if (ramMaquina != "") inputRamMaquina.classList.remove("error");
-    if (cpuMaquina != "") inputCpuMaquina.classList.remove("error");
     if (discoMaquina != "") inputDiscoMaquina.classList.remove("error");
+    if (clockMaquina != "") inputClockMaquina.classList.remove("error");
+    if (nucleoMaquina != "") inputNucleoMaquina.classList.remove("error");
 }

@@ -7,8 +7,14 @@ const inputEmailUsuario = document.getElementById("inputEmailUsuario");
 const inputSenhaUsuario = document.getElementById("inputSenhaUsuario");
 const inputConfirmarSenhaUsuario = document.getElementById("inputConfirmarSenhaUsuario");
 const inputBuscarUsuarios = document.getElementById("inputBuscarUsuarios");
-const eyeIcon = document.querySelectorAll(".eye-icon");
+const eyeIcon = document.querySelectorAll(".modal .eye-icon");
 const line3ModalUsuario = document.getElementById("line3ModalUsuario");
+
+const inputSenhaAtual = document.getElementById("inputSenhaAtual");
+const inputNovaSenha = document.getElementById("inputNovaSenha");
+const inputConfirmarNovaSenha = document.getElementById("inputConfirmarNovaSenha");
+const eyeIconSenhaAtual = document.getElementById("eyeIconSenhaAtual");
+const eyeIconNovaSenha = document.querySelectorAll(".modal-usuario-logado .eye-icon");
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -29,6 +35,12 @@ function resetarModalUsuario() {
     inputEmailUsuario.classList.remove("error");
     inputSenhaUsuario.classList.remove("error");
     inputConfirmarSenhaUsuario.classList.remove("error");
+
+    inputSenhaUsuario.setAttribute("type", "password");
+    inputConfirmarSenhaUsuario.setAttribute("type", "password");
+    eyeIcon.forEach(e => {
+        e.src = "../assets/svg/invisible-password-icon-v2.svg";
+    });
 }
 
 function alterarFuncaoUsuario(e) {
@@ -117,6 +129,77 @@ function alternarVisibilidadeSenha() {
         inputSenhaUsuario.setAttribute("type", "text");
         inputConfirmarSenhaUsuario.setAttribute("type", "text");
         eyeIcon.forEach(e => {
+            e.src = "../assets/svg/visible-password-icon-v2.svg";
+        });
+    }
+}
+
+// -- Modal de alteração de senha do usuário logado --
+
+function validarCamposUsuarioLogado() {
+    const senhaAtual = inputSenhaAtual.value;
+    const novaSenha = inputNovaSenha.value;
+    const confirmarNovaSenha = inputConfirmarNovaSenha.value;
+
+    if (senhaAtual == "" || senhaAtual.length < 8) inputSenhaAtual.classList.add("error");
+    if (novaSenha == "" || novaSenha.length < 8) inputNovaSenha.classList.add("error");
+    if (confirmarNovaSenha == "" || confirmarNovaSenha != novaSenha) inputConfirmarNovaSenha.classList.add("error");
+
+    if (senhaAtual != "" && novaSenha == confirmarNovaSenha && novaSenha.length > 0) {
+
+    }
+}
+
+function removerErroCamposUsuarioLogado() {
+    const senhaAtual = inputSenhaAtual.value;
+    const novaSenha = inputNovaSenha.value;
+    const confirmarNovaSenha = inputConfirmarNovaSenha.value;
+
+    if (senhaAtual.length >= 8) inputSenhaAtual.classList.remove("error");
+    if (novaSenha.length >= 8) inputNovaSenha.classList.remove("error");
+    if (confirmarNovaSenha == novaSenha && confirmarNovaSenha.length >= 8) inputConfirmarNovaSenha.classList.remove("error");
+}
+
+function resetarModalUsuarioLogado() {
+    inputSenhaAtual.value = "";
+    inputNovaSenha.value = "";
+    inputConfirmarNovaSenha.value = "";
+
+    inputSenhaAtual.classList.remove("error");
+    inputNovaSenha.classList.remove("error");
+    inputConfirmarNovaSenha.classList.remove("error");
+
+    inputSenhaAtual.setAttribute("type", "password");
+    eyeIconSenhaAtual.src = "../assets/svg/invisible-password-icon-v2.svg";
+
+    inputNovaSenha.setAttribute("type", "password");
+    inputConfirmarNovaSenha.setAttribute("type", "password");
+    eyeIconNovaSenha.forEach(e => {
+        e.src = "../assets/svg/invisible-password-icon-v2.svg";
+    });
+}
+
+function alternarVisibilidadeSenhaAtual() {
+    if (inputSenhaAtual.type == "text") {
+        inputSenhaAtual.setAttribute("type", "password");
+        eyeIconSenhaAtual.src = "../assets/svg/invisible-password-icon-v2.svg";
+    } else {
+        inputSenhaAtual.setAttribute("type", "text");
+        eyeIconSenhaAtual.src = "../assets/svg/visible-password-icon-v2.svg";
+    }
+}
+
+function alternarVisibilidadeNovaSenha() {
+    if (inputNovaSenha.type == "text" || inputConfirmarNovaSenha.type == "text") {
+        inputNovaSenha.setAttribute("type", "password");
+        inputConfirmarNovaSenha.setAttribute("type", "password");
+        eyeIconNovaSenha.forEach(e => {
+            e.src = "../assets/svg/invisible-password-icon-v2.svg";
+        });
+    } else {
+        inputNovaSenha.setAttribute("type", "text");
+        inputConfirmarNovaSenha.setAttribute("type", "text");
+        eyeIconNovaSenha.forEach(e => {
             e.src = "../assets/svg/visible-password-icon-v2.svg";
         });
     }
