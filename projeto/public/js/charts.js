@@ -514,7 +514,7 @@ function gerarGraficoRede() {
     // Velocidade de download
     let downloadOptions = {
         chart: {
-            height: 280,
+            height: 270,
             type: "radialBar",
         },
         series: [67],
@@ -533,7 +533,7 @@ function gerarGraficoRede() {
                         show: false,
                     },
                     value: {
-                        fontSize: "30px",
+                        fontSize: "26px",
                         color: '#ffffff',
                         show: true,
                         formatter: function (val) {
@@ -558,7 +558,7 @@ function gerarGraficoRede() {
     // Velocidade de upload
     let uploadOptions = {
         chart: {
-            height: 280,
+            height: 270,
             type: "radialBar",
         },
         series: [41],
@@ -577,7 +577,7 @@ function gerarGraficoRede() {
                         show: false,
                     },
                     value: {
-                        fontSize: "30px",
+                        fontSize: "26px",
                         color: '#ffffff',
                         show: true,
                         formatter: function (val) {

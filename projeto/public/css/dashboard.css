@@ -416,7 +416,7 @@ main .hostname-maquina-ct span {
 }
 
 main .tempo-atualizacao-ct {
-    margin-top: 7px;
+    margin-top: 4px;
     margin-left: 24px;
     display: none;
     justify-content: center;
@@ -1644,10 +1644,7 @@ main .chart h3 {
 
 #chartRede1,
 #chartRede2 {
-    width: 200px;
-    height: 200px;
     margin-top: -26px;
-    transform: scale(0.9);
 }
 
 .line-1 .chart .text {
