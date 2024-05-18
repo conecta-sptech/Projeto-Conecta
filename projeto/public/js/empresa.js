@@ -5,6 +5,10 @@ const inputCepEmpresa = document.getElementById("inputCepEmpresa");
 const inputNumeroEmpresa = document.getElementById("inputNumeroEmpresa");
 const inputTelefoneEmpresa = document.getElementById("inputTelefoneEmpresa");
 
+function validarCamposEmpresa() {
+    
+}
+
 function mascararCep() {
     const inputLength = inputCepEmpresa.value.length;
 
