@@ -27,7 +27,7 @@ function cadastrarEmpresa(req, res) {
             usuarioModel.cadastrarUsuarioEmpresa(emailEmpresa, senhaEmpresa, idEmpresa).then(function (resposta) {
                 console.log(resposta);
                 res.status(200).send("Usuário administrador da empresa cadastrada com sucesso");
-            
+
             }).catch(function (erro) {
                 res.status(500).json(erro.sqlMessage);
             })
@@ -64,13 +64,13 @@ function autenticar(req, res) {
                         idEmpresa: resultadoAutenticar[0].idEmpresa,
                         nomeEmpresa: resultadoAutenticar[0].nomeEmpresa
                     });
-                    
+
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
-                
+
                 } else {
                     res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                
+
                 }
             }
         ).catch(
@@ -113,11 +113,47 @@ function cadastrarUsuario(req, res) {
             .catch(function (erro) {
                 res.status(500).json(erro.sqlMessage);
             });
-        }
     }
+}
+
+function alterarSenhaUsuario(req, res) {
+    const idUsuario = req.params.idUsuario;
+    const idEmpresa = req.params.idEmpresa;
+    const senhaUsuarioAntiga = req.body.senhaUsuarioAntiga;
+    const senhaUsuarioNova = req.body.senhaUsuarioNova;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("Id do usuario está undefined!");
+
+    } else if (idEmpresa == undefined) {
+        res.status(400).send("Id da empresa está undefined!");
+
+    } else if (senhaUsuarioAntiga == undefined) {
+        res.status(400).send("Senha antiga do usuario está undefined!");
+
+    } else if (senhaUsuarioNova == undefined) {
+        res.status(400).send("Senha nova do usuario está undefined!");
+
+    } else {
+        usuarioModel.alterarSenhaUsuario(idUsuario, idEmpresa, senhaUsuarioAntiga, senhaUsuarioNova).then(function (respostaConfereSenha) {
+            console.log(respostaConfereSenha);
+            console.log(respostaConfereSenha.changedRows)
+
+            if (respostaConfereSenha.changedRows > 0){
+                res.status(200).send("Senha alterada com sucesso");
+            } else {
+                res.status(400).send("Senha não encontrada");
+            }
+
+        }).catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        })
+    }
+}
 
 module.exports = {
     cadastrarEmpresa,
     autenticar,
-    cadastrarUsuario
+    cadastrarUsuario,
+    alterarSenhaUsuario
 }

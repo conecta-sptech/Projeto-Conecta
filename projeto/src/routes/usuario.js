@@ -17,5 +17,9 @@ router.post("/cadastrar-funcionario", function (req, res) {
     usuarioController.cadastrarUsuario(req, res);
 });
 
+router.patch("/alterar/senha/:idUsuario/:idEmpresa", function (req, res) {
+    usuarioController.alterarSenhaUsuario(req, res);
+});
+
 
 module.exports = router;
