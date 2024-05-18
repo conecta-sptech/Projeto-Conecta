@@ -53,11 +53,22 @@ function cadastrarFuncionario(nomeGerente, emailGerente, senhaGerente, idEmpresa
     return database.executar(instrucao);
 }
 
+function alterarSenhaUsuario(idUsuario, idEmpresa, senhaUsuarioAntiga, senhaUsuarioNova) {
+    const instrucao = `
+        UPDATE Usuario SET senhaUsuario = "${senhaUsuarioNova}"
+            WHERE idUsuario = ${idUsuario} AND senhaUsuario = "${senhaUsuarioAntiga}" AND fkEmpresaUsuario = ${idEmpresa}
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrarEmpresa,
     cadastrarUsuarioEmpresa,
     autenticar,
     cadastrarGerente,
-    cadastrarFuncionario
+    cadastrarFuncionario,
+    alterarSenhaUsuario
 }
 

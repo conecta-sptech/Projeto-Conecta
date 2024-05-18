@@ -145,8 +145,28 @@ function validarCamposUsuarioLogado() {
     if (novaSenha == "" || novaSenha.length < 8) inputNovaSenha.classList.add("error");
     if (confirmarNovaSenha == "" || confirmarNovaSenha != novaSenha) inputConfirmarNovaSenha.classList.add("error");
 
-    if (senhaAtual != "" && novaSenha == confirmarNovaSenha && novaSenha.length > 0) {
-
+    if (senhaAtual != "" && novaSenha == confirmarNovaSenha && novaSenha.length >= 8) {
+        fetch(`/usuario/alterar/senha/${sessionStorage.ID_USUARIO}/${sessionStorage.ID_EMPRESA}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                senhaUsuarioAntiga: senhaAtual,
+                senhaUsuarioNova: novaSenha
+            }),
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                inputSenhaAtual.value = "";
+                inputNovaSenha.value = "";
+                inputConfirmarNovaSenha.value = "";
+                abrirModalSucesso("Senha alterada com sucesso!");
+            } else {
+                throw "Houve um erro ao tentar realizar a alteração de senha!";
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
 }
 
