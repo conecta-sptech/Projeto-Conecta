@@ -612,12 +612,12 @@
                                     <th class="icons-ct"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tbodyModalGerenciarUsuario">
                                 <tr>
                                     <td class="nome-td">Leonardo</td>
                                     <td class="email-td">leonardo.marques@gmail.com</td>
                                     <td class="icons-ct">
-                                        <button id="btnExcluir">
+                                        <button id="btnExcluir" data-id="${listaUsuarios[i].idUsuario}" onclick="abrirModalConfirmarExclusaoUsuario(this)">
                                             <img src="../assets/svg/trash.svg">
                                         </button>
                                     </td>
@@ -666,7 +666,8 @@
                                         stroke="none" fill="#000000" fill-rule="evenodd"></path>
                                 </g>
                             </svg>
-                            <input id="inputBuscarMaquinasModal" type="text" placeholder="Buscar máquinas">
+                            <input oninput="filtrarMaquinasModalInicial(this)" id="inputBuscarMaquinasModal" type="text"
+                                placeholder="Buscar máquinas">
                         </div>
                     </div>
 
@@ -678,16 +679,7 @@
                                     <th class="icons-ct"></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="nome-td">MAQUINA01</td>
-                                    <td class="icons-ct">
-                                        <button id="btnExcluir">
-                                            <img src="../assets/svg/trash.svg">
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tbodyModalGerenciarMaquina"></tbody>
                         </table>
                     </div>
                 </div>
@@ -768,6 +760,26 @@
                 <div class="btn-ct">
                     <button class="btn-cancelar" onclick="fecharModal(this)" data-id="modalLogout">Cancelar</button>
                     <button class="btn-logout" onclick="encerrarSessao()">Sair</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Confirmação de Exclusão -->
+
+        <div class="modal-exclusao-background"></div>
+        <div class="modal-exclusao" id="modalExclusao">
+            <div class="line-1">
+                <h4 id="tituloModalExclusao"></h4>
+            </div>
+
+            <div class="line-2">
+                <p id="mensagemModalExclusao"></p>
+            </div>
+
+            <div class="line-3">
+                <div class="btn-ct">
+                    <button class="btn-cancelar" onclick="fecharModal(this)" data-id="modalExclusao">Cancelar</button>
+                    <button id="btnModalExclusao" class="btn-excluir">Excluir</button>
                 </div>
             </div>
         </div>

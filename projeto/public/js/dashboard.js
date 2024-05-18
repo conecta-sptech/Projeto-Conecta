@@ -30,6 +30,7 @@ const modalUsuarioBackground = document.querySelector(".modal-usuario-background
 const modalMaquinaBackground = document.querySelector(".modal-maquina-background");
 const modalUsuarioLogadoBackground = document.querySelector(".modal-usuario-logado-background");
 const modalLogoutBackground = document.querySelector(".modal-logout-background");
+const modalExclusaoBackground = document.querySelector(".modal-exclusao-background");
 const modalSucessoBackground = document.querySelector(".modal-sucesso-background");
 const modalSucesso = document.querySelector(".modal-sucesso");
 const mensagemModalSucesso = document.getElementById("mensagemModalSucesso");
@@ -38,11 +39,17 @@ const mensagemModalInicial = document.getElementById("mensagemModalInicial");
 const modalInicialLine3 = document.querySelector(".modal-inicio .line-3");
 const inputBuscarMaquinasModalInicial = document.getElementById("inputBuscarMaquinasModalInicial");
 
+const modalExclusao = document.getElementById("modalExclusao");
+const tituloModalExclusao = document.getElementById("tituloModalExclusao");
+const mensagemModalExclusao = document.getElementById("mensagemModalExclusao");
+const btnModalExclusao = document.getElementById("btnModalExclusao");
+
 const loadingBackground = document.querySelector(".loading-background");
 const mainContentLoading = document.getElementById("mainContentLoading");
 
 const tbodyModalInicial = document.getElementById("tbodyModalInicial");
 let listaMaquinas = null;
+let listaUsuarios = null;
 
 function removerTelaLoading() {
     setTimeout(() => {
@@ -215,17 +222,17 @@ function abrirModal(e) {
         modalLogoutBackground.classList.add("active");
     } else if (id == "modalUsuario") {
         modalUsuarioBackground.classList.add("active");
+        resetarModalUsuario();
     } else if (id == "modalMaquina") {
         modalMaquinaBackground.classList.add("active");
+        resetarModalMaquina();
+        listarMaquinasModalGerenciar();
     } else if (id == "modalUsuarioLogado") {
         modalUsuarioLogadoBackground.classList.add("active");
+        resetarModalUsuarioLogado();
     } else {
         modalBackground.classList.add("active");
     }
-
-    resetarModalUsuario();
-    resetarModalMaquina();
-    resetarModalUsuarioLogado();
 }
 
 function fecharModal(e) {
@@ -242,6 +249,8 @@ function fecharModal(e) {
         modalUsuarioLogadoBackground.classList.remove("active");
     } else if (id == "modalSucesso") {
         modalSucessoBackground.classList.remove("active");
+    } else if (id == "modalExclusao") {
+        modalExclusaoBackground.classList.remove("active");
     } else {
         modalBackground.classList.remove("active");
     }
