@@ -109,12 +109,6 @@ function carregarInformacoesTela() {
 
     } else if (sessionStorage.getItem("FUNCAO_USUARIO") == "Gerente") {
         nomeUsuario.forEach(e => e.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0]);
-
-        modalInicialLine3.innerHTML = `
-        <button class="btn-cadastrar-maquina" onclick="abrirModal(this)" data-id="modalMaquina">Cadastrar máquina</button>
-        <button class="btn-logout" onclick="abrirModal(this)" data-id="modalLogout">Sair</button>
-        `;
-
     } else {
         nomeUsuario.forEach(e => e.textContent = sessionStorage.getItem("NOME_USUARIO").split(' ')[0]);
         btnGerenciarUsuarioSidebar.remove();

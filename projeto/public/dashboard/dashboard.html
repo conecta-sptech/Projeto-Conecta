@@ -88,18 +88,6 @@
                     </svg>
                     <span class="icon-description">Conexões USB</span>
                 </a>
-
-                <a class="inovacao" href="" download="LOGS.pdf">
-                    <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        viewBox="0, 0, 400,400">
-                        <g id="svgg">
-                            <path id="path0"
-                                d="M52.845 1.483 C 47.152 5.236,47.667 -11.003,47.667 164.844 C 47.667 340.690,47.152 324.451,52.845 328.205 C 56.339 330.508,273.349 330.508,276.843 328.205 C 282.536 324.451,282.021 340.690,282.021 164.844 C 282.021 -11.003,282.536 5.236,276.843 1.483 C 273.349 -0.821,56.339 -0.821,52.845 1.483 M170.042 61.114 C 177.555 65.225,177.705 76.112,170.313 80.718 C 166.202 83.279,93.430 83.406,89.204 80.859 C 80.193 75.430,82.262 62.632,92.562 60.083 C 97.976 58.743,167.398 59.667,170.042 61.114 M305.445 193.555 C 305.416 339.310,306.036 330.807,294.594 342.250 C 283.565 353.278,285.501 353.071,193.164 353.101 L 117.969 353.125 117.974 372.852 C 117.980 394.589,118.099 395.183,123.157 398.517 C 125.318 399.942,128.940 399.990,235.156 399.990 C 357.610 399.990,347.138 400.458,350.861 394.811 C 353.168 391.312,353.168 79.782,350.861 76.282 C 347.526 71.224,346.933 71.105,325.195 71.099 L 305.469 71.094 305.445 193.555 M240.354 107.989 C 247.867 112.100,248.017 122.987,240.625 127.593 L 237.891 129.297 164.844 129.297 C 93.182 129.297,91.748 129.267,89.204 127.734 C 80.194 122.305,82.268 109.478,92.562 106.966 C 98.206 105.589,237.733 106.554,240.354 107.989 M240.354 154.864 C 247.867 158.975,248.017 169.862,240.625 174.468 L 237.891 176.172 164.844 176.172 C 93.182 176.172,91.748 176.142,89.204 174.609 C 80.194 169.180,82.268 156.353,92.562 153.841 C 98.206 152.464,237.733 153.429,240.354 154.864 M240.354 201.739 C 247.867 205.850,248.017 216.737,240.625 221.343 L 237.891 223.047 164.844 223.047 C 93.182 223.047,91.748 223.017,89.204 221.484 C 80.194 216.055,82.268 203.228,92.562 200.716 C 98.206 199.339,237.733 200.304,240.354 201.739 M240.354 248.614 C 247.903 252.745,247.976 263.845,240.484 268.359 C 238.028 269.839,236.505 269.922,211.719 269.922 C 186.932 269.922,185.410 269.839,182.954 268.359 C 173.943 262.929,176.007 250.155,186.312 247.576 C 191.529 246.270,237.692 247.157,240.354 248.614 "
-                                stroke="none" fill="#ffffff" fill-rule="evenodd"></path>
-                        </g>
-                    </svg>
-                    <span class="icon-description">Emitir LOGS</span>
-                </a>
             </div>
 
             <div class="icons-col-3">
@@ -496,6 +484,8 @@
 
         <!-- Modais -->
 
+        <!-- Modal Início -->
+
         <div class="modal-background"></div>
         <div class="modal-inicio" id="modalInicio">
             <div class="line-1">
@@ -540,6 +530,8 @@
                 <button class="btn-logout" onclick="abrirModal(this)" data-id="modalLogout">Sair</button>
             </div>
         </div>
+
+        <!-- Modal Gerenciar Usuário -->
 
         <div class="modal-usuario-background"></div>
         <div class="modal" id="modalUsuario">
@@ -625,10 +617,6 @@
                                     <td class="nome-td">Leonardo</td>
                                     <td class="email-td">leonardo.marques@gmail.com</td>
                                     <td class="icons-ct">
-                                        <button id="btnEditar">
-                                            <img src="../assets/svg/pencil.svg">
-                                        </button>
-
                                         <button id="btnExcluir">
                                             <img src="../assets/svg/trash.svg">
                                         </button>
@@ -648,6 +636,8 @@
             </div>
         </div>
 
+        <!-- Modal Gerenciar Máquina -->
+
         <div class="modal-maquina-background"></div>
         <div class="modal maquina" id="modalMaquina">
             <div class="line-1">
@@ -665,44 +655,6 @@
             </div>
 
             <div class="line-2">
-                <div class="menu">
-                    <button class="active" id="btnNovaMaquina" onclick="alterarFuncaoMaquina(this)">
-                        <img src="../assets/svg/computer.svg">
-                        <span>Criar nova máquina</span>
-                    </button>
-
-                    <button id="btnVisualizarMaquina" onclick="alterarFuncaoMaquina(this)">
-                        <img src="../assets/svg/computer.svg">
-                        <span>Gerenciar máquinas</span>
-                    </button>
-                </div>
-
-                <div class="nova-maquina-ct">
-                    <label for="inputHostnameMaquina">Hostname</label>
-                    <input oninput="removerErroCamposMaquina()" type="text" id="inputHostnameMaquina"
-                        placeholder="Hostname da máquina">
-
-                    <label for="inputSistemaOperacionalMaquina">Sistema Operacional</label>
-                    <input oninput="removerErroCamposMaquina()" type="text" id="inputSistemaOperacionalMaquina"
-                        placeholder="Sistema Operacional da máquina">
-
-                    <label for="inputRamMaquina">RAM</label>
-                    <input oninput="removerErroCamposMaquina()" type="number" id="inputRamMaquina"
-                        placeholder="Quantidade de memória RAM">
-
-                    <label for="inputDiscoMaquina">Disco</label>
-                    <input oninput="removerErroCamposMaquina()" type="number" id="inputDiscoMaquina"
-                        placeholder="Quantidade de memória do disco">
-
-                    <label for="inputClockMaquina">Frequência de Clock</label>
-                    <input oninput="removerErroCamposMaquina()" type="number" id="inputClockMaquina"
-                        placeholder="Frequência de clock do processador">
-
-                    <label for="inputNucleoMaquina">Núcleos do Processador</label>
-                    <input oninput="removerErroCamposMaquina()" type="number" id="inputNucleoMaquina"
-                        placeholder="Quantidade de núcleos">
-                </div>
-
                 <div class="visualizar-maquina-ct">
                     <div class="input-ct">
                         <div style="position: relative;">
@@ -730,10 +682,6 @@
                                 <tr>
                                     <td class="nome-td">MAQUINA01</td>
                                     <td class="icons-ct">
-                                        <button id="btnEditar">
-                                            <img src="../assets/svg/pencil.svg">
-                                        </button>
-
                                         <button id="btnExcluir">
                                             <img src="../assets/svg/trash.svg">
                                         </button>
@@ -744,14 +692,9 @@
                     </div>
                 </div>
             </div>
-
-            <div class="line-3" id="line3ModalMaquina">
-                <div class="btn-ct">
-                    <button class="btn-cancelar" onclick="fecharModal(this)" data-id="modalMaquina">Cancelar</button>
-                    <button class="btn-salvar" onclick="validarCamposMaquina()">Salvar</button>
-                </div>
-            </div>
         </div>
+
+        <!-- Modal Gerenciar Empresa -->
 
         <div class="modal-gerenciar-empresa" id="modalInfoEmpresa">
             <div class="line-1">
@@ -769,15 +712,24 @@
             </div>
 
             <div class="line-2">
-                <label for="inputNomeEmpresa">Nome da Empresa</label>
-                <input oninput="removerErroCamposEmpresa()" type="text" id="inputNomeEmpresa" disabled>
+                <div style="display: flex; flex-direction: column; width: 400px; position: relative;">
+                    <label for="inputNomeEmpresa">Nome da Empresa</label>
+                    <input oninput="removerErroCamposEmpresa()" type="text" id="inputNomeEmpresa" disabled>
+                    <img src="../assets/svg/padlock-icon.svg" class="locked-icon">
+                </div>
 
-                <label for="inputCnpjEmpresa">CNPJ</label>
-                <input oninput="removerErroCamposEmpresa()" onkeypress="mascararCnpj()" type="text"
-                    id="inputCnpjEmpresa" maxlength="18" disabled>
+                <div style="display: flex; flex-direction: column; width: 400px; position: relative;">
+                    <label for="inputCnpjEmpresa">CNPJ</label>
+                    <input oninput="removerErroCamposEmpresa()" onkeypress="mascararCnpj()" type="text"
+                        id="inputCnpjEmpresa" maxlength="18" disabled>
+                    <img src="../assets/svg/padlock-icon.svg" class="locked-icon">
+                </div>
 
-                <label for="inputEmailEmpresa">E-mail</label>
-                <input oninput="removerErroCamposEmpresa()" type="text" id="inputEmailEmpresa" disabled>
+                <div style="display: flex; flex-direction: column; width: 400px; position: relative;">
+                    <label for="inputEmailEmpresa">E-mail</label>
+                    <input oninput="removerErroCamposEmpresa()" type="text" id="inputEmailEmpresa" disabled>
+                    <img src="../assets/svg/padlock-icon.svg" class="locked-icon">
+                </div>
 
                 <label for="inputCepEmpresa">CEP</label>
                 <input oninput="removerErroCamposEmpresa()" onkeypress="mascararCep()" type="text" id="inputCepEmpresa"
@@ -800,6 +752,8 @@
             </div>
         </div>
 
+        <!-- Modal Logout -->
+
         <div class="modal-logout-background"></div>
         <div class="modal-logout" id="modalLogout">
             <div class="line-1">
@@ -817,6 +771,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal de Sucesso -->
 
         <div class="modal-sucesso-background"></div>
         <div id="modalSucesso" class="modal-sucesso">
@@ -838,6 +794,8 @@
                 <button onclick="fecharModal(this)" class="btn-continuar" data-id="modalSucesso">Continuar</button>
             </div>
         </div>
+
+        <!-- Modal Alteração de Senha Usuário Logado -->
 
         <div class="modal-usuario-logado-background"></div>
         <div class="modal-usuario-logado" id="modalUsuarioLogado">
@@ -891,6 +849,8 @@
         </div>
 
     </div>
+
+    <!-- Splash Screen -->
 
     <div class="loading-background active">
         <div class="spinner">

@@ -741,17 +741,13 @@ main .chart h3 {
     top: 50%;
     left: 50%;
     width: 600px;
-    height: 520px;
+    height: 500px;
     border-radius: 25px;
     background-color: #ffffff;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.6);
     z-index: -1;
     transition: all .4s ease-in-out;
-}
-
-.modal.maquina {
-    height: 650px !important;
 }
 
 .modal-logout {
@@ -828,7 +824,7 @@ main .chart h3 {
 }
 
 .modal.maquina .line-2 {
-    height: 78%;
+    height: 90%;
 }
 
 .modal .line-2 .menu {
@@ -875,7 +871,6 @@ main .chart h3 {
 }
 
 .novo-usuario-ct,
-.nova-maquina-ct,
 .visualizar-usuario-ct,
 .visualizar-maquina-ct {
     height: 88%;
@@ -884,8 +879,11 @@ main .chart h3 {
     align-items: center;
 }
 
+.visualizar-maquina-ct {
+    display: flex !important;
+}
+
 .novo-usuario-ct label,
-.nova-maquina-ct label,
 .modal-usuario-logado label {
     width: 400px;
     margin-top: 16px;
@@ -893,8 +891,7 @@ main .chart h3 {
     font-weight: 600;
 }
 
-.novo-usuario-ct input,
-.nova-maquina-ct input {
+.novo-usuario-ct input {
     margin-top: 6px;
     width: 400px;
     padding: 6px 6px 6px 12px;
@@ -904,13 +901,11 @@ main .chart h3 {
 }
 
 .novo-usuario-ct input.error,
-.nova-maquina-ct input.error,
 .modal-usuario-logado input.error {
     border-bottom: 1px solid #c72727;
 }
 
 .novo-usuario-ct input:focus,
-.nova-maquina-ct input:focus,
 .modal-usuario-logado input:focus {
     outline: none;
 }
@@ -931,7 +926,6 @@ main .chart h3 {
 }
 
 .novo-usuario-ct.active,
-.nova-maquina-ct.active,
 .visualizar-usuario-ct.active,
 .visualizar-maquina-ct.active {
     display: flex;
@@ -942,8 +936,7 @@ main .chart h3 {
     height: 100% !important;
 }
 
-.visualizar-usuario-ct.active .line-3,
-.visualizar-maquina-ct.active .line-3 {
+.visualizar-usuario-ct.active .line-3 {
     display: none;
 }
 
@@ -953,7 +946,7 @@ main .chart h3 {
     height: 8%;
     display: flex;
     justify-content: center;
-    margin: 14px 0;
+    margin: 20px 0;
 }
 
 .visualizar-usuario-ct .input-ct svg,
@@ -989,13 +982,13 @@ main .chart h3 {
 }
 
 .visualizar-usuario-ct .tabela-ct table {
-    width: 89%;
-    height: 324px;
+    width: 90%;
+    height: 284px;
 }
 
 .visualizar-maquina-ct .tabela-ct table {
-    width: 89%;
-    height: 400px;
+    width: 90%;
+    height: 334px;
 }
 
 .visualizar-usuario-ct .tabela-ct table thead,
@@ -1046,7 +1039,8 @@ main .chart h3 {
 .visualizar-usuario-ct .icons-ct,
 .visualizar-maquina-ct .icons-ct {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    width: 82px;
 }
 
 #btnEditar img,
@@ -1351,6 +1345,7 @@ main .chart h3 {
 .modal-inicio .line-2 .tabela-ct table .nucleos-td {
     text-align: center;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .modal-inicio .line-2 .tabela-ct table .ip-td {
@@ -1570,6 +1565,23 @@ main .chart h3 {
 
 .modal-gerenciar-empresa input:focus {
     outline: none;
+}
+
+.modal-gerenciar-empresa input:disabled {
+    background-color: transparent;
+}
+
+#inputNomeEmpresa,
+#inputCnpjEmpresa,
+#inputEmailEmpresa {
+    padding: 6px 36px 6px 12px !important;
+}
+
+.modal-gerenciar-empresa .locked-icon {
+    position: absolute;
+    width: 18px;
+    top: 46px;
+    right: 10px;
 }
 
 .modal-gerenciar-empresa .line-3 {
