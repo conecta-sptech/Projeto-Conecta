@@ -8,7 +8,9 @@ function resetarModalMaquina() {
     tbodyModalGerenciarMaquina.innerHTML = "";
 }
 
-function listarMaquinasModalGerenciar() {
+async function listarMaquinasModalGerenciar() {
+    tbodyModalGerenciarMaquina.innerHTML = ``;
+    listaMaquinas = await listarMaquinas();
     for (let i = 0; i < listaMaquinas.length; i++) {
         tbodyModalGerenciarMaquina.innerHTML += `
         <tr>
@@ -23,15 +25,14 @@ function listarMaquinasModalGerenciar() {
     }
 }
 
-function filtrarMaquinasModalInicial(e) {
+function filtrarMaquinasModalGerenciar(e) {
     tbodyModalGerenciarMaquina.innerHTML = ``;
-    for (let i = 0; i < listaMaquinas.length; i++) {
-        if (e.value == "") {
-            tbodyModalGerenciarMaquina.innerHTML = ``;
-            listarMaquinasModalGerenciar();
-        }
-        else if ((listaMaquinas[i].hostnameMaquina.toUpperCase().startsWith(e.value.toUpperCase()))) {
-            tbodyModalGerenciarMaquina.innerHTML += `
+    if (e.value == "") {
+        listarMaquinasModalGerenciar();
+    } else {
+        for (let i = 0; i < listaMaquinas.length; i++) {
+            if (listaMaquinas[i].hostnameMaquina.toUpperCase().startsWith(e.value.toUpperCase())) {
+                tbodyModalGerenciarMaquina.innerHTML += `
             <tr>
                 <td class="nome-td">${listaMaquinas[i].hostnameMaquina}</td>
                 <td class="icons-ct">
@@ -41,6 +42,7 @@ function filtrarMaquinasModalInicial(e) {
                 </td>
             </tr>
         `;
+            }
         }
     }
 }
@@ -59,13 +61,24 @@ function fecharModalConfirmarExclusaoMaquina() {
     modalExclusaoBackground.classList.remove("active");
     modalExclusao.classList.remove("active");
     tbodyModalGerenciarMaquina.innerHTML = "";
-    listarMaquinasModalGerenciar();
 }
 
 function excluirMaquina(idMaquina) {
-    // Realizar o fetch de exclusão
-
-
-
-    fecharModalConfirmarExclusaoMaquina();
+    fetch(`/maquina/deletar/${idMaquina}/${sessionStorage.ID_EMPRESA}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            abrirModalSucesso("Máquina excluída com sucesso!");
+            inputBuscarMaquinasModal.value = "";
+            fecharModalConfirmarExclusaoMaquina();
+            listarMaquinasModalGerenciar();
+        } else {
+            throw "Houve um erro ao tentar excluir a máquina.";
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
 }

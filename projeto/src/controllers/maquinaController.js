@@ -94,10 +94,29 @@ function buscarMaquina(req, res) {
     });
 }
 
+function deletarMaquina(req, res) {
+    const idMaquina = req.params.idMaquina;
+    const idEmpresa = req.params.idEmpresa;
 
+    if (idMaquina == undefined) {
+        res.status(400).send("Id da máquina está undefined!");
+
+    } else if (idEmpresa == undefined) {
+        res.status(400).send("Id da empresa do usuario está undefined!");
+
+    } else {
+        maquinaModel.deletarMaquina(idMaquina, idEmpresa).then(function (resposta) {
+            res.status(200).json("Máquina deletada com sucesso!");
+        })
+            .catch(function (erro) {
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
 
 module.exports = {
     cadastrarMaquina,
     editarMaquina,
-    buscarMaquina
+    buscarMaquina,
+    deletarMaquina
 }

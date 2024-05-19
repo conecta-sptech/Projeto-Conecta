@@ -195,7 +195,6 @@ function fecharModalConfirmarExclusaoUsuario() {
     modalExclusaoBackground.classList.remove("active");
     modalExclusao.classList.remove("active");
     tbodyModalGerenciarUsuario.innerHTML = "";
-    listarMaquinasModalGerenciar();
 }
 
 function excluirUsuario(idUsuario) {
@@ -206,12 +205,12 @@ function excluirUsuario(idUsuario) {
         },
     }).then(function (resposta) {
         if (resposta.ok) {
-            abrirModalSucesso("Usuário deletado com sucesso!");
+            abrirModalSucesso("Usuário excluído com sucesso!");
             inputBuscarUsuarios.value = "";
-            fecharModalConfirmarExclusaoMaquina();
+            fecharModalConfirmarExclusaoUsuario();
             listarUsuariosModalGerenciar();
         } else {
-            throw "Houve um erro ao tentar realizar a alteração de senha!";
+            throw "Houve um erro ao tentar excluir o usuário.";
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);

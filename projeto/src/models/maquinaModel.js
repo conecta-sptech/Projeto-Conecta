@@ -36,9 +36,18 @@ function buscarMaquina(idEmpresa) {
     return database.executar(instrucao);
 }
 
+function deletarMaquina(idMaquina, idEmpresa) {
+    const instrucao = `
+        DELETE FROM Maquina WHERE idMaquina = ${idMaquina} AND fkEmpresaMaquina = ${idEmpresa}
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 module.exports = {
     cadastrarMaquina,
     editarMaquina,
-    buscarMaquina
+    buscarMaquina,
+    deletarMaquina
 }

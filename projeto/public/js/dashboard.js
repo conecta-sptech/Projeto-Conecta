@@ -191,19 +191,17 @@ function definirDashboard(e) {
 }
 
 function listarMaquinas() {
-    fetch(`/maquina/buscar-maquina/${sessionStorage.getItem("ID_EMPRESA")}`)
-        .then(res => res.json().then(res => {
-            listaMaquinas = res;
-        }));
+    return fetch(`/maquina/buscar-maquina/${sessionStorage.getItem("ID_EMPRESA")}`)
+        .then(res => res.json());
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
     if (sessionStorage.length == 0) {
         window.location.href = "../login.html";
     } else {
         removerTelaLoading();
         carregarModalInicial();
-        listarMaquinas();
+        listaMaquinas = await listarMaquinas();
     }
 });
 
@@ -214,7 +212,7 @@ function abrirModalSucesso(message) {
     mensagemModalSucesso.textContent = message;
 }
 
-async function abrirModal(e) {
+function abrirModal(e) {
     const id = e.getAttribute("data-id");
     document.getElementById(id).classList.add("active");
 
