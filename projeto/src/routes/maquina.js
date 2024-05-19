@@ -12,9 +12,11 @@ router.post("/editar-maquina", function (req, res) {
 });
 
 router.get("/buscar-maquina/:idEmpresa", function (req, res) {
-//Na rota do tipo get, enviamos valores para o controller pelo endpoint.
     maquinaController.buscarMaquina(req, res);
 });
-//Rota para o modal de gerenciar máquinas receber as máquinas.
+
+router.delete("/deletar/:idMaquina/:idEmpresa", function (req, res) {
+    maquinaController.deletarMaquina(req, res);
+});
 
 module.exports = router;

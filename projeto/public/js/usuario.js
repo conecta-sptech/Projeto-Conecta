@@ -56,6 +56,7 @@ function alterarFuncaoUsuario(e) {
         telaVisualizarUsuario.classList.add("active");
         telaNovoUsuario.classList.remove("active");
         line3ModalUsuario.style.display = "none";
+        listarUsuariosModalGerenciar();
     }
 }
 
@@ -139,6 +140,29 @@ function listarUsuarios() {
         .then(res => res.json());
 }
 
+function filtrarUsuariosModalGerenciar(e) {
+    tbodyModalGerenciarUsuario.innerHTML = ``;
+    if (e.value == "") {
+        listarUsuariosModalGerenciar();
+    } else {
+        for (let i = 0; i < listaUsuarios.length; i++) {
+            if (listaUsuarios[i].nomeUsuario.toUpperCase().startsWith(e.value.toUpperCase()) || listaUsuarios[i].emailUsuario.toUpperCase().startsWith(e.value.toUpperCase())) {
+                tbodyModalGerenciarUsuario.innerHTML += `
+                    <tr>
+                        <td class="nome-td">${listaUsuarios[i].nomeUsuario}</td>
+                        <td class="email-td">${listaUsuarios[i].emailUsuario}</td>
+                        <td class="icons-ct">
+                            <button id="btnExcluir" data-id="${listaUsuarios[i].idUsuario}" onclick="abrirModalConfirmarExclusaoUsuario(this)">
+                                <img src="../assets/svg/trash.svg">
+                            </button>
+                        </td>
+                    </tr>
+    `;
+            }
+        }
+    }
+}
+
 async function listarUsuariosModalGerenciar() {
     tbodyModalGerenciarUsuario.innerHTML = ``;
     listaUsuarios = await listarUsuarios();
@@ -175,11 +199,23 @@ function fecharModalConfirmarExclusaoUsuario() {
 }
 
 function excluirUsuario(idUsuario) {
-    // Realizar o fetch de exclusão
-
-
-
-    fecharModalConfirmarExclusaoMaquina();
+    fetch(`/usuario/deletar/${idUsuario}/${sessionStorage.ID_EMPRESA}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            abrirModalSucesso("Usuário deletado com sucesso!");
+            inputBuscarUsuarios.value = "";
+            fecharModalConfirmarExclusaoMaquina();
+            listarUsuariosModalGerenciar();
+        } else {
+            throw "Houve um erro ao tentar realizar a alteração de senha!";
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
 }
 
 // -- Modal de alteração de senha do usuário logado --

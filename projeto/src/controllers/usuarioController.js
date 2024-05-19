@@ -180,10 +180,31 @@ function buscarUsuario(req, res) {
     }
 }
 
+function deletarUsuario(req, res) {
+    const idUsuario = req.params.idUsuario;
+    const idEmpresa = req.params.idEmpresa;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("Id do usuario está undefined!");
+
+    } else if (idEmpresa == undefined) {
+        res.status(400).send("Id da empresa do usuario está undefined!");
+
+    } else {
+        usuarioModel.deletarUsuario(idUsuario, idEmpresa).then(function (resposta) {
+            res.status(200).json("Usuário deletado com sucesso!");
+        })
+            .catch(function (erro) {
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
 module.exports = {
     cadastrarEmpresa,
     autenticar,
     cadastrarUsuario,
     alterarSenhaUsuario,
-    buscarUsuario
+    buscarUsuario,
+    deletarUsuario
 }

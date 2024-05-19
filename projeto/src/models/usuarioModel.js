@@ -83,6 +83,15 @@ function buscarParaGerente(idEmpresa) {
     return database.executar(instrucao);
 }
 
+function deletarUsuario(idUsuario, idEmpresa) {
+    const instrucao = `
+        DELETE FROM Usuario WHERE idUsuario = ${idUsuario} AND fkEmpresaUsuario = ${idEmpresa}
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrarEmpresa,
     cadastrarUsuarioEmpresa,
@@ -91,6 +100,7 @@ module.exports = {
     cadastrarFuncionario,
     alterarSenhaUsuario,
     buscarParaAdministrador,
-    buscarParaGerente
+    buscarParaGerente,
+    deletarUsuario
 }
 
