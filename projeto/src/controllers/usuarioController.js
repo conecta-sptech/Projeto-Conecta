@@ -139,7 +139,7 @@ function alterarSenhaUsuario(req, res) {
             console.log(respostaConfereSenha);
             console.log(respostaConfereSenha.changedRows)
 
-            if (respostaConfereSenha.changedRows > 0){
+            if (respostaConfereSenha.changedRows > 0) {
                 res.status(200).send("Senha alterada com sucesso");
             } else {
                 res.status(400).send("Senha não encontrada");
@@ -151,9 +151,39 @@ function alterarSenhaUsuario(req, res) {
     }
 }
 
+function buscarUsuario(req, res) {
+    const idEmpresa = req.params.idEmpresa;
+    const funcaoUsuario = req.params.funcaoUsuario;
+
+    if (idEmpresa == undefined) {
+        res.status(400).send("Id da empresa do usuario está undefined!");
+
+    } else if (funcaoUsuario == undefined) {
+        res.status(400).send("Função do usuario está undefined!");
+
+    } else {
+        if (funcaoUsuario == "Administrador") {
+            buscarUsuario = usuarioModel.buscarParaAdministrador(idEmpresa)
+        } else if (funcaoUsuario == "Gerente") {
+            buscarUsuario = usuarioModel.buscarParaGerente(idEmpresa)
+        }
+        buscarUsuario.then(function (resposta) {
+            if (resposta.length > 0) {
+                res.status(200).json(resposta);
+            } else {
+                res.status(204).send("Nenhum usuário encontrado!")
+            }
+        })
+            .catch(function (erro) {
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
 module.exports = {
     cadastrarEmpresa,
     autenticar,
     cadastrarUsuario,
-    alterarSenhaUsuario
+    alterarSenhaUsuario,
+    buscarUsuario
 }

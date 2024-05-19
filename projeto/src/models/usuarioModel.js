@@ -63,12 +63,34 @@ function alterarSenhaUsuario(idUsuario, idEmpresa, senhaUsuarioAntiga, senhaUsua
     return database.executar(instrucao);
 }
 
+function buscarParaAdministrador(idEmpresa) {
+    const instrucao = `
+        SELECT * FROM Usuario
+            WHERE fkEmpresaUsuario = ${idEmpresa} AND funcaoUsuario = "Gerente";
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function buscarParaGerente(idEmpresa) {
+    const instrucao = `
+        SELECT * FROM Usuario
+            WHERE fkEmpresaUsuario = ${idEmpresa} AND funcaoUsuario = "Funcionario";
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrarEmpresa,
     cadastrarUsuarioEmpresa,
     autenticar,
     cadastrarGerente,
     cadastrarFuncionario,
-    alterarSenhaUsuario
+    alterarSenhaUsuario,
+    buscarParaAdministrador,
+    buscarParaGerente
 }
 

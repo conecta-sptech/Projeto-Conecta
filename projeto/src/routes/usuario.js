@@ -4,7 +4,6 @@ const router = express.Router();
 const usuarioController = require("../controllers/usuarioController");
 
 router.post("/cadastrar-empresa", function (req, res) {
-    // função a ser chamada quando acessar /usuario/cadastrarEmpresa
     usuarioController.cadastrarEmpresa(req, res);
 });
 
@@ -13,12 +12,15 @@ router.post("/autenticar", function (req, res) {
 });
 
 router.post("/cadastrar-funcionario", function (req, res) {
-    // função a ser chamada quando acessar /usuario/cadastrarGerente
     usuarioController.cadastrarUsuario(req, res);
 });
 
 router.patch("/alterar/senha/:idUsuario/:idEmpresa", function (req, res) {
     usuarioController.alterarSenhaUsuario(req, res);
+});
+
+router.get("/buscar/:idEmpresa/:funcaoUsuario", function (req, res) {
+    usuarioController.buscarUsuario(req, res);
 });
 
 

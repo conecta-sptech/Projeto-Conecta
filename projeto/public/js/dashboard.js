@@ -214,7 +214,7 @@ function abrirModalSucesso(message) {
     mensagemModalSucesso.textContent = message;
 }
 
-function abrirModal(e) {
+async function abrirModal(e) {
     const id = e.getAttribute("data-id");
     document.getElementById(id).classList.add("active");
 
@@ -223,6 +223,7 @@ function abrirModal(e) {
     } else if (id == "modalUsuario") {
         modalUsuarioBackground.classList.add("active");
         resetarModalUsuario();
+        listarUsuariosModalGerenciar();
     } else if (id == "modalMaquina") {
         modalMaquinaBackground.classList.add("active");
         resetarModalMaquina();

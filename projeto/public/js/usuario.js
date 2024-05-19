@@ -134,6 +134,54 @@ function alternarVisibilidadeSenha() {
     }
 }
 
+function listarUsuarios() {
+    return fetch(`/usuario/buscar/${sessionStorage.ID_EMPRESA}/${sessionStorage.FUNCAO_USUARIO}`)
+        .then(res => res.json());
+}
+
+async function listarUsuariosModalGerenciar() {
+    tbodyModalGerenciarUsuario.innerHTML = ``;
+    listaUsuarios = await listarUsuarios();
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        tbodyModalGerenciarUsuario.innerHTML += `
+        <tr>
+            <td class="nome-td">${listaUsuarios[i].nomeUsuario}</td>
+            <td class="email-td">${listaUsuarios[i].emailUsuario}</td>
+            <td class="icons-ct">
+                <button id="btnExcluir" data-id="${listaUsuarios[i].idUsuario}" onclick="abrirModalConfirmarExclusaoUsuario(this)">
+                    <img src="../assets/svg/trash.svg">
+                </button>
+            </td>
+        </tr>
+        `;
+    }
+}
+
+function abrirModalConfirmarExclusaoUsuario(e) {
+    idUsuario = e.getAttribute("data-id");
+
+    modalExclusaoBackground.classList.add("active");
+    modalExclusao.classList.add("active");
+    tituloModalExclusao.textContent = "Excluir Usuário";
+    mensagemModalExclusao.textContent = "Tem certeza de que deseja excluir este usuário?";
+    btnModalExclusao.setAttribute("onclick", `excluirUsuario(${idUsuario})`);
+}
+
+function fecharModalConfirmarExclusaoUsuario() {
+    modalExclusaoBackground.classList.remove("active");
+    modalExclusao.classList.remove("active");
+    tbodyModalGerenciarUsuario.innerHTML = "";
+    listarMaquinasModalGerenciar();
+}
+
+function excluirUsuario(idUsuario) {
+    // Realizar o fetch de exclusão
+
+
+
+    fecharModalConfirmarExclusaoMaquina();
+}
+
 // -- Modal de alteração de senha do usuário logado --
 
 function validarCamposUsuarioLogado() {
