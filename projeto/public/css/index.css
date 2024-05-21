@@ -88,7 +88,7 @@ i#burguer {
 }
 
 .nav-item {
-    margin: 0 38px;
+    margin: 0 30px;
     white-space: nowrap;
 }
 
@@ -566,6 +566,12 @@ li {
     align-items: center;
     flex-direction: column;
     padding: 24px 0;
+}
+
+.equipeFotos .funcao {
+    font-weight: 200 !important;
+    font-style: normal !important;
+    margin-top: 4px !important;
 }
 
 #equipe span {
