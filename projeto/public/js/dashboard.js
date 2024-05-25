@@ -34,6 +34,9 @@ const modalExclusaoBackground = document.querySelector(".modal-exclusao-backgrou
 const modalSucessoBackground = document.querySelector(".modal-sucesso-background");
 const modalSucesso = document.querySelector(".modal-sucesso");
 const mensagemModalSucesso = document.getElementById("mensagemModalSucesso");
+const modalBackgroundErro = document.querySelector(".modal-background-erro");
+const modalErro = document.querySelector(".modal-erro-alteracao");
+const mensagemModalErro = document.getElementById("mensagemModalErro");
 const modalInicial = document.querySelector(".modal-inicio");
 const mensagemModalInicial = document.getElementById("mensagemModalInicial");
 const modalInicialLine3 = document.querySelector(".modal-inicio .line-3");
@@ -212,6 +215,14 @@ function abrirModalSucesso(message) {
     mensagemModalSucesso.textContent = message;
 }
 
+function abrirModalErro(message) {
+    modalBackgroundErro.classList.add("active");
+    modalErro.classList.add("active");
+
+    mensagemModalErro.textContent = message;
+
+}
+
 function abrirModal(e) {
     const id = e.getAttribute("data-id");
     document.getElementById(id).classList.add("active");
@@ -249,6 +260,9 @@ function fecharModal(e) {
         modalSucessoBackground.classList.remove("active");
     } else if (id == "modalExclusao") {
         modalExclusaoBackground.classList.remove("active");
+    }
+    else if (id == "modalErro") {
+        modalBackgroundErro.classList.remove("active");
     } else {
         modalBackground.classList.remove("active");
     }

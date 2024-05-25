@@ -224,9 +224,18 @@ function validarCamposUsuarioLogado() {
     const novaSenha = inputNovaSenha.value;
     const confirmarNovaSenha = inputConfirmarNovaSenha.value;
 
-    if (senhaAtual == "" || senhaAtual.length < 8) inputSenhaAtual.classList.add("error");
-    if (novaSenha == "" || novaSenha.length < 8) inputNovaSenha.classList.add("error");
-    if (confirmarNovaSenha == "" || confirmarNovaSenha != novaSenha) inputConfirmarNovaSenha.classList.add("error");
+    if (senhaAtual == "" || senhaAtual.length < 8) {
+        inputSenhaAtual.classList.add("error");
+        abrirModalErro("Senha atual inválida!");
+    }
+    else if (novaSenha == "" || novaSenha.length < 8) {
+        inputNovaSenha.classList.add("error");
+        abrirModalErro("Nova senha inválida!");
+    }
+    else if (confirmarNovaSenha == "" || confirmarNovaSenha != novaSenha) {
+        inputConfirmarNovaSenha.classList.add("error");
+        abrirModalErro("Confirmação de senha não correspondente!");
+    }
 
     if (senhaAtual != "" && novaSenha == confirmarNovaSenha && novaSenha.length >= 8) {
         fetch(`/usuario/alterar/senha/${sessionStorage.ID_USUARIO}/${sessionStorage.ID_EMPRESA}`, {
@@ -245,7 +254,7 @@ function validarCamposUsuarioLogado() {
                 inputConfirmarNovaSenha.value = "";
                 abrirModalSucesso("Senha alterada com sucesso!");
             } else {
-                throw "Houve um erro ao tentar realizar a alteração de senha!";
+                abrirModalErro("Houve um erro ao tentar realizar a alteração de senha!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
