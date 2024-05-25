@@ -98,11 +98,11 @@ function validarCamposUsuario() {
                     inputConfirmarSenhaUsuario.value = "";
                     abrirModalSucesso("Usuário cadastrado com sucesso!");
                 } else {
-                    throw "Houve um erro ao tentar realizar o cadastro do funcionario!";
+                    throw "Houve um erro ao tentar realizar o cadastro do funcionário!";
                 }
             })
             .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
+                abrirModalErro(resposta);
             });
     }
 }

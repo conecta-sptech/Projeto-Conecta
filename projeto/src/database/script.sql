@@ -18,7 +18,7 @@ CREATE TABLE Empresa (
 CREATE TABLE Usuario ( 
 	idUsuario INT AUTO_INCREMENT,
 	nomeUsuario VARCHAR(45),
-	emailUsuario VARCHAR(45),
+	emailUsuario VARCHAR(45) UNIQUE,
 	senhaUsuario VARCHAR(20),
 	funcaoUsuario VARCHAR(45),
 	fkEmpresaUsuario INT,
