@@ -1,4 +1,5 @@
 import org.json.JSONObject;
+import com.github.britooo.looca.api.core.Looca;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -7,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Slack {
-    private String url = "https://hooks.slack.com/services/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";
+    private String url = "https://hooks.slack.com/services/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";
 
     public void sendMessage(JSONObject message) throws Exception {
 
