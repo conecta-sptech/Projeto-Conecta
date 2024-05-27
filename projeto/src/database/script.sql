@@ -35,6 +35,7 @@ CREATE TABLE Maquina (
     nucleosProcessadorMaquina INT,
     soMaquina VARCHAR(20),
     ociosidadeMaquina DATETIME,
+	intervaloLeitura INT,
     fkEmpresaMaquina INT,
 		CONSTRAINT fkEM FOREIGN KEY (fkEmpresaMaquina) REFERENCES Empresa(idEmpresa),
 	PRIMARY KEY (idMaquina, fkEmpresaMaquina)	
@@ -43,7 +44,6 @@ CREATE TABLE Maquina (
 CREATE TABLE Componente(
 	idComponente INT AUTO_INCREMENT,
     nomeComponente VARCHAR(25),
-    intervaloLeitura INT,
     fkMaquinaComponente INT,
 		CONSTRAINT fkMComp FOREIGN KEY (fkMaquinaComponente) REFERENCES Maquina(idMaquina),
     PRIMARY KEY (idComponente, fkMaquinaComponente)
@@ -122,5 +122,7 @@ CREATE TABLE Alerta (
 		CONSTRAINT fkCA FOREIGN KEY (fkComponenteAlerta) REFERENCES Componente(idComponente),
 	fkMaquinaAlerta INT,
 		CONSTRAINT fkMA FOREIGN KEY (fkMaquinaAlerta) REFERENCES Maquina(idMaquina),
+	fkEmpresaAlerta INT,
+		CONSTRAINT fKEA FOREIGN KEY (fkEmpresaAlerta) REFERENCES Empresa(idEmpresa),
 	PRIMARY KEY (idAlerta, fkComponenteAlerta, fkMaquinaAlerta)
 );

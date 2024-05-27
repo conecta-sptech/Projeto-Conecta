@@ -1328,7 +1328,7 @@ main .chart h3 {
 }
 
 .btn-visualizar-maquina-inicio:hover {
-    background-color: #31b180;
+    filter: brightness(90%);
 }
 
 .modal-inicio .line-2 .tabela-ct table {

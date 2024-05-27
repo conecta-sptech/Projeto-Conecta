@@ -50,6 +50,7 @@ const mainContentLoading = document.getElementById("mainContentLoading");
 const tbodyModalInicial = document.getElementById("tbodyModalInicial");
 let listaMaquinas = null;
 let listaUsuarios = null;
+let listaEstado = null;             //[[amarelo], [vermelho]]
 
 function removerTelaLoading() {
     setTimeout(() => {
@@ -139,6 +140,8 @@ function listarMaquinasModalInicial() {
             <td class="nucleos-td">${listaMaquinas[i].nucleosProcessadorMaquina}</td>
         </tr>
         `;
+
+        // getElementById(listaMaquinas[i].idMaquina).bac
     }
 }
 
@@ -190,6 +193,13 @@ function definirDashboard(e) {
     modalInicial.classList.remove("active");
 }
 
+
+function listarEstados() {
+    return fetch(`/maquina/buscar-maquina/${sessionStorage.getItem("ID_EMPRESA")}`)
+        .then(res => res.json());
+}
+
+
 function listarMaquinas() {
     return fetch(`/maquina/buscar-maquina/${sessionStorage.getItem("ID_EMPRESA")}`)
         .then(res => res.json());
@@ -201,6 +211,7 @@ window.addEventListener("load", async () => {
     } else {
         removerTelaLoading();
         carregarModalInicial();
+        listaEstado = await listarEstados();
         listaMaquinas = await listarMaquinas();
     }
 });
