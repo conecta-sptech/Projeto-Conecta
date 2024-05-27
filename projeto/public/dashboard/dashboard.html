@@ -599,7 +599,8 @@
                                         stroke="none" fill="#000000" fill-rule="evenodd"></path>
                                 </g>
                             </svg>
-                            <input oninput="filtrarUsuariosModalGerenciar(this)" id="inputBuscarUsuarios" type="text" placeholder="Buscar usuários">
+                            <input oninput="filtrarUsuariosModalGerenciar(this)" id="inputBuscarUsuarios" type="text"
+                                placeholder="Buscar usuários">
                         </div>
                     </div>
 
@@ -656,8 +657,8 @@
                                         stroke="none" fill="#000000" fill-rule="evenodd"></path>
                                 </g>
                             </svg>
-                            <input oninput="filtrarMaquinasModalGerenciar(this)" id="inputBuscarMaquinasModal" type="text"
-                                placeholder="Buscar máquinas">
+                            <input oninput="filtrarMaquinasModalGerenciar(this)" id="inputBuscarMaquinasModal"
+                                type="text" placeholder="Buscar máquinas">
                         </div>
                     </div>
 
@@ -850,6 +851,30 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- Modal erro alteração de Usuario Logado  -->
+
+    <div class="modal-background-erro"></div>
+    <div id="modalErro" class="modal-erro-alteracao">
+        <div class="line-1">
+            <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400"
+                height="400" viewBox="0, 0, 400,400">
+                <g id="svgg">
+                    <path id="path0"
+                        d="M183.594 33.724 C 68.549 44.560,-1.056 169.271,49.951 273.170 C 111.209 397.948,288.791 397.948,350.049 273.170 C 407.372 156.408,313.575 21.481,183.594 33.724 M217.751 68.351 C 308.852 81.302,360.265 180.195,317.868 260.926 C 267.637 356.576,132.069 356.534,82.121 260.853 C 32.800 166.373,112.414 53.376,217.751 68.351 M135.164 125.246 C 129.094 127.180,124.195 134.640,124.236 141.888 C 124.272 148.285,126.270 150.793,151.392 175.977 L 175.357 200.000 151.432 224.023 C 125.779 249.783,124.207 251.791,124.236 258.758 C 124.276 268.506,131.555 275.808,141.186 275.764 C 148.362 275.731,150.316 274.206,175.977 248.608 L 200.000 224.643 224.023 248.608 C 249.684 274.206,251.638 275.731,258.814 275.764 C 268.348 275.808,275.747 268.476,275.747 258.984 C 275.747 251.627,274.352 249.830,248.608 224.023 L 224.643 200.000 248.608 175.977 C 266.195 158.347,272.995 151.017,274.160 148.438 C 280.671 134.015,265.985 119.329,251.563 125.840 C 248.983 127.005,241.653 133.805,224.023 151.392 L 200.000 175.357 175.977 151.392 C 147.674 123.158,145.697 121.892,135.164 125.246 "
+                        stroke="none" fill="#e53c3c" fill-rule="evenodd"></path>
+                </g>
+            </svg>
+        </div>
+        <div class="line-2">
+            <h3>ERRO!</h3>
+            <p id="mensagemModalErro"></p>
+        </div>
+        <div class="line-3">
+            <button data-id="modalErro" onclick="fecharModal(this)" class="btn-tentar-novamente">Tentar
+                novamente</button>
+        </div>
     </div>
 
     <!-- Splash Screen -->

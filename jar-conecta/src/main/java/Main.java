@@ -4,6 +4,9 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,20 +25,23 @@ public class Main {
         Scanner leitor = new Scanner(System.in);
         Conexao conexao = new Conexao();
         JdbcTemplate interfaceConexao = conexao.getConexaoDoBanco();
-
         Looca looca = new Looca();
         SystemInfo oshi = new SystemInfo();
-
         FormatString leitura = new FormatString();
+        JSONObject message = new JSONObject();
+        Slack slack = new Slack();
+        LeituraDisco leituraDiscoPc = new LeituraDisco();
+        Double processador = looca.getProcessador().getUso();
+        Double memoriaRAM = looca.getMemoria().getDisponivel() / Math.pow(1024.0, 3);
+        Double disco = leituraDiscoPc.discoDisponivel;
+
+        String caminhoArquivo = "C:\\Log\\logs.txt";
 
         String date = "";
         String logLevel = "";
         Integer statusCode = 0;
-        String message = "";
-        Integer idMaquina = 0;
-        String hostnameMaquina = "";
+        String detail = "";
         String stackTrace = "";
-        String caminhoArquivo = "C:\\Users\\super\\Documents\\GIT\\Logs\\logs.txt";
 
         System.out.println("Digite seu login");
         String login_digitado = leitor.nextLine();
@@ -52,11 +58,11 @@ public class Main {
 //                usuario nao encontrado
                     date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
                     logLevel = "WARN";
-                    statusCode = 401;
-                    message = "E-mail ou senha incorreto(s).";
+                    statusCode = 403;
+                    detail = "'message': '%s', 'email': '%s', 'senha': '%s'".formatted("E-mail ou senha incorreto(s).", login_digitado, senha_digitada.replaceAll(".", "*"));
 
-                    Log warnLogUsuario = new Log(date, logLevel, statusCode, message, stackTrace);
-                    Log.gerarArquivoTxt(caminhoArquivo, warnLogUsuario.toStringMessage());
+                    Log warnLogUsuario = new Log(date, logLevel, statusCode, detail, stackTrace);
+                    Log.gerarLog(caminhoArquivo, warnLogUsuario.toString());
 
                     System.out.println("Login ou senha incorretos ou inexistentes");
                     break;
@@ -73,20 +79,23 @@ public class Main {
                             date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
                             logLevel = "WARN";
                             statusCode = 404;
-                            message = "Máquina não encontrada no banco de dados.";
+                            detail = "'message': '%s', 'hostname': '%s'".formatted("Máquina não encontrada no banco de dados.", hostname);
 
-                            Log warnLogMaquina = new Log(date, logLevel, statusCode, idMaquina, hostname, message, stackTrace);
-                            Log.gerarArquivoTxt(caminhoArquivo, warnLogMaquina.toStringMessage());
+                            Log warnLogMaquina = new Log(date, logLevel, statusCode, detail, stackTrace);
+                            Log.gerarLog(caminhoArquivo, warnLogMaquina.toString());
 
                             System.out.println("Cadastre a máquina antes de prosseguir");
                             break;
 
                         default:
 
-                            for (Maquina maquina : maquinaBanco) {
-                                idMaquina = maquina.getIdMaquina();
-                                hostnameMaquina = maquina.getHostnameMaquina();
-                            }
+                            Integer idMaquina = 0;
+                            String hostnameMaquina = "";
+
+//                            for (Maquina maquina : maquinaBanco) {
+//                                idMaquina = maquina.getIdMaquina();
+//                                hostnameMaquina = maquina.getHostnameMaquina();
+//                            }
 
                             while (true) {
 //                maquina encontrada, liberado enviar leitura
@@ -124,7 +133,65 @@ public class Main {
                                         "VALUES (%s, %s, %s, 4, %s)".formatted
                                                 (leitura.formatString(cpu.cpuUso), leitura.formatString(cpu.cpuCarga), leitura.formatString(cpu.cpuTemperatura), fk_empresa));
 
+                                LocalDateTime dataHora = LocalDateTime.now();
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                                String dataHoraFormatada = dataHora.format(formatter);
 
+                                if (processador > 80.0) {
+                                    message.put("text",
+                                            "    ALERTA\n" +
+                                                    "\n" +
+                                                    " Hostname: " + hostname + "\n" +
+                                                    " Componente: Processador " + processador + " %\n" +
+                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+
+                                } else if (memoriaRAM < 1.0) {
+                                    message.put("text",
+                                            "    ALERTA\n" +
+                                                    "\n" +
+                                                    " Hostname: " + hostname + "\n" +
+                                                    " Componente: Memoria Ram " + memoriaRAM + " mb\n" +
+                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+                                } else if (disco < 100) {
+                                    message.put("text",
+                                            "    ALERTA\n" +
+                                                    "\n" +
+                                                    " Hostname: " + hostname + "\n" +
+                                                    " Componente: Disco " + disco + " gb\n" +
+                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+                                } else if (processador > 80.0 && memoriaRAM < 1.0) {
+                                    message.put("text",
+                                            "    ALERTA\n" +
+                                                    "\n" +
+                                                    " Hostname: " + hostname + "\n" +
+                                                    " Componente: Processador " + processador + " % e Memoria Ram " + memoriaRAM + " mb\n" +
+                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+                                } else if (processador > 80.0 && disco < 100) {
+                                    message.put("text",
+                                            "    ALERTA\n" +
+                                                    "\n" +
+                                                    " Hostname: " + hostname + "\n" +
+                                                    " Componente: Processador " + processador + " % e Disco " + disco + " gb\n" +
+                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+                                } else if (memoriaRAM < 1.0 && disco < 100) {
+                                    message.put("text",
+                                            "    ALERTA\n" +
+                                                    "\n" +
+                                                    " Hostname: " + hostname + "\n" +
+                                                    " Componente: Memoria Ram " + memoriaRAM + " mb e Disco " + disco + " gb\n" +
+                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+                                } else if (processador > 80.0 && memoriaRAM < 1 && disco < 100) {
+                                    message.put("text",
+                                            "    ALERTA\n" +
+                                                    "\n" +
+                                                    " Hostname: " + hostname + "\n" +
+                                                    " Componente: Processador " + processador +
+                                                    " % e Memoria Ram " + memoriaRAM +
+                                                    " mb e Disco " + disco + " gb\n" +
+                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+                                }
+
+                                slack.sendMessage(message);
 
                                 System.out.println("""
                                         \n\n\n\n\n\n
@@ -162,7 +229,7 @@ public class Main {
             date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
             logLevel = "ERROR";
             statusCode = 503;
-            message = "Houve um problema de conexão com o banco de dados.";
+            detail = "'message': 'Houve um problema de conexão com o banco de dados.'";
 
             // Captura o stackTrace e o transforma em uma String
             StringWriter sw = new StringWriter();
@@ -170,8 +237,8 @@ public class Main {
             e.printStackTrace(pw);
             stackTrace = sw.toString().replace("\n", " ").replace("\r", "").replace("\t", "");
 
-            Log errorLogServer = new Log(date, logLevel, statusCode, message, stackTrace);
-            Log.gerarArquivoTxt(caminhoArquivo, errorLogServer.toStringMessage());
+            Log errorLogServer = new Log(date, logLevel, statusCode, detail, stackTrace);
+            Log.gerarLog(caminhoArquivo, errorLogServer.toString());
         }
     }
 }
