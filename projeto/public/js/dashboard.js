@@ -53,7 +53,6 @@ const mainContentLoading = document.getElementById("mainContentLoading");
 const tbodyModalInicial = document.getElementById("tbodyModalInicial");
 let listaMaquinas = null;
 let listaUsuarios = null;
-let listaEstado = null;             //[[amarelo], [vermelho]]
 
 function removerTelaLoading() {
     setTimeout(() => {
@@ -127,7 +126,10 @@ function carregarInformacoesTela() {
     }
 }
 
-function listarMaquinasModalInicial() {
+async function listarMaquinasModalInicial() {
+    listaEstado[0] = await listarIds("Amarelo");
+    listaEstado[1] = await listarIds("Vermelho");
+
     for (let i = 0; i < listaMaquinas.length; i++) {
         tbodyModalInicial.innerHTML += `
         <tr>
@@ -144,7 +146,13 @@ function listarMaquinasModalInicial() {
         </tr>
         `;
 
-        // getElementById(listaMaquinas[i].idMaquina).bac
+        if (listaEstado[0].includes(listaMaquinas[i].idMaquina)) {
+            document.querySelector(`.btn-visualizar-maquina-inicio[data-id="${listaMaquinas[i].idMaquina}"]`).style.backgroundColor = "#EDE63F";
+        }
+
+        if (listaEstado[1].includes(listaMaquinas[i].idMaquina)) {
+            document.querySelector(`.btn-visualizar-maquina-inicio[data-id="${listaMaquinas[i].idMaquina}"]`).style.backgroundColor = "#E53C3C";
+       }
     }
 }
 
@@ -197,12 +205,6 @@ function definirDashboard(e) {
 }
 
 
-function listarEstados() {
-    return fetch(`/maquina/buscar-maquina/${sessionStorage.getItem("ID_EMPRESA")}`)
-        .then(res => res.json());
-}
-
-
 function listarMaquinas() {
     return fetch(`/maquina/buscar-maquina/${sessionStorage.getItem("ID_EMPRESA")}`)
         .then(res => res.json());
@@ -214,7 +216,6 @@ window.addEventListener("load", async () => {
     } else {
         removerTelaLoading();
         carregarModalInicial();
-        listaEstado = await listarEstados();
         listaMaquinas = await listarMaquinas();
     }
 });

@@ -8,6 +8,7 @@ const app = express();
 const indexRouter = require("./src/routes/index");
 const usuarioRouter = require("./src/routes/usuario");
 const maquinaRouter = require("./src/routes/maquina");
+const infraestruturaRouter = require("./src/routes/plotagem/infraestrutura");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -18,6 +19,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/maquina", maquinaRouter);
+app.use("/infraestrutura", infraestruturaRouter);
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORT}`);
