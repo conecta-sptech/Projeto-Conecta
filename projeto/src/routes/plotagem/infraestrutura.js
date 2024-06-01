@@ -7,4 +7,8 @@ router.get("/estado/:cor/:idEmpresa", (req, res) => {
     infraestruturaController.buscarIds(req, res);
 });
 
+router.get("/dados/:idMaquina/:listaGraficos/:primeiraLeitura", (req, res) => {
+    infraestruturaController.obterDadosGrafico(req, res);
+});
+
 module.exports = router;

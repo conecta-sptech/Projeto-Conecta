@@ -13,7 +13,65 @@ const chartListRam = document.getElementById("chartListRam");
 const chartListCpu = document.getElementById("chartListCpu");
 const chartListDisco = document.getElementById("chartListDisco");
 
-function gerarGraficoMemoriaRamUso() {
+function gerarGraficoMemoriaRamUso(totalMemory, freeMemory) {
+    let freeMemoryPercent = Number(((freeMemory * 100) / totalMemory).toFixed(2)); // Uso de memória RAM em porcentagem
+    let usedMemoryPercent = Number((100 - freeMemoryPercent).toFixed(2));
+
+    console.log(freeMemoryPercent);
+    console.log(usedMemoryPercent);
+
+    let options = {
+        chart: {
+            type: 'donut',
+        },
+        series: [usedMemoryPercent, freeMemoryPercent],
+        labels: ['Usado', 'Livre'],
+        dataLabels: {
+            enabled: true,
+            formatter: function (val, opts) {
+                return val + '%';
+            },
+            style: {
+                fontSize: '12px',
+                color: '#ffffff'
+            }
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    labels: {
+                        show: true,
+                        name: {
+                            fontSize: '22px',
+                            color: '#ffffff'
+                        },
+                        value: {
+                            fontSize: '16px',
+                            color: '#ffffff'
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                return '100%';
+                            },
+                            color: '#ffffff'
+                        }
+                    }
+                }
+            }
+        },
+        legend: {
+            show: false,
+        },
+        colors: ['#93E4C4', '#333'],
+    };
+
+    setTimeout(() => {new ApexCharts(chartMemoriaRam, options).render();}, 200);
+}
+
+
+function gerarGraficoMemoriaRamUsoa() {
     let totalMemory = 16; // Total de memória RAM disponível (em GB)
     let usedMemory = 10; // Memória RAM usada (em GB)
     let memoryUsage = (usedMemory / totalMemory) * 100; // Uso de memória RAM em porcentagem
@@ -67,6 +125,7 @@ function gerarGraficoMemoriaRamUso() {
 
     new ApexCharts(chartMemoriaRam, options).render();
 }
+
 
 function gerarGraficoMemoriaRamVirtual() {
     let totalMemory = 16; // Total de memória RAM disponível (em GB)

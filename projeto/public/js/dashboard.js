@@ -53,6 +53,7 @@ const mainContentLoading = document.getElementById("mainContentLoading");
 const tbodyModalInicial = document.getElementById("tbodyModalInicial");
 let listaMaquinas = null;
 let listaUsuarios = null;
+let listaGraficos = [];
 
 function removerTelaLoading() {
     setTimeout(() => {
@@ -174,6 +175,7 @@ function carregarModalInicial() {
 
 function definirDashboard(e) {
     const idMaquina = e.getAttribute("data-id");
+    listaGraficos = [2, 2, 3, 1];
 
     companyNameCt.classList.add("active");
     nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
@@ -194,7 +196,10 @@ function definirDashboard(e) {
         chartRede1.innerHTML = "";
         chartRede2.innerHTML = "";
 
-        gerarGraficoMemoriaRamUso();
+        plotarDadosGrafico(idMaquina, true);
+
+        plotarDadosGrafico(idMaquina, false);
+
         gerarGraficoProcessadorUso();
         gerarGraficoDiscoArmazenamento();
         gerarGraficoRede();
