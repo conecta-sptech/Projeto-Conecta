@@ -6,7 +6,6 @@ import oshi.SystemInfo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,6 +30,7 @@ public class Main {
         JSONObject message = new JSONObject();
         Slack slack = new Slack();
         LeituraDisco leituraDiscoPc = new LeituraDisco();
+
         Double processador = looca.getProcessador().getUso();
         Double memoriaRAM = looca.getMemoria().getDisponivel() / Math.pow(1024.0, 3);
         Double disco = leituraDiscoPc.discoDisponivel;
@@ -50,12 +50,12 @@ public class Main {
         String senha_digitada = leitor.nextLine();
 
         try {
-//        verifica se a máquina está cadastrada
+            //verifica se a máquina está cadastrada
             List<Usuario> usuarioBanco = interfaceConexao.query("SELECT * FROM Usuario WHERE emailUsuario = '%s' AND senhaUsuario = '%s'".formatted(login_digitado, senha_digitada), new BeanPropertyRowMapper<>(Usuario.class));
 
             switch (usuarioBanco.size()) {
                 case 0:
-//                usuario nao encontrado
+                    //usuario nao encontrado
                     date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
                     logLevel = "WARN";
                     statusCode = 403;
@@ -69,13 +69,13 @@ public class Main {
 
                 default:
                     System.out.println("Login realizado, aguarde as leituras... \n\n\n\n\n\n");
-//                 verifica se a máquina está cadastrada
+                    //verifica se a máquina está cadastrada
                     String hostname = looca.getRede().getParametros().getHostName();
                     List<Maquina> maquinaBanco = interfaceConexao.query("SELECT * FROM Maquina WHERE hostnameMaquina = '%s'".formatted(hostname), new BeanPropertyRowMapper<>(Maquina.class));
 
                     switch (maquinaBanco.size()) {
                         case 0:
-//               maquina nao encontrada
+                            //maquina nao encontrada
                             date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
                             logLevel = "WARN";
                             statusCode = 404;
@@ -92,29 +92,27 @@ public class Main {
                             Integer idMaquina = 0;
                             String hostnameMaquina = "";
 
-//                            for (Maquina maquina : maquinaBanco) {
-//                                idMaquina = maquina.getIdMaquina();
-//                                hostnameMaquina = maquina.getHostnameMaquina();
-//                            }
+                            for (Maquina maquina : maquinaBanco) {
+                                idMaquina = maquina.getIdMaquina();
+                                hostnameMaquina = maquina.getHostnameMaquina();
+                            }
 
                             while (true) {
-//                maquina encontrada, liberado enviar leitura
+                                // maquina encontrada, liberado enviar leitura
                                 LeituraDisco discoAnterior = new LeituraDisco();
                                 LeituraRede redeAnterior = new LeituraRede();
 
-                                Thread.sleep(3000);
+                                Thread.sleep(10000);
 
                                 LeituraDisco discoAtual = new LeituraDisco();
                                 LeituraRede redeAtual = new LeituraRede();
 
                                 LeituraMemoria memoria = new LeituraMemoria();
                                 LeituraCpu cpu = new LeituraCpu();
-
-                                Long taxa_escrita_disco = ((discoAtual.discoTaxaEscrita - discoAnterior.discoTaxaEscrita) / 3) / 1024;  //kb/s
-                                Long taxa_leitura_disco = ((discoAtual.discoTaxaLeitura - discoAnterior.discoTaxaLeitura) / 3) / 1024;  //kb/s
-
-                                Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 3) / 1024; //mb
-                                Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 3) / 1024;    //mb
+                                Long taxa_escrita_disco = ((discoAtual.discoTaxaEscrita - discoAnterior.discoTaxaEscrita) / 3) / 1024;
+                                Long taxa_leitura_disco = ((discoAtual.discoTaxaLeitura - discoAnterior.discoTaxaLeitura) / 3) / 1024;
+                                Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 3) / 1024;
+                                Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 3) / 1024;
 
                                 String fk_empresa = maquinaBanco.get(0).getFkEmpresaMaquina();
                                 interfaceConexao.update("INSERT INTO LeituraDisco (discoDisponivel, discoTaxaLeitura, discoTaxaEscrita, fkComponenteDisco, fkMaquinaDisco)" +
@@ -137,80 +135,79 @@ public class Main {
                                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                                 String dataHoraFormatada = dataHora.format(formatter);
 
-                                if (processador > 80.0) {
-                                    message.put("text",
-                                            "    ALERTA\n" +
-                                                    "\n" +
-                                                    " Hostname: " + hostname + "\n" +
-                                                    " Componente: Processador " + processador + " %\n" +
-                                                    " Data/Hora: " + dataHoraFormatada + " \n");
-
-                                } else if (memoriaRAM < 1.0) {
-                                    message.put("text",
-                                            "    ALERTA\n" +
-                                                    "\n" +
-                                                    " Hostname: " + hostname + "\n" +
-                                                    " Componente: Memoria Ram " + memoriaRAM + " mb\n" +
-                                                    " Data/Hora: " + dataHoraFormatada + " \n");
-                                } else if (disco < 100) {
-                                    message.put("text",
-                                            "    ALERTA\n" +
-                                                    "\n" +
-                                                    " Hostname: " + hostname + "\n" +
-                                                    " Componente: Disco " + disco + " gb\n" +
-                                                    " Data/Hora: " + dataHoraFormatada + " \n");
-                                } else if (processador > 80.0 && memoriaRAM < 1.0) {
-                                    message.put("text",
-                                            "    ALERTA\n" +
-                                                    "\n" +
-                                                    " Hostname: " + hostname + "\n" +
-                                                    " Componente: Processador " + processador + " % e Memoria Ram " + memoriaRAM + " mb\n" +
-                                                    " Data/Hora: " + dataHoraFormatada + " \n");
-                                } else if (processador > 80.0 && disco < 100) {
-                                    message.put("text",
-                                            "    ALERTA\n" +
-                                                    "\n" +
-                                                    " Hostname: " + hostname + "\n" +
-                                                    " Componente: Processador " + processador + " % e Disco " + disco + " gb\n" +
-                                                    " Data/Hora: " + dataHoraFormatada + " \n");
-                                } else if (memoriaRAM < 1.0 && disco < 100) {
-                                    message.put("text",
-                                            "    ALERTA\n" +
-                                                    "\n" +
-                                                    " Hostname: " + hostname + "\n" +
-                                                    " Componente: Memoria Ram " + memoriaRAM + " mb e Disco " + disco + " gb\n" +
-                                                    " Data/Hora: " + dataHoraFormatada + " \n");
-                                } else if (processador > 80.0 && memoriaRAM < 1 && disco < 100) {
-                                    message.put("text",
-                                            "    ALERTA\n" +
-                                                    "\n" +
-                                                    " Hostname: " + hostname + "\n" +
-                                                    " Componente: Processador " + processador +
-                                                    " % e Memoria Ram " + memoriaRAM +
-                                                    " mb e Disco " + disco + " gb\n" +
-                                                    " Data/Hora: " + dataHoraFormatada + " \n");
-                                }
-
-                                slack.sendMessage(message);
+//                                if (processador > 80.0) {
+//                                    message.put("text",
+//                                            "    ALERTA\n" +
+//                                                    "\n" +
+//                                                    " Hostname: " + hostname + "\n" +
+//                                                    " Componente: Processador " + processador + " %\n" +
+//                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+//
+//                                } else if (memoriaRAM < 1.0) {
+//                                    message.put("text",
+//                                            "    ALERTA\n" +
+//                                                    "\n" +
+//                                                    " Hostname: " + hostname + "\n" +
+//                                                    " Componente: Memoria Ram " + memoriaRAM + " mb\n" +
+//                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+//                                } else if (disco < 100) {
+//                                    message.put("text",
+//                                            "    ALERTA\n" +
+//                                                    "\n" +
+//                                                    " Hostname: " + hostname + "\n" +
+//                                                    " Componente: Disco " + disco + " gb\n" +
+//                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+//                                } else if (processador > 80.0 && memoriaRAM < 1.0) {
+//                                    message.put("text",
+//                                            "    ALERTA\n" +
+//                                                    "\n" +
+//                                                    " Hostname: " + hostname + "\n" +
+//                                                    " Componente: Processador " + processador + " % e Memoria Ram " + memoriaRAM + " mb\n" +
+//                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+//                                } else if (processador > 80.0 && disco < 100) {
+//                                    message.put("text",
+//                                            "    ALERTA\n" +
+//                                                    "\n" +
+//                                                    " Hostname: " + hostname + "\n" +
+//                                                    " Componente: Processador " + processador + " % e Disco " + disco + " gb\n" +
+//                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+//                                } else if (memoriaRAM < 1.0 && disco < 100) {
+//                                    message.put("text",
+//                                            "    ALERTA\n" +
+//                                                    "\n" +
+//                                                    " Hostname: " + hostname + "\n" +
+//                                                    " Componente: Memoria Ram " + memoriaRAM + " mb e Disco " + disco + " gb\n" +
+//                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+//                                } else if (processador > 80.0 && memoriaRAM < 1 && disco < 100) {
+//                                    message.put("text",
+//                                            "    ALERTA\n" +
+//                                                    "\n" +
+//                                                    " Hostname: " + hostname + "\n" +
+//                                                    " Componente: Processador " + processador +
+//                                                    " % e Memoria Ram " + memoriaRAM +
+//                                                    " mb e Disco " + disco + " gb\n" +
+//                                                    " Data/Hora: " + dataHoraFormatada + " \n");
+//                                }
+//                                slack.sendMessage(message);
+                                DispositivoUsb.verificarDispositivo();
 
                                 System.out.println("""
                                         \n\n\n\n\n\n
                                         Leituras realizadas com sucesso!
-                                                            
                                         Enviando dados de disco:
                                         1 - Disco disponível: %.2f Gb
                                         2 - Taxa de escrita: %d Kb/s
                                         3 - Taxa de leitura: %d Kb/s
-                                                            
+
                                         Enviando dados de memória:
                                         1 - Memória disponível: %.2f Gb
                                         2 - Memória virtual: %.2f Gb
                                         3 - Tempo ligado: %d Horas
-                                                            
+
                                         Enviando dados de rede:
                                         1 - Taxa dowload: %d Mb/s
                                         2 - Taxa upload: %d Mb/s
-                                                            
+
                                         Enviando dados de cpu:
                                         1 - Uso: %.2f %%
                                         2 - Carga: %.2f %%
@@ -231,7 +228,7 @@ public class Main {
             statusCode = 503;
             detail = "'message': 'Houve um problema de conexão com o banco de dados.'";
 
-            // Captura o stackTrace e o transforma em uma String
+            //Captura o stackTrace e o transforma em uma String
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
             e.printStackTrace(pw);
