@@ -26,7 +26,7 @@ function buscarIds(req, res) {
 
 async function obterDadosGrafico(req, res) {
     const idMaquina = req.params.idMaquina;
-    const listaGraficos = req.params.listaGraficos;
+    const listaGraficos = (req.params.listaGraficos).split(",");
     const primeiraLeitura = req.params.primeiraLeitura;
 
     let listaLeitura = [];
