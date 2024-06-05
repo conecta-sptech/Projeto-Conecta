@@ -12,34 +12,99 @@ function buscarIds(cor, idEmpresa) {
 }
 
 function obterMemoria(grafico, idMaquina) {
-    const instrucao = `
-        SELECT memoriaDisponivel FROM leituraMemoria
-            WHERE fkMaquinaMemoria = ${idMaquina}
-                ORDER BY idLeituraMemoria DESC LIMIT 1;
-    `;
+    let instrucao = ``;
+    switch(Number(grafico)){
+        case 1:
+            instrucao = `
+                SELECT memoriaDisponivel FROM leituraMemoria
+                    WHERE fkMaquinaMemoria = ${idMaquina}
+                        ORDER BY idLeituraMemoria DESC LIMIT 1;
+            `;
+        break;
 
+        case 2:
+            instrucao = `
+                SELECT memoriaVirtual, memoriaDisponivel FROM leituraMemoria
+                    WHERE fkMaquinaMemoria = ${idMaquina}
+                        ORDER BY idLeituraMemoria DESC LIMIT 1;
+            `;
+
+        break;
+
+        case 3:
+            instrucao = `
+                SELECT tempoLigado FROM leituraMemoria
+                    WHERE fkMaquinaMemoria = ${idMaquina}
+                        ORDER BY idLeituraMemoria DESC LIMIT 1;
+            `;
+        break;
+    }
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function obterCpu(grafico, idMaquina, primeiraLeitura) {
-    const instrucao = `
-        SELECT cpuUso, dataHoraLeitura  FROM leituraCpu
-	        WHERE fkMaquinaCpu = ${idMaquina}
-		        ORDER BY idLeituraCpu DESC LIMIT 15;
-    `;
+    let instrucao = ``;
+    let querySize = primeiraLeitura == `true` ? 15 : 1;
 
+    switch(Number(grafico)){
+        case 1:
+            instrucao = `
+                SELECT cpuUso, dataHoraLeitura  FROM leituraCpu
+	                WHERE fkMaquinaCpu = ${idMaquina}
+		                ORDER BY idLeituraCpu DESC LIMIT ${querySize};
+            `;
+        break;
+
+        case 2:
+            instrucao = `
+                SELECT cpuCarga, dataHoraLeitura  FROM leituraCpu
+                    WHERE fkMaquinaCpu = ${idMaquina}
+                        ORDER BY idLeituraCpu DESC LIMIT ${querySize};
+            `;
+        break;
+
+        case 3:
+            instrucao = `
+                SELECT cpuTemperatura, dataHoraLeitura  FROM leituraCpu
+                    WHERE fkMaquinaCpu = ${idMaquina}
+                        ORDER BY idLeituraCpu DESC LIMIT ${querySize};
+            `;
+        break;
+    }
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function obterDisco(grafico, idMaquina, primeiraLeitura) {
-    const instrucao = `
-        SELECT discoDisponivel FROM leituraDisco
-            WHERE fkMaquinaDisco = ${idMaquina}
-                ORDER BY idLeituraDisco DESC LIMIT 1
-    `;
+    let instrucao = ``;
+    let querySize = primeiraLeitura == `true` ? 15 : 1;
 
+    switch(Number(grafico)){
+        case 1:
+            instrucao = `
+                SELECT discoDisponivel FROM leituraDisco
+                    WHERE fkMaquinaDisco = ${idMaquina}
+                        ORDER BY idLeituraDisco DESC LIMIT 1
+            `;
+        break;
+
+        case 2:
+            instrucao = `
+                SELECT discoTaxaLeitura, dataHoraLeitura  FROM leituraDisco
+                    WHERE fkMaquinaDisco = ${idMaquina}
+                        ORDER BY idLeituraDisco DESC LIMIT ${querySize};
+            `;
+        break;
+
+        case 3:
+            instrucao = `
+                SELECT discoTaxaEscrita, dataHoraLeitura  FROM leituraDisco
+                    WHERE fkMaquinaDisco = ${idMaquina}
+                        ORDER BY idLeituraDisco DESC LIMIT ${querySize};
+            `;
+        break;
+    }
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

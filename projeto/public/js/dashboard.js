@@ -173,9 +173,11 @@ function carregarModalInicial() {
     carregarInformacoesTela();
 }
 
+let idMaquinaSelecionada = null;
+let idInvervaloLeitura = null;
 function definirDashboard(e) {
-    const idMaquina = e.getAttribute("data-id");
-    listaGraficos = [2, 2, 3, 1];
+    idMaquinaSelecionada = e.getAttribute("data-id");
+    listaGraficos = [1, 1, 1];
 
     companyNameCt.classList.add("active");
     nomeEmpresa.textContent = sessionStorage.getItem("NOME_EMPRESA");
@@ -196,13 +198,13 @@ function definirDashboard(e) {
         chartRede1.innerHTML = "";
         chartRede2.innerHTML = "";
 
-        plotarDadosGrafico(idMaquina, true);
+        plotarDadosGrafico(idMaquinaSelecionada, true, -1);
 
-        plotarDadosGrafico(idMaquina, false);
+        // time dop setinterval deve ser fetch do intervaloMaquina
 
-        gerarGraficoProcessadorUso();
-        gerarGraficoDiscoArmazenamento();
-        gerarGraficoRede();
+        idInvervaloLeitura = setInterval(function(){
+            plotarDadosGrafico(idMaquinaSelecionada, false, -1);
+        }, 15000);
     }
 
     modalBackground.classList.remove("active");

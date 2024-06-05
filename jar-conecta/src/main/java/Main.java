@@ -109,10 +109,10 @@ public class Main {
 
                                 LeituraMemoria memoria = new LeituraMemoria();
                                 LeituraCpu cpu = new LeituraCpu();
-                                Long taxa_escrita_disco = ((discoAtual.discoTaxaEscrita - discoAnterior.discoTaxaEscrita) / 3) / 1024;
-                                Long taxa_leitura_disco = ((discoAtual.discoTaxaLeitura - discoAnterior.discoTaxaLeitura) / 3) / 1024;
-                                Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 3) / 1024;
-                                Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 3) / 1024;
+                                Long taxa_escrita_disco = ((discoAtual.discoTaxaEscrita - discoAnterior.discoTaxaEscrita) / 10) / 1024;
+                                Long taxa_leitura_disco = ((discoAtual.discoTaxaLeitura - discoAnterior.discoTaxaLeitura) / 10) / 1024;
+                                Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 10) / 1024;
+                                Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 10) / 1024;
 
                                 String fk_empresa = maquinaBanco.get(0).getFkEmpresaMaquina();
                                 interfaceConexao.update("INSERT INTO LeituraDisco (discoDisponivel, discoTaxaLeitura, discoTaxaEscrita, fkComponenteDisco, fkMaquinaDisco)" +
