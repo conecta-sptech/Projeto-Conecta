@@ -45,9 +45,10 @@ function deletarMaquina(idMaquina, idEmpresa) {
     return database.executar(instrucao);
 }
 
+
 module.exports = {
     cadastrarMaquina,
     editarMaquina,
     buscarMaquina,
-    deletarMaquina
+    deletarMaquina,
 }

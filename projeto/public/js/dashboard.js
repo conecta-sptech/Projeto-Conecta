@@ -186,6 +186,10 @@ function definirDashboard(e) {
         chartsAdmin.classList.add("active");
         chartsGerenteFuncionario.remove();
 
+        plotarGraficoInatividade();
+        plotarTabelaInatividade();
+        gerarGraficoInatividade();
+
     } else {
         chartsGerenteFuncionario.classList.add("active");
         chartsAdmin.remove();
@@ -344,3 +348,5 @@ function filtrarMaquinasModalInicial(e) {
         }
     }
 }
+
+
