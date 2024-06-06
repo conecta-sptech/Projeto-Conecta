@@ -64,7 +64,7 @@ async function plotarDadosGrafico(idMaquina, primeiraLeitura, graficoSelecionado
 
     // ----------------------------------------------------------------seta a coluna x e dados dos gráficos de cpu
     let chaveLeituraCpu = Object.keys(listaLeitura[1][0])[0];
-    if (listaLeitura[1].length == 1 && ((listaLeitura[1][0].dataHoraLeitura).slice(11, 16) != categoriesCpu[categoriesCpu.length - 1])){
+    if (listaLeitura[1].length == 1){
         categoriesCpu.shift();
         categoriesCpu.push((listaLeitura[1][0].dataHoraLeitura).slice(11, 16));
 
@@ -85,7 +85,7 @@ async function plotarDadosGrafico(idMaquina, primeiraLeitura, graficoSelecionado
 
         // ----------------------------------------------------------------seta a coluna x e dados dos gráficos de disco
         let chaveLeituraDisco = Object.keys(listaLeitura[2][0])[0];
-        if (listaLeitura[2].length == 1 && listaGraficos[2] != 1 && ((listaLeitura[2][0].dataHoraLeitura).slice(11, 16) != categoriesDisco[categoriesDisco.length -1])){
+        if (listaLeitura[2].length == 1 && listaGraficos[2] != 1){
             categoriesDisco.shift();
             categoriesDisco.push((listaLeitura[2][0].dataHoraLeitura).slice(11, 16));
     

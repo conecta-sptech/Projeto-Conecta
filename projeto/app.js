@@ -1,7 +1,11 @@
+process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+// process.env.AMBIENTE_PROCESSO = "producao";
+
+var PORT = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3000 : 8080;
+
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const PORT = 3000;
 
 const app = express();
 
