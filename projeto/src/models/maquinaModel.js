@@ -3,7 +3,7 @@ const database = require("../database/config");
 function cadastrarMaquina(hostname, ram, disco, clockProcessador, qtdNucleoProcessador, idEmpresa) {
     const instrucao = `
         INSERT INTO Maquina (hostnameMaquina, ramMaquina, discoMaquina, clockProcessadorMaquina, nucleosProcessadorMaquina, fkEmpresaMaquina) VALUES
-            ("${hostname}", ${ram}, ${disco}, ${clockProcessador}, ${qtdNucleoProcessador}, ${idEmpresa});
+            ('${hostname}', ${ram}, ${disco}, ${clockProcessador}, ${qtdNucleoProcessador}, ${idEmpresa});
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
