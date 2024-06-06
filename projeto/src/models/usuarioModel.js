@@ -10,10 +10,12 @@ function cadastrarEmpresa(nomeEmpresa, cnpjEmpresa) {
     return database.executar(instrucao);
 }
 
-function cadastrarUsuarioEmpresa(emailEmpresa, senhaEmpresa, idEmpresa) {
+function cadastrarUsuarioEmpresa(cnpjEmpresa, emailEmpresa, senhaEmpresa) {
     const instrucao = `
-            INSERT INTO Usuario (idUsuario, nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresaUsuario) VALUES
-                (1, 'Administrador', '${emailEmpresa}', '${senhaEmpresa}', 'Administrador', ${idEmpresa});
+        INSERT INTO Usuario (idUsuario, nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresaUsuario)
+            VALUES (1, 'Administrador', '${emailEmpresa}', '${senhaEmpresa}', 'Administrador',
+            (SELECT idEmpresa FROM Empresa WHERE cnpjEmpresa = '${cnpjEmpresa}')
+        );
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);

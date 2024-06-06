@@ -21,10 +21,9 @@ function cadastrarEmpresa(req, res) {
     } else {
         usuarioModel.cadastrarEmpresa(nomeEmpresa, cnpjEmpresa).then(function (resposta) {
             console.log(resposta);
-            let idEmpresa = resposta.insertId;
             res.status(200).send("Empresa cadastrada com sucesso");
 
-            usuarioModel.cadastrarUsuarioEmpresa(emailEmpresa, senhaEmpresa, idEmpresa).then(function (resposta) {
+            usuarioModel.cadastrarUsuarioEmpresa(cnpjEmpresa, emailEmpresa, senhaEmpresa).then(function (resposta) {
                 console.log(resposta);
                 res.status(200).send("Usuário administrador da empresa cadastrada com sucesso");
 
