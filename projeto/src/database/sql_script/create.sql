@@ -37,7 +37,7 @@ CREATE TABLE Maquina (
 );
 
 CREATE TABLE Componente(
-	idComponente INT AUTO_INCREMENT,
+	idComponente INT,
     nomeComponente VARCHAR(25),
     fkMaquinaComponente INT,
     fkEmpresaComponente INT,

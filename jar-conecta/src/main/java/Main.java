@@ -45,40 +45,46 @@ public class Main {
         String detail = "";
         String stackTrace = "";
 
+        System.out.println(looca.getRede().getGrupoDeInterfaces().getInterfaces());
+
         try {
             //verifica se a máquina está cadastrada
             String hostname = looca.getRede().getParametros().getHostName();
             List<Maquina> maquinaBanco = interfaceConexao.query("SELECT * FROM Maquina WHERE hostnameMaquina = '%s'".formatted(hostname), new BeanPropertyRowMapper<>(Maquina.class));
-            System.out.println(maquinaBanco.size());
+            Integer idMaquina = maquinaBanco.isEmpty() ? null : maquinaBanco.get(0).getIdMaquina();
+
             switch (maquinaBanco.size()) {
                 case 0:
-//                    //maquina nao encontrada, momento de cadastrar
-//                    date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
-//                    logLevel = "WARN";
-//                    statusCode = 404;
-//                    detail = "'message': '%s', 'hostname': '%s'".formatted("Máquina não encontrada no banco de dados.", hostname);
-//
-//                    Log warnLogMaquina = new Log(date, logLevel, statusCode, detail, stackTrace);
-//                    Log.gerarLog(caminhoArquivo, warnLogMaquina.toString());
+                    //maquina nao encontrada, momento de cadastrar
+                    date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
+                    logLevel = "WARN";
+                    statusCode = 404;
+                    detail = "'message': '%s', 'hostname': '%s'".formatted("Máquina não encontrada no banco de dados.", hostname);
 
+                    Log warnLogMaquina = new Log(date, logLevel, statusCode, detail, stackTrace);
+                    Log.gerarLog(caminhoArquivo, warnLogMaquina.toString());
 
-                    System.out.println("Estou fazendo a query de Maquina");
+                    interfaceConexao.update("INSERT INTO Maquina (hostnameMaquina, ramMaquina, discoMaquina, clockProcessadorMaquina, nucleosProcessadorMaquina, soMaquina, fkEmpresaMaquina)" +
+                            "VALUES ('%s', %s, %.0f, %s, %d, '%s', %d)".formatted
+                                (hostname,
+                                leitura.formatString(looca.getMemoria().getTotal() / Math.pow(1024, 3)),
+                                looca.getGrupoDeDiscos().getTamanhoTotal() / Math.pow(1024, 3),
+                                leitura.formatString(looca.getProcessador().getFrequencia() / Math.pow(10, 9)),
+                                looca.getProcessador().getNumeroCpusFisicas(),
+                                looca.getSistema().getSistemaOperacional(),
+                                1));
 
-                    String query = "INSERT INTO Maquina (hostnameMaquina, ramMaquina, discoMaquina, nucleosProcessadorMaquina, soMaquina, fkEmpresaMaquina)" +
-                            "VALUES ('%s', %d, %d, %d, '%s', %d)".formatted
-                                    (hostname,
-                                            looca.getMemoria().getTotal(),
-                                            looca.getGrupoDeDiscos().getTamanhoTotal(),
-                                            looca.getProcessador().getNumeroCpusFisicas(),
-                                            looca.getSistema().getSistemaOperacional(),
-                                            1);
-                    System.out.println(query);
-                    interfaceConexao.update(query);
+                    List<Maquina> maquinaCadastrada = interfaceConexao.query("SELECT idMaquina FROM Maquina WHERE hostnameMaquina = '%s'".formatted(hostname), new BeanPropertyRowMapper<>(Maquina.class));
+                    idMaquina = maquinaCadastrada.get(0).getIdMaquina();
 
-                    System.out.println("Máquina cadastrada!");
+                    interfaceConexao.update(("INSERT INTO Componente (idComponente, nomeComponente, fkMaquinaComponente, fkEmpresaComponente) VALUES" +
+                            "(1, 'Disco', %d, 1)," +
+                            "(2, 'Memoria', %d, 1)," +
+                            "(3, 'Rede', %d, 1)," +
+                            "(4, 'Cpu', %d, 1)").formatted(idMaquina, idMaquina, idMaquina, idMaquina));
+
                 default:
                     while (true) {
-                        // maquina encontrada, liberado enviar leitura
                         LeituraDisco discoAnterior = new LeituraDisco();
                         LeituraRede redeAnterior = new LeituraRede();
 
@@ -94,22 +100,21 @@ public class Main {
                         Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 10) / 1024;
                         Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 10) / 1024;
 
-                        String fk_empresa = maquinaBanco.get(0).getFkEmpresaMaquina();
                         interfaceConexao.update("INSERT INTO LeituraDisco (discoDisponivel, discoTaxaLeitura, discoTaxaEscrita, fkComponenteDisco, fkMaquinaDisco)" +
-                                "VALUES (%s, %d, %d, 1, %s)".formatted
-                                        (leitura.formatString(discoAtual.discoDisponivel), taxa_leitura_disco, taxa_escrita_disco, fk_empresa));
+                                "VALUES (%s, %d, %d, 1, %d)".formatted
+                                        (leitura.formatString(discoAtual.discoDisponivel), taxa_leitura_disco, taxa_escrita_disco, idMaquina));
 
                         interfaceConexao.update("INSERT INTO LeituraMemoria (memoriaDisponivel, memoriaVirtual, tempoLigado, fkComponenteMemoria, fkMaquinaMemoria)" +
-                                "VALUES (%s, %s, %d, 2, %s)".formatted
-                                        (leitura.formatString(memoria.memoriaDisponivel), leitura.formatString(memoria.memoriaVirtual), memoria.tempoLigado, fk_empresa));
+                                "VALUES (%s, %s, %d, 2, %d)".formatted
+                                        (leitura.formatString(memoria.memoriaDisponivel), leitura.formatString(memoria.memoriaVirtual), memoria.tempoLigado, idMaquina));
 
                         interfaceConexao.update("INSERT INTO LeituraRede (redeDownload, redeUpload, fkComponenteRede, fkMaquinaRede)" +
-                                "VALUES (%d, %d, 3, %s)".formatted
-                                        (taxa_dowload_rede, taxa_upload_rede, fk_empresa));
+                                "VALUES (%d, %d, 3, %d)".formatted
+                                        (taxa_dowload_rede, taxa_upload_rede, idMaquina));
 
                         interfaceConexao.update("INSERT INTO LeituraCpu (cpuUso, cpuCarga, cpuTemperatura, fkComponenteCpu, fkMaquinaCpu)" +
-                                "VALUES (%s, %s, %s, 4, %s)".formatted
-                                        (leitura.formatString(cpu.cpuUso), leitura.formatString(cpu.cpuCarga), leitura.formatString(cpu.cpuTemperatura), fk_empresa));
+                                "VALUES (%s, %s, %s, 4, %d)".formatted
+                                        (leitura.formatString(cpu.cpuUso), leitura.formatString(cpu.cpuCarga), leitura.formatString(cpu.cpuTemperatura), idMaquina));
 
                         LocalDateTime dataHora = LocalDateTime.now();
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
