@@ -615,7 +615,7 @@ main .column-2 .chart:nth-child(1) {
 
 main .column-2 .chart:nth-child(2) {
     width: 600px;
-    height: 150px;
+    height: 116px;
     border-radius: 50px;
     background-color: #000000;
 }
@@ -1730,6 +1730,9 @@ main .chart h3 {
 }
 
 .tabela-inatividade table {
+    display: block;
+    height: 300px;
+    overflow-y: hidden;
     border-collapse: separate;
     border-spacing: 6px;
 }
@@ -1746,7 +1749,6 @@ main .chart h3 {
 .tabela-inatividade td {
     padding: 20px;
     text-align: center;
-    font-size: 26px;
     font-weight: normal;
     color: #333;
 }
