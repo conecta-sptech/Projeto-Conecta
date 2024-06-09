@@ -103,7 +103,7 @@ npm start
 </td>
 
 
-<td  align="center"><a  href="https://github.com/leOhsantos" ><img src="projeto/public/assets/img/leonardo.jpg" border-radius="50%";  height="120px"; width="100px;"/><br/><sub><b> Leonardo Santos </b></sub></a><br /><a  href="https://github.com/leOhsantos" ><br><img  src="projeto/public/assets/img/github.png"  width="20"/></a>
+<td  align="center"><a  href="https://github.com/leOhsantos" ><img src="projeto/public/assets/img/leo.jpg" border-radius="50%";  height="120px"; width="100px;"/><br/><sub><b> Leonardo Santos </b></sub></a><br /><a  href="https://github.com/leOhsantos" ><br><img  src="projeto/public/assets/img/github.png"  width="20"/></a>
 </td>
 
 
