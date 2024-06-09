@@ -61,7 +61,9 @@ function autenticar(req, res) {
                         nome: resultadoAutenticar[0].nomeUsuario,
                         funcao: resultadoAutenticar[0].funcaoUsuario,
                         idEmpresa: resultadoAutenticar[0].idEmpresa,
-                        nomeEmpresa: resultadoAutenticar[0].nomeEmpresa
+                        nomeEmpresa: resultadoAutenticar[0].nomeEmpresa,
+                        emailUsuario: resultadoAutenticar[0].emailUsuario,
+                        cnpjEmpresa: resultadoAutenticar[0].cnpjEmpresa
                     });
 
                 } else if (resultadoAutenticar.length == 0) {

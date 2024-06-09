@@ -24,7 +24,7 @@ function cadastrarUsuarioEmpresa(cnpjEmpresa, emailEmpresa, senhaEmpresa) {
 
 function autenticar(email, senha) {
     const instrucao = `
-        SELECT idUsuario, nomeUsuario, funcaoUsuario, idEmpresa, nomeEmpresa 
+        SELECT u.idUsuario, u.nomeUsuario, u.emailUsuario, u.funcaoUsuario, e.idEmpresa, e.nomeEmpresa, e.cnpjEmpresa
 	    FROM Usuario u
 		    JOIN Empresa e
 			    ON u.fkEmpresaUsuario = e.idEmpresa
@@ -105,4 +105,3 @@ module.exports = {
     buscarParaGerente,
     deletarUsuario
 }
-

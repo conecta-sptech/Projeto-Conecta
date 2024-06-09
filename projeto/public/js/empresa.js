@@ -6,7 +6,7 @@ const inputNumeroEmpresa = document.getElementById("inputNumeroEmpresa");
 const inputTelefoneEmpresa = document.getElementById("inputTelefoneEmpresa");
 
 function validarCamposEmpresa() {
-    
+
 }
 
 function mascararCep() {
@@ -27,4 +27,10 @@ function mascararTelefone() {
     } else if (inputLength == 9) {
         inputTelefoneEmpresa.value += "-";
     }
+}
+
+window.onload = () => {
+    inputNomeEmpresa.value = sessionStorage.NOME_EMPRESA;
+    inputCnpjEmpresa.value = sessionStorage.CNPJ_EMPRESA;
+    inputEmailEmpresa.value = sessionStorage.EMAIL_USUARIO;
 }

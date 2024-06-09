@@ -47,17 +47,16 @@ function validarCampos() {
             })
         }).then(function (resposta) {
             if (resposta.ok) {
-                console.log(resposta);
-
                 resposta.json().then(json => {
                     console.log(json);
-                    console.log(JSON.stringify(json));
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.FUNCAO_USUARIO = json.funcao;
 
                     sessionStorage.ID_EMPRESA = json.idEmpresa;
                     sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
+                    sessionStorage.EMAIL_USUARIO = json.emailUsuario;
+                    sessionStorage.CNPJ_EMPRESA = json.cnpjEmpresa;
 
                     window.location = "./dashboard/dashboard.html";
                 });
