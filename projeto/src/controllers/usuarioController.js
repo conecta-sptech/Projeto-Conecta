@@ -37,6 +37,30 @@ function cadastrarEmpresa(req, res) {
     }
 }
 
+function atualizarEmpresa(req, res) {
+    const idEmpresa = req.params.idEmpresa;
+    const cepEmpresa = req.body.cepServer;
+    const numeroEmpresa = req.body.numeroServer;
+    const telefoneEmpresa = req.body.telefoneServer;
+
+    const cepRegex = /^\d{5}-\d{3}$/;
+    const telefoneRegex = /^\(\d{2}\) \d{4}-\d{4}$/;
+
+    if (!cepRegex.test(cepEmpresa)) {
+        res.status(400).send("O CEP digitado é inválido.");
+    } else if (numeroEmpresa == "") {
+        res.status(400).send("O campo do número da empresa precisa ser preenchido!");
+    } else if (!telefoneRegex.test(telefoneEmpresa)) {
+        res.status(400).send("O número de telefone digitado é inválido.");
+    } else {
+        usuarioModel.atualizarEmpresa(cepEmpresa, numeroEmpresa, telefoneEmpresa, idEmpresa).then(() => {
+            res.status(200).send("Dados da empresa atualizados com sucesso!");
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage);
+        });
+    }
+}
+
 function autenticar(req, res) {
     const email = req.body.emailServer;
     const senha = req.body.senhaServer;
@@ -63,7 +87,10 @@ function autenticar(req, res) {
                         idEmpresa: resultadoAutenticar[0].idEmpresa,
                         nomeEmpresa: resultadoAutenticar[0].nomeEmpresa,
                         emailUsuario: resultadoAutenticar[0].emailUsuario,
-                        cnpjEmpresa: resultadoAutenticar[0].cnpjEmpresa
+                        cnpjEmpresa: resultadoAutenticar[0].cnpjEmpresa,
+                        cepEmpresa: resultadoAutenticar[0].cepEmpresa,
+                        numeroEmpresa: resultadoAutenticar[0].numeroEmpresa,
+                        telefoneEmpresa: resultadoAutenticar[0].telefoneEmpresa
                     });
 
                 } else if (resultadoAutenticar.length == 0) {
@@ -203,6 +230,7 @@ function deletarUsuario(req, res) {
 
 module.exports = {
     cadastrarEmpresa,
+    atualizarEmpresa,
     autenticar,
     cadastrarUsuario,
     alterarSenhaUsuario,

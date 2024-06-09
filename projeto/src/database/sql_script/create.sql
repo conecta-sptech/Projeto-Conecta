@@ -5,9 +5,9 @@ CREATE TABLE Empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 	nomeEmpresa VARCHAR(45),
 	cnpjEmpresa CHAR(18) UNIQUE, 
-	cepEmpresa CHAR(8),
+	cepEmpresa CHAR(9),
 	numeroEmpresa int,
-	telefoneEmpresa CHAR(11)
+	telefoneEmpresa CHAR(14)
 );
 
 CREATE TABLE Usuario ( 

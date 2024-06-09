@@ -58,6 +58,12 @@ function validarCampos() {
                     sessionStorage.EMAIL_USUARIO = json.emailUsuario;
                     sessionStorage.CNPJ_EMPRESA = json.cnpjEmpresa;
 
+                    if (json.cepEmpresa && json.numeroEmpresa && json.telefoneEmpresa) {
+                        sessionStorage.CEP_EMPRESA = json.cepEmpresa;
+                        sessionStorage.NUMERO_EMPRESA = json.numeroEmpresa;
+                        sessionStorage.TELEFONE_EMPRESA = json.telefoneEmpresa;
+                    }
+
                     window.location = "./dashboard/dashboard.html";
                 });
 

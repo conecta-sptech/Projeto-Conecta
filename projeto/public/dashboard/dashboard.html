@@ -65,7 +65,8 @@
                     <span class="icon-description">Gerenciar Usuários</span>
                 </button>
 
-                <button id="btnGerenciarMaquinaSidebar" onclick="abrirModal(this)" data-id="modalMaquina">
+                <button id="btnGerenciarMaquinaSidebar" onclick="abrirModal(this), resetarDadosModalEmpresa()"
+                    data-id="modalMaquina">
                     <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         viewBox="0, 0, 400,400">
                         <g id="svgg">
@@ -573,22 +574,22 @@
                 </div>
 
                 <label for="inputCepEmpresa">CEP</label>
-                <input oninput="removerErroCamposEmpresa()" onkeypress="mascararCep()" type="text" id="inputCepEmpresa"
-                    maxlength="9" placeholder="00000-000">
+                <input onkeypress="mascararCep()" type="text" id="inputCepEmpresa" maxlength="9"
+                    placeholder="00000-000">
 
                 <label for="inputNumeroEmpresa">Número</label>
-                <input oninput="removerErroCamposEmpresa()" type="number" id="inputNumeroEmpresa" placeholder="123">
+                <input type="number" id="inputNumeroEmpresa" placeholder="123">
 
                 <label for="inputTelefoneEmpresa">Telefone</label>
-                <input oninput="removerErroCamposEmpresa()" onkeypress="mascararTelefone()" type="text"
-                    id="inputTelefoneEmpresa" maxlength="14" placeholder="(00) 0000-0000">
+                <input onkeypress="mascararTelefone()" type="text" id="inputTelefoneEmpresa" maxlength="14"
+                    placeholder="(00) 0000-0000">
             </div>
 
             <div class="line-3">
                 <div class="btn-ct">
                     <button class="btn-cancelar" onclick="fecharModal(this)"
                         data-id="modalInfoEmpresa">Cancelar</button>
-                    <button class="btn-salvar" onclick="validarCamposEmpresa()">Salvar</button>
+                    <button class="btn-salvar" onclick="atualizarDadosEmpresa()">Salvar</button>
                 </div>
             </div>
         </div>

@@ -7,6 +7,10 @@ router.post("/cadastrar-empresa", function (req, res) {
     usuarioController.cadastrarEmpresa(req, res);
 });
 
+router.put("/empresa/:idEmpresa", function (req, res) {
+    usuarioController.atualizarEmpresa(req, res);
+});
+
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });

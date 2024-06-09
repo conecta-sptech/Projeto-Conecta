@@ -10,6 +10,11 @@ function cadastrarEmpresa(nomeEmpresa, cnpjEmpresa) {
     return database.executar(instrucao);
 }
 
+function atualizarEmpresa(cep, numero, telefone, idEmpresa) {
+    const instrucao = `UPDATE empresa SET cepEmpresa = '${cep}', numeroEmpresa = '${numero}', telefoneEmpresa = '${telefone}' WHERE idEmpresa = '${idEmpresa}';`;
+    return database.executar(instrucao);
+}
+
 function cadastrarUsuarioEmpresa(cnpjEmpresa, emailEmpresa, senhaEmpresa) {
     const instrucao = `
         INSERT INTO Usuario (nomeUsuario, emailUsuario, senhaUsuario, funcaoUsuario, fkEmpresaUsuario)
@@ -24,7 +29,7 @@ function cadastrarUsuarioEmpresa(cnpjEmpresa, emailEmpresa, senhaEmpresa) {
 
 function autenticar(email, senha) {
     const instrucao = `
-        SELECT u.idUsuario, u.nomeUsuario, u.emailUsuario, u.funcaoUsuario, e.idEmpresa, e.nomeEmpresa, e.cnpjEmpresa
+        SELECT u.idUsuario, u.nomeUsuario, u.emailUsuario, u.funcaoUsuario, e.idEmpresa, e.nomeEmpresa, e.cnpjEmpresa, e.cepEmpresa, e.numeroEmpresa, e.telefoneEmpresa
 	    FROM Usuario u
 		    JOIN Empresa e
 			    ON u.fkEmpresaUsuario = e.idEmpresa
@@ -96,6 +101,7 @@ function deletarUsuario(idUsuario, idEmpresa) {
 
 module.exports = {
     cadastrarEmpresa,
+    atualizarEmpresa,
     cadastrarUsuarioEmpresa,
     autenticar,
     cadastrarGerente,
