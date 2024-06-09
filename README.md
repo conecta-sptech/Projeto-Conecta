@@ -16,14 +16,14 @@ Nosso projeto de Monitoramento de Servidores Hospitalares, baseado nos princípi
 
 <div align="left">
 
- <p align="start"><br>
+ <p align="start">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=html,css,js" />
   </a>
 
  ### Back-end:
  
-<p align="start"><br>
+<p align="start">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=java,nodejs" />
   </a>
@@ -62,7 +62,7 @@ Nosso projeto de Monitoramento de Servidores Hospitalares, baseado nos princípi
 
 ### Requisitos para a instalação:
 
- <p align="start"><br>
+ <p align="start">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=nodejs,mysql" />
   </a>
@@ -83,7 +83,9 @@ npm start
 
 ### Por fim, para abrir o projeto:
 
-- Acesse a seguinte URL: http://localhost:3333
+- Acesse a seguinte URL: http://localhost:3000
+
+<br>
 
 ## 👥 Equipe 
 
