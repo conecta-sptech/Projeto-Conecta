@@ -24,9 +24,9 @@ CREATE TABLE Usuario (
 CREATE TABLE Maquina (
 	idMaquina INT AUTO_INCREMENT,
     hostnameMaquina VARCHAR (25),
-    ramMaquina INT,
+    ramMaquina DECIMAL(4,2),
     discoMaquina INT,
-    clockProcessadorMaquina decimal(4,2),
+    clockProcessadorMaquina DECIMAL(4,2),
     nucleosProcessadorMaquina INT,
     soMaquina VARCHAR(20),
     ociosidadeMaquina DATETIME,

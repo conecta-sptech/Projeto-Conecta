@@ -4,6 +4,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import oshi.SystemInfo;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.io.File;
@@ -43,97 +45,75 @@ public class Main {
         String detail = "";
         String stackTrace = "";
 
-        System.out.println("Digite seu login");
-        String login_digitado = leitor.nextLine();
-
-        System.out.println("Digite sua senha");
-        String senha_digitada = leitor.nextLine();
-
         try {
             //verifica se a máquina está cadastrada
-            List<Usuario> usuarioBanco = interfaceConexao.query("SELECT * FROM Usuario WHERE emailUsuario = '%s' AND senhaUsuario = '%s'".formatted(login_digitado, senha_digitada), new BeanPropertyRowMapper<>(Usuario.class));
-
-            switch (usuarioBanco.size()) {
+            String hostname = looca.getRede().getParametros().getHostName();
+            List<Maquina> maquinaBanco = interfaceConexao.query("SELECT * FROM Maquina WHERE hostnameMaquina = '%s'".formatted(hostname), new BeanPropertyRowMapper<>(Maquina.class));
+            System.out.println(maquinaBanco.size());
+            switch (maquinaBanco.size()) {
                 case 0:
-                    //usuario nao encontrado
-                    date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
-                    logLevel = "WARN";
-                    statusCode = 403;
-                    detail = "'message': '%s', 'email': '%s', 'senha': '%s'".formatted("E-mail ou senha incorreto(s).", login_digitado, senha_digitada.replaceAll(".", "*"));
+//                    //maquina nao encontrada, momento de cadastrar
+//                    date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
+//                    logLevel = "WARN";
+//                    statusCode = 404;
+//                    detail = "'message': '%s', 'hostname': '%s'".formatted("Máquina não encontrada no banco de dados.", hostname);
+//
+//                    Log warnLogMaquina = new Log(date, logLevel, statusCode, detail, stackTrace);
+//                    Log.gerarLog(caminhoArquivo, warnLogMaquina.toString());
 
-                    Log warnLogUsuario = new Log(date, logLevel, statusCode, detail, stackTrace);
-                    Log.gerarLog(caminhoArquivo, warnLogUsuario.toString());
 
-                    System.out.println("Login ou senha incorretos ou inexistentes");
-                    break;
+                    System.out.println("Estou fazendo a query de Maquina");
 
+                    String query = "INSERT INTO Maquina (hostnameMaquina, ramMaquina, discoMaquina, nucleosProcessadorMaquina, soMaquina, fkEmpresaMaquina)" +
+                            "VALUES ('%s', %d, %d, %d, '%s', %d)".formatted
+                                    (hostname,
+                                            looca.getMemoria().getTotal(),
+                                            looca.getGrupoDeDiscos().getTamanhoTotal(),
+                                            looca.getProcessador().getNumeroCpusFisicas(),
+                                            looca.getSistema().getSistemaOperacional(),
+                                            1);
+                    System.out.println(query);
+                    interfaceConexao.update(query);
+
+                    System.out.println("Máquina cadastrada!");
                 default:
-                    System.out.println("Login realizado, aguarde as leituras... \n\n\n\n\n\n");
-                    //verifica se a máquina está cadastrada
-                    String hostname = looca.getRede().getParametros().getHostName();
-                    List<Maquina> maquinaBanco = interfaceConexao.query("SELECT * FROM Maquina WHERE hostnameMaquina = '%s'".formatted(hostname), new BeanPropertyRowMapper<>(Maquina.class));
+                    while (true) {
+                        // maquina encontrada, liberado enviar leitura
+                        LeituraDisco discoAnterior = new LeituraDisco();
+                        LeituraRede redeAnterior = new LeituraRede();
 
-                    switch (maquinaBanco.size()) {
-                        case 0:
-                            //maquina nao encontrada
-                            date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
-                            logLevel = "WARN";
-                            statusCode = 404;
-                            detail = "'message': '%s', 'hostname': '%s'".formatted("Máquina não encontrada no banco de dados.", hostname);
+                        Thread.sleep(10000);
 
-                            Log warnLogMaquina = new Log(date, logLevel, statusCode, detail, stackTrace);
-                            Log.gerarLog(caminhoArquivo, warnLogMaquina.toString());
+                        LeituraDisco discoAtual = new LeituraDisco();
+                        LeituraRede redeAtual = new LeituraRede();
 
-                            System.out.println("Cadastre a máquina antes de prosseguir");
-                            break;
+                        LeituraMemoria memoria = new LeituraMemoria();
+                        LeituraCpu cpu = new LeituraCpu();
+                        Long taxa_escrita_disco = ((discoAtual.discoTaxaEscrita - discoAnterior.discoTaxaEscrita) / 10) / 1024;
+                        Long taxa_leitura_disco = ((discoAtual.discoTaxaLeitura - discoAnterior.discoTaxaLeitura) / 10) / 1024;
+                        Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 10) / 1024;
+                        Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 10) / 1024;
 
-                        default:
+                        String fk_empresa = maquinaBanco.get(0).getFkEmpresaMaquina();
+                        interfaceConexao.update("INSERT INTO LeituraDisco (discoDisponivel, discoTaxaLeitura, discoTaxaEscrita, fkComponenteDisco, fkMaquinaDisco)" +
+                                "VALUES (%s, %d, %d, 1, %s)".formatted
+                                        (leitura.formatString(discoAtual.discoDisponivel), taxa_leitura_disco, taxa_escrita_disco, fk_empresa));
 
-                            Integer idMaquina = 0;
-                            String hostnameMaquina = "";
+                        interfaceConexao.update("INSERT INTO LeituraMemoria (memoriaDisponivel, memoriaVirtual, tempoLigado, fkComponenteMemoria, fkMaquinaMemoria)" +
+                                "VALUES (%s, %s, %d, 2, %s)".formatted
+                                        (leitura.formatString(memoria.memoriaDisponivel), leitura.formatString(memoria.memoriaVirtual), memoria.tempoLigado, fk_empresa));
 
-                            for (Maquina maquina : maquinaBanco) {
-                                idMaquina = maquina.getIdMaquina();
-                                hostnameMaquina = maquina.getHostnameMaquina();
-                            }
+                        interfaceConexao.update("INSERT INTO LeituraRede (redeDownload, redeUpload, fkComponenteRede, fkMaquinaRede)" +
+                                "VALUES (%d, %d, 3, %s)".formatted
+                                        (taxa_dowload_rede, taxa_upload_rede, fk_empresa));
 
-                            while (true) {
-                                // maquina encontrada, liberado enviar leitura
-                                LeituraDisco discoAnterior = new LeituraDisco();
-                                LeituraRede redeAnterior = new LeituraRede();
+                        interfaceConexao.update("INSERT INTO LeituraCpu (cpuUso, cpuCarga, cpuTemperatura, fkComponenteCpu, fkMaquinaCpu)" +
+                                "VALUES (%s, %s, %s, 4, %s)".formatted
+                                        (leitura.formatString(cpu.cpuUso), leitura.formatString(cpu.cpuCarga), leitura.formatString(cpu.cpuTemperatura), fk_empresa));
 
-                                Thread.sleep(10000);
-
-                                LeituraDisco discoAtual = new LeituraDisco();
-                                LeituraRede redeAtual = new LeituraRede();
-
-                                LeituraMemoria memoria = new LeituraMemoria();
-                                LeituraCpu cpu = new LeituraCpu();
-                                Long taxa_escrita_disco = ((discoAtual.discoTaxaEscrita - discoAnterior.discoTaxaEscrita) / 10) / 1024;
-                                Long taxa_leitura_disco = ((discoAtual.discoTaxaLeitura - discoAnterior.discoTaxaLeitura) / 10) / 1024;
-                                Long taxa_dowload_rede = ((redeAtual.redeDowload - redeAnterior.redeDowload) / 10) / 1024;
-                                Long taxa_upload_rede = ((redeAtual.redeUpload - redeAnterior.redeUpload) / 10) / 1024;
-
-                                String fk_empresa = maquinaBanco.get(0).getFkEmpresaMaquina();
-                                interfaceConexao.update("INSERT INTO LeituraDisco (discoDisponivel, discoTaxaLeitura, discoTaxaEscrita, fkComponenteDisco, fkMaquinaDisco)" +
-                                        "VALUES (%s, %d, %d, 1, %s)".formatted
-                                                (leitura.formatString(discoAtual.discoDisponivel), taxa_leitura_disco, taxa_escrita_disco, fk_empresa));
-
-                                interfaceConexao.update("INSERT INTO LeituraMemoria (memoriaDisponivel, memoriaVirtual, tempoLigado, fkComponenteMemoria, fkMaquinaMemoria)" +
-                                        "VALUES (%s, %s, %d, 2, %s)".formatted
-                                                (leitura.formatString(memoria.memoriaDisponivel), leitura.formatString(memoria.memoriaVirtual), memoria.tempoLigado, fk_empresa));
-
-                                interfaceConexao.update("INSERT INTO LeituraRede (redeDownload, redeUpload, fkComponenteRede, fkMaquinaRede)" +
-                                        "VALUES (%d, %d, 3, %s)".formatted
-                                                (taxa_dowload_rede, taxa_upload_rede, fk_empresa));
-
-                                interfaceConexao.update("INSERT INTO LeituraCpu (cpuUso, cpuCarga, cpuTemperatura, fkComponenteCpu, fkMaquinaCpu)" +
-                                        "VALUES (%s, %s, %s, 4, %s)".formatted
-                                                (leitura.formatString(cpu.cpuUso), leitura.formatString(cpu.cpuCarga), leitura.formatString(cpu.cpuTemperatura), fk_empresa));
-
-                                LocalDateTime dataHora = LocalDateTime.now();
-                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-                                String dataHoraFormatada = dataHora.format(formatter);
+                        LocalDateTime dataHora = LocalDateTime.now();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                        String dataHoraFormatada = dataHora.format(formatter);
 
 //                                if (processador > 80.0) {
 //                                    message.put("text",
@@ -189,40 +169,40 @@ public class Main {
 //                                                    " Data/Hora: " + dataHoraFormatada + " \n");
 //                                }
 //                                slack.sendMessage(message);
-                                DispositivoUsb.verificarDispositivo();
+                        DispositivoUsb.verificarDispositivo();
 
-                                System.out.println("""
-                                        \n\n\n\n\n\n
-                                        Leituras realizadas com sucesso!
-                                        Enviando dados de disco:
-                                        1 - Disco disponível: %.2f Gb
-                                        2 - Taxa de escrita: %d Kb/s
-                                        3 - Taxa de leitura: %d Kb/s
+                        System.out.println("""
+                                \n\n\n\n\n\n
+                                Leituras realizadas com sucesso!
+                                Enviando dados de disco:
+                                1 - Disco disponível: %.2f Gb
+                                2 - Taxa de escrita: %d Kb/s
+                                3 - Taxa de leitura: %d Kb/s
 
-                                        Enviando dados de memória:
-                                        1 - Memória disponível: %.2f Gb
-                                        2 - Memória virtual: %.2f Gb
-                                        3 - Tempo ligado: %d Horas
+                                Enviando dados de memória:
+                                1 - Memória disponível: %.2f Gb
+                                2 - Memória virtual: %.2f Gb
+                                3 - Tempo ligado: %d Horas
 
-                                        Enviando dados de rede:
-                                        1 - Taxa dowload: %d Mb/s
-                                        2 - Taxa upload: %d Mb/s
+                                Enviando dados de rede:
+                                1 - Taxa dowload: %d Mb/s
+                                2 - Taxa upload: %d Mb/s
 
-                                        Enviando dados de cpu:
-                                        1 - Uso: %.2f %%
-                                        2 - Carga: %.2f %%
-                                        3 - Temperatura: %.2f °C
-                                        """.formatted(
-                                        discoAtual.discoDisponivel, taxa_escrita_disco, taxa_leitura_disco,
-                                        memoria.memoriaDisponivel, memoria.memoriaVirtual, memoria.tempoLigado,
-                                        taxa_dowload_rede, taxa_upload_rede,
-                                        cpu.cpuUso, cpu.cpuCarga, ThreadLocalRandom.current().nextDouble(40.0, 42.0)
-                                ));
-                            }
+                                Enviando dados de cpu:
+                                1 - Uso: %.2f %%
+                                2 - Carga: %.2f %%
+                                3 - Temperatura: %.2f °C
+                                """.formatted(
+                                discoAtual.discoDisponivel, taxa_escrita_disco, taxa_leitura_disco,
+                                memoria.memoriaDisponivel, memoria.memoriaVirtual, memoria.tempoLigado,
+                                taxa_dowload_rede, taxa_upload_rede,
+                                cpu.cpuUso, cpu.cpuCarga, ThreadLocalRandom.current().nextDouble(40.0, 42.0)
+                        ));
                     }
             }
 
-        } catch (Exception e) {
+        } catch (
+                Exception e) {
             date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
             logLevel = "ERROR";
             statusCode = 503;
