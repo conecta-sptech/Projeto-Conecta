@@ -45,9 +45,7 @@ public class Main {
         String detail = "";
         String stackTrace = "";
 
-        System.out.println(looca.getRede().getGrupoDeInterfaces().getInterfaces());
-
-        try {
+//        try {
             //verifica se a máquina está cadastrada
             String hostname = looca.getRede().getParametros().getHostName();
             List<Maquina> maquinaBanco = interfaceConexao.query("SELECT * FROM Maquina WHERE hostnameMaquina = '%s'".formatted(hostname), new BeanPropertyRowMapper<>(Maquina.class));
@@ -206,21 +204,21 @@ public class Main {
                     }
             }
 
-        } catch (
-                Exception e) {
-            date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
-            logLevel = "ERROR";
-            statusCode = 503;
-            detail = "'message': 'Houve um problema de conexão com o banco de dados.'";
-
-            //Captura o stackTrace e o transforma em uma String
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            e.printStackTrace(pw);
-            stackTrace = sw.toString().replace("\n", " ").replace("\r", "").replace("\t", "");
-
-            Log errorLogServer = new Log(date, logLevel, statusCode, detail, stackTrace);
-            Log.gerarLog(caminhoArquivo, errorLogServer.toString());
-        }
+//        } catch (
+//                Exception e) {
+//            date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
+//            logLevel = "ERROR";
+//            statusCode = 503;
+//            detail = "'message': 'Houve um problema de conexão com o banco de dados.'";
+//
+//            //Captura o stackTrace e o transforma em uma String
+//            StringWriter sw = new StringWriter();
+//            PrintWriter pw = new PrintWriter(sw);
+//            e.printStackTrace(pw);
+//            stackTrace = sw.toString().replace("\n", " ").replace("\r", "").replace("\t", "");
+//
+//            Log errorLogServer = new Log(date, logLevel, statusCode, detail, stackTrace);
+//            Log.gerarLog(caminhoArquivo, errorLogServer.toString());
+//        }
     }
 }

@@ -16,26 +16,26 @@ function obterMemoria(grafico, idMaquina) {
     switch(Number(grafico)){
         case 1:
             instrucao = `
-                SELECT memoriaDisponivel FROM leituraMemoria
+                SELECT TOP 1 memoriaDisponivel FROM leituraMemoria
                     WHERE fkMaquinaMemoria = ${idMaquina}
-                        ORDER BY idLeituraMemoria DESC LIMIT 1;
+                        ORDER BY idLeituraMemoria DESC;
             `;
         break;
 
         case 2:
             instrucao = `
-                SELECT memoriaVirtual, memoriaDisponivel FROM leituraMemoria
+                SELECT TOP 1 memoriaVirtual, memoriaDisponivel FROM leituraMemoria
                     WHERE fkMaquinaMemoria = ${idMaquina}
-                        ORDER BY idLeituraMemoria DESC LIMIT 1;
+                        ORDER BY idLeituraMemoria DESC;
             `;
 
         break;
 
         case 3:
             instrucao = `
-                SELECT tempoLigado FROM leituraMemoria
+                SELECT TOP 1 tempoLigado FROM leituraMemoria
                     WHERE fkMaquinaMemoria = ${idMaquina}
-                        ORDER BY idLeituraMemoria DESC LIMIT 1;
+                        ORDER BY idLeituraMemoria DESC;
             `;
         break;
     }
@@ -50,25 +50,25 @@ function obterCpu(grafico, idMaquina, primeiraLeitura) {
     switch(Number(grafico)){
         case 1:
             instrucao = `
-                SELECT cpuUso, dataHoraLeitura  FROM leituraCpu
+                SELECT TOP ${querySize} cpuUso, dataHoraLeitura  FROM leituraCpu
 	                WHERE fkMaquinaCpu = ${idMaquina}
-		                ORDER BY idLeituraCpu DESC LIMIT ${querySize};
+		                ORDER BY idLeituraCpu DESC;
             `;
         break;
 
         case 2:
             instrucao = `
-                SELECT cpuCarga, dataHoraLeitura  FROM leituraCpu
+                SELECT TOP ${querySize} cpuCarga, dataHoraLeitura  FROM leituraCpu
                     WHERE fkMaquinaCpu = ${idMaquina}
-                        ORDER BY idLeituraCpu DESC LIMIT ${querySize};
+                        ORDER BY idLeituraCpu DESC;
             `;
         break;
 
         case 3:
             instrucao = `
-                SELECT cpuTemperatura, dataHoraLeitura  FROM leituraCpu
+                SELECT TOP ${querySize} cpuTemperatura, dataHoraLeitura  FROM leituraCpu
                     WHERE fkMaquinaCpu = ${idMaquina}
-                        ORDER BY idLeituraCpu DESC LIMIT ${querySize};
+                        ORDER BY idLeituraCpu DESC;
             `;
         break;
     }
@@ -83,25 +83,25 @@ function obterDisco(grafico, idMaquina, primeiraLeitura) {
     switch(Number(grafico)){
         case 1:
             instrucao = `
-                SELECT discoDisponivel FROM leituraDisco
+                SELECT TOP 1discoDisponivel FROM leituraDisco
                     WHERE fkMaquinaDisco = ${idMaquina}
-                        ORDER BY idLeituraDisco DESC LIMIT 1
+                        ORDER BY idLeituraDisco DESC;
             `;
         break;
 
         case 2:
             instrucao = `
-                SELECT discoTaxaLeitura, dataHoraLeitura  FROM leituraDisco
+                SELECT TOP ${querySize} discoTaxaLeitura, dataHoraLeitura  FROM leituraDisco
                     WHERE fkMaquinaDisco = ${idMaquina}
-                        ORDER BY idLeituraDisco DESC LIMIT ${querySize};
+                        ORDER BY idLeituraDisco DESC;
             `;
         break;
 
         case 3:
             instrucao = `
-                SELECT discoTaxaEscrita, dataHoraLeitura  FROM leituraDisco
+                SELECT TOP ${querySize} discoTaxaEscrita, dataHoraLeitura  FROM leituraDisco
                     WHERE fkMaquinaDisco = ${idMaquina}
-                        ORDER BY idLeituraDisco DESC LIMIT ${querySize};
+                        ORDER BY idLeituraDisco DESC;
             `;
         break;
     }
@@ -111,9 +111,9 @@ function obterDisco(grafico, idMaquina, primeiraLeitura) {
 
 function obterRede(idMaquina) {
     const instrucao = `
-        SELECT redeDownload, redeUpload  FROM leituraRede
+        SELECT TOP 1 redeDownload, redeUpload  FROM leituraRede
             WHERE fkMaquinaRede = ${idMaquina}
-                ORDER BY idLeituraRede DESC LIMIT 1;
+                ORDER BY idLeituraRede DESC;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
