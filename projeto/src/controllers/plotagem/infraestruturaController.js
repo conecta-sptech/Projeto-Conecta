@@ -43,8 +43,8 @@ async function obterDadosGrafico(req, res) {
     } else {
         try {
             listaLeitura[0] = await infraestruturaModel.obterMemoria(listaGraficos[0], idMaquina);
-            listaLeitura[1] = await infraestruturaModel.obterCpu(listaGraficos[1], idMaquina, primeiraLeitura);            
-            listaLeitura[2] = await infraestruturaModel.obterDisco(listaGraficos[2], idMaquina, primeiraLeitura);            
+            listaLeitura[1] = await infraestruturaModel.obterCpu(listaGraficos[1], idMaquina, primeiraLeitura);
+            listaLeitura[2] = await infraestruturaModel.obterDisco(listaGraficos[2], idMaquina, primeiraLeitura);
             listaLeitura[3] = await infraestruturaModel.obterRede(idMaquina);
 
             console.log(listaLeitura);
@@ -55,20 +55,18 @@ async function obterDadosGrafico(req, res) {
             res.status(500).json(erro.sqlMessage);
         }
     }
-}   
+}
 
 function atualizarIntervaloLeitura(req, res) {
     const idMaquina = req.params.idMaquina;
     const intervalo = req.body.intervaloServer;
 
     infraestruturaModel.atualizarIntervaloLeitura(intervalo, idMaquina).then((resposta) => {
-        console.log(resposta);
+        res.status(200).json(resposta);
     }).catch((error) => {
         console.log(error);
     });
 }
-
-
 
 module.exports = {
     buscarIds,

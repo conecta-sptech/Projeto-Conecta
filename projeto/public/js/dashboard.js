@@ -235,11 +235,13 @@ function atualizarIntervaloLeitura(e) {
         body: JSON.stringify({
             intervaloServer: intervalo
         }),
-    }).then(() => {
-        clearInterval(idInvervaloLeitura);
-        idInvervaloLeitura = setInterval(function () {
-            plotarDadosGrafico(idMaquinaSelecionada, false, -1);
-        }, intervalo * 1000);
+    }).then((res) => {
+        if (res.ok) {
+            clearInterval(idInvervaloLeitura);
+            idInvervaloLeitura = setInterval(function () {
+                plotarDadosGrafico(idMaquinaSelecionada, false, -1);
+            }, intervalo * 1000);
+        }
     }).catch((error) => {
         console.log(error);
     });
