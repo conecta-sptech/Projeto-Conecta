@@ -153,7 +153,7 @@ async function listarMaquinasModalInicial() {
 
         if (listaEstado[1].includes(listaMaquinas[i].idMaquina)) {
             document.querySelector(`.btn-visualizar-maquina-inicio[data-id="${listaMaquinas[i].idMaquina}"]`).style.backgroundColor = "#E53C3C";
-       }
+        }
     }
 }
 
@@ -204,17 +204,46 @@ function definirDashboard(e) {
 
         plotarDadosGrafico(idMaquinaSelecionada, true, -1);
 
+        let intervalo = 10;
+        for (i = 0; i < listaMaquinas.length; i++) {
+            if (listaMaquinas[i].idMaquina == idMaquinaSelecionada) {
+                intervalo = listaMaquinas[i].intervaloLeitura;
+                break;
+            }
+        }
+
         // time dop setinterval deve ser fetch do intervaloMaquina
 
-        idInvervaloLeitura = setInterval(function(){
+        idInvervaloLeitura = setInterval(function () {
             plotarDadosGrafico(idMaquinaSelecionada, false, -1);
-        }, 15000);
+        }, intervalo * 1000);
     }
 
     modalBackground.classList.remove("active");
     modalInicial.classList.remove("active");
 }
 
+function atualizarIntervaloLeitura(e) {
+    const intervalo = Number(e.getAttribute("data-intervalo-leitura"));
+    listaTempoAtualizacao.classList.remove("active");
+
+    fetch(`/infraestrutura/maquina/${idMaquinaSelecionada}/intervalo-leitura`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            intervaloServer: intervalo
+        }),
+    }).then(() => {
+        clearInterval(idInvervaloLeitura);
+        idInvervaloLeitura = setInterval(function () {
+            plotarDadosGrafico(idMaquinaSelecionada, false, -1);
+        }, intervalo * 1000);
+    }).catch((error) => {
+        console.log(error);
+    });
+}
 
 function listarMaquinas() {
     return fetch(`/maquina/buscar-maquina/${sessionStorage.getItem("ID_EMPRESA")}`)
@@ -319,10 +348,6 @@ function esconderDescricaoKpi(e) {
 
 function mostrarListaTempoAtualizacao() {
     listaTempoAtualizacao.classList.toggle("active");
-}
-
-function definirTempoAtualizacao() {
-    listaTempoAtualizacao.classList.remove("active");
 }
 
 function filtrarMaquinasModalInicial(e) {

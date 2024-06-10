@@ -120,10 +120,17 @@ function obterRede(idMaquina) {
     return database.executar(instrucao);
 }
 
+function atualizarIntervaloLeitura(intervalo, idMaquina) {
+    const instrucao = `UPDATE Maquina SET intervaloLeitura = ${intervalo} WHERE idMaquina = ${idMaquina};`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     buscarIds,
     obterMemoria,
     obterCpu,
     obterDisco,
-    obterRede
+    obterRede,
+    atualizarIntervaloLeitura
 }

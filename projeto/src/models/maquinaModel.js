@@ -27,7 +27,7 @@ function editarMaquina(idMaquina, hostname, ram, disco, clockProcessador, qtdNuc
 
 function buscarMaquina(idEmpresa) {
     const instrucao = `
-        SELECT idMaquina, hostnameMaquina, ramMaquina, discoMaquina, clockProcessadorMaquina, nucleosProcessadorMaquina, fkEmpresaMaquina FROM Maquina
+        SELECT idMaquina, hostnameMaquina, ramMaquina, discoMaquina, clockProcessadorMaquina, nucleosProcessadorMaquina, intervaloLeitura, fkEmpresaMaquina FROM Maquina
             WHERE fkEmpresaMaquina = ${idEmpresa}
                 ORDER BY idMaquina;
     `;

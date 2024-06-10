@@ -55,10 +55,23 @@ async function obterDadosGrafico(req, res) {
             res.status(500).json(erro.sqlMessage);
         }
     }
-}                                                                   
+}   
+
+function atualizarIntervaloLeitura(req, res) {
+    const idMaquina = req.params.idMaquina;
+    const intervalo = req.body.intervaloServer;
+
+    infraestruturaModel.atualizarIntervaloLeitura(intervalo, idMaquina).then((resposta) => {
+        console.log(resposta);
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+
 
 
 module.exports = {
     buscarIds,
-    obterDadosGrafico
+    obterDadosGrafico,
+    atualizarIntervaloLeitura
 }
