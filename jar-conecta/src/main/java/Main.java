@@ -16,7 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -24,11 +23,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         Dotenv dotenv = Dotenv.load();
 
-        Conexao conexaoLocal = new Conexao("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/ConectaLocal");
+        Conexao conexaoLocal = new Conexao("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:mysql-db/Conecta");
         JdbcTemplate interfaceConexaoLocal = conexaoLocal.getConexaoDoBanco();
 
-//        Conexao conexaoNuvem = new Conexao("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://100.28.72.89:1433;databaseName=Conecta;encrypt=true;trustServerCertificate=true");
-        Conexao conexaoNuvem = new Conexao("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/Conecta");
+        Conexao conexaoNuvem = new Conexao("com.microsoft.sqlserver.jdbc.SQLServerDriver", "jdbc:sqlserver://100.28.72.89:1433;databaseName=Conecta;encrypt=true;trustServerCertificate=true");
         JdbcTemplate interfaceConexaoNuvem = conexaoNuvem.getConexaoDoBanco();
 
         Looca looca = new Looca();
@@ -277,7 +275,6 @@ public class Main {
                         ));
                     }
             }
-
         } catch (
                 Exception e) {
             date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
