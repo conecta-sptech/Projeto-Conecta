@@ -11,7 +11,8 @@ function cadastrarEmpresa(nomeEmpresa, cnpjEmpresa) {
 }
 
 function atualizarEmpresa(cep, numero, telefone, idEmpresa) {
-    const instrucao = `UPDATE empresa SET cepEmpresa = '${cep}', numeroEmpresa = '${numero}', telefoneEmpresa = '${telefone}' WHERE idEmpresa = '${idEmpresa}';`;
+    const instrucao = `UPDATE Empresa SET cepEmpresa = '${cep}', numeroEmpresa = ${numero}, telefoneEmpresa = '${telefone}' WHERE idEmpresa = ${idEmpresa};`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 

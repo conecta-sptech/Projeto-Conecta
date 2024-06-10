@@ -10,7 +10,7 @@ function atualizarDadosEmpresa() {
     const numeroEmpresa = inputNumeroEmpresa.value;
     const telefoneEmpresa = inputTelefoneEmpresa.value;
 
-    fetch(`/usuario/empresa/${sessionStorage.ID_USUARIO}`, {
+    fetch(`/usuario/empresa/${sessionStorage.ID_EMPRESA}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
