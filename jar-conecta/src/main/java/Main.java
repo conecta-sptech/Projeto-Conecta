@@ -66,8 +66,8 @@ public class Main {
                     Log warnLogMaquina = new Log(date, logLevel, statusCode, detail, stackTrace);
                     Log.gerarLog(caminhoArquivo, warnLogMaquina.toString());
 
-                    interfaceConexaoNuvem.update("INSERT INTO Maquina (hostnameMaquina, ramMaquina, discoMaquina, clockProcessadorMaquina, nucleosProcessadorMaquina, soMaquina, fkEmpresaMaquina)" +
-                            "VALUES ('%s', %s, %.0f, %s, %d, '%s', %d)".formatted
+                    interfaceConexaoNuvem.update("INSERT INTO Maquina (hostnameMaquina, ramMaquina, discoMaquina, clockProcessadorMaquina, nucleosProcessadorMaquina, soMaquina, intervaloLeitura, fkEmpresaMaquina)" +
+                            "VALUES ('%s', %s, %.0f, %s, %d, '%s', 10, %d)".formatted
                                     (hostname,
                                             leitura.formatString(looca.getMemoria().getTotal() / Math.pow(1024, 3)),
                                             looca.getGrupoDeDiscos().getTamanhoTotal() / Math.pow(1024, 3),
