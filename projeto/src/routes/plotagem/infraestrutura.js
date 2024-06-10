@@ -15,4 +15,8 @@ router.put("/maquina/:idMaquina/intervalo-leitura", (req, res) => {
     infraestruturaController.atualizarIntervaloLeitura(req, res);
 });
 
+router.get("/kpi/:idEmpresa", (req, res) => {
+    infraestruturaController.obterDadosKpi(req, res);
+});
+
 module.exports = router;

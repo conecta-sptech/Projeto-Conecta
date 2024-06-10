@@ -12,6 +12,10 @@ const btnExibirListaDisco = document.getElementById("btnExibirListaDisco");
 const chartListRam = document.getElementById("chartListRam");
 const chartListCpu = document.getElementById("chartListCpu");
 const chartListDisco = document.getElementById("chartListDisco");
+const kpiRam = document.getElementById("kpi1");
+const kpiDisco = document.getElementById("kpi2");
+const kpiCpu = document.getElementById("kpi3");
+const kpiRede = document.getElementById("kpi4");
 
 function exibirChartsRam() {
     btnExibirListaRam.classList.toggle("active");
@@ -40,20 +44,28 @@ function obterDadosGrafico(idMaquina, primeiraLeitura) {
         .then(res => res.json());
 }
 
+function obterDadosKpi(){
+    return fetch(`/infraestrutura/kpi/${sessionStorage.getItem("ID_EMPRESA")}`)
+        .then(res => res.json());
+}
+
 
 let listaLeitura = null;
 let indiceMaquina = null;
+let listaKpi = null;
 
 let categoriesCpu = [];
 let dataCpu = [];
 
 let categoriesDisco = [];
 let dataDisco = [];
+
 async function plotarDadosGrafico(idMaquina, primeiraLeitura, graficoSelecionado){
     listaLeitura = await obterDadosGrafico(idMaquina, primeiraLeitura);
-    console.log(listaLeitura);
-    console.log(listaLeitura[0][0].memoriaDisponivel);
-
+    
+    listaKpi = await obterDadosKpi();
+    atualizarKPI();
+    
     // ----------------------------------------------------------------pega o indice da maquina
     for(let i = 0; i < listaMaquinas.length; i++){
         if(listaMaquinas[i].idMaquina == idMaquina){
@@ -121,6 +133,13 @@ async function plotarDadosGrafico(idMaquina, primeiraLeitura, graficoSelecionado
         atualizarGraficoDisco(primeiraLeitura);
         atualizarGraficoRede(primeiraLeitura);
     }
+}
+
+function atualizarKPI(){
+    kpiRam.innerHTML = listaKpi[1].length;
+    kpiDisco.innerHTML = listaKpi[0].length;
+    kpiCpu.innerHTML = listaKpi[3].length;
+    kpiRede.innerHTML = listaKpi[2].length;
 }
 
 

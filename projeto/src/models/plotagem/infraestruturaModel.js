@@ -120,6 +120,17 @@ function obterRede(idMaquina) {
     return database.executar(instrucao);
 }
 
+function obterKpi(idEmpresa, componente){
+    const instrucao = `
+    SELECT DISTINCT fkMaquinaAlerta FROM Alerta
+        WHERE fkEmpresaAlerta = ${idEmpresa} AND fkComponenteAlerta = ${componente}
+        AND dataHoraAlerta = (SELECT MAX(dataHoraAlerta) FROM Alerta);
+`;
+
+console.log("Executando a instrução SQL: \n" + instrucao);
+return database.executar(instrucao);
+}
+
 function atualizarIntervaloLeitura(intervalo, idMaquina) {
     const instrucao = `UPDATE Maquina SET intervaloLeitura = ${intervalo} WHERE idMaquina = ${idMaquina};`;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -132,5 +143,6 @@ module.exports = {
     obterCpu,
     obterDisco,
     obterRede,
-    atualizarIntervaloLeitura
+    atualizarIntervaloLeitura,
+    obterKpi
 }

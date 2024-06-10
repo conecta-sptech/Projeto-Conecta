@@ -57,6 +57,31 @@ async function obterDadosGrafico(req, res) {
     }
 }
 
+async function obterDadosKpi(req, res) {
+    const idEmpresa = req.params.idEmpresa;
+
+    let listaKpi = [];
+
+    if (idEmpresa == undefined) {
+        res.status(400).send("Id da empresa está undefined!");
+
+    } else {
+        try {
+            listaKpi[0] = await infraestruturaModel.obterKpi(idEmpresa, 1);
+            listaKpi[1] = await infraestruturaModel.obterKpi(idEmpresa, 2);
+            listaKpi[2] = await infraestruturaModel.obterKpi(idEmpresa, 3);
+            listaKpi[3] = await infraestruturaModel.obterKpi(idEmpresa, 4);
+
+            console.log(listaKpi);
+            res.status(200).json(listaKpi);
+        } catch (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar as kpis.", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    }
+}
+
 function atualizarIntervaloLeitura(req, res) {
     const idMaquina = req.params.idMaquina;
     const intervalo = req.body.intervaloServer;
@@ -71,5 +96,6 @@ function atualizarIntervaloLeitura(req, res) {
 module.exports = {
     buscarIds,
     obterDadosGrafico,
+    obterDadosKpi,
     atualizarIntervaloLeitura
 }
