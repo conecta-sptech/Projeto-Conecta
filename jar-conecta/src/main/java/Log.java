@@ -18,14 +18,9 @@ public class Log {
     }
 
     private static void criarDiretorio() throws IOException {
-        File diretorio = new File("C:\\Log\\");
-        File documentoTxt = new File("C:\\Log\\" + File.separator + "logs.txt");
+        File documentoTxt = new File("/home" + File.separator + "logs.txt");
 
-        if (!diretorio.exists()) {
-            diretorio.mkdirs();
-        }
-
-        if (diretorio.exists() && !documentoTxt.exists()) {
+        if (!documentoTxt.exists()) {
             documentoTxt.createNewFile();
         }
     }

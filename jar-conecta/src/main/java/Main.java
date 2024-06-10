@@ -35,7 +35,7 @@ public class Main {
         JSONObject message = new JSONObject();
         Slack slack = new Slack();
 
-        String caminhoArquivo = "C:\\Log\\logs.txt";
+        String caminhoArquivo = "/home/logs.txt";
 
         String date = "";
         String logLevel = "";
