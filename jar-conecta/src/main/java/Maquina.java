@@ -7,12 +7,13 @@ public class Maquina {
     private Integer nucleosProcessadorMaquina;
     private String soMaquina;
     private String ociosidadeMaquina;
+    private Integer intervaloLeitura;
     private String fkEmpresaMaquina;
 
     public Maquina() {
     }
 
-    public Maquina(Integer idMaquina, String hostnameMaquina, Integer ramMaquina, Integer discoMaquina, Double clockProcessadorMaquina, Integer nucleosProcessadorMaquina, String soMaquina, String ociosidadeMaquina, String fkEmpresaMaquina) {
+    public Maquina(Integer idMaquina, String hostnameMaquina, Integer ramMaquina, Integer discoMaquina, Double clockProcessadorMaquina, Integer nucleosProcessadorMaquina, String soMaquina, String ociosidadeMaquina, Integer intervaloLeitura, String fkEmpresaMaquina) {
         this.idMaquina = idMaquina;
         this.hostnameMaquina = hostnameMaquina;
         this.ramMaquina = ramMaquina;
@@ -20,6 +21,7 @@ public class Maquina {
         this.clockProcessadorMaquina = clockProcessadorMaquina;
         this.nucleosProcessadorMaquina = nucleosProcessadorMaquina;
         this.soMaquina = soMaquina;
+        this.intervaloLeitura = intervaloLeitura;
         this.ociosidadeMaquina = ociosidadeMaquina;
         this.fkEmpresaMaquina = fkEmpresaMaquina;
     }
@@ -86,6 +88,14 @@ public class Maquina {
 
     public void setOciosidadeMaquina(String ociosidadeMaquina) {
         this.ociosidadeMaquina = ociosidadeMaquina;
+    }
+
+    public Integer getIntervaloLeitura() {
+        return intervaloLeitura;
+    }
+
+    public void setIntervaloLeitura(Integer intervaloLeitura) {
+        this.intervaloLeitura = intervaloLeitura;
     }
 
     public String getFkEmpresaMaquina() {

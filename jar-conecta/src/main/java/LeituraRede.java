@@ -1,10 +1,11 @@
 import com.github.britooo.looca.api.core.Looca;
-import oshi.SystemInfo;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class LeituraRede {
+    Dotenv dotenv = Dotenv.load();
+    Integer rede = Integer.parseInt(dotenv.get("REDE"));
     Looca looca = new Looca();
-    SystemInfo oshi = new SystemInfo();
-    Long redeDowload = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getBytesRecebidos();
-    Long redeUpload = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(0).getBytesEnviados();
+    Long redeDowload = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(rede).getBytesRecebidos();
+    Long redeUpload = looca.getRede().getGrupoDeInterfaces().getInterfaces().get(rede).getBytesEnviados();
     //    validar com professor
 }
