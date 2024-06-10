@@ -45,19 +45,6 @@ CREATE TABLE Componente(
     PRIMARY KEY (idComponente, fkMaquinaComponente)
 );
 
-CREATE TABLE Metrica (
-	idMetrica INT AUTO_INCREMENT,
-    nomeLeitura VARCHAR(45),
-    minMetrica1 INT,
-    maxMetrica1 INT,
-    maxMetrica2 INT,
-    maxMetrica3 INT,
-    fkComponenteMetrica INT,
-	fkMaquinaMetrica INT,
-		CONSTRAINT fkM FOREIGN KEY (fkComponenteMetrica, fkMaquinaMetrica) REFERENCES Componente(idComponente, fkMaquinaComponente),
-	PRIMARY KEY (idMetrica, fkComponenteMetrica, fkMaquinaMetrica)
-);
-
 CREATE TABLE LeituraDisco ( 
 	idLeituraDisco INT AUTO_INCREMENT,
 	discoDisponivel DECIMAL(5,2),

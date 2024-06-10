@@ -7,5 +7,4 @@ public class LeituraCpu {
     Double cpuUso = looca.getProcessador().getUso();
     Double cpuCarga = oshi.getHardware().getProcessor().getSystemCpuLoad(1000) * 100;
     Double cpuTemperatura = oshi.getHardware().getSensors().getCpuTemperature();
-    //    validar com professor
 }
