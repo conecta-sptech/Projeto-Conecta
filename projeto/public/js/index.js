@@ -1,5 +1,9 @@
 AOS.init();
 
+const imgP = document.getElementById("imgP");
+const funcaoP = document.getElementById("funcaoP");
+const divP = document.getElementById("divP");
+
 function mostrarRedesSociais(e) {
     e.classList.add("active");
 }
@@ -20,4 +24,23 @@ function alternarMenuMobile() {
             ? (link.style.animation = "")
             : (link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`);
     })
+}
+
+let clicks = 1;
+function secretStuff() {
+    if (isActive) {
+        if (clicks == 5) {
+            imgP.setAttribute("src", "assets/img/p.png");
+            funcaoP.textContent = "Youtuber";
+            divP.innerHTML = `<a target="_blank" href="https://www.youtube.com/watch?v=xvFZjo5PgG0"><img src="assets/img/youtube.png"></a>`;
+        } else {
+            clicks++;
+        }
+    }
+}
+
+let isActive = false;
+function activeSomething() {
+    isActive = true;
+    console.log(isActive);
 }

@@ -303,16 +303,17 @@
             id="equipeFotos">
 
             <div style="position: relative;">
-              <img class="foto" src="assets/img/patrick.jpeg">
+              <img id="imgP" class="foto" src="assets/img/patrick.jpeg">
 
-              <div class="sombra-foto" onmouseover="mostrarRedesSociais(this)" onmouseout="esconderRedesSociais(this)">
+              <div id="divP" class="sombra-foto" onmouseover="mostrarRedesSociais(this)" onmouseout="esconderRedesSociais(this)">
                 <a target="_blank" href="https://github.com/PatrickRodrigues19"><img src="assets/img/github.png"></a>
-                <a target="_blank" href="https://www.linkedin.com/in/patrick-de-lima-rodrigues-1b7134201/"><img src="assets/img/linkedin.png"></a>
+                <a target="_blank" href="https://www.linkedin.com/in/patrick-de-lima-rodrigues-1b7134201/"><img
+                    src="assets/img/linkedin.png"></a>
               </div>
             </div>
 
-            <span>Patrick de Lima</span>
-            <span class="funcao">Analista de Dados</span>
+            <span style="user-select: none;" onclick="secretStuff()">Patrick de Lima</span>
+            <span id="funcaoP" class="funcao">Analista de Dados</span>
 
           </div>
         </div>
@@ -324,7 +325,7 @@
   <footer>
     <div class="footerContato">
       <h1>Contato</h1>
-      <img src="assets/img/logo.png">
+      <img onclick="activeSomething()" style="pointer-events: all !important;" src="assets/img/logo.png">
 
       <span class="descricao-footer"><img src="assets/img/email.png"><a
           href="mailto:contato@conecta.com.br">contato@conecta.com.br</a></span>
