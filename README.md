@@ -1,8 +1,7 @@
 <div align="center">
- <img src="projeto/public/assets/img/logoConecta.png" width="350em">
+ <img src="projeto/public/assets/img/logoConecta.png" width="300em">
 </div>
 
-<br>
 <p align-text="justify">
  
 Projeto de Monitoramento de Servidores Hospitalares, baseado nos princípios do ITIL, garantindo a estabilidade dos serviços de saúde. Com um aplicativo cliente e uma plataforma web integrada, oferecemos monitoramento contínuo, identificando e resolvendo incidentes em tempo real. Priorizamos a gestão de incidentes e problemas para garantir a confiabilidade dos sistemas, proporcionando um ambiente seguro para pacientes e profissionais de saúde.
@@ -26,6 +25,13 @@ Projeto de Monitoramento de Servidores Hospitalares, baseado nos princípios do 
 <p align="start">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=java,nodejs" />
+  </a>
+
+ ### DevOps:
+
+<p align="start">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=aws,docker" />
   </a>
  
 </div>
