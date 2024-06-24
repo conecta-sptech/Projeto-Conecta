@@ -5,7 +5,7 @@
 <br>
 <p align-text="justify">
  
-Nosso projeto de Monitoramento de Servidores Hospitalares, baseado nos princípios do ITIL,garantindo a estabilidade dos serviços de saúde. Com um aplicativo cliente e uma plataforma web integrada,oferecemos monitoramento contínuo, identificando e resolvendo incidentes em tempo real. Priorizamos a gestão de incidentes e problemas para garantir a confiabilidade dos sistemas, proporcionando um ambiente seguro para pacientes e profissionais de saúde.
+Projeto de Monitoramento de Servidores Hospitalares, baseado nos princípios do ITIL, garantindo a estabilidade dos serviços de saúde. Com um aplicativo cliente e uma plataforma web integrada, oferecemos monitoramento contínuo, identificando e resolvendo incidentes em tempo real. Priorizamos a gestão de incidentes e problemas para garantir a confiabilidade dos sistemas, proporcionando um ambiente seguro para pacientes e profissionais de saúde.
 
 </p>
 <br>
@@ -46,44 +46,7 @@ Nosso projeto de Monitoramento de Servidores Hospitalares, baseado nos princípi
 
 <br>
 
-<img src="projeto/public/assets/img/Dashboard 03.png" width="100%">
-
-<br>
-
-<img src="projeto/public/assets/img/Dashboard 04.png" width="100%">
-
-<br>
-
 <img src="projeto/public/assets/img/Cadastro.png" width="100%">
-
-<br>
-
-## ⚙ Instalação local
-
-### Requisitos para a instalação:
-
- <p align="start">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nodejs,mysql" />
-  </a>
-
-### Para a configuração do banco de dados:
-
-- Execute todo esse <a href="projeto/src/database/config.js">script</a> para a configuração do banco de dados.
-
-### Instale as dependências do projeto:
-```bash
-npm i
-```
-
-### Após a instalação de todas as dependências:
-```bash
-npm start
-```
-
-### Por fim, para abrir o projeto:
-
-- Acesse a seguinte URL: http://localhost:3000
 
 <br>
 
